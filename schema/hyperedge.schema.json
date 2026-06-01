@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://research-compiler/schema/hyperedge.schema.json",
+  "title": "Hyperedge",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "id", "stream", "sources", "target", "rationale", "provenance", "comments"],
+  "properties": {
+    "type": { "const": "hyperedge" },
+    "id": { "type": "string", "pattern": "^h-[0-9]{4,}$" },
+    "stream": { "type": "string" },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "id"],
+        "properties": {
+          "kind": { "enum": ["Q", "A"] },
+          "id": { "type": "string" }
+        }
+      }
+    },
+    "target": { "type": "string", "pattern": "^q-[0-9]{4,}$" },
+    "rationale": { "type": "string" },
+    "provenance": { "$ref": "https://research-compiler/schema/provenance.schema.json" },
+    "comments": { "type": "object", "additionalProperties": { "type": "string" } }
+  }
+}

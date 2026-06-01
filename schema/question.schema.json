@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://research-compiler/schema/question.schema.json",
+  "title": "Question",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "id", "stream", "text", "status", "tags", "provenance", "comments"],
+  "properties": {
+    "type": { "const": "question" },
+    "id": { "type": "string", "pattern": "^q-[0-9]{4,}$" },
+    "stream": { "type": "string" },
+    "text": { "type": "string" },
+    "status": { "enum": ["open", "answered", "abandoned"] },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "provenance": { "$ref": "https://research-compiler/schema/provenance.schema.json" },
+    "comments": { "type": "object", "additionalProperties": { "type": "string" } }
+  }
+}

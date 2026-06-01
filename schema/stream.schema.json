@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://research-compiler/schema/stream.schema.json",
+  "title": "Stream",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "slug", "title", "description", "root_qid", "counters", "provenance", "comments"],
+  "properties": {
+    "type": { "const": "stream" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "root_qid": { "type": ["string", "null"] },
+    "counters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["q", "a", "h", "e"],
+      "properties": {
+        "q": { "type": "integer", "minimum": 0 },
+        "a": { "type": "integer", "minimum": 0 },
+        "h": { "type": "integer", "minimum": 0 },
+        "e": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "provenance": { "$ref": "https://research-compiler/schema/provenance.schema.json" },
+    "comments": { "type": "object", "additionalProperties": { "type": "string" } }
+  }
+}

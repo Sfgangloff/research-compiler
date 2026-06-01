@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://research-compiler/schema/experiment.schema.json",
+  "title": "Experiment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "type", "id", "stream",
+    "description", "motivation", "code_pointer",
+    "formal_results", "results_description", "conclusions",
+    "addresses", "produces", "status", "provenance", "comments"
+  ],
+  "properties": {
+    "type": { "const": "experiment" },
+    "id": { "type": "string", "pattern": "^e-[0-9]{4,}$" },
+    "stream": { "type": "string" },
+    "description": { "type": "string" },
+    "motivation": { "type": "string" },
+    "code_pointer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo", "path"],
+      "properties": {
+        "repo": { "type": "string" },
+        "path": { "type": "string" },
+        "commit": { "type": "string" },
+        "lines": { "type": "string" },
+        "run_cmd": { "type": "string" }
+      }
+    },
+    "formal_results": { "type": "string" },
+    "results_description": { "type": "string" },
+    "conclusions": { "type": "string" },
+    "addresses": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^q-[0-9]{4,}$" }
+    },
+    "produces": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^a-[0-9]{4,}$" }
+    },
+    "status": { "enum": ["planned", "running", "done", "failed"] },
+    "provenance": { "$ref": "https://research-compiler/schema/provenance.schema.json" },
+    "comments": { "type": "object", "additionalProperties": { "type": "string" } }
+  }
+}

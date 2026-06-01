@@ -1,0 +1,22 @@
+{
+  "name": "research-compiler",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Structure research reasoning as a hypergraph before writing the paper.",
+  "scripts": {
+    "rc": "tsx src/cli/rc.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,5 @@
+#!/bin/sh
+# Thin wrapper so hooks and humans can invoke the database CLI as `./rc ...`.
+# All DB mutation must go through this command (the engine validates + audits).
+DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+exec npx --no-install tsx "$DIR/src/cli/rc.ts" "$@"
