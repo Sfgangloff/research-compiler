@@ -20,6 +20,8 @@ export interface StoreAdapter {
   remove(rel: string): void;
   /** Basenames of files directly inside a directory (empty if missing). */
   list(rel: string): string[];
+  /** Basenames of subdirectories directly inside a directory (empty if missing). */
+  listDirs(rel: string): string[];
 }
 
 export class FsStore implements StoreAdapter {
@@ -55,6 +57,13 @@ export class FsStore implements StoreAdapter {
       .filter((d) => d.isFile())
       .map((d) => d.name);
   }
+  listDirs(rel: string): string[] {
+    const p = this.abs(rel);
+    if (!existsSync(p)) return [];
+    return readdirSync(p, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name);
+  }
 }
 
 /** In-memory store for tests. */
@@ -84,6 +93,17 @@ export class MemoryStore implements StoreAdapter {
       if (!rest.includes("/")) out.push(rest);
     }
     return out;
+  }
+  listDirs(rel: string): string[] {
+    const prefix = rel.endsWith("/") ? rel : rel + "/";
+    const dirs = new Set<string>();
+    for (const key of this.files.keys()) {
+      if (!key.startsWith(prefix)) continue;
+      const rest = key.slice(prefix.length);
+      const slash = rest.indexOf("/");
+      if (slash > 0) dirs.add(rest.slice(0, slash));
+    }
+    return [...dirs];
   }
   /** Test helper: snapshot of all stored paths. */
   paths(): string[] {

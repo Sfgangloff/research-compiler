@@ -6,6 +6,7 @@
   "description": "Structure research reasoning as a hypergraph before writing the paper.",
   "scripts": {
     "rc": "tsx src/cli/rc.ts",
+    "serve": "tsx src/web/server.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"

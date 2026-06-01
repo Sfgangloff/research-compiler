@@ -82,23 +82,10 @@ export class Engine {
 
   listStreams(): string[] {
     if (!this.store.exists(STREAMS_DIR)) return [];
-    // Directory entries; MemoryStore lists files only, so fall back to scanning.
-    const slugs = new Set<string>();
-    for (const name of this.store.list(STREAMS_DIR)) slugs.add(name);
-    // FsStore lists files not dirs at this level; detect by probing stream.json.
-    for (const candidate of this.probeStreamSlugs()) slugs.add(candidate);
-    return [...slugs].filter((s) => this.store.exists(streamMetaPath(s))).sort();
-  }
-
-  private probeStreamSlugs(): string[] {
-    // Works for both stores: enumerate any slug for which stream.json exists.
-    // FsStore.list on STREAMS_DIR returns files only, so we cannot see dirs there;
-    // callers that need full enumeration on disk should pass slugs explicitly.
-    const out: string[] = [];
-    for (const name of this.store.list(STREAMS_DIR)) {
-      if (this.store.exists(streamMetaPath(name))) out.push(name);
-    }
-    return out;
+    return this.store
+      .listDirs(STREAMS_DIR)
+      .filter((slug) => this.store.exists(streamMetaPath(slug)))
+      .sort();
   }
 
   createStream(slug: string, title: string, description = "", source_ref?: SourceRef): StreamMeta {
