@@ -5,6 +5,7 @@
 
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { parseArgs, type ParsedArgs } from "./args.js";
 import { Engine } from "../engine/engine.js";
 import { FsStore } from "../engine/store.js";
@@ -77,6 +78,9 @@ Comments
   rc comment set --stream <s> --target <id|stream> --field <f> --text <t>
   rc comment edge --stream <s> --edge <aid>:<qid> --text <t>
 
+Cage (Claude Code restriction)
+  rc cage arm | disarm | status     (toggles .rc/cage.json)
+
 Maintenance
   rc validate [--stream <s>]
   rc export graph --stream <s>
@@ -98,6 +102,24 @@ function run(argv: string[]): number {
   if (a.bool("dry-run")) {
     out({ dryRun: true, group, sub, flags: Object.fromEntries(a.flags), positionals: a.positionals });
     return 0;
+  }
+
+  // The cage toggle does not need the engine.
+  if (group === "cage") {
+    const cagePath = join(REPO_ROOT, ".rc", "cage.json");
+    const read = () => {
+      try { return JSON.parse(readFileSync(cagePath, "utf8")); } catch { return { armed: false }; }
+    };
+    if (sub === "status") { out(read()); return 0; }
+    if (sub === "arm" || sub === "disarm") {
+      mkdirSync(dirname(cagePath), { recursive: true });
+      const armed = sub === "arm";
+      writeFileSync(cagePath, JSON.stringify({ armed }, null, 2) + "\n");
+      out({ armed });
+      return 0;
+    }
+    process.stderr.write("usage: rc cage arm|disarm|status\n");
+    return 2;
   }
 
   const eng = makeEngine();

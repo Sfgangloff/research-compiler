@@ -1,0 +1,39 @@
+{
+  "$comment": "Safety cage for research-compiler. The Write/Edit tools can NEVER touch the database (streams/, .rc/) — Claude mutates it only via the rc CLI. Destructive/new-file behaviour is gated by .rc/cage.json {\"armed\": true}; arm it with `./rc cage arm` before handing the repo to Claude for curation.",
+  "permissions": {
+    "deny": [
+      "Write(streams/**)",
+      "Edit(streams/**)",
+      "MultiEdit(streams/**)",
+      "Write(.rc/**)",
+      "Edit(.rc/**)",
+      "MultiEdit(.rc/**)",
+      "Write(.git/**)",
+      "Edit(.git/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-fs.mjs\"" }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-bash.mjs\"" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/post-validate.mjs\"" }
+        ]
+      }
+    ]
+  }
+}

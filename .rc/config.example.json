@@ -1,0 +1,10 @@
+{
+  "_comment": "Copy to .rc/config.json (gitignored, machine-specific). Experiment repos are referenced by NAME everywhere in the database; paths are resolved here so nothing hardcodes an absolute path. A repo name resolves to repos[name].path, or to <root>/<name> for each root in repoRoots.",
+  "repoRoots": ["/Volumes/TOSHIBA EXT/Projects"],
+  "repos": {
+    "sofic-experiments": {
+      "path": "/Volumes/TOSHIBA EXT/Projects/sofic-experiments",
+      "description": "Example: the repo backing the sofic-p stream."
+    }
+  }
+}
