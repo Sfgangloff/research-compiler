@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0001",
+  "stream": "sofic-p",
+  "description": "Search for a counterexample among small sofic shifts",
+  "motivation": "If P can fail, find the smallest witness",
+  "code_pointer": {
+    "repo": "sofic-experiments",
+    "path": "src/search.py",
+    "commit": "deadbeef"
+  },
+  "formal_results": "Found shift X with |alphabet|=5 where P fails",
+  "results_description": "X is an explicit counterexample",
+  "conclusions": "P fails in general; this refutes a-0001",
+  "addresses": [
+    "q-0001"
+  ],
+  "produces": [
+    "a-0001"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-01T02:30:53.471Z",
+    "updated_at": "2026-06-01T02:31:02.783Z"
+  },
+  "comments": {
+    "motivation": "Is brute force over |A|<=5 actually exhaustive?"
+  }
+}

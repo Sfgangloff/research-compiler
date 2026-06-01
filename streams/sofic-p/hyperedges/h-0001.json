@@ -1,0 +1,23 @@
+{
+  "type": "hyperedge",
+  "id": "h-0001",
+  "stream": "sofic-p",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0001"
+    },
+    {
+      "kind": "A",
+      "id": "a-0001"
+    }
+  ],
+  "target": "q-0002",
+  "rationale": "P fails in general; narrow the class where it holds",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-01T02:31:02.316Z",
+    "updated_at": "2026-06-01T02:31:02.316Z"
+  },
+  "comments": {}
+}
