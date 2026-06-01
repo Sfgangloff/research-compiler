@@ -34,7 +34,7 @@ const validators: Record<string, ValidateFunction> = {
 };
 
 function shapeErrors(kind: keyof typeof validators, obj: unknown): string[] {
-  const v = validators[kind];
+  const v = validators[kind]!;
   if (v(obj)) return [];
   return (v.errors ?? []).map((e) => `${kind}${e.instancePath} ${e.message ?? "invalid"}`);
 }
