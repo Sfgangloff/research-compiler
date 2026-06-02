@@ -78,6 +78,11 @@ Comments
   rc comment set --stream <s> --target <id|stream> --field <f> --text <t>
   rc comment edge --stream <s> --edge <aid>:<qid> --text <t>
 
+Repos (experiment repos referenced by name, not path)
+  rc repo add --name <n> --path <p> [--description <d>]
+  rc repo list
+  rc repo resolve --name <n>
+
 Cage (Claude Code restriction)
   rc cage arm | disarm | status     (toggles .rc/cage.json)
 
@@ -268,6 +273,23 @@ function run(argv: string[]): number {
       if (sub === "edge") {
         const [aid, qid] = a.require("edge").split(":");
         out(eng.setEdgeComment(stream(), aid!, qid!, a.require("text")));
+        return 0;
+      }
+      break;
+    }
+
+    case "repo": {
+      if (sub === "add") {
+        eng.addRepo(a.require("name"), a.require("path"), a.get("description"));
+        out({ added: a.require("name") });
+        return 0;
+      }
+      if (sub === "list") {
+        out(eng.listRepos());
+        return 0;
+      }
+      if (sub === "resolve") {
+        out({ name: a.require("name"), path: eng.resolveRepo(a.require("name")) });
         return 0;
       }
       break;

@@ -7,6 +7,7 @@
 import type { StoreAdapter } from "./store.js";
 import {
   ANSWERS_SUBDIR,
+  CONFIG_PATH,
   EXPERIMENTS_SUBDIR,
   HYPEREDGES_SUBDIR,
   QUESTIONS_SUBDIR,
@@ -36,10 +37,13 @@ import type {
   Provenance,
   Question,
   QuestionStatus,
+  RcConfig,
   SourceRef,
   StreamGraph,
   StreamMeta,
 } from "./types.js";
+import { join } from "node:path";
+import { existsSync } from "node:fs";
 
 export interface EngineOptions {
   actor: Actor;
@@ -612,6 +616,36 @@ export class Engine {
         throw new NotFoundError(`entity '${id}' not found`);
       })()
     );
+  }
+
+  // ---- repo registry (abstracts experiment-repo paths) ---------------------
+
+  getConfig(): RcConfig {
+    const raw = this.store.read(CONFIG_PATH);
+    return raw ? (JSON.parse(raw) as RcConfig) : { repos: {} };
+  }
+
+  addRepo(name: string, path: string, description?: string): RcConfig {
+    const c = this.getConfig();
+    c.repos[name] = { path, ...(description ? { description } : {}) };
+    this.store.write(CONFIG_PATH, JSON.stringify(c, null, 2) + "\n");
+    appendAudit(this.store, { ts: this.clock(), actor: this.actor, op: "addRepo", affected: [name] });
+    return c;
+  }
+
+  listRepos(): RcConfig["repos"] {
+    return this.getConfig().repos;
+  }
+
+  /** Resolve a repo name to an absolute path via repos[name] or repoRoots. */
+  resolveRepo(name: string): string | null {
+    const c = this.getConfig();
+    if (c.repos[name]?.path) return c.repos[name]!.path;
+    for (const root of c.repoRoots ?? []) {
+      const candidate = join(root, name);
+      if (existsSync(candidate)) return candidate;
+    }
+    return null;
   }
 
   // ---- read-only validation API --------------------------------------------
