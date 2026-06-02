@@ -22,6 +22,7 @@ import { formatId, kindOfId, type IdKind } from "./ids.js";
 import { appendAudit } from "./audit.js";
 import { ConsentError, NotFoundError, ValidationError } from "./errors.js";
 import { validateGraph } from "./validate.js";
+import { exportPaper, type PaperFormat } from "./paper.js";
 import type {
   Actor,
   Answer,
@@ -614,6 +615,11 @@ export class Engine {
   }
 
   // ---- read-only validation API --------------------------------------------
+
+  /** Render a deterministic paper skeleton from a stream's reasoning graph. */
+  exportPaper(slug: string, format: PaperFormat = "md"): string {
+    return exportPaper(this.getStream(slug), format);
+  }
 
   /** Validate a stream without mutating; returns problems (empty = valid). */
   validate(slug: string): string[] {

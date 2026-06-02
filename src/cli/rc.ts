@@ -84,6 +84,7 @@ Cage (Claude Code restriction)
 Maintenance
   rc validate [--stream <s>]
   rc export graph --stream <s>
+  rc export paper --stream <s> [--format md|tex]
   rc rm node --stream <s> <id> --confirm [--cascade]      (PRIVILEGED)
   rc rm stream --slug <s> --confirm                        (PRIVILEGED)
 
@@ -297,6 +298,11 @@ function run(argv: string[]): number {
           hyperedges: [...g.hyperedges.values()],
           experiments: [...g.experiments.values()],
         });
+        return 0;
+      }
+      if (sub === "paper") {
+        const fmt = (a.get("format") ?? "md") as "md" | "tex";
+        process.stdout.write(eng.exportPaper(stream(), fmt));
         return 0;
       }
       break;
