@@ -1,0 +1,36 @@
+{
+  "type": "experiment",
+  "id": "e-0009",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Phase-2 frontier: gen_7x7_s1_00 - a procedurally generated, seed-locked, uniqueness-verified tier-3 puzzle (formal grader: search_nodes=4547), 4 toolsets meta-off, n=3, with contamination control.",
+  "motivation": "Map the granularity benefit at the hard end of a formally-graded difficulty axis, and test G-CD-v1's prediction P3 (benefit grows with difficulty).",
+  "code_pointer": {
+    "path": "harness/analyze_phase2.py",
+    "lines": "grader: core/generator.py",
+    "repo": "claude-sudoku-experiments",
+    "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+  },
+  "formal_results": "cost mu+-sigma (n=3): none $2.08+-0.58 (2.3 calls); fine $3.21+-1.41 (82 calls); medium $2.69+-0.93 (45.7); coarse $2.07+-0.67 (29.3). coarse/none = 1.00x; ALL four CIs overlap at 1 sigma (within $1.14). $/call: none $2.04 vs fine $0.037 = 55x.",
+  "results_description": "At tier-3 the strong tier-2 granularity separation collapses - all toolsets cost the same within noise - producing a V-shaped cost-ratio surface across tiers, the opposite of a monotonic benefit.",
+  "conclusions": "Falsifies G-CD-v1's monotonic P3; supports the Goldilocks two-floor revision (benefit only at intermediate difficulty) and sharpens the P4 calls/cost decoupling (alpha << beta). Caveat: this single puzzle may be cost-cheap by sparse clues despite the tier-3 grade.",
+  "addresses": [
+    "q-0006"
+  ],
+  "produces": [
+    "a-0010",
+    "a-0011",
+    "a-0012",
+    "a-0013"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:43.231Z",
+    "updated_at": "2026-06-03T03:47:45.789Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

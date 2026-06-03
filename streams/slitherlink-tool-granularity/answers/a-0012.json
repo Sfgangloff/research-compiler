@@ -1,0 +1,25 @@
+{
+  "type": "answer",
+  "id": "a-0012",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Tool calls are nearly free; what costs is the reasoning-token context between calls (alpha << beta). fine performs 121 calls for about the same cost as none's 2 calls; $/call is $2.04 (none) vs $0.037 (fine) - a 55x gap (the P4 decoupling).",
+  "status": "supported",
+  "answers": [
+    "q-0002"
+  ],
+  "backed_by": [
+    "e-0004",
+    "e-0009"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:45.346Z",
+    "updated_at": "2026-06-03T03:47:45.346Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

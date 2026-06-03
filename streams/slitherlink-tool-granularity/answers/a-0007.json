@@ -1,0 +1,24 @@
+{
+  "type": "answer",
+  "id": "a-0007",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Scratchpad v2 (try_both, 1-ply engine lookahead) is discovered without prompting and cleanly replaces frames: it saves ~85% on failure cases via an honest early-stop, but is over-applied on medium puzzles (+85%) and still cannot solve 15x15 (1-ply is too shallow; >=2-ply would become a solver and erase the signal).",
+  "status": "supported",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0007"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:40.687Z",
+    "updated_at": "2026-06-03T03:47:40.687Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

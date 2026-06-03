@@ -1,0 +1,27 @@
+{
+  "type": "hyperedge",
+  "id": "h-0008",
+  "stream": "slitherlink-tool-granularity",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0003"
+    },
+    {
+      "kind": "A",
+      "id": "a-0004"
+    }
+  ],
+  "target": "q-0009",
+  "rationale": "With a difficulty-conditional descriptive signal in hand, ask whether a formal model can predict it.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:42.409Z",
+    "updated_at": "2026-06-03T03:47:42.409Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

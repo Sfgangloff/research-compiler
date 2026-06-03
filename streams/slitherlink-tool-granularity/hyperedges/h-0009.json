@@ -1,0 +1,27 @@
+{
+  "type": "hyperedge",
+  "id": "h-0009",
+  "stream": "slitherlink-tool-granularity",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0009"
+    },
+    {
+      "kind": "A",
+      "id": "a-0010"
+    }
+  ],
+  "target": "q-0010",
+  "rationale": "G-CD-v1 predicted monotonic benefit (P3) but the tier-3 frontier collapsed the signal - so ask whether the whole model fails or only its monotonicity.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:44.392Z",
+    "updated_at": "2026-06-03T03:47:44.392Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

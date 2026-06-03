@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0007",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Scratchpad v2 sweep: adds try_both (1-ply engine lookahead - tests both branches of one edge, auto-applies forced edges), same 4 puzzles, n=1, full sweep in one window.",
+  "motivation": "Replace ineffective manual frames with engine-level 1-ply lookahead and see if it extends the ceiling or improves the cost profile.",
+  "code_pointer": {
+    "path": "servers/slitherlink-scratchpad/server.py",
+    "repo": "claude-sudoku-experiments",
+    "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+  },
+  "formal_results": "001 solved $1.22/20 (-19% vs v1, try_both adopted unprompted); 002 solved $4.76/63 (+85% vs v1 - try_both overused where propagation suffices); 004 unsolved but clean bail $3.18/62 (-85% vs v1's $21.17, 0 assume calls); 003 clean $0.07/1.",
+  "results_description": "try_both is discoverable and cleanly replaces frames; it saves a lot on failure cases via an honest early-stop signal but is over-applied on medium puzzles, and 1-ply is still too shallow for 15x15.",
+  "conclusions": "Engine 1-ply lookahead improves the failure-cost profile and is self-adopted, but does not break the ceiling (>=2-ply would cross into solver territory and erase the experimental signal).",
+  "addresses": [
+    "q-0007"
+  ],
+  "produces": [
+    "a-0007"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:39.677Z",
+    "updated_at": "2026-06-03T03:47:40.687Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

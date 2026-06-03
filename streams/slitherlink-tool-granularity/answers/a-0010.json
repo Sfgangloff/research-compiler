@@ -1,0 +1,24 @@
+{
+  "type": "answer",
+  "id": "a-0010",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Phase-2 frontier (gen_7x7_s1_00, tier-3, n=3): coarse/none = 1.00x and all four toolsets' CIs overlap at 1 sigma (within $1.14). The strong tier-2 separation collapses at tier-3 - falsifying G-CD-v1's monotonic P3.",
+  "status": "supported",
+  "answers": [
+    "q-0006"
+  ],
+  "backed_by": [
+    "e-0009"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:43.753Z",
+    "updated_at": "2026-06-03T03:47:43.753Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

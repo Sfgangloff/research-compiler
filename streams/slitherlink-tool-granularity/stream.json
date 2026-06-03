@@ -1,0 +1,23 @@
+{
+  "type": "stream",
+  "slug": "slitherlink-tool-granularity",
+  "title": "Tool-granularity, formal difficulty, and the cost of LLM reasoning on a CSP testbed",
+  "description": "Reasoning-compiler reconstruction of the claude-sudoku-experiments repo: how MCP tool-set granularity (none/fine/medium/coarse, plus a scratchpad variant) affects an LLM agent (Opus 4.7) solving Slitherlink across a formally-graded difficulty axis. Arc: n=1 pilot -> Phase-1 replication gate -> Phase-2 difficulty frontier -> scratchpad detour -> the G-CD cost model and its Goldilocks revision. Publication target: AAAI-27.",
+  "root_qid": "q-0001",
+  "counters": {
+    "q": 10,
+    "a": 13,
+    "h": 9,
+    "e": 9
+  },
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:27.008Z",
+    "updated_at": "2026-06-03T03:47:27.008Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

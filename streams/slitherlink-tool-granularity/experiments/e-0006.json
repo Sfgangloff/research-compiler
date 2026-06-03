@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0006",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Scratchpad v1 sweep: a new toolset = medium + an engine frame-stack (assume/commit/retract) to auto-manage case-split state, run on puzzles 001/002/004/003, n=1.",
+  "motivation": "Test whether delegating branch-bookkeeping to the engine (removing manual snapshot/restore) extends the ceiling or cuts cost.",
+  "code_pointer": {
+    "path": "servers/slitherlink-scratchpad/server.py",
+    "repo": "claude-sudoku-experiments",
+    "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+  },
+  "formal_results": "001 solved $1.50/25; 002 solved $2.58/37 (28% cheaper than medium, 0 frame primitives used); 004 unsolved $21.17/165 (11 assume/retract pairs, 0 commits - 29% cheaper than medium at the same failure); 003 (25x30) no data (rate-limited).",
+  "results_description": "Auto-bookkeeping is real and cheaper at the failure boundary, but the model never commits a frame - it tests hypotheses that all fail and makes no forward progress.",
+  "conclusions": "Frame auto-delegation saves money but does not break the 15x15 ceiling; frames are used but ineffective. Motivates v2 with engine-level lookahead (try_both).",
+  "addresses": [
+    "q-0007"
+  ],
+  "produces": [
+    "a-0006"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:39.138Z",
+    "updated_at": "2026-06-03T03:47:40.045Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

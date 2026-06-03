@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0005",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Scaling probe: puzzle_004 (15x15 hard, ~480 edges), 4 toolsets meta-off, n=1, max_turns=200.",
+  "motivation": "Find where toolsets fail - the interesting science is at the boundary, not on always-solving cells.",
+  "code_pointer": {
+    "path": "harness/run_subset.py",
+    "repo": "claude-sudoku-experiments",
+    "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+  },
+  "formal_results": "No toolset solved (0 submit attempts). none self-bailed $0.10/1 call; fine gave up $4.25/126; medium $29.93/162 (snapshot/restore case-split overhead); coarse rate-limited mid-run $3.21/99. Coarse engine plateaus by design (68/112 edges unknown at 7x7-hard, engine-only).",
+  "results_description": "At 15x15 nothing solves; failure modes differ - none quits immediately, medium explodes on manual branch bookkeeping, coarse plateaus.",
+  "conclusions": "Local tools and propagation engines cannot crack the global single-loop constraint at scale; 15x15 hard is the ceiling for all toolsets. Medium's bookkeeping overhead motivates the scratchpad design.",
+  "addresses": [
+    "q-0006"
+  ],
+  "produces": [
+    "a-0005"
+  ],
+  "status": "failed",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:37.253Z",
+    "updated_at": "2026-06-03T03:47:37.753Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

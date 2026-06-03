@@ -1,0 +1,26 @@
+{
+  "type": "answer",
+  "id": "a-0013",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Thesis: tool-set granularity reduces LLM solving cost only at intermediate difficulty and the benefit collapses at both extremes; and the saving comes from removing reasoning steps, not from removing tool calls.",
+  "status": "supported",
+  "answers": [
+    "q-0002"
+  ],
+  "backed_by": [
+    "e-0003",
+    "e-0004",
+    "e-0009"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:45.789Z",
+    "updated_at": "2026-06-03T03:47:45.789Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

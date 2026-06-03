@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0001",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Pilot baseline: puzzle_001 (5x5 easy) across the full 2x4 matrix - 4 toolsets (none/fine/medium/coarse) x meta {off,on}, n=1 per cell, Opus 4.7 1M, max_turns=35.",
+  "motivation": "Establish whether tool granularity produces any visible cost/behaviour signal at all before investing in replication.",
+  "code_pointer": {
+    "path": "harness/run_matrix.py",
+    "repo": "claude-sudoku-experiments",
+    "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+  },
+  "formal_results": "All 8 cells solved. meta-off cost/calls/time: none $1.29/3/359s; fine $1.45/65/281s; medium $1.04/22/277s; coarse $0.56/24/151s. Coarse cheapest and ~2.5x fastest; fine ~3x the tool-calls of medium/coarse. Zero meta-tool calls (later found confounded).",
+  "results_description": "On an easy puzzle every toolset solves, so there is no solve-rate signal; coarse is the efficiency winner and fine is call-heavy but not proportionally costly.",
+  "conclusions": "Granularity shows a cost ordering on easy puzzles but no solve-rate effect - enough signal to justify a replication gate. Meta axis inert here (later withdrawn as confounded).",
+  "addresses": [
+    "q-0002"
+  ],
+  "produces": [
+    "a-0002"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:30.589Z",
+    "updated_at": "2026-06-03T03:47:32.099Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

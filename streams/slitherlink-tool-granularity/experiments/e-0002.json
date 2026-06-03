@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0002",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Pilot on the hard puzzle: puzzle_002 (7x7 hard, Puzzle-loop #25425, unique solution verified) across 4 toolsets, meta-off, n=1, max_turns=200.",
+  "motivation": "Check whether the easy-puzzle cost ordering holds on a genuinely hard instance and whether ratios are stable with difficulty.",
+  "code_pointer": {
+    "path": "harness/run_subset.py",
+    "repo": "claude-sudoku-experiments",
+    "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+  },
+  "formal_results": "All solved. none $5.28/2 calls/1776s; fine $4.99/124; medium $3.61/51; coarse $2.32/51/613s. coarse/none = 0.44x. none flips from cheapest (easy) to most expensive (hard); fine call-count scales with edges (65 -> 124).",
+  "results_description": "Pure reasoning (none) becomes the costliest toolset on hard puzzles while coarse stays cheapest; the cost gap widens vs the easy puzzle.",
+  "conclusions": "Supports a difficulty-dependent granularity benefit and the none cheap->expensive flip - but n=1, so pilot-quality only.",
+  "addresses": [
+    "q-0002"
+  ],
+  "produces": [
+    "a-0002"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:31.352Z",
+    "updated_at": "2026-06-03T03:47:32.099Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

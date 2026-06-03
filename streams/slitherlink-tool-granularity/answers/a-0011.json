@@ -1,0 +1,26 @@
+{
+  "type": "answer",
+  "id": "a-0011",
+  "stream": "slitherlink-tool-granularity",
+  "text": "G-CD-v2 (Goldilocks two-floor model): add a fixed per-trial overhead gamma, so C ~= gamma + alpha*n_calls + beta*n_reasoning_tokens. Ratios collapse to 1 at both ends - overhead-dominated at the easy end and search-depth-floor-dominated at the hard end - giving a V-shaped (non-monotonic) cost-ratio surface; granularity helps only at intermediate difficulty.",
+  "status": "supported",
+  "answers": [
+    "q-0010"
+  ],
+  "backed_by": [
+    "e-0003",
+    "e-0004",
+    "e-0009"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:44.820Z",
+    "updated_at": "2026-06-03T03:47:44.820Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

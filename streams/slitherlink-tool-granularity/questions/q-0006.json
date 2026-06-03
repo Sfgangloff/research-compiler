@@ -1,0 +1,18 @@
+{
+  "type": "question",
+  "id": "q-0006",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Where does each toolset fail, and how does the granularity benefit vary across the formal difficulty axis?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:36.562Z",
+    "updated_at": "2026-06-03T03:47:36.562Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

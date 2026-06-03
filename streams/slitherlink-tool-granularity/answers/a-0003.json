@@ -1,0 +1,24 @@
+{
+  "type": "answer",
+  "id": "a-0003",
+  "stream": "slitherlink-tool-granularity",
+  "text": "On the easy puzzle (puzzle_001, n=3-4) the cost CIs of none/medium/coarse overlap at 1 sigma; only \"fine is reproducibly the most expensive\" survives. The pilot \"coarse ~2x cheaper\" headline is invalidated at low difficulty.",
+  "status": "refuted",
+  "answers": [
+    "q-0004"
+  ],
+  "backed_by": [
+    "e-0003"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:34.262Z",
+    "updated_at": "2026-06-03T03:47:34.262Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

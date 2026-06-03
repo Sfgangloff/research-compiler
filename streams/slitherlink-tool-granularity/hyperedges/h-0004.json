@@ -1,0 +1,27 @@
+{
+  "type": "hyperedge",
+  "id": "h-0004",
+  "stream": "slitherlink-tool-granularity",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0002"
+    },
+    {
+      "kind": "A",
+      "id": "a-0003"
+    }
+  ],
+  "target": "q-0005",
+  "rationale": "The pilot claimed difficulty-stable ratios but the easy puzzle collapsed to noise - so ask whether the signal is difficulty-dependent.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:34.950Z",
+    "updated_at": "2026-06-03T03:47:34.950Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}

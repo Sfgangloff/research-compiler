@@ -1,0 +1,22 @@
+{
+  "type": "answer",
+  "id": "a-0001",
+  "stream": "slitherlink-tool-granularity",
+  "text": "The descriptive claim \"tool granularity matters\" is already scooped (The Tool Illusion, COLM-2026, web-agent domain). Defensible novelty is reframed to three pillars: a formal-difficulty CSP testbed, a model x granularity interaction, and a predictive cost theory.",
+  "status": "supported",
+  "answers": [
+    "q-0003"
+  ],
+  "backed_by": [],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-03T03:47:29.844Z",
+    "updated_at": "2026-06-03T03:47:29.844Z",
+    "source_ref": {
+      "repo": "claude-sudoku-experiments",
+      "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
+    }
+  },
+  "comments": {}
+}
