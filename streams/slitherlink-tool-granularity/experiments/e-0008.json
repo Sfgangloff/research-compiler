@@ -22,11 +22,12 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:41.693Z",
-    "updated_at": "2026-06-03T03:47:42.041Z",
+    "updated_at": "2026-06-04T00:21:17.810Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
     }
   },
-  "comments": {}
+  "comments": {},
+  "report": "Full detail on the two meta-on probe attempts (W8 $6.17, W9 $18.61, both rate-limit aborts) and the firm decision to drop the meta axis as cost-infeasible on subscription compute is in the stream-level report (source: notes/2026-05-18_aaai_plan_and_meta_confound.md, sections \"Meta-axis confound\" and \"Meta axis: dropped\")."
 }

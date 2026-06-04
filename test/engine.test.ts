@@ -150,6 +150,25 @@ describe("comments", () => {
   });
 });
 
+describe("reports", () => {
+  it("sets a long-form report on a node and on the stream", () => {
+    const { eng } = fresh();
+    eng.createStream("s", "s");
+    eng.addQuestion("s", { root: true, text: "root" });
+    const e = eng.addExperiment("s", {
+      description: "d", motivation: "m", code_pointer: code,
+      formal_results: "f", results_description: "r", conclusions: "c",
+    });
+    const big = "# Full report\n".repeat(500);
+    eng.setReport("s", e.id, big);
+    eng.setReport("s", "s", "stream-level report");
+    const g = eng.getStream("s");
+    expect(g.experiments.get(e.id)!.report).toBe(big);
+    expect(g.stream.report).toBe("stream-level report");
+    expect(eng.validate("s")).toEqual([]);
+  });
+});
+
 describe("privileged deletes", () => {
   it("refuses to delete without confirm", () => {
     const { eng } = fresh();

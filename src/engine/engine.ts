@@ -482,6 +482,21 @@ export class Engine {
     return ent;
   }
 
+  /** Set the long-form `report` (full detail) on any node or the stream itself. */
+  setReport(slug: string, targetId: string, text: string): Entity {
+    const g = this.getStream(slug);
+    if (targetId === slug || targetId === "stream") {
+      g.stream.report = text;
+      this.commit(g, [g.stream], [], "setReport", [slug], `${text.length} chars`);
+      return g.stream;
+    }
+    const ent = this.requireNode(g, targetId);
+    (ent as { report?: string }).report = text;
+    ent.provenance = this.touchProv(ent.provenance);
+    this.commit(g, [ent], [], "setReport", [targetId], `${text.length} chars`);
+    return ent;
+  }
+
   /** Set a comment on the (answer -> question) edge. */
   setEdgeComment(slug: string, aid: string, qid: string, text: string): Answer {
     const g = this.getStream(slug);

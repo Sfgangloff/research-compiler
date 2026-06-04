@@ -20,6 +20,7 @@ export interface Question {
   tags: string[];
   provenance: Provenance;
   comments: Record<string, string>;
+  report?: string;
 }
 
 export interface Answer {
@@ -33,6 +34,7 @@ export interface Answer {
   edge_comments: Record<string, string>;
   provenance: Provenance;
   comments: Record<string, string>;
+  report?: string;
 }
 
 export interface NodeRef {
@@ -74,6 +76,7 @@ export interface Experiment {
   status: ExperimentStatus;
   provenance: Provenance;
   comments: Record<string, string>;
+  report?: string;
 }
 
 export interface StreamMeta {
@@ -85,6 +88,7 @@ export interface StreamMeta {
   counters: { q: number; a: number; h: number; e: number };
   provenance: Provenance;
   comments: Record<string, string>;
+  report?: string;
 }
 
 export interface Graph {

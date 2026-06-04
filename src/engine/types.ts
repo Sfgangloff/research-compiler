@@ -32,6 +32,8 @@ export interface Question {
   tags: string[];
   provenance: Provenance;
   comments: Comments;
+  /** Long-form markdown holding the full detail behind the node (optional). */
+  report?: string;
 }
 
 export interface Answer {
@@ -45,6 +47,7 @@ export interface Answer {
   edge_comments: Record<string, string>; // qid -> comment on the (answer -> question) edge
   provenance: Provenance;
   comments: Comments;
+  report?: string;
 }
 
 export interface NodeRef {
@@ -86,6 +89,7 @@ export interface Experiment {
   status: ExperimentStatus;
   provenance: Provenance;
   comments: Comments;
+  report?: string;
 }
 
 export interface StreamMeta {
@@ -97,6 +101,7 @@ export interface StreamMeta {
   counters: { q: number; a: number; h: number; e: number };
   provenance: Provenance;
   comments: Comments;
+  report?: string;
 }
 
 export type Entity = Question | Answer | Hyperedge | Experiment | StreamMeta;

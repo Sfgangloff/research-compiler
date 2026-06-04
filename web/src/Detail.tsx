@@ -140,7 +140,27 @@ export function Detail({
       )}
       {kind === "h" && <HyperedgeDetail h={entity as Hyperedge} saveComment={saveComment} comment={comment} />}
       {kind === "e" && <ExperimentDetail e={entity as Experiment} slug={slug} onChanged={onChanged} saveComment={saveComment} comment={comment} />}
+
+      <ReportBlock slug={slug} id={entity.id} report={(entity as any).report ?? ""} onChanged={onChanged} />
     </div>
+  );
+}
+
+/** Collapsible long-form report (the full detail behind a node). */
+function ReportBlock({ slug, id, report, onChanged }: { slug: string; id: string; report: string; onChanged: () => void }) {
+  return (
+    <details className="report" open={false}>
+      <summary>
+        📄 Report (full detail){report ? ` — ${report.length.toLocaleString()} chars` : " — none yet"}
+      </summary>
+      <Saver
+        value={report}
+        rows={20}
+        mono
+        placeholder="Full long-form detail (markdown)…"
+        onSave={(v: string) => api.setReport(slug, id, v).then(onChanged)}
+      />
+    </details>
   );
 }
 

@@ -23,6 +23,7 @@
       }
     },
     "provenance": { "$ref": "https://research-compiler/schema/provenance.schema.json" },
-    "comments": { "type": "object", "additionalProperties": { "type": "string" } }
+    "comments": { "type": "object", "additionalProperties": { "type": "string" } },
+    "report": { "type": "string" }
   }
 }

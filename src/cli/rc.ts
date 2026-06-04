@@ -78,6 +78,9 @@ Comments
   rc comment set --stream <s> --target <id|stream> --field <f> --text <t>
   rc comment edge --stream <s> --edge <aid>:<qid> --text <t>
 
+Reports (full long-form detail behind a node)
+  rc report set --stream <s> --target <id|stream> --text <t> | --text-file <path>
+
 Repos (experiment repos referenced by name, not path)
   rc repo add --name <n> --path <p> [--description <d>]
   rc repo list
@@ -273,6 +276,15 @@ function run(argv: string[]): number {
       if (sub === "edge") {
         const [aid, qid] = a.require("edge").split(":");
         out(eng.setEdgeComment(stream(), aid!, qid!, a.require("text")));
+        return 0;
+      }
+      break;
+    }
+
+    case "report": {
+      if (sub === "set") {
+        const r = eng.setReport(stream(), a.require("target"), a.require("text"));
+        out({ target: a.require("target"), reportChars: (r as { report?: string }).report?.length ?? 0 });
         return 0;
       }
       break;

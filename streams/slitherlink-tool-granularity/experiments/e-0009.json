@@ -26,11 +26,12 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:43.231Z",
-    "updated_at": "2026-06-03T03:47:45.789Z",
+    "updated_at": "2026-06-04T00:21:27.355Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
     }
   },
-  "comments": {}
+  "comments": {},
+  "report": "Full window-by-window detail for the Phase-2 frontier (gen_7x7_s1_00, windows W10-W18) and the Phase-2 final verdict (V-shape held at n=3, P3-prime PASS) is in the stream-level report (source: notes/2026-05-18..., section \"Phase-2 final verdict\"). The G-CD-v1 -> v2 theory revision this result triggered is the report on a-0011 (source: notes/2026-05-23_gcd_revision_goldilocks.md)."
 }

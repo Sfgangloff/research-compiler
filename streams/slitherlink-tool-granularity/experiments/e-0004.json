@@ -26,11 +26,12 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:35.832Z",
-    "updated_at": "2026-06-03T03:47:45.789Z",
+    "updated_at": "2026-06-04T00:21:06.421Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
     }
   },
-  "comments": {}
+  "comments": {},
+  "report": "Full window-by-window detail for the Phase-1 gate (puzzle_002, n=3 per toolset, windows W1-W7), the pre-committed decision rule, and the gate-PASS verdict (coarse/none = 0.55x, non-overlapping 1-sigma CIs) is in the stream-level report (source: notes/2026-05-18_aaai_plan_and_meta_confound.md, section \"Phase-1 gate verdict\")."
 }
