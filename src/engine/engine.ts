@@ -497,6 +497,23 @@ export class Engine {
     return ent;
   }
 
+  /** Define (or update) a glossary term on the stream. */
+  setGlossaryTerm(slug: string, term: string, definition: string): StreamMeta {
+    const g = this.getStream(slug);
+    if (!g.stream.glossary) g.stream.glossary = {};
+    g.stream.glossary[term] = definition;
+    this.commit(g, [g.stream], [], "setGlossary", [slug], term);
+    return g.stream;
+  }
+
+  /** Remove a glossary term. */
+  deleteGlossaryTerm(slug: string, term: string): StreamMeta {
+    const g = this.getStream(slug);
+    if (g.stream.glossary) delete g.stream.glossary[term];
+    this.commit(g, [g.stream], [], "deleteGlossary", [slug], term);
+    return g.stream;
+  }
+
   /** Set a comment on the (answer -> question) edge. */
   setEdgeComment(slug: string, aid: string, qid: string, text: string): Answer {
     const g = this.getStream(slug);

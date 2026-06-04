@@ -1,5 +1,48 @@
-import { useLayoutEffect, useRef, useState, useCallback } from "react";
+import { useLayoutEffect, useRef, useState, useCallback, useMemo, type ReactNode } from "react";
 import type { Answer, Experiment, Graph, Question } from "./types";
+
+// --- glossary: explain technical terms on first chronological use ----------
+
+interface Matcher { re: RegExp; canonical: (m: string) => string | null }
+
+function buildMatcher(glossary: Record<string, string>): Matcher | null {
+  const terms = Object.keys(glossary);
+  if (!terms.length) return null;
+  const lower: Record<string, string> = {};
+  for (const t of terms) lower[t.toLowerCase()] = t;
+  const escaped = terms
+    .slice()
+    .sort((a, b) => b.length - a.length)
+    .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const re = new RegExp(`(?<![A-Za-z])(${escaped.join("|")})(es|s)?(?![A-Za-z])`, "gi");
+  const canonical = (m: string): string | null => {
+    const s = m.toLowerCase();
+    if (lower[s]) return lower[s]!;
+    if (s.endsWith("es") && lower[s.slice(0, -2)]) return lower[s.slice(0, -2)]!;
+    if (s.endsWith("s") && lower[s.slice(0, -1)]) return lower[s.slice(0, -1)]!;
+    return null;
+  };
+  return { re, canonical };
+}
+
+/** Render text with glossary terms wrapped as hover-definable spans. */
+function annotate(text: string, matcher: Matcher | null, glossary: Record<string, string>): ReactNode {
+  if (!matcher) return text;
+  const out: ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  matcher.re.lastIndex = 0;
+  let i = 0;
+  while ((m = matcher.re.exec(text))) {
+    const term = matcher.canonical(m[0]);
+    if (m.index > last) out.push(text.slice(last, m.index));
+    if (term) out.push(<abbr key={i++} className="term" title={glossary[term]}>{m[0]}</abbr>);
+    else out.push(m[0]);
+    last = m.index + m[0].length;
+  }
+  out.push(text.slice(last));
+  return out;
+}
 
 // Three chronological swimlanes — Questions | Answers | Experiments — read
 // top-to-bottom, with dependency arrows drawn across lanes on an SVG overlay.
@@ -39,6 +82,37 @@ export function ColumnView({
   const questions = [...graph.questions].sort(byId);
   const answers = [...graph.answers].sort(byId);
   const experiments = showExperiments ? [...graph.experiments].sort(byId) : [];
+
+  // Glossary: build a matcher and find each term's first chronological use.
+  const glossary = graph.stream.glossary ?? {};
+  const matcher = useMemo(() => buildMatcher(glossary), [graph.stream.glossary]);
+  const render = useCallback((t: string) => annotate(t, matcher, glossary), [matcher, glossary]);
+  const firstUse = useMemo(() => {
+    const map = new Map<string, { term: string; def: string }[]>();
+    if (!matcher) return map;
+    const all = [...graph.questions, ...graph.answers, ...graph.experiments].sort(
+      (a, b) => a.provenance.created_at.localeCompare(b.provenance.created_at) || a.id.localeCompare(b.id),
+    );
+    const seen = new Set<string>();
+    for (const n of all) {
+      const text =
+        n.type === "question" || n.type === "answer"
+          ? n.text
+          : `${n.description} ${n.formal_results} ${n.conclusions}`;
+      matcher.re.lastIndex = 0;
+      let m: RegExpExecArray | null;
+      const here: { term: string; def: string }[] = [];
+      while ((m = matcher.re.exec(text))) {
+        const t = matcher.canonical(m[0]);
+        if (t && !seen.has(t)) {
+          seen.add(t);
+          here.push({ term: t, def: glossary[t]! });
+        }
+      }
+      if (here.length) map.set(n.id, here);
+    }
+    return map;
+  }, [graph, matcher, glossary]);
 
   const recompute = useCallback(() => {
     const content = contentRef.current;
@@ -161,18 +235,18 @@ export function ColumnView({
         <div className="lanes">
           <Lane title="Questions">
             {questions.map((q) => (
-              <QCard key={q.id} q={q} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} />
+              <QCard key={q.id} q={q} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} render={render} defs={firstUse.get(q.id)} />
             ))}
           </Lane>
           <Lane title="Answers">
             {answers.map((a) => (
-              <ACard key={a.id} a={a} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} />
+              <ACard key={a.id} a={a} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} defs={firstUse.get(a.id)} />
             ))}
           </Lane>
           {showExperiments && (
             <Lane title="Experiments">
               {experiments.map((e) => (
-                <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} />
+                <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} render={render} defs={firstUse.get(e.id)} />
               ))}
             </Lane>
           )}
@@ -202,31 +276,51 @@ function Head({ id, color, status, root }: { id: string; color: string; status: 
   );
 }
 
-function QCard({ q, root, sel, onSelect, setRef }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void }) {
+type Render = (t: string) => ReactNode;
+type Defs = { term: string; def: string }[] | undefined;
+
+/** Brief inline explanations for terms first used in this card. */
+function DefChips({ defs }: { defs: Defs }) {
+  if (!defs || !defs.length) return null;
   return (
-    <div ref={setRef} className={"card q" + (sel ? " sel" : "") + (root ? " root" : "")} onClick={() => onSelect(q.id)}>
-      <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} />
-      <div className="ctext">{q.text}</div>
+    <div className="defs">
+      {defs.map((d) => (
+        <div key={d.term} className="deftip">
+          <b>{d.term}</b> — {d.def}
+        </div>
+      ))}
     </div>
   );
 }
 
-function ACard({ a, sel, onSelect, setRef }: { a: Answer; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void }) {
+function QCard({ q, root, sel, onSelect, setRef, render, defs }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; defs: Defs }) {
+  return (
+    <div ref={setRef} className={"card q" + (sel ? " sel" : "") + (root ? " root" : "")} onClick={() => onSelect(q.id)}>
+      <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} />
+      <div className="ctext">{render(q.text)}</div>
+      <DefChips defs={defs} />
+    </div>
+  );
+}
+
+function ACard({ a, sel, onSelect, setRef, render, defs }: { a: Answer; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; defs: Defs }) {
   return (
     <div ref={setRef} className={"card a" + (sel ? " sel" : "")} onClick={() => onSelect(a.id)}>
       <Head id={a.id} color={A_COLOR[a.status] ?? "#f59e0b"} status={a.status} />
-      <div className="ctext">{a.text}</div>
+      <div className="ctext">{render(a.text)}</div>
+      <DefChips defs={defs} />
       <div className="cmeta">answers {a.answers.join(", ")}{a.backed_by.length ? ` · ⟵ ${a.backed_by.join(", ")}` : ""}</div>
     </div>
   );
 }
 
-function ECard({ e, sel, onSelect, setRef }: { e: Experiment; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void }) {
+function ECard({ e, sel, onSelect, setRef, render, defs }: { e: Experiment; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; defs: Defs }) {
   return (
     <div ref={setRef} className={"card e" + (sel ? " sel" : "")} onClick={() => onSelect(e.id)}>
       <Head id={e.id} color={E_COLOR[e.status] ?? "#7c3aed"} status={e.status} />
-      <div className="ctext">{e.description}</div>
-      {e.formal_results && <div className="cmeta">{e.formal_results.slice(0, 140)}{e.formal_results.length > 140 ? "…" : ""}</div>}
+      <div className="ctext">{render(e.description)}</div>
+      {e.formal_results && <div className="cmeta">{render(e.formal_results.slice(0, 140) + (e.formal_results.length > 140 ? "…" : ""))}</div>}
+      <DefChips defs={defs} />
       {e.report && <div className="creport">📄 report · {e.report.length.toLocaleString()} chars</div>}
     </div>
   );

@@ -102,6 +102,8 @@ export interface StreamMeta {
   provenance: Provenance;
   comments: Comments;
   report?: string;
+  /** term -> brief definition; surfaced on first use in the reasoning flow. */
+  glossary?: Record<string, string>;
 }
 
 export type Entity = Question | Answer | Hyperedge | Experiment | StreamMeta;

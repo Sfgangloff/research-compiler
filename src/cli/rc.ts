@@ -81,6 +81,11 @@ Comments
 Reports (full long-form detail behind a node)
   rc report set --stream <s> --target <id|stream> --text <t> | --text-file <path>
 
+Glossary (terms explained on first use in the flow)
+  rc glossary set --stream <s> --term <t> --def <d>
+  rc glossary rm  --stream <s> --term <t>
+  rc glossary list --stream <s>
+
 Repos (experiment repos referenced by name, not path)
   rc repo add --name <n> --path <p> [--description <d>]
   rc repo list
@@ -285,6 +290,24 @@ function run(argv: string[]): number {
       if (sub === "set") {
         const r = eng.setReport(stream(), a.require("target"), a.require("text"));
         out({ target: a.require("target"), reportChars: (r as { report?: string }).report?.length ?? 0 });
+        return 0;
+      }
+      break;
+    }
+
+    case "glossary": {
+      if (sub === "set") {
+        eng.setGlossaryTerm(stream(), a.require("term"), a.require("def"));
+        out({ term: a.require("term") });
+        return 0;
+      }
+      if (sub === "rm") {
+        eng.deleteGlossaryTerm(stream(), a.require("term"));
+        out({ removed: a.require("term") });
+        return 0;
+      }
+      if (sub === "list") {
+        out(eng.getStream(stream()).stream.glossary ?? {});
         return 0;
       }
       break;

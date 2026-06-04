@@ -89,6 +89,7 @@ export interface StreamMeta {
   provenance: Provenance;
   comments: Record<string, string>;
   report?: string;
+  glossary?: Record<string, string>;
 }
 
 export interface Graph {

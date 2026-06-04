@@ -57,6 +57,13 @@ hr { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
 .cmeta { margin-top: 6px; font-size: 11px; color: var(--muted); font-family: ui-monospace, Menlo, monospace; }
 .creport { margin-top: 5px; font-size: 11px; color: #7c3aed; }
 
+/* glossary terms + first-use explanations */
+.term { border-bottom: 1px dotted #94a3b8; text-decoration: none; cursor: help; }
+.defs { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
+.deftip { font-size: 11px; line-height: 1.4; color: #3730a3; background: #eef2ff;
+  border-left: 2px solid #6366f1; border-radius: 0 5px 5px 0; padding: 4px 7px; }
+.deftip b { color: #312e81; }
+
 .panel { background: var(--panel); border-left: 1px solid var(--border); padding: 12px; overflow-y: auto; }
 .panel-empty h2 { font-size: 15px; margin: 4px 0; }
 .muted { color: var(--muted); } .small { font-size: 12px; }
