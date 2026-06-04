@@ -555,6 +555,7 @@ export class Engine {
     for (const id of g.hyperedges.keys()) this.store.remove(hyperedgePath(slug, id));
     for (const id of g.experiments.keys()) this.store.remove(experimentPath(slug, id));
     this.store.remove(streamMetaPath(slug));
+    this.store.removeDir(streamDir(slug)); // clear now-empty subdirectories
     this.audit("deleteStream", slug, [slug]);
   }
 

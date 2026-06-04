@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { api } from "./api";
-import { GraphView } from "./GraphView";
+import { ColumnView } from "./ColumnView";
 import { Detail } from "./Detail";
 import type { Entity, Graph, NodeRef } from "./types";
 
@@ -65,18 +65,12 @@ export function App() {
 
   async function askFromSelection() {
     if (!slug || !graph) return;
-    const cy = (window as any).__cy;
-    const ids: string[] = cy
-      ? cy.nodes(":selected").map((n: any) => n.id())
-      : selectedId
-        ? [selectedId]
-        : [];
-    const picked = ids.length ? ids : selectedId ? [selectedId] : [];
-    if (!picked.length) return alert("Select one or more Q/A nodes first (click a node).");
+    const picked = selectedId ? [selectedId] : [];
+    if (!picked.length) return alert("Click a question or answer card first.");
     const sources: NodeRef[] = picked
       .filter((id) => id[0] === "q" || id[0] === "a")
       .map((id) => ({ kind: id[0] === "q" ? "Q" : "A", id }) as NodeRef);
-    if (!sources.length) return alert("Pick question/answer nodes (not H/E).");
+    if (!sources.length) return alert("Pick a question or answer card.");
     const text = prompt(`New question derived from ${sources.map((s) => s.id).join(", ")}:`);
     if (!text) return;
     const rationale = prompt("Why does this question follow? (rationale)") ?? "";
@@ -152,7 +146,7 @@ export function App() {
 
       <main className="main">
         {graph ? (
-          <GraphView graph={graph} selectedId={selectedId} onSelect={setSelectedId} showExperiments={showExperiments} />
+          <ColumnView graph={graph} selectedId={selectedId} onSelect={setSelectedId} showExperiments={showExperiments} />
         ) : (
           <div className="placeholder">Select or create a research stream.</div>
         )}

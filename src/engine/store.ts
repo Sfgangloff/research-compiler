@@ -18,6 +18,8 @@ export interface StoreAdapter {
   write(rel: string, content: string): void;
   append(rel: string, content: string): void;
   remove(rel: string): void;
+  /** Recursively remove a directory and its contents (no-op if missing). */
+  removeDir(rel: string): void;
   /** Basenames of files directly inside a directory (empty if missing). */
   list(rel: string): string[];
   /** Basenames of subdirectories directly inside a directory (empty if missing). */
@@ -49,6 +51,10 @@ export class FsStore implements StoreAdapter {
   remove(rel: string): void {
     const p = this.abs(rel);
     if (existsSync(p)) rmSync(p);
+  }
+  removeDir(rel: string): void {
+    const p = this.abs(rel);
+    if (existsSync(p)) rmSync(p, { recursive: true, force: true });
   }
   list(rel: string): string[] {
     const p = this.abs(rel);
@@ -83,6 +89,10 @@ export class MemoryStore implements StoreAdapter {
   }
   remove(rel: string): void {
     this.files.delete(rel);
+  }
+  removeDir(rel: string): void {
+    const prefix = rel.endsWith("/") ? rel : rel + "/";
+    for (const key of [...this.files.keys()]) if (key === rel || key.startsWith(prefix)) this.files.delete(key);
   }
   list(rel: string): string[] {
     const prefix = rel.endsWith("/") ? rel : rel + "/";
