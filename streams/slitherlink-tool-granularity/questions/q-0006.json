@@ -8,11 +8,15 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:36.562Z",
-    "updated_at": "2026-06-03T03:47:36.562Z",
+    "updated_at": "2026-06-05T03:20:52.625Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
     }
   },
-  "comments": {}
+  "comments": {},
+  "stories": [
+    "main",
+    "scratchpad"
+  ]
 }

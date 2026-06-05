@@ -151,6 +151,9 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
     if (parts[4] === "report" && method === "PUT") {
       return send(res, 200, eng.setReport(slug, id, body.text ?? ""));
     }
+    if (parts[4] === "stories" && method === "PUT") {
+      return send(res, 200, eng.setNodeStories(slug, id, body.stories ?? []));
+    }
     if (parts[4] === "edge-comment" && method === "PUT") {
       // body: { qid, text }
       return send(res, 200, eng.setEdgeComment(slug, id, body.qid, body.text ?? ""));

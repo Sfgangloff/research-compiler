@@ -53,6 +53,13 @@ export const api = {
       body: JSON.stringify({ text }),
     }).then(j),
 
+  setNodeStories: (slug: string, id: string, stories: string[]) =>
+    fetch(`/api/entity/${slug}/${id}/stories`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ stories }),
+    }).then(j),
+
   setEdgeComment: (slug: string, aid: string, qid: string, text: string) =>
     fetch(`/api/entity/${slug}/${aid}/edge-comment`, {
       method: "PUT",

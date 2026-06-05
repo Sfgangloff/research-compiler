@@ -34,6 +34,8 @@ export interface Question {
   comments: Comments;
   /** Long-form markdown holding the full detail behind the node (optional). */
   report?: string;
+  /** Ids of publishable storylines this node belongs to. */
+  stories?: string[];
 }
 
 export interface Answer {
@@ -48,6 +50,7 @@ export interface Answer {
   provenance: Provenance;
   comments: Comments;
   report?: string;
+  stories?: string[];
 }
 
 export interface NodeRef {
@@ -91,6 +94,7 @@ export interface Experiment {
   provenance: Provenance;
   comments: Comments;
   report?: string;
+  stories?: string[];
 }
 
 export interface StreamMeta {
@@ -105,6 +109,13 @@ export interface StreamMeta {
   report?: string;
   /** term -> brief definition; surfaced on first use in the reasoning flow. */
   glossary?: Record<string, string>;
+  /** publishable storylines: id -> { name, color }. */
+  stories?: Record<string, Story>;
+}
+
+export interface Story {
+  name: string;
+  color: string;
 }
 
 export type Entity = Question | Answer | Hyperedge | Experiment | StreamMeta;

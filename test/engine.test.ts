@@ -169,6 +169,22 @@ describe("reports", () => {
   });
 });
 
+describe("storylines", () => {
+  it("defines stories, tags nodes, rejects unknown, and scrubs on delete", () => {
+    const { eng } = fresh();
+    eng.createStream("s", "s");
+    const q = eng.addQuestion("s", { root: true, text: "root" }).question;
+    eng.setStory("s", "main", "Main", "#2563eb");
+    eng.setNodeStories("s", q.id, ["main"]);
+    expect(eng.getStream("s").questions.get(q.id)!.stories).toEqual(["main"]);
+    expect(() => eng.setNodeStories("s", q.id, ["ghost"])).toThrow(ValidationError);
+    eng.deleteStory("s", "main");
+    expect(eng.getStream("s").stream.stories?.main).toBeUndefined();
+    expect(eng.getStream("s").questions.get(q.id)!.stories).toEqual([]);
+    expect(eng.validate("s")).toEqual([]);
+  });
+});
+
 describe("privileged deletes", () => {
   it("refuses to delete without confirm", () => {
     const { eng } = fresh();

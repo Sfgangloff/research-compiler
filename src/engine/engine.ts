@@ -517,6 +517,51 @@ export class Engine {
     return g.stream;
   }
 
+  // ---- storylines (publishable threads) ------------------------------------
+
+  /** Define (or update) a storyline on the stream. */
+  setStory(slug: string, id: string, name: string, color: string): StreamMeta {
+    const g = this.getStream(slug);
+    if (!g.stream.stories) g.stream.stories = {};
+    g.stream.stories[id] = { name, color };
+    this.commit(g, [g.stream], [], "setStory", [slug], id);
+    return g.stream;
+  }
+
+  /** Delete a storyline and scrub it from every node. */
+  deleteStory(slug: string, id: string): StreamMeta {
+    const g = this.getStream(slug);
+    if (g.stream.stories) delete g.stream.stories[id];
+    const touched: Entity[] = [g.stream];
+    const scrub = (n: Question | Answer | Experiment) => {
+      if (n.stories?.includes(id)) {
+        n.stories = n.stories.filter((s) => s !== id);
+        n.provenance = this.touchProv(n.provenance);
+        touched.push(n);
+      }
+    };
+    g.questions.forEach(scrub);
+    g.answers.forEach(scrub);
+    g.experiments.forEach(scrub);
+    this.commit(g, touched, [], "deleteStory", [slug], id);
+    return g.stream;
+  }
+
+  /** Set the storylines a node belongs to (replaces the list). */
+  setNodeStories(slug: string, nodeId: string, storyIds: string[]): Entity {
+    const g = this.getStream(slug);
+    const ent = this.requireNode(g, nodeId);
+    if (ent.type === "hyperedge")
+      throw new ValidationError("hyperedges cannot belong to storylines");
+    const known = new Set(Object.keys(g.stream.stories ?? {}));
+    for (const s of storyIds)
+      if (!known.has(s)) throw new ValidationError(`unknown story '${s}'`);
+    (ent as Question | Answer | Experiment).stories = [...new Set(storyIds)];
+    ent.provenance = this.touchProv(ent.provenance);
+    this.commit(g, [ent], [], "setNodeStories", [nodeId], storyIds.join(","));
+    return ent;
+  }
+
   /** Set a comment on the (answer -> question) edge. */
   setEdgeComment(slug: string, aid: string, qid: string, text: string): Answer {
     const g = this.getStream(slug);

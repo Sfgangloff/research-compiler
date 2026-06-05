@@ -21,6 +21,7 @@ export interface Question {
   provenance: Provenance;
   comments: Record<string, string>;
   report?: string;
+  stories?: string[];
 }
 
 export interface Answer {
@@ -35,6 +36,7 @@ export interface Answer {
   provenance: Provenance;
   comments: Record<string, string>;
   report?: string;
+  stories?: string[];
 }
 
 export interface NodeRef {
@@ -78,6 +80,7 @@ export interface Experiment {
   provenance: Provenance;
   comments: Record<string, string>;
   report?: string;
+  stories?: string[];
 }
 
 export interface StreamMeta {
@@ -91,6 +94,12 @@ export interface StreamMeta {
   comments: Record<string, string>;
   report?: string;
   glossary?: Record<string, string>;
+  stories?: Record<string, Story>;
+}
+
+export interface Story {
+  name: string;
+  color: string;
 }
 
 export interface Graph {

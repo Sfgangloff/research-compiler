@@ -10,6 +10,7 @@ export function App() {
   const [graph, setGraph] = useState<Graph | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [showExperiments, setShowExperiments] = useState(true);
+  const [activeStory, setActiveStory] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -139,6 +140,25 @@ export function App() {
               <div><span className="dot h" /> ◆ derivation</div>
               <div><span className="dot e" /> experiment</div>
             </div>
+            {graph.stream.stories && Object.keys(graph.stream.stories).length > 0 && (
+              <>
+                <hr />
+                <div className="stories-legend">
+                  <div className="stories-title">Storylines</div>
+                  {Object.entries(graph.stream.stories).map(([id, s]) => (
+                    <button
+                      key={id}
+                      className={"story-row" + (activeStory === id ? " on" : "")}
+                      onClick={() => setActiveStory(activeStory === id ? null : id)}
+                    >
+                      <span className="story-swatch" style={{ background: s.color }} />
+                      {s.name}
+                    </button>
+                  ))}
+                  {activeStory && <button className="story-clear" onClick={() => setActiveStory(null)}>show all</button>}
+                </div>
+              </>
+            )}
           </>
         )}
         {error && <div className="error">{error}</div>}
@@ -146,7 +166,7 @@ export function App() {
 
       <main className="main">
         {graph ? (
-          <ColumnView graph={graph} selectedId={selectedId} onSelect={setSelectedId} showExperiments={showExperiments} />
+          <ColumnView graph={graph} selectedId={selectedId} onSelect={setSelectedId} showExperiments={showExperiments} activeStory={activeStory} />
         ) : (
           <div className="placeholder">Select or create a research stream.</div>
         )}

@@ -238,8 +238,29 @@ function EditForm({ kind, entity, slug, graph, onChanged }: { kind: string; enti
   const qText = (qid: string) => graph.questions.find((q) => q.id === qid)?.text ?? qid;
   const report = (entity as { report?: string }).report ?? "";
 
+  const stories = graph.stream.stories ?? {};
+  const nodeStories: string[] = (entity as { stories?: string[] }).stories ?? [];
+  const toggleStory = (sid: string) => {
+    const next = nodeStories.includes(sid) ? nodeStories.filter((x) => x !== sid) : [...nodeStories, sid];
+    api.setNodeStories(slug, id, next).then(onChanged);
+  };
+
   return (
     <div className="editform">
+      {kind !== "h" && Object.keys(stories).length > 0 && (
+        <div className="field">
+          <div className="field-label">Storylines</div>
+          <div className="story-checks">
+            {Object.entries(stories).map(([sid, s]) => (
+              <label key={sid} className="story-check">
+                <input type="checkbox" checked={nodeStories.includes(sid)} onChange={() => toggleStory(sid)} />
+                <span className="story-swatch" style={{ background: s.color }} />
+                {s.name}
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
       {kind === "q" && (
         <EditField label="Question" value={(entity as Question).text} onSaveValue={(v) => api.patch(slug, id, { text: v }).then(onChanged)} comment={comment("_self")} onSaveComment={saveComment("_self")} />
       )}

@@ -96,11 +96,13 @@ export function ColumnView({
   selectedId,
   onSelect,
   showExperiments,
+  activeStory,
 }: {
   graph: Graph;
   selectedId: string | null;
   onSelect: (id: string | null) => void;
   showExperiments: boolean;
+  activeStory: string | null;
 }) {
   const contentRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -116,6 +118,16 @@ export function ColumnView({
   const matcher = useMemo(() => buildMatcher(glossary), [graph.stream.glossary]);
   const [activeTerm, setActiveTerm] = useState<string | null>(null);
   const render = useCallback((t: string) => annotate(t, matcher, setActiveTerm), [matcher]);
+
+  // Storylines: which node ids belong to the active story (for dimming).
+  const storyColors = graph.stream.stories ?? {};
+  const members = useMemo(() => {
+    if (!activeStory) return null;
+    const s = new Set<string>();
+    for (const n of [...graph.questions, ...graph.answers, ...graph.experiments])
+      if (n.stories?.includes(activeStory)) s.add(n.id);
+    return s;
+  }, [graph, activeStory]);
 
   const recompute = useCallback(() => {
     const content = contentRef.current;
@@ -160,35 +172,39 @@ export function ColumnView({
     };
 
     const sel = selectedId;
-    const touches = (a: string, b: string) => !sel || sel === a || sel === b;
+    const dimEdge = (a: string, b: string) => {
+      if (sel && sel !== a && sel !== b) return true;
+      if (members && !(members.has(a) && members.has(b))) return true;
+      return false;
+    };
     const E: EdgePath[] = [];
     for (const a of answers)
       for (const q of a.answers) {
         const p = path(q, a.id);
-        if (p) E.push({ ...p, key: `ans-${a.id}-${q}`, kind: "answers", dim: !touches(a.id, q) });
+        if (p) E.push({ ...p, key: `ans-${a.id}-${q}`, kind: "answers", dim: dimEdge(a.id, q) });
       }
     if (showExperiments)
       for (const e of experiments) {
         for (const a of e.produces) {
           const p = path(e.id, a);
-          if (p) E.push({ ...p, key: `ev-${e.id}-${a}`, kind: "evidence", dim: !touches(e.id, a) });
+          if (p) E.push({ ...p, key: `ev-${e.id}-${a}`, kind: "evidence", dim: dimEdge(e.id, a) });
         }
         for (const q of e.addresses) {
           const p = path(e.id, q);
-          if (p) E.push({ ...p, key: `ad-${e.id}-${q}`, kind: "addresses", dim: !touches(e.id, q) });
+          if (p) E.push({ ...p, key: `ad-${e.id}-${q}`, kind: "addresses", dim: dimEdge(e.id, q) });
         }
       }
     for (const h of graph.hyperedges)
       for (const s of h.sources) {
         const p = path(s.id, h.target);
-        if (p) E.push({ ...p, key: `dv-${h.id}-${s.id}`, kind: "deriv", dim: !touches(s.id, h.target) });
+        if (p) E.push({ ...p, key: `dv-${h.id}-${s.id}`, kind: "deriv", dim: dimEdge(s.id, h.target) });
       }
     setEdges((prev) => (sameEdges(prev, E) ? prev : E));
     setDims((prev) => (prev.w === content.offsetWidth && prev.h === content.offsetHeight ? prev : { w: content.offsetWidth, h: content.offsetHeight }));
     // `answers`/`experiments` are derived from graph+showExperiments (already deps);
     // including them would change identity every render and loop forever.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [graph, showExperiments, selectedId]);
+  }, [graph, showExperiments, selectedId, members]);
 
   useLayoutEffect(() => {
     recompute();
@@ -242,18 +258,18 @@ export function ColumnView({
         <div className="lanes">
           <Lane title="Questions">
             {questions.map((q) => (
-              <QCard key={q.id} q={q} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} render={render} />
+              <QCard key={q.id} q={q} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} render={render} dim={!!members && !members.has(q.id)} dots={dotsFor(q.stories, storyColors)} />
             ))}
           </Lane>
           <Lane title="Answers">
             {answers.map((a) => (
-              <ACard key={a.id} a={a} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} />
+              <ACard key={a.id} a={a} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} dim={!!members && !members.has(a.id)} dots={dotsFor(a.stories, storyColors)} />
             ))}
           </Lane>
           {showExperiments && (
             <Lane title="Experiments">
               {experiments.map((e) => (
-                <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} render={render} />
+                <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} render={render} dim={!!members && !members.has(e.id)} dots={dotsFor(e.stories, storyColors)} />
               ))}
             </Lane>
           )}
@@ -281,12 +297,13 @@ function Lane({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-function Head({ id, color, status, root }: { id: string; color: string; status: string; root?: boolean }) {
+function Head({ id, color, status, root, dots }: { id: string; color: string; status: string; root?: boolean; dots?: { color: string; name: string }[] }) {
   return (
     <div className="cardhead">
       <span className="statusdot" style={{ background: color }} />
       <span className="cid">{id}</span>
       {root && <span className="roottag">root</span>}
+      {dots && <Dots dots={dots} />}
       <span className="cstatus">{status}</span>
     </div>
   );
@@ -294,29 +311,44 @@ function Head({ id, color, status, root }: { id: string; color: string; status: 
 
 type Render = (t: string) => ReactNode;
 
-function QCard({ q, root, sel, onSelect, setRef, render }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render }) {
+function dotsFor(stories: string[] | undefined, registry: Record<string, { name: string; color: string }>): { color: string; name: string }[] {
+  return (stories ?? []).map((id) => registry[id]).filter(Boolean).map((s) => ({ color: s!.color, name: s!.name }));
+}
+
+function Dots({ dots }: { dots: { color: string; name: string }[] }) {
+  if (!dots.length) return null;
   return (
-    <div ref={setRef} className={"card q" + (sel ? " sel" : "") + (root ? " root" : "")} onClick={() => onSelect(q.id)}>
-      <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} />
+    <span className="storydots">
+      {dots.map((d) => (
+        <span key={d.name} className="storydot" style={{ background: d.color }} title={d.name} />
+      ))}
+    </span>
+  );
+}
+
+function QCard({ q, root, sel, onSelect, setRef, render, dim, dots }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
+  return (
+    <div ref={setRef} className={"card q" + (sel ? " sel" : "") + (root ? " root" : "") + (dim ? " dim" : "")} onClick={() => onSelect(q.id)}>
+      <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} dots={dots} />
       <div className="ctext">{render(q.text)}</div>
     </div>
   );
 }
 
-function ACard({ a, sel, onSelect, setRef, render }: { a: Answer; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render }) {
+function ACard({ a, sel, onSelect, setRef, render, dim, dots }: { a: Answer; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
   return (
-    <div ref={setRef} className={"card a" + (sel ? " sel" : "")} onClick={() => onSelect(a.id)}>
-      <Head id={a.id} color={A_COLOR[a.status] ?? "#f59e0b"} status={a.status} />
+    <div ref={setRef} className={"card a" + (sel ? " sel" : "") + (dim ? " dim" : "")} onClick={() => onSelect(a.id)}>
+      <Head id={a.id} color={A_COLOR[a.status] ?? "#f59e0b"} status={a.status} dots={dots} />
       <div className="ctext">{render(a.text)}</div>
       <div className="cmeta">answers {a.answers.join(", ")}{a.backed_by.length ? ` · ⟵ ${a.backed_by.join(", ")}` : ""}</div>
     </div>
   );
 }
 
-function ECard({ e, sel, onSelect, setRef, render }: { e: Experiment; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render }) {
+function ECard({ e, sel, onSelect, setRef, render, dim, dots }: { e: Experiment; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
   return (
-    <div ref={setRef} className={"card e" + (sel ? " sel" : "")} onClick={() => onSelect(e.id)}>
-      <Head id={e.id} color={E_COLOR[e.status] ?? "#7c3aed"} status={e.status} />
+    <div ref={setRef} className={"card e" + (sel ? " sel" : "") + (dim ? " dim" : "")} onClick={() => onSelect(e.id)}>
+      <Head id={e.id} color={E_COLOR[e.status] ?? "#7c3aed"} status={e.status} dots={dots} />
       <div className="ctext">{render(e.description)}</div>
       {e.formal_results && <div className="cmeta">{render(e.formal_results.slice(0, 140) + (e.formal_results.length > 140 ? "…" : ""))}</div>}
       {e.report && <div className="creport">📄 report · {e.report.length.toLocaleString()} chars</div>}

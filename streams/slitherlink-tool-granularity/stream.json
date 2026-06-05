@@ -50,5 +50,15 @@
     "solve-rate": "The fraction of attempts that reach a correct, verified solution.",
     "engine-level bookkeeping": "Letting the tool backend (the engine) track the state of tentative case-splits for you - pushing and popping assumption contexts - instead of the model manually snapshotting and restoring the board.",
     "shallow lookahead": "Searching only one move ahead (1-ply): try a single edge, propagate, and keep the forced consequences - as opposed to deep multi-step search."
+  },
+  "stories": {
+    "main": {
+      "name": "Goldilocks (granularity↔cost)",
+      "color": "#2563eb"
+    },
+    "scratchpad": {
+      "name": "Scratchpad toolset design",
+      "color": "#d97706"
+    }
   }
 }

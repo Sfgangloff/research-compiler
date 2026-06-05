@@ -26,7 +26,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:43.231Z",
-    "updated_at": "2026-06-05T02:26:33.792Z",
+    "updated_at": "2026-06-05T03:19:39.811Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
@@ -34,5 +34,8 @@
   },
   "comments": {},
   "report": "Full window-by-window detail for the Phase-2 frontier (gen_7x7_s1_00, windows W10-W18) and the Phase-2 final verdict (V-shape held at n=3, P3-prime PASS) is in the stream-level report (source: notes/2026-05-18..., section \"Phase-2 final verdict\"). The G-CD-v1 -> v2 theory revision this result triggered is the report on a-0011 (source: notes/2026-05-23_gcd_revision_goldilocks.md).",
-  "methodology": "Phase-2 difficulty frontier on gen_7x7_s1_00, a procedurally generated tier-3 puzzle with seed-locked uniqueness verification (contamination control). 4 toolsets meta-off, n=3 per cell, Opus 4.7, max_turns=200, via harness/run_plan.py over multiple windows. Formal difficulty graded by core/generator.py (search_nodes); analysis and figures via harness/analyze_phase2.py."
+  "methodology": "Phase-2 difficulty frontier on gen_7x7_s1_00, a procedurally generated tier-3 puzzle with seed-locked uniqueness verification (contamination control). 4 toolsets meta-off, n=3 per cell, Opus 4.7, max_turns=200, via harness/run_plan.py over multiple windows. Formal difficulty graded by core/generator.py (search_nodes); analysis and figures via harness/analyze_phase2.py.",
+  "stories": [
+    "main"
+  ]
 }

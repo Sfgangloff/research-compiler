@@ -86,6 +86,12 @@ Glossary (terms explained on first use in the flow)
   rc glossary rm  --stream <s> --term <t>
   rc glossary list --stream <s>
 
+Storylines (publishable threads; highlighted in the web view)
+  rc story set  --stream <s> --id <id> --name <n> --color <#hex>
+  rc story rm   --stream <s> --id <id>
+  rc story list --stream <s>
+  rc story tag  --stream <s> --node <id> --stories <id1,id2|none>
+
 Repos (experiment repos referenced by name, not path)
   rc repo add --name <n> --path <p> [--description <d>]
   rc repo list
@@ -291,6 +297,31 @@ function run(argv: string[]): number {
       if (sub === "set") {
         const r = eng.setReport(stream(), a.require("target"), a.require("text"));
         out({ target: a.require("target"), reportChars: (r as { report?: string }).report?.length ?? 0 });
+        return 0;
+      }
+      break;
+    }
+
+    case "story": {
+      if (sub === "set") {
+        eng.setStory(stream(), a.require("id"), a.require("name"), a.require("color"));
+        out({ story: a.require("id") });
+        return 0;
+      }
+      if (sub === "rm") {
+        eng.deleteStory(stream(), a.require("id"));
+        out({ removed: a.require("id") });
+        return 0;
+      }
+      if (sub === "list") {
+        out(eng.getStream(stream()).stream.stories ?? {});
+        return 0;
+      }
+      if (sub === "tag") {
+        const raw = a.require("stories");
+        const ids = raw === "none" ? [] : raw.split(",").map((s) => s.trim()).filter(Boolean);
+        eng.setNodeStories(stream(), a.require("node"), ids);
+        out({ node: a.require("node"), stories: ids });
         return 0;
       }
       break;
