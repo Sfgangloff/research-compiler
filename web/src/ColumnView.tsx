@@ -68,6 +68,16 @@ interface EdgePath {
   dim: boolean;
 }
 
+function sameEdges(a: EdgePath[], b: EdgePath[]): boolean {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    const x = a[i]!;
+    const y = b[i]!;
+    if (x.key !== y.key || x.d !== y.d || x.dim !== y.dim) return false;
+  }
+  return true;
+}
+
 export function ColumnView({
   graph,
   selectedId,
@@ -185,9 +195,12 @@ export function ColumnView({
         const p = path(s.id, h.target);
         if (p) E.push({ ...p, key: `dv-${h.id}-${s.id}`, kind: "deriv", dim: !touches(s.id, h.target) });
       }
-    setEdges(E);
-    setDims({ w: content.offsetWidth, h: content.offsetHeight });
-  }, [graph, showExperiments, selectedId, answers, experiments]);
+    setEdges((prev) => (sameEdges(prev, E) ? prev : E));
+    setDims((prev) => (prev.w === content.offsetWidth && prev.h === content.offsetHeight ? prev : { w: content.offsetWidth, h: content.offsetHeight }));
+    // `answers`/`experiments` are derived from graph+showExperiments (already deps);
+    // including them would change identity every render and loop forever.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [graph, showExperiments, selectedId]);
 
   useLayoutEffect(() => {
     recompute();
