@@ -30,8 +30,8 @@ function buildMatcher(glossary: Record<string, string>): Matcher | null {
   }
 }
 
-/** Render text with glossary terms wrapped as hover-definable spans. */
-function annotate(text: string, matcher: Matcher | null, glossary: Record<string, string>): ReactNode {
+/** Render text with glossary terms as clickable spans (open the definition box). */
+function annotate(text: string, matcher: Matcher | null, onTerm: (t: string) => void): ReactNode {
   if (!matcher) return text;
   const out: ReactNode[] = [];
   let last = 0;
@@ -41,8 +41,21 @@ function annotate(text: string, matcher: Matcher | null, glossary: Record<string
   while ((m = matcher.re.exec(text))) {
     const term = matcher.canonical(m[0]);
     if (m.index > last) out.push(text.slice(last, m.index));
-    if (term) out.push(<abbr key={i++} className="term" title={glossary[term]}>{m[0]}</abbr>);
-    else out.push(m[0]);
+    if (term) {
+      const t = term;
+      out.push(
+        <span
+          key={i++}
+          className="term"
+          onClick={(e) => {
+            e.stopPropagation();
+            onTerm(t);
+          }}
+        >
+          {m[0]}
+        </span>,
+      );
+    } else out.push(m[0]);
     last = m.index + m[0].length;
   }
   out.push(text.slice(last));
@@ -98,36 +111,11 @@ export function ColumnView({
   const answers = [...graph.answers].sort(byId);
   const experiments = showExperiments ? [...graph.experiments].sort(byId) : [];
 
-  // Glossary: build a matcher and find each term's first chronological use.
+  // Glossary: terms are clickable; the definition shows in one shared box.
   const glossary = graph.stream.glossary ?? {};
   const matcher = useMemo(() => buildMatcher(glossary), [graph.stream.glossary]);
-  const render = useCallback((t: string) => annotate(t, matcher, glossary), [matcher, glossary]);
-  const firstUse = useMemo(() => {
-    const map = new Map<string, { term: string; def: string }[]>();
-    if (!matcher) return map;
-    const all = [...graph.questions, ...graph.answers, ...graph.experiments].sort(
-      (a, b) => a.provenance.created_at.localeCompare(b.provenance.created_at) || a.id.localeCompare(b.id),
-    );
-    const seen = new Set<string>();
-    for (const n of all) {
-      const text =
-        n.type === "question" || n.type === "answer"
-          ? n.text
-          : `${n.description} ${n.formal_results} ${n.conclusions}`;
-      matcher.re.lastIndex = 0;
-      let m: RegExpExecArray | null;
-      const here: { term: string; def: string }[] = [];
-      while ((m = matcher.re.exec(text))) {
-        const t = matcher.canonical(m[0]);
-        if (t && !seen.has(t)) {
-          seen.add(t);
-          here.push({ term: t, def: glossary[t]! });
-        }
-      }
-      if (here.length) map.set(n.id, here);
-    }
-    return map;
-  }, [graph, matcher, glossary]);
+  const [activeTerm, setActiveTerm] = useState<string | null>(null);
+  const render = useCallback((t: string) => annotate(t, matcher, setActiveTerm), [matcher]);
 
   const recompute = useCallback(() => {
     const content = contentRef.current;
@@ -226,7 +214,8 @@ export function ColumnView({
   };
 
   return (
-    <div className="columns">
+    <div className="colwrap">
+      <div className="columns">
       <div className="content" ref={contentRef}>
         <svg className="svg-layer" width={dims.w} height={dims.h}>
           <defs>
@@ -253,23 +242,32 @@ export function ColumnView({
         <div className="lanes">
           <Lane title="Questions">
             {questions.map((q) => (
-              <QCard key={q.id} q={q} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} render={render} defs={firstUse.get(q.id)} />
+              <QCard key={q.id} q={q} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} render={render} />
             ))}
           </Lane>
           <Lane title="Answers">
             {answers.map((a) => (
-              <ACard key={a.id} a={a} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} defs={firstUse.get(a.id)} />
+              <ACard key={a.id} a={a} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} />
             ))}
           </Lane>
           {showExperiments && (
             <Lane title="Experiments">
               {experiments.map((e) => (
-                <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} render={render} defs={firstUse.get(e.id)} />
+                <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} render={render} />
               ))}
             </Lane>
           )}
         </div>
       </div>
+      </div>
+
+      {activeTerm && glossary[activeTerm] && (
+        <div className="defbar">
+          <span className="defterm">{activeTerm}</span>
+          <span className="defbody">{glossary[activeTerm]}</span>
+          <button className="defx" onClick={() => setActiveTerm(null)} title="close">×</button>
+        </div>
+      )}
     </div>
   );
 }
@@ -295,50 +293,32 @@ function Head({ id, color, status, root }: { id: string; color: string; status: 
 }
 
 type Render = (t: string) => ReactNode;
-type Defs = { term: string; def: string }[] | undefined;
 
-/** Brief inline explanations for terms first used in this card. */
-function DefChips({ defs }: { defs: Defs }) {
-  if (!defs || !defs.length) return null;
-  return (
-    <div className="defs">
-      {defs.map((d) => (
-        <div key={d.term} className="deftip">
-          <b>{d.term}</b> — {d.def}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function QCard({ q, root, sel, onSelect, setRef, render, defs }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; defs: Defs }) {
+function QCard({ q, root, sel, onSelect, setRef, render }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render }) {
   return (
     <div ref={setRef} className={"card q" + (sel ? " sel" : "") + (root ? " root" : "")} onClick={() => onSelect(q.id)}>
       <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} />
       <div className="ctext">{render(q.text)}</div>
-      <DefChips defs={defs} />
     </div>
   );
 }
 
-function ACard({ a, sel, onSelect, setRef, render, defs }: { a: Answer; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; defs: Defs }) {
+function ACard({ a, sel, onSelect, setRef, render }: { a: Answer; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render }) {
   return (
     <div ref={setRef} className={"card a" + (sel ? " sel" : "")} onClick={() => onSelect(a.id)}>
       <Head id={a.id} color={A_COLOR[a.status] ?? "#f59e0b"} status={a.status} />
       <div className="ctext">{render(a.text)}</div>
-      <DefChips defs={defs} />
       <div className="cmeta">answers {a.answers.join(", ")}{a.backed_by.length ? ` · ⟵ ${a.backed_by.join(", ")}` : ""}</div>
     </div>
   );
 }
 
-function ECard({ e, sel, onSelect, setRef, render, defs }: { e: Experiment; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; defs: Defs }) {
+function ECard({ e, sel, onSelect, setRef, render }: { e: Experiment; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render }) {
   return (
     <div ref={setRef} className={"card e" + (sel ? " sel" : "")} onClick={() => onSelect(e.id)}>
       <Head id={e.id} color={E_COLOR[e.status] ?? "#7c3aed"} status={e.status} />
       <div className="ctext">{render(e.description)}</div>
       {e.formal_results && <div className="cmeta">{render(e.formal_results.slice(0, 140) + (e.formal_results.length > 140 ? "…" : ""))}</div>}
-      <DefChips defs={defs} />
       {e.report && <div className="creport">📄 report · {e.report.length.toLocaleString()} chars</div>}
     </div>
   );

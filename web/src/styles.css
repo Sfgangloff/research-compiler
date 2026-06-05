@@ -35,7 +35,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
 .placeholder { display: grid; place-items: center; height: 100%; color: var(--muted); }
 
 /* Column (swimlane) view */
-.columns { position: absolute; inset: 0; overflow: auto; padding: 0 24px 60px; }
+.colwrap { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.columns { flex: 1 1 auto; overflow: auto; padding: 0 24px 24px; }
 .content { position: relative; width: max-content; min-width: 100%; }
 .svg-layer { position: absolute; top: 0; left: 0; pointer-events: none; overflow: visible; z-index: 0; }
 .lanes { display: flex; gap: 64px; align-items: flex-start; position: relative; z-index: 1; }
@@ -57,12 +58,15 @@ hr { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
 .cmeta { margin-top: 6px; font-size: 11px; color: var(--muted); font-family: ui-monospace, Menlo, monospace; }
 .creport { margin-top: 5px; font-size: 11px; color: #7c3aed; }
 
-/* glossary terms + first-use explanations */
-.term { border-bottom: 1px dotted #94a3b8; text-decoration: none; cursor: help; }
-.defs { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
-.deftip { font-size: 11px; line-height: 1.4; color: #3730a3; background: #eef2ff;
-  border-left: 2px solid #6366f1; border-radius: 0 5px 5px 0; padding: 4px 7px; }
-.deftip b { color: #312e81; }
+/* glossary terms (clickable) + shared definition box */
+.term { border-bottom: 1px dotted #6366f1; color: #4338ca; cursor: pointer; }
+.term:hover { background: #eef2ff; }
+.defbar { flex: none; display: flex; align-items: flex-start; gap: 10px; padding: 12px 18px;
+  background: #eef2ff; border-top: 2px solid #6366f1; font-size: 13px; line-height: 1.5; }
+.defterm { font-weight: 700; color: #312e81; white-space: nowrap; }
+.defbody { color: #3730a3; flex: 1; }
+.defx { margin-left: auto; border: none; background: none; font-size: 18px; line-height: 1;
+  color: #6366f1; cursor: pointer; padding: 0 4px; }
 
 .panel { background: var(--panel); border-left: 1px solid var(--border); padding: 12px; overflow-y: auto; }
 .panel-empty h2 { font-size: 15px; margin: 4px 0; }

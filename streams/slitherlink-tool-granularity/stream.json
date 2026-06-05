@@ -41,6 +41,12 @@
     "scratchpad": "A toolset = medium deductions plus a frame stack plus try_both, for auto-managed case-splits.",
     "uniqueness": "An exhaustive backtracking check that a puzzle has exactly one solution.",
     "toolset": "The set of MCP tools exposed to the agent for one condition (none / fine / medium / coarse / scratchpad).",
-    "Goldilocks": "The finding that granularity helps only at intermediate difficulty, collapsing at both easy and hard extremes."
+    "Goldilocks": "The finding that granularity helps only at intermediate difficulty, collapsing at both easy and hard extremes.",
+    "none": "Baseline toolset: judge tools only (get_puzzle, submit_solution). The model reasons entirely in-context.",
+    "fine": "Toolset of ~15 atomic primitives (get_edge, set_edge, count_edges_at_dot...). Tools track state; the model does all inference.",
+    "medium": "Toolset of ~9 named one-step deductions (apply_edge, forced_moves, endpoints...). Tools handle local inference.",
+    "coarse": "Toolset of ~5 tools including suggest_next_move (propagation + 1-ply). The tool does most of the work.",
+    "cost-to-solve": "The dollar cost of API usage to solve one puzzle instance (the main outcome measured).",
+    "solve-rate": "The fraction of attempts that reach a correct, verified solution."
   }
 }
