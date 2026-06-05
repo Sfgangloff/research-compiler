@@ -8,21 +8,26 @@ interface Matcher { re: RegExp; canonical: (m: string) => string | null }
 function buildMatcher(glossary: Record<string, string>): Matcher | null {
   const terms = Object.keys(glossary);
   if (!terms.length) return null;
-  const lower: Record<string, string> = {};
-  for (const t of terms) lower[t.toLowerCase()] = t;
-  const escaped = terms
-    .slice()
-    .sort((a, b) => b.length - a.length)
-    .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-  const re = new RegExp(`(?<![A-Za-z])(${escaped.join("|")})(es|s)?(?![A-Za-z])`, "gi");
-  const canonical = (m: string): string | null => {
-    const s = m.toLowerCase();
-    if (lower[s]) return lower[s]!;
-    if (s.endsWith("es") && lower[s.slice(0, -2)]) return lower[s.slice(0, -2)]!;
-    if (s.endsWith("s") && lower[s.slice(0, -1)]) return lower[s.slice(0, -1)]!;
-    return null;
-  };
-  return { re, canonical };
+  try {
+    const lower: Record<string, string> = {};
+    for (const t of terms) lower[t.toLowerCase()] = t;
+    const escaped = terms
+      .slice()
+      .sort((a, b) => b.length - a.length)
+      .map((t) => t.replace(/[.*+?^${}()|[\]\\-]/g, "\\$&"));
+    // \b boundaries (no lookbehind) — broad browser support.
+    const re = new RegExp(`\\b(${escaped.join("|")})(es|s)?\\b`, "gi");
+    const canonical = (m: string): string | null => {
+      const s = m.toLowerCase();
+      if (lower[s]) return lower[s]!;
+      if (s.endsWith("es") && lower[s.slice(0, -2)]) return lower[s.slice(0, -2)]!;
+      if (s.endsWith("s") && lower[s.slice(0, -1)]) return lower[s.slice(0, -1)]!;
+      return null;
+    };
+    return { re, canonical };
+  } catch {
+    return null; // never let a glossary issue blank the page
+  }
 }
 
 /** Render text with glossary terms wrapped as hover-definable spans. */

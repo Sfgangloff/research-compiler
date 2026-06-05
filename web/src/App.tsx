@@ -155,6 +155,7 @@ export function App() {
       <section className="panel">
         {graph && selected ? (
           <Detail
+            key={selected.id}
             slug={graph.stream.slug}
             entity={selected}
             graph={graph}
