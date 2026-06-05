@@ -246,6 +246,7 @@ function run(argv: string[]): number {
             formal_results: a.require("formal"),
             results_description: a.require("results"),
             conclusions: a.require("conclusion"),
+            ...(a.has("methodology") ? { methodology: a.get("methodology")! } : {}),
             addresses: a.list("addresses"),
             produces: a.list("produces"),
             status: a.get("status") as never,

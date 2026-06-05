@@ -71,6 +71,7 @@ export interface Experiment {
   formal_results: string;
   results_description: string;
   conclusions: string;
+  methodology?: string;
   addresses: string[];
   produces: string[];
   status: ExperimentStatus;

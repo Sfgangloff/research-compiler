@@ -22,12 +22,13 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:30.589Z",
-    "updated_at": "2026-06-04T02:02:44.305Z",
+    "updated_at": "2026-06-05T02:25:58.199Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
     }
   },
   "comments": {},
-  "report": ""
+  "report": "",
+  "methodology": "Full 2x4 matrix (4 toolsets x meta on/off), n=1 per cell, on puzzle_001 (5x5 easy). Model claude-opus-4-7[1m], max_turns=35. Single puzzle, single trial: pilot only, no statistical claims. Run via harness/run_matrix.py."
 }

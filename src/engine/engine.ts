@@ -376,6 +376,7 @@ export class Engine {
       formal_results: string;
       results_description: string;
       conclusions: string;
+      methodology?: string;
       addresses?: string[];
       produces?: string[];
       status?: ExperimentStatus;
@@ -394,6 +395,7 @@ export class Engine {
       formal_results: opts.formal_results,
       results_description: opts.results_description,
       conclusions: opts.conclusions,
+      ...(opts.methodology !== undefined ? { methodology: opts.methodology } : {}),
       addresses: opts.addresses ? [...opts.addresses] : [],
       produces: opts.produces ? [...opts.produces] : [],
       status: opts.status ?? "planned",
@@ -421,6 +423,7 @@ export class Engine {
     "formal_results",
     "results_description",
     "conclusions",
+    "methodology",
   ]);
 
   editExperimentField(slug: string, eid: string, field: string, value: string): Experiment {

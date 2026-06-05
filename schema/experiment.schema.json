@@ -31,6 +31,7 @@
     "formal_results": { "type": "string" },
     "results_description": { "type": "string" },
     "conclusions": { "type": "string" },
+    "methodology": { "type": "string" },
     "addresses": {
       "type": "array",
       "items": { "type": "string", "pattern": "^q-[0-9]{4,}$" }

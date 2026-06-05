@@ -84,6 +84,7 @@ export interface Experiment {
   formal_results: string; // 4. formal/quantitative result
   results_description: string; // 5. prose interpretation
   conclusions: string; // 6. conclusion regarding the question asked
+  methodology?: string; // methodological choices (sample size, model, controls, ...)
   addresses: string[]; // qids
   produces: string[]; // aids
   status: ExperimentStatus;
