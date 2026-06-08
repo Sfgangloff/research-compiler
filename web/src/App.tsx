@@ -37,6 +37,7 @@ export function App() {
         graph.answers.find((a) => a.id === selectedId) ??
         graph.hyperedges.find((h) => h.id === selectedId) ??
         graph.experiments.find((e) => e.id === selectedId) ??
+        graph.objects.find((o) => o.id === selectedId) ??
         null
       : null;
 
