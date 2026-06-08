@@ -12,7 +12,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:29.844Z",
-    "updated_at": "2026-06-05T03:18:39.642Z",
+    "updated_at": "2026-06-08T02:05:30.729Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
@@ -21,5 +21,37 @@
   "comments": {},
   "stories": [
     "main"
+  ],
+  "bibliography": [
+    {
+      "title": "“The Tool Illusion” (COLM 2026)",
+      "summary": "Web-agent study arguing that how tools are framed/granularized changes agent behaviour.",
+      "relevance": "Closest prior work — it already makes the descriptive claim that “tool granularity matters”, so that headline is scooped. Our novelty has to move past description."
+    },
+    {
+      "title": "Toolformer (Schick et al., 2023)",
+      "summary": "LMs teach themselves to call external APIs via self-supervised demonstrations.",
+      "relevance": "Establishes that tool use is learnable, but treats the toolset as fixed — granularity is never a controlled variable."
+    },
+    {
+      "title": "ReAct (Yao et al., 2022)",
+      "summary": "Interleaves chain-of-thought reasoning with tool actions.",
+      "relevance": "Defines the reason–act loop we operate in, yet says nothing about varying the granularity of the action/tool space."
+    },
+    {
+      "title": "Gorilla (Patil et al., 2023)",
+      "summary": "LLM trained to call from a massive catalogue of APIs via retrieval.",
+      "relevance": "Scales the *number* of tools, which is adjacent to granularity, but optimises retrieval rather than isolating granularity as an axis with a difficulty/cost model."
+    },
+    {
+      "title": "ToolLLM / ToolBench (Qin et al., 2023)",
+      "summary": "Benchmark of 16k+ real-world APIs for tool-use agents.",
+      "relevance": "Big tool spaces, but granularity is entangled with task variety; no controlled granularity sweep on a fixed problem family."
+    },
+    {
+      "title": "Berkeley Function-Calling Leaderboard (BFCL, 2024)",
+      "summary": "Standard evaluation of function-calling accuracy across models.",
+      "relevance": "Measures tool-calling quality but not granularity-as-a-knob — confirms the community lacks a granularity-controlled testbed, which is the gap we fill."
+    }
   ]
 }

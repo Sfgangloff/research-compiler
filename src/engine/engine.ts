@@ -28,6 +28,7 @@ import type {
   Actor,
   Answer,
   AnswerStatus,
+  BibEntry,
   CodePointer,
   Entity,
   Experiment,
@@ -37,11 +38,13 @@ import type {
   Provenance,
   Question,
   QuestionStatus,
+  QuestionType,
   RcConfig,
   SourceRef,
   StreamGraph,
   StreamMeta,
 } from "./types.js";
+import { QUESTION_TYPES } from "./types.js";
 import { join } from "node:path";
 import { existsSync } from "node:fs";
 
@@ -205,6 +208,7 @@ export class Engine {
       root?: boolean;
       from?: { sources: NodeRef[]; rationale: string };
       status?: QuestionStatus;
+      qtype?: QuestionType;
       tags?: string[];
       source_ref?: SourceRef;
     },
@@ -216,6 +220,8 @@ export class Engine {
     if (!opts.root && !opts.from && !isFirst)
       throw new ValidationError("non-root question needs --from <sources> (a derivation)");
 
+    if (opts.qtype !== undefined && !QUESTION_TYPES.includes(opts.qtype))
+      throw new ValidationError(`unknown question type '${opts.qtype}'`);
     const qid = this.nextId(g, "q");
     const question: Question = {
       type: "question",
@@ -223,6 +229,7 @@ export class Engine {
       stream: slug,
       text: opts.text,
       status: opts.status ?? "open",
+      ...(opts.qtype !== undefined ? { qtype: opts.qtype } : {}),
       tags: opts.tags ?? [],
       provenance: this.newProv(opts.source_ref),
       comments: {},
@@ -261,11 +268,15 @@ export class Engine {
     return q;
   }
 
-  editQuestion(slug: string, qid: string, patch: { text?: string; tags?: string[] }): Question {
+  editQuestion(slug: string, qid: string, patch: { text?: string; tags?: string[]; qtype?: QuestionType }): Question {
     const g = this.getStream(slug);
     const q = this.requireQuestion(g, qid);
     if (patch.text !== undefined) q.text = patch.text;
     if (patch.tags !== undefined) q.tags = patch.tags;
+    if (patch.qtype !== undefined) {
+      if (!QUESTION_TYPES.includes(patch.qtype)) throw new ValidationError(`unknown question type '${patch.qtype}'`);
+      q.qtype = patch.qtype;
+    }
     q.provenance = this.touchProv(q.provenance);
     this.commit(g, [q], [], "editQuestion", [qid]);
     return q;
@@ -280,6 +291,7 @@ export class Engine {
       answers: string[];
       status?: AnswerStatus;
       backed_by?: string[];
+      bibliography?: BibEntry[];
       source_ref?: SourceRef;
     },
   ): Answer {
@@ -297,6 +309,7 @@ export class Engine {
       edge_comments: {},
       provenance: this.newProv(opts.source_ref),
       comments: {},
+      ...(opts.bibliography !== undefined ? { bibliography: opts.bibliography } : {}),
     };
     g.answers.set(aid, answer);
     const touched: Entity[] = [answer];
@@ -322,10 +335,16 @@ export class Engine {
     return a;
   }
 
-  editAnswer(slug: string, aid: string, patch: { text?: string }): Answer {
+  editAnswer(slug: string, aid: string, patch: { text?: string; bibliography?: BibEntry[] }): Answer {
     const g = this.getStream(slug);
     const a = this.requireAnswer(g, aid);
     if (patch.text !== undefined) a.text = patch.text;
+    if (patch.bibliography !== undefined) {
+      // Drop empty entries (no title) so the field stays clean.
+      const entries = patch.bibliography.filter((e) => e && e.title && e.title.trim());
+      if (entries.length) a.bibliography = entries;
+      else delete a.bibliography;
+    }
     a.provenance = this.touchProv(a.provenance);
     this.commit(g, [a], [], "editAnswer", [aid]);
     return a;

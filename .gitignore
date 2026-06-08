@@ -6,3 +6,6 @@ dist/
 .rc/config.json
 .rc/cage.json
 coverage/
+
+# make-pages-interactive runtime state
+feedback/

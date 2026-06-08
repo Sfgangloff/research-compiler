@@ -5,7 +5,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { fileURLToPath } from "node:url";
 import { dirname, join, extname } from "node:path";
-import { readFileSync, existsSync, statSync } from "node:fs";
+import { readFileSync, existsSync, statSync, appendFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { Engine } from "../engine/engine.js";
 import { FsStore } from "../engine/store.js";
 import { ConsentError, NotFoundError, ValidationError } from "../engine/errors.js";
@@ -17,6 +17,16 @@ const eng = new Engine(new FsStore(REPO_ROOT), { actor: "human" });
 
 // Built frontend (after `npm run build` in web/). Served if present.
 const FRONTEND_DIST = join(REPO_ROOT, "web", "dist");
+
+// make-pages-interactive feedback layer. The injected page widget POSTs comment
+// batches to /feedback and polls feedback/history.json; we (the agent) read the
+// inbox, edit the app, and append to history.json so the page auto-reloads. The
+// inbox/history live at repo root (NOT in web/dist, which a rebuild wipes).
+const FEEDBACK_DIR = join(REPO_ROOT, "feedback");
+function feedbackFile(name: string): string {
+  if (!existsSync(FEEDBACK_DIR)) mkdirSync(FEEDBACK_DIR, { recursive: true });
+  return join(FEEDBACK_DIR, name);
+}
 
 function graphJSON(g: StreamGraph) {
   return {
@@ -83,12 +93,34 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
     return;
   }
 
+  const body = method === "GET" || method === "DELETE" ? {} : await readBody(req);
+
+  // ---- make-pages-interactive feedback endpoints (same origin as the app) ----
+  if (url.pathname === "/info" && method === "GET") {
+    return send(res, 200, { artifact_dir: FRONTEND_DIST, feedback_dir: FEEDBACK_DIR, port: PORT });
+  }
+  if (url.pathname === "/feedback/history.json" && method === "GET") {
+    const f = feedbackFile("history.json");
+    if (!existsSync(f)) writeFileSync(f, "[]");
+    res.writeHead(200, { "content-type": "application/json", "cache-control": "no-store", "access-control-allow-origin": "*" });
+    res.end(readFileSync(f));
+    return;
+  }
+  if (url.pathname === "/feedback" && method === "POST") {
+    const batch = { ...body, received_at: Date.now() / 1000, received_iso: new Date().toISOString() };
+    appendFileSync(feedbackFile("inbox.jsonl"), JSON.stringify(batch) + "\n");
+    process.stdout.write(`[feedback] batch with ${(body.comments?.length ?? 0)} comment(s)\n`);
+    return send(res, 200, { ok: true });
+  }
+  if (url.pathname === "/mark-seen" && method === "POST") {
+    writeFileSync(feedbackFile("lastseen.json"), JSON.stringify(body, null, 2));
+    return send(res, 200, { ok: true });
+  }
+
   if (parts[0] !== "api") {
     if (serveStatic(res, url.pathname)) return;
     return send(res, 404, { error: "not found" });
   }
-
-  const body = method === "GET" || method === "DELETE" ? {} : await readBody(req);
 
   // ---- routing ----
   // /api/streams
@@ -111,6 +143,7 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
           // body: { text, root?, from?: { sources: NodeRef[], rationale } }
           const opts: any = { text: body.text, tags: body.tags };
           if (body.root) opts.root = true;
+          if (body.qtype) opts.qtype = body.qtype;
           if (body.from) opts.from = { sources: body.from.sources as NodeRef[], rationale: body.from.rationale };
           return send(res, 201, eng.addQuestion(slug, opts));
         }
@@ -173,8 +206,8 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
         if (kind === "a") return send(res, 200, eng.setAnswerStatus(slug, id, body.status));
         if (kind === "e") return send(res, 200, eng.setExperimentStatus(slug, id, body.status));
       }
-      if (kind === "q") return send(res, 200, eng.editQuestion(slug, id, { text: body.text, tags: body.tags }));
-      if (kind === "a") return send(res, 200, eng.editAnswer(slug, id, { text: body.text }));
+      if (kind === "q") return send(res, 200, eng.editQuestion(slug, id, { text: body.text, tags: body.tags, qtype: body.qtype }));
+      if (kind === "a") return send(res, 200, eng.editAnswer(slug, id, { text: body.text, bibliography: body.bibliography }));
       if (kind === "e" && body.field)
         return send(res, 200, eng.editExperimentField(slug, id, body.field, body.value ?? ""));
     }

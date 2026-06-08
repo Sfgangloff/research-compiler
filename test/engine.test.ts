@@ -185,6 +185,34 @@ describe("storylines", () => {
   });
 });
 
+describe("question types + bibliography", () => {
+  it("typed questions carry a format; bibliography answers store structured entries", () => {
+    const { eng } = fresh();
+    eng.createStream("s", "s");
+    const q = eng.addQuestion("s", { root: true, text: "What does the literature say?", qtype: "bibliography" }).question;
+    expect(eng.getStream("s").questions.get(q.id)!.qtype).toBe("bibliography");
+
+    const a = eng.addAnswer("s", {
+      text: "Three relevant papers",
+      answers: [q.id],
+      bibliography: [
+        { title: "Toolformer (2023)", summary: "LMs learn to call tools", relevance: "tool-use is learnable" },
+        { title: "ReAct (2022)" },
+      ],
+    });
+    expect(eng.getStream("s").answers.get(a.id)!.bibliography).toHaveLength(2);
+
+    // editing replaces the list and drops title-less entries
+    eng.editAnswer("s", a.id, { bibliography: [{ title: "Gorilla (2023)" }, { title: "" }] });
+    const entries = eng.getStream("s").answers.get(a.id)!.bibliography!;
+    expect(entries).toHaveLength(1);
+    expect(entries[0]!.title).toBe("Gorilla (2023)");
+
+    expect(() => eng.editQuestion("s", q.id, { qtype: "nonsense" as any })).toThrow(ValidationError);
+    expect(eng.validate("s")).toEqual([]);
+  });
+});
+
 describe("privileged deletes", () => {
   it("refuses to delete without confirm", () => {
     const { eng } = fresh();

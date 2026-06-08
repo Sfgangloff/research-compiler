@@ -4,6 +4,15 @@ export type QuestionStatus = "open" | "answered" | "abandoned";
 export type AnswerStatus = "proposed" | "supported" | "refuted" | "inconclusive";
 export type ExperimentStatus = "planned" | "running" | "done" | "failed";
 
+export type QuestionType = "empirical" | "bibliography" | "theoretical" | "definitional";
+export const QUESTION_TYPES: QuestionType[] = ["empirical", "bibliography", "theoretical", "definitional"];
+
+export interface BibEntry {
+  title: string;
+  summary?: string;
+  relevance?: string;
+}
+
 export interface Provenance {
   created_by: "human" | "claude";
   created_at: string;
@@ -17,6 +26,7 @@ export interface Question {
   stream: string;
   text: string;
   status: QuestionStatus;
+  qtype?: QuestionType;
   tags: string[];
   provenance: Provenance;
   comments: Record<string, string>;
@@ -37,6 +47,7 @@ export interface Answer {
   comments: Record<string, string>;
   report?: string;
   stories?: string[];
+  bibliography?: BibEntry[];
 }
 
 export interface NodeRef {

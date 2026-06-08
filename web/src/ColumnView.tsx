@@ -297,12 +297,13 @@ function Lane({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-function Head({ id, color, status, root, dots }: { id: string; color: string; status: string; root?: boolean; dots?: { color: string; name: string }[] }) {
+function Head({ id, color, status, root, dots, pill }: { id: string; color: string; status: string; root?: boolean; dots?: { color: string; name: string }[]; pill?: string | null }) {
   return (
     <div className="cardhead">
       <span className="statusdot" style={{ background: color }} />
       <span className="cid">{id}</span>
       {root && <span className="roottag">root</span>}
+      {pill && <span className={`qtype-pill qtype-${pill}`}>{pill}</span>}
       {dots && <Dots dots={dots} />}
       <span className="cstatus">{status}</span>
     </div>
@@ -329,7 +330,7 @@ function Dots({ dots }: { dots: { color: string; name: string }[] }) {
 function QCard({ q, root, sel, onSelect, setRef, render, dim, dots }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
   return (
     <div ref={setRef} className={"card q" + (sel ? " sel" : "") + (root ? " root" : "") + (dim ? " dim" : "")} onClick={() => onSelect(q.id)}>
-      <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} dots={dots} />
+      <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} dots={dots} pill={q.qtype && q.qtype !== "empirical" ? q.qtype : null} />
       <div className="ctext">{render(q.text)}</div>
     </div>
   );

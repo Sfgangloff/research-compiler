@@ -1,7 +1,13 @@
 import { useState, useMemo } from "react";
 import { marked } from "marked";
 import { api } from "./api";
-import type { Answer, Entity, Experiment, Graph, Hyperedge, Question } from "./types";
+import type { Answer, BibEntry, Entity, Experiment, Graph, Hyperedge, Question } from "./types";
+import { QUESTION_TYPES } from "./types";
+
+/** True if this answer answers at least one bibliography-type question. */
+function isBibAnswer(a: Answer, graph: Graph): boolean {
+  return a.answers.some((qid) => graph.questions.find((q) => q.id === qid)?.qtype === "bibliography");
+}
 
 const STATUS: Record<string, string[]> = {
   q: ["open", "answered", "abandoned"],
@@ -99,6 +105,9 @@ function QSummary({ q, graph }: { q: Question; graph: Graph }) {
   return (
     <div className="summary">
       <p className="lead">{q.text}</p>
+      <Sec label="Type">
+        <span className={`qtype-pill qtype-${q.qtype ?? "empirical"}`}>{q.qtype ?? "empirical"}</span>
+      </Sec>
       {deriv && (
         <Sec label="Arises from">
           {deriv.sources.map((s) => s.id).join(", ")} — {deriv.rationale}
@@ -119,9 +128,23 @@ function QSummary({ q, graph }: { q: Question; graph: Graph }) {
 function ASummary({ a, graph }: { a: Answer; graph: Graph }) {
   const qText = (id: string) => graph.questions.find((x) => x.id === id)?.text ?? "";
   const exps = a.backed_by.map((id) => graph.experiments.find((e) => e.id === id)).filter(Boolean) as Experiment[];
+  const bib = isBibAnswer(a, graph) ? a.bibliography ?? [] : [];
   return (
     <div className="summary">
       <p className="lead">{a.text}</p>
+      {bib.length > 0 && (
+        <Sec label="References">
+          <ol className="biblist">
+            {bib.map((e, i) => (
+              <li key={i} className="bibitem">
+                <div className="bibttl">{e.title}</div>
+                {e.summary && <div className="bibsum">{e.summary}</div>}
+                {e.relevance && <div className="bibrel"><span className="bibrel-label">Why relevant:</span> {e.relevance}</div>}
+              </li>
+            ))}
+          </ol>
+        </Sec>
+      )}
       <Sec label="Answers">
         {a.answers.map((qid) => (
           <div key={qid} className="ref"><b>{qid}</b> {qText(qid)}</div>
@@ -222,6 +245,49 @@ function EditField({ label, value, onSaveValue, comment, onSaveComment }: { labe
   );
 }
 
+function BibEditor({ slug, id, value, onChanged }: { slug: string; id: string; value: BibEntry[]; onChanged: () => void }) {
+  const [entries, setEntries] = useState<BibEntry[]>(value.length ? value : [{ title: "" }]);
+  const save = (next: BibEntry[]) => api.patch(slug, id, { bibliography: next }).then(onChanged);
+  const update = (i: number, field: keyof BibEntry, v: string) =>
+    setEntries((cur) => cur.map((e, j) => (j === i ? { ...e, [field]: v } : e)));
+  const remove = (i: number) => {
+    const next = entries.filter((_, j) => j !== i);
+    setEntries(next.length ? next : [{ title: "" }]);
+    save(next);
+  };
+  return (
+    <div className="bibedit">
+      {entries.map((e, i) => (
+        <div className="bibrow" key={i}>
+          <input
+            className="bibtitle"
+            placeholder="Title"
+            value={e.title}
+            onChange={(ev) => update(i, "title", ev.target.value)}
+            onBlur={() => save(entries)}
+          />
+          <textarea
+            placeholder="Short summary"
+            rows={2}
+            value={e.summary ?? ""}
+            onChange={(ev) => update(i, "summary", ev.target.value)}
+            onBlur={() => save(entries)}
+          />
+          <textarea
+            placeholder="Why it's interesting for this research stream"
+            rows={2}
+            value={e.relevance ?? ""}
+            onChange={(ev) => update(i, "relevance", ev.target.value)}
+            onBlur={() => save(entries)}
+          />
+          <button className="bibdel" onClick={() => remove(i)} title="remove entry">remove</button>
+        </div>
+      ))}
+      <button className="bibadd" onClick={() => setEntries([...entries, { title: "" }])}>+ add entry</button>
+    </div>
+  );
+}
+
 const EXP_FIELDS: [keyof Experiment, string][] = [
   ["description", "1. Description"],
   ["motivation", "2. Motivation (why)"],
@@ -262,11 +328,30 @@ function EditForm({ kind, entity, slug, graph, onChanged }: { kind: string; enti
         </div>
       )}
       {kind === "q" && (
-        <EditField label="Question" value={(entity as Question).text} onSaveValue={(v) => api.patch(slug, id, { text: v }).then(onChanged)} comment={comment("_self")} onSaveComment={saveComment("_self")} />
+        <>
+          <div className="field">
+            <div className="field-label">Question type</div>
+            <select
+              value={(entity as Question).qtype ?? "empirical"}
+              onChange={(e) => api.patch(slug, id, { qtype: e.target.value }).then(onChanged)}
+            >
+              {QUESTION_TYPES.map((t) => (
+                <option key={t} value={t}>{t}</option>
+              ))}
+            </select>
+          </div>
+          <EditField label="Question" value={(entity as Question).text} onSaveValue={(v) => api.patch(slug, id, { text: v }).then(onChanged)} comment={comment("_self")} onSaveComment={saveComment("_self")} />
+        </>
       )}
       {kind === "a" && (
         <>
           <EditField label="Answer" value={(entity as Answer).text} onSaveValue={(v) => api.patch(slug, id, { text: v }).then(onChanged)} comment={comment("_self")} onSaveComment={saveComment("_self")} />
+          {isBibAnswer(entity as Answer, graph) && (
+            <div className="field">
+              <div className="field-label">References (bibliography)</div>
+              <BibEditor slug={slug} id={id} value={(entity as Answer).bibliography ?? []} onChanged={onChanged} />
+            </div>
+          )}
           <div className="field-label">Edge comments</div>
           {(entity as Answer).answers.map((qid) => (
             <div key={qid} className="edge-row">

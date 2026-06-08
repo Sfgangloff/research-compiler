@@ -11,6 +11,7 @@
     "stream": { "type": "string" },
     "text": { "type": "string" },
     "status": { "enum": ["open", "answered", "abandoned"] },
+    "qtype": { "enum": ["empirical", "bibliography", "theoretical", "definitional"] },
     "tags": { "type": "array", "items": { "type": "string" } },
     "provenance": { "$ref": "https://research-compiler/schema/provenance.schema.json" },
     "comments": { "type": "object", "additionalProperties": { "type": "string" } },

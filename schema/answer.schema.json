@@ -27,6 +27,19 @@
     "provenance": { "$ref": "https://research-compiler/schema/provenance.schema.json" },
     "comments": { "type": "object", "additionalProperties": { "type": "string" } },
     "report": { "type": "string" },
-    "stories": { "type": "array", "items": { "type": "string" } }
+    "stories": { "type": "array", "items": { "type": "string" } },
+    "bibliography": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title"],
+        "properties": {
+          "title": { "type": "string" },
+          "summary": { "type": "string" },
+          "relevance": { "type": "string" }
+        }
+      }
+    }
   }
 }

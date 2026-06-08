@@ -23,12 +23,25 @@ export type QuestionStatus = "open" | "answered" | "abandoned";
 export type AnswerStatus = "proposed" | "supported" | "refuted" | "inconclusive";
 export type ExperimentStatus = "planned" | "running" | "done" | "failed";
 
+/** A question's kind, which selects the expected answer format. */
+export type QuestionType = "empirical" | "bibliography" | "theoretical" | "definitional";
+export const QUESTION_TYPES: QuestionType[] = ["empirical", "bibliography", "theoretical", "definitional"];
+
+/** One reference in a bibliography-type answer. */
+export interface BibEntry {
+  title: string;
+  summary?: string;
+  relevance?: string; // why it matters for this research stream
+}
+
 export interface Question {
   type: "question";
   id: string; // q-NNNN
   stream: string;
   text: string;
   status: QuestionStatus;
+  /** Kind of question; drives the answer format. Defaults to "empirical" when absent. */
+  qtype?: QuestionType;
   tags: string[];
   provenance: Provenance;
   comments: Comments;
@@ -51,6 +64,8 @@ export interface Answer {
   comments: Comments;
   report?: string;
   stories?: string[];
+  /** Structured entries for answers to bibliography-type questions. */
+  bibliography?: BibEntry[];
 }
 
 export interface NodeRef {

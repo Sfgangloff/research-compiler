@@ -36,7 +36,7 @@
     "n=3": "Three independent trials per condition, used to estimate variance and confidence.",
     "CI": "Confidence interval: mean plus or minus one standard deviation (1-sigma); non-overlapping intervals signal a real difference.",
     "G-CD": "Granularity-Cost Decomposition: a model of solving cost as overhead plus per-call work plus reasoning-token work.",
-    "meta-tools": "Tools that let the agent extend itself (author new tools) at run time.",
+    "meta-tools": "Custom tools we coded ourselves for these experiments (not off-the-shelf or common tooling) that let the agent extend itself — author or modify its own tools at run time.",
     "subscription compute": "Running on a usage-capped Claude subscription rather than metered API, which imposes rolling rate limits.",
     "scratchpad": "A toolset = medium deductions plus a frame stack plus try_both, for auto-managed case-splits.",
     "uniqueness": "An exhaustive backtracking check that a puzzle has exactly one solution.",
@@ -49,7 +49,8 @@
     "cost-to-solve": "The dollar cost of API usage to solve one puzzle instance (the main outcome measured).",
     "solve-rate": "The fraction of attempts that reach a correct, verified solution.",
     "engine-level bookkeeping": "Letting the tool backend (the engine) track the state of tentative case-splits for you - pushing and popping assumption contexts - instead of the model manually snapshotting and restoring the board.",
-    "shallow lookahead": "Searching only one move ahead (1-ply): try a single edge, propagate, and keep the forced consequences - as opposed to deep multi-step search."
+    "shallow lookahead": "Searching only one move ahead (1-ply): try a single edge, propagate, and keep the forced consequences - as opposed to deep multi-step search.",
+    "1 sigma": "1 sigma (1σ) = one standard deviation, the typical run-to-run spread. Two means \"overlap at 1 sigma\" when each falls inside the other's ±1σ error bar — the gap between them is no bigger than normal noise, so the difference can't be called real."
   },
   "stories": {
     "main": {
