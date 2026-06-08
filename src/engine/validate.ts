@@ -11,6 +11,7 @@ import type {
   Experiment,
   Hyperedge,
   Question,
+  RcObject,
   StreamGraph,
   StreamMeta,
 } from "./types.js";
@@ -31,6 +32,7 @@ const validators: Record<string, ValidateFunction> = {
   answer: ajv.compile(loadSchema("answer.schema.json")),
   hyperedge: ajv.compile(loadSchema("hyperedge.schema.json")),
   experiment: ajv.compile(loadSchema("experiment.schema.json")),
+  object: ajv.compile(loadSchema("object.schema.json")),
 };
 
 function shapeErrors(kind: keyof typeof validators, obj: unknown): string[] {
@@ -42,7 +44,7 @@ function shapeErrors(kind: keyof typeof validators, obj: unknown): string[] {
 /** Validate a single entity's shape against its JSON Schema. Throws on failure. */
 export function assertShape(
   kind: keyof typeof validators,
-  obj: Question | Answer | Hyperedge | Experiment | StreamMeta,
+  obj: Question | Answer | Hyperedge | Experiment | RcObject | StreamMeta,
 ): void {
   const problems = shapeErrors(kind, obj);
   if (problems.length) {
@@ -63,10 +65,12 @@ export function validateGraph(g: StreamGraph): void {
   for (const a of g.answers.values()) problems.push(...shapeErrors("answer", a));
   for (const h of g.hyperedges.values()) problems.push(...shapeErrors("hyperedge", h));
   for (const e of g.experiments.values()) problems.push(...shapeErrors("experiment", e));
+  for (const o of g.objects.values()) problems.push(...shapeErrors("object", o));
 
   const hasQ = (id: string) => g.questions.has(id);
   const hasA = (id: string) => g.answers.has(id);
   const hasE = (id: string) => g.experiments.has(id);
+  const hasO = (id: string) => g.objects.has(id);
 
   // 2. Stream-membership consistency.
   const wrongStream = (e: { id: string; stream: string }) => e.stream !== g.stream.slug;
@@ -78,11 +82,16 @@ export function validateGraph(g: StreamGraph): void {
     if (wrongStream(h)) problems.push(`${h.id} stream mismatch`);
   for (const e of g.experiments.values())
     if (wrongStream(e)) problems.push(`${e.id} stream mismatch`);
+  for (const o of g.objects.values())
+    if (wrongStream(o)) problems.push(`${o.id} stream mismatch`);
 
   // 3. Referential integrity.
+  for (const q of g.questions.values())
+    for (const o of q.objects ?? []) if (!hasO(o)) problems.push(`${q.id} references missing object ${o}`);
   for (const a of g.answers.values()) {
     for (const q of a.answers) if (!hasQ(q)) problems.push(`${a.id} answers missing ${q}`);
     for (const e of a.backed_by) if (!hasE(e)) problems.push(`${a.id} backed_by missing ${e}`);
+    for (const o of a.objects ?? []) if (!hasO(o)) problems.push(`${a.id} references missing object ${o}`);
     for (const qid of Object.keys(a.edge_comments))
       if (!a.answers.includes(qid))
         problems.push(`${a.id} edge_comment for ${qid} but it does not answer it`);
@@ -97,6 +106,7 @@ export function validateGraph(g: StreamGraph): void {
   for (const e of g.experiments.values()) {
     for (const q of e.addresses) if (!hasQ(q)) problems.push(`${e.id} addresses missing ${q}`);
     for (const a of e.produces) if (!hasA(a)) problems.push(`${e.id} produces missing ${a}`);
+    for (const o of e.objects ?? []) if (!hasO(o)) problems.push(`${e.id} references missing object ${o}`);
   }
 
   // 4. Two-sided consistency between Answer.backed_by and Experiment.produces.

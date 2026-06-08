@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState, useCallback, useMemo, type ReactNode } from "react";
-import type { Answer, Experiment, Graph, Question } from "./types";
+import type { Answer, Experiment, Graph, Question, RcObject } from "./types";
 
 // --- glossary: explain technical terms on first chronological use ----------
 
@@ -70,14 +70,14 @@ const A_COLOR: Record<string, string> = { proposed: "#f59e0b", supported: "#22c5
 const E_COLOR: Record<string, string> = { planned: "#a78bfa", running: "#8b5cf6", done: "#7c3aed", failed: "#ef4444" };
 
 const byId = (a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id);
-const colOf = (id: string) => (id[0] === "q" ? 0 : id[0] === "a" ? 1 : 2);
+const colOf = (id: string) => (id[0] === "q" ? 0 : id[0] === "a" ? 1 : id[0] === "o" ? 3 : 2);
 
 interface EdgePath {
   key: string;
   d: string;
   hx: number;
   hy: number;
-  kind: "answers" | "evidence" | "addresses" | "deriv";
+  kind: "answers" | "evidence" | "addresses" | "deriv" | "uses";
   dim: boolean;
 }
 
@@ -112,6 +112,7 @@ export function ColumnView({
   const questions = [...graph.questions].sort(byId);
   const answers = [...graph.answers].sort(byId);
   const experiments = showExperiments ? [...graph.experiments].sort(byId) : [];
+  const objects = [...(graph.objects ?? [])].sort(byId);
 
   // Glossary: terms are clickable; the definition shows in one shared box.
   const glossary = graph.stream.glossary ?? {};
@@ -124,7 +125,7 @@ export function ColumnView({
   const members = useMemo(() => {
     if (!activeStory) return null;
     const s = new Set<string>();
-    for (const n of [...graph.questions, ...graph.answers, ...graph.experiments])
+    for (const n of [...graph.questions, ...graph.answers, ...graph.experiments, ...(graph.objects ?? [])])
       if (n.stories?.includes(activeStory)) s.add(n.id);
     return s;
   }, [graph, activeStory]);
@@ -199,6 +200,12 @@ export function ColumnView({
         const p = path(s.id, h.target);
         if (p) E.push({ ...p, key: `dv-${h.id}-${s.id}`, kind: "deriv", dim: dimEdge(s.id, h.target) });
       }
+    // node -> object ("uses") relationships
+    for (const n of [...answers, ...experiments, ...questions])
+      for (const o of (n as { objects?: string[] }).objects ?? []) {
+        const p = path(n.id, o);
+        if (p) E.push({ ...p, key: `ob-${n.id}-${o}`, kind: "uses", dim: dimEdge(n.id, o) });
+      }
     setEdges((prev) => (sameEdges(prev, E) ? prev : E));
     setDims((prev) => (prev.w === content.offsetWidth && prev.h === content.offsetHeight ? prev : { w: content.offsetWidth, h: content.offsetHeight }));
     // `answers`/`experiments` are derived from graph+showExperiments (already deps);
@@ -227,6 +234,7 @@ export function ColumnView({
     evidence: "#7c3aed",
     addresses: "#c4b5fd",
     deriv: "#94a3b8",
+    uses: "#0d9488",
   };
 
   return (
@@ -235,7 +243,7 @@ export function ColumnView({
       <div className="content" ref={contentRef}>
         <svg className="svg-layer" width={dims.w} height={dims.h}>
           <defs>
-            {(["answers", "evidence", "addresses", "deriv"] as const).map((k) => (
+            {(["answers", "evidence", "addresses", "deriv", "uses"] as const).map((k) => (
               <marker key={k} id={`ah-${k}`} markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
                 <path d="M0,0 L6,3 L0,6 Z" fill={stroke[k]} />
               </marker>
@@ -248,7 +256,7 @@ export function ColumnView({
               fill="none"
               stroke={stroke[e.kind]}
               strokeWidth={e.kind === "answers" ? 1.6 : 1.2}
-              strokeDasharray={e.kind === "deriv" ? "5 4" : e.kind === "addresses" ? "2 4" : undefined}
+              strokeDasharray={e.kind === "deriv" ? "5 4" : e.kind === "addresses" ? "2 4" : e.kind === "uses" ? "1 3" : undefined}
               markerEnd={`url(#ah-${e.kind})`}
               opacity={e.dim ? 0.12 : 0.85}
             />
@@ -270,6 +278,13 @@ export function ColumnView({
             <Lane title="Experiments">
               {experiments.map((e) => (
                 <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} render={render} dim={!!members && !members.has(e.id)} dots={dotsFor(e.stories, storyColors)} />
+              ))}
+            </Lane>
+          )}
+          {objects.length > 0 && (
+            <Lane title="Objects">
+              {objects.map((o) => (
+                <OCard key={o.id} o={o} sel={selectedId === o.id} onSelect={onSelect} setRef={setRef(o.id)} render={render} dim={!!members && !members.has(o.id)} dots={dotsFor(o.stories, storyColors)} />
               ))}
             </Lane>
           )}
@@ -353,6 +368,29 @@ function ECard({ e, sel, onSelect, setRef, render, dim, dots }: { e: Experiment;
       <div className="ctext">{render(e.description)}</div>
       {e.formal_results && <div className="cmeta">{render(e.formal_results.slice(0, 140) + (e.formal_results.length > 140 ? "…" : ""))}</div>}
       {e.report && <div className="creport">📄 report · {e.report.length.toLocaleString()} chars</div>}
+    </div>
+  );
+}
+
+function OCard({ o, sel, onSelect, setRef, render, dim, dots }: { o: RcObject; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
+  const attrs = Object.entries(o.attributes ?? {});
+  return (
+    <div ref={setRef} className={"card o" + (sel ? " sel" : "") + (dim ? " dim" : "")} onClick={() => onSelect(o.id)}>
+      <div className="cardhead">
+        <span className="statusdot" style={{ background: "#0d9488" }} />
+        <span className="cid">{o.id}</span>
+        {dots && <Dots dots={dots} />}
+        <span className="cstatus">{o.kind}</span>
+      </div>
+      <div className="ctext"><b>{o.name}</b></div>
+      {attrs.length > 0 && (
+        <div className="objattrs">
+          {attrs.map(([k, v]) => (
+            <span key={k} className="objattr"><span className="objattr-k">{k}</span> {v}</span>
+          ))}
+        </div>
+      )}
+      {o.description && <div className="cmeta">{render(o.description)}</div>}
     </div>
   );
 }

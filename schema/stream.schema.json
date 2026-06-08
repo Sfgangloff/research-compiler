@@ -19,7 +19,8 @@
         "q": { "type": "integer", "minimum": 0 },
         "a": { "type": "integer", "minimum": 0 },
         "h": { "type": "integer", "minimum": 0 },
-        "e": { "type": "integer", "minimum": 0 }
+        "e": { "type": "integer", "minimum": 0 },
+        "o": { "type": "integer", "minimum": 0 }
       }
     },
     "provenance": { "$ref": "https://research-compiler/schema/provenance.schema.json" },

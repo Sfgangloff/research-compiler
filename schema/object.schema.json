@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://research-compiler/schema/object.schema.json",
+  "title": "Object",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "id", "stream", "name", "kind", "attributes", "provenance", "comments"],
+  "properties": {
+    "type": { "const": "object" },
+    "id": { "type": "string", "pattern": "^o-[0-9]{4,}$" },
+    "stream": { "type": "string" },
+    "name": { "type": "string" },
+    "kind": { "type": "string" },
+    "description": { "type": "string" },
+    "attributes": { "type": "object", "additionalProperties": { "type": "string" } },
+    "provenance": { "$ref": "https://research-compiler/schema/provenance.schema.json" },
+    "comments": { "type": "object", "additionalProperties": { "type": "string" } },
+    "report": { "type": "string" },
+    "stories": { "type": "array", "items": { "type": "string" } }
+  }
+}

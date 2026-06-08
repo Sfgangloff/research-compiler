@@ -14,7 +14,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:34.262Z",
-    "updated_at": "2026-06-08T01:46:15.451Z",
+    "updated_at": "2026-06-08T05:27:14.230Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
@@ -24,5 +24,8 @@
   "stories": [
     "main"
   ],
-  "report": "## Why these numbers don't support a cost difference\n\nEach toolset (**none / medium / coarse / fine**) was run repeatedly on the easy puzzle (`puzzle_001`, n = 3–4 runs). For each we took the **mean cost-to-solve** and drew a **confidence interval (CI)** = mean ± one standard deviation (**1 sigma**) — an error bar capturing run-to-run noise.\n\n**\"Overlap at 1 sigma\"** means the error bars of none / medium / coarse all touch: each mean sits inside the others' ±1σ band. When bars overlap like that, the apparent ordering between them is within noise — rerun the experiment and the order could flip. So we **cannot** claim any of none / medium / coarse is cheaper than the others here.\n\nThe one separation that survives is **fine**: its band sits clearly above the rest, so *\"fine is reproducibly the most expensive\"* is a real effect.\n\n**Consequence:** the pilot's headline *\"coarse ≈ 2× cheaper\"* was an artifact of too few runs at low difficulty — it does not survive once the error bars are drawn. That is why this answer is **refuted**.\n"
+  "report": "## Why these numbers don't support a cost difference\n\nEach toolset (**none / medium / coarse / fine**) was run repeatedly on the easy puzzle (`puzzle_001`, n = 3–4 runs). For each we took the **mean cost-to-solve** and drew a **confidence interval (CI)** = mean ± one standard deviation (**1 sigma**) — an error bar capturing run-to-run noise.\n\n**\"Overlap at 1 sigma\"** means the error bars of none / medium / coarse all touch: each mean sits inside the others' ±1σ band. When bars overlap like that, the apparent ordering between them is within noise — rerun the experiment and the order could flip. So we **cannot** claim any of none / medium / coarse is cheaper than the others here.\n\nThe one separation that survives is **fine**: its band sits clearly above the rest, so *\"fine is reproducibly the most expensive\"* is a real effect.\n\n**Consequence:** the pilot's headline *\"coarse ≈ 2× cheaper\"* was an artifact of too few runs at low difficulty — it does not survive once the error bars are drawn. That is why this answer is **refuted**.\n",
+  "objects": [
+    "o-0001"
+  ]
 }

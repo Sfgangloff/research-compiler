@@ -24,7 +24,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:33.673Z",
-    "updated_at": "2026-06-05T03:19:28.755Z",
+    "updated_at": "2026-06-08T05:27:14.265Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
@@ -35,5 +35,9 @@
   "methodology": "Replication of the easy puzzle (puzzle_001) at n=3-4 per cell, 4 toolsets meta-off, to test the pilot ratios against sampling noise. 1-sigma overlap analysis on cost. max_turns=35, Opus 4.7. Aggregated with harness/aggregate_phase1.py.",
   "stories": [
     "main"
+  ],
+  "objects": [
+    "o-0001",
+    "o-0002"
   ]
 }

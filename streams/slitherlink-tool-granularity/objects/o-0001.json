@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "id": "o-0001",
+  "stream": "slitherlink-tool-granularity",
+  "name": "puzzle_001",
+  "kind": "puzzle",
+  "description": "The easy Slitherlink instance used as the low-difficulty pilot/baseline across all four toolsets.",
+  "attributes": {
+    "difficulty": "easy",
+    "size": "5x5",
+    "role": "pilot baseline"
+  },
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-08T05:27:14.094Z",
+    "updated_at": "2026-06-08T05:27:14.094Z"
+  },
+  "comments": {}
+}

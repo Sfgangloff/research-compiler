@@ -22,7 +22,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:39.677Z",
-    "updated_at": "2026-06-05T03:20:48.714Z",
+    "updated_at": "2026-06-08T05:27:14.287Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
@@ -33,5 +33,9 @@
   "methodology": "n=1 head-to-head sweep of scratchpad v2 (adds try_both, 1-ply lookahead) vs v1 on the same 4 puzzles, meta-off, max_turns=200, Opus 4.7, completed in a single 5h window (no rate-limit truncation). Compared per-puzzle cost and try_both adoption.",
   "stories": [
     "scratchpad"
+  ],
+  "objects": [
+    "o-0001",
+    "o-0002"
   ]
 }

@@ -20,11 +20,15 @@ export function hyperedgePath(slug: string, id: string): string {
 export function experimentPath(slug: string, id: string): string {
   return `${streamDir(slug)}/experiments/${id}.json`;
 }
+export function objectPath(slug: string, id: string): string {
+  return `${streamDir(slug)}/objects/${id}.json`;
+}
 
 export const QUESTIONS_SUBDIR = "questions";
 export const ANSWERS_SUBDIR = "answers";
 export const HYPEREDGES_SUBDIR = "hyperedges";
 export const EXPERIMENTS_SUBDIR = "experiments";
+export const OBJECTS_SUBDIR = "objects";
 
 export const AUDIT_LOG = ".rc/audit.log";
 export const CONFIG_PATH = ".rc/config.json";

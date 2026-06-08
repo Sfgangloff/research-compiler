@@ -10,11 +10,13 @@ import {
   CONFIG_PATH,
   EXPERIMENTS_SUBDIR,
   HYPEREDGES_SUBDIR,
+  OBJECTS_SUBDIR,
   QUESTIONS_SUBDIR,
   STREAMS_DIR,
   answerPath,
   experimentPath,
   hyperedgePath,
+  objectPath,
   questionPath,
   streamDir,
   streamMetaPath,
@@ -40,6 +42,7 @@ import type {
   QuestionStatus,
   QuestionType,
   RcConfig,
+  RcObject,
   SourceRef,
   StreamGraph,
   StreamMeta,
@@ -126,6 +129,7 @@ export class Engine {
       answers: new Map(),
       hyperedges: new Map(),
       experiments: new Map(),
+      objects: new Map(),
     };
     const load = <T extends Entity>(subdir: string, into: Map<string, { id: string }>) => {
       for (const file of this.store.list(`${streamDir(slug)}/${subdir}`)) {
@@ -140,13 +144,14 @@ export class Engine {
     load<Answer>(ANSWERS_SUBDIR, g.answers as Map<string, { id: string }>);
     load<Hyperedge>(HYPEREDGES_SUBDIR, g.hyperedges as Map<string, { id: string }>);
     load<Experiment>(EXPERIMENTS_SUBDIR, g.experiments as Map<string, { id: string }>);
+    load<RcObject>(OBJECTS_SUBDIR, g.objects as Map<string, { id: string }>);
     return g;
   }
 
   // ---- id allocation --------------------------------------------------------
 
   private nextId(g: StreamGraph, kind: IdKind): string {
-    const n = g.stream.counters[kind] + 1;
+    const n = (g.stream.counters[kind] ?? 0) + 1;
     g.stream.counters[kind] = n;
     return formatId(kind, n);
   }
@@ -160,6 +165,7 @@ export class Engine {
       case "a": return answerPath(slug, id);
       case "h": return hyperedgePath(slug, id);
       case "e": return experimentPath(slug, id);
+      case "o": return objectPath(slug, id);
       default: throw new ValidationError(`unrecognized id '${id}'`);
     }
   }
@@ -487,6 +493,67 @@ export class Engine {
     this.commit(g, [e], [], "linkExperimentToQuestion", [eid, qid]);
   }
 
+  // ---- objects (reference entities, e.g. puzzles) ---------------------------
+
+  addObject(
+    slug: string,
+    opts: {
+      name: string;
+      kind: string;
+      description?: string;
+      attributes?: Record<string, string>;
+      source_ref?: SourceRef;
+    },
+  ): RcObject {
+    const g = this.getStream(slug);
+    if (!opts.name?.trim()) throw new ValidationError("an object needs a name");
+    const oid = this.nextId(g, "o");
+    const obj: RcObject = {
+      type: "object",
+      id: oid,
+      stream: slug,
+      name: opts.name,
+      kind: opts.kind || "object",
+      ...(opts.description !== undefined ? { description: opts.description } : {}),
+      attributes: opts.attributes ?? {},
+      provenance: this.newProv(opts.source_ref),
+      comments: {},
+    };
+    g.objects.set(oid, obj);
+    this.commit(g, [obj], [], "addObject", [oid], `${obj.kind}:${obj.name}`);
+    return obj;
+  }
+
+  editObject(
+    slug: string,
+    oid: string,
+    patch: { name?: string; kind?: string; description?: string; attributes?: Record<string, string> },
+  ): RcObject {
+    const g = this.getStream(slug);
+    const o = this.requireObject(g, oid);
+    if (patch.name !== undefined) o.name = patch.name;
+    if (patch.kind !== undefined) o.kind = patch.kind;
+    if (patch.description !== undefined) o.description = patch.description;
+    if (patch.attributes !== undefined) o.attributes = patch.attributes;
+    o.provenance = this.touchProv(o.provenance);
+    this.commit(g, [o], [], "editObject", [oid]);
+    return o;
+  }
+
+  /** Set the objects a node (question/answer/experiment) relates to (replaces the list). */
+  setNodeObjects(slug: string, nodeId: string, objectIds: string[]): Entity {
+    const g = this.getStream(slug);
+    const ent = this.requireNode(g, nodeId);
+    if (ent.type === "hyperedge" || ent.type === "object")
+      throw new ValidationError("only questions, answers and experiments can reference objects");
+    for (const o of objectIds)
+      if (!g.objects.has(o)) throw new ValidationError(`unknown object '${o}'`);
+    (ent as Question | Answer | Experiment).objects = [...new Set(objectIds)];
+    ent.provenance = this.touchProv(ent.provenance);
+    this.commit(g, [ent], [], "setNodeObjects", [nodeId], objectIds.join(","));
+    return ent;
+  }
+
   // ---- comments -------------------------------------------------------------
 
   /** Set a comment on any entity field (use "_self" for an entity-level note). */
@@ -626,6 +693,7 @@ export class Engine {
     } else if (kind === "a") g.answers.delete(id);
     else if (kind === "h") g.hyperedges.delete(id);
     else if (kind === "e") g.experiments.delete(id);
+    else if (kind === "o") g.objects.delete(id);
 
     this.commit(g, touched, removed, "deleteEntity", [id], opts.cascade ? "cascade" : "");
   }
@@ -638,6 +706,7 @@ export class Engine {
     for (const id of g.answers.keys()) this.store.remove(answerPath(slug, id));
     for (const id of g.hyperedges.keys()) this.store.remove(hyperedgePath(slug, id));
     for (const id of g.experiments.keys()) this.store.remove(experimentPath(slug, id));
+    for (const id of g.objects.keys()) this.store.remove(objectPath(slug, id));
     this.store.remove(streamMetaPath(slug));
     this.store.removeDir(streamDir(slug)); // clear now-empty subdirectories
     this.audit("deleteStream", slug, [slug]);
@@ -645,14 +714,17 @@ export class Engine {
 
   private referencesTo(g: StreamGraph, id: string): string[] {
     const refs: string[] = [];
+    for (const q of g.questions.values()) {
+      if (q.objects?.includes(id)) refs.push(q.id);
+    }
     for (const a of g.answers.values()) {
-      if (a.answers.includes(id) || a.backed_by.includes(id)) refs.push(a.id);
+      if (a.answers.includes(id) || a.backed_by.includes(id) || a.objects?.includes(id)) refs.push(a.id);
     }
     for (const h of g.hyperedges.values()) {
       if (h.target === id || h.sources.some((s) => s.id === id)) refs.push(h.id);
     }
     for (const e of g.experiments.values()) {
-      if (e.addresses.includes(id) || e.produces.includes(id)) refs.push(e.id);
+      if (e.addresses.includes(id) || e.produces.includes(id) || e.objects?.includes(id)) refs.push(e.id);
     }
     return refs;
   }
@@ -660,11 +732,19 @@ export class Engine {
   private scrubReferences(g: StreamGraph, id: string): { touched: Entity[]; removed: string[] } {
     const touched: Entity[] = [];
     const removed: string[] = [];
+    for (const q of g.questions.values()) {
+      if (q.objects?.includes(id)) {
+        q.objects = q.objects.filter((x) => x !== id);
+        q.provenance = this.touchProv(q.provenance);
+        touched.push(q);
+      }
+    }
     for (const a of g.answers.values()) {
       let changed = false;
       if (a.answers.includes(id)) { a.answers = a.answers.filter((x) => x !== id); changed = true; }
       if (a.backed_by.includes(id)) { a.backed_by = a.backed_by.filter((x) => x !== id); changed = true; }
       if (a.edge_comments[id]) { delete a.edge_comments[id]; changed = true; }
+      if (a.objects?.includes(id)) { a.objects = a.objects.filter((x) => x !== id); changed = true; }
       if (changed) { a.provenance = this.touchProv(a.provenance); touched.push(a); }
     }
     for (const h of [...g.hyperedges.values()]) {
@@ -684,6 +764,7 @@ export class Engine {
       let changed = false;
       if (e.addresses.includes(id)) { e.addresses = e.addresses.filter((x) => x !== id); changed = true; }
       if (e.produces.includes(id)) { e.produces = e.produces.filter((x) => x !== id); changed = true; }
+      if (e.objects?.includes(id)) { e.objects = e.objects.filter((x) => x !== id); changed = true; }
       if (changed) { e.provenance = this.touchProv(e.provenance); touched.push(e); }
     }
     return { touched, removed };
@@ -706,12 +787,18 @@ export class Engine {
     if (!e) throw new NotFoundError(`experiment '${id}' not found`);
     return e;
   }
-  private requireNode(g: StreamGraph, id: string): Question | Answer | Hyperedge | Experiment {
+  private requireObject(g: StreamGraph, id: string): RcObject {
+    const o = g.objects.get(id);
+    if (!o) throw new NotFoundError(`object '${id}' not found`);
+    return o;
+  }
+  private requireNode(g: StreamGraph, id: string): Question | Answer | Hyperedge | Experiment | RcObject {
     return (
       g.questions.get(id) ??
       g.answers.get(id) ??
       g.hyperedges.get(id) ??
       g.experiments.get(id) ??
+      g.objects.get(id) ??
       (() => {
         throw new NotFoundError(`entity '${id}' not found`);
       })()

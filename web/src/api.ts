@@ -60,6 +60,16 @@ export const api = {
       body: JSON.stringify({ stories }),
     }).then(j),
 
+  addObject: (slug: string, body: Record<string, unknown>) =>
+    post(`/api/streams/${slug}/objects`, body),
+
+  setNodeObjects: (slug: string, id: string, objects: string[]) =>
+    fetch(`/api/entity/${slug}/${id}/objects`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ objects }),
+    }).then(j),
+
   setEdgeComment: (slug: string, aid: string, qid: string, text: string) =>
     fetch(`/api/entity/${slug}/${aid}/edge-comment`, {
       method: "PUT",

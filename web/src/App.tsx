@@ -88,6 +88,21 @@ export function App() {
     await guard(() => api.addAnswer(slug, text, answers));
   }
 
+  async function addObject() {
+    if (!slug) return;
+    const name = prompt("Object name (e.g. puzzle_001):");
+    if (!name) return;
+    const kind = prompt("Kind (e.g. puzzle):") ?? "object";
+    const description = prompt("Description (optional):") ?? "";
+    const attrsRaw = prompt("Attributes as key=value, comma-separated (e.g. difficulty=easy, size=3-4):") ?? "";
+    const attributes: Record<string, string> = {};
+    for (const pair of attrsRaw.split(",")) {
+      const [k, ...rest] = pair.split("=");
+      if (k && k.trim() && rest.length) attributes[k.trim()] = rest.join("=").trim();
+    }
+    await guard(() => api.addObject(slug, { name, kind, description, attributes }));
+  }
+
   async function addExperiment() {
     if (!slug) return;
     const description = prompt("Experiment description:");
@@ -129,6 +144,7 @@ export function App() {
               <button onClick={askFromSelection}>＋ ask question (from selection)</button>
               <button onClick={addAnswer}>＋ answer</button>
               <button onClick={addExperiment}>＋ experiment</button>
+              <button onClick={addObject}>＋ object</button>
             </div>
             <label className="toggle">
               <input type="checkbox" checked={showExperiments} onChange={(e) => setShowExperiments(e.target.checked)} />
@@ -139,6 +155,7 @@ export function App() {
               <div><span className="dot a" /> answer</div>
               <div><span className="dot h" /> ◆ derivation</div>
               <div><span className="dot e" /> experiment</div>
+              <div><span className="dot o" /> object (e.g. puzzle)</div>
             </div>
             {graph.stream.stories && Object.keys(graph.stream.stories).length > 0 && (
               <>

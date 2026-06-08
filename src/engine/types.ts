@@ -49,6 +49,8 @@ export interface Question {
   report?: string;
   /** Ids of publishable storylines this node belongs to. */
   stories?: string[];
+  /** Ids of objects (e.g. puzzles) this node relates to. */
+  objects?: string[];
 }
 
 export interface Answer {
@@ -64,6 +66,7 @@ export interface Answer {
   comments: Comments;
   report?: string;
   stories?: string[];
+  objects?: string[];
   /** Structured entries for answers to bibliography-type questions. */
   bibliography?: BibEntry[];
 }
@@ -110,6 +113,25 @@ export interface Experiment {
   comments: Comments;
   report?: string;
   stories?: string[];
+  objects?: string[];
+}
+
+/**
+ * A first-class "object" the research refers to (e.g. a puzzle instance).
+ * Reference entity only — NOT part of the question/answer reasoning DAG.
+ */
+export interface RcObject {
+  type: "object";
+  id: string; // o-NNNN
+  stream: string;
+  name: string; // e.g. "puzzle_001"
+  kind: string; // e.g. "puzzle"
+  description?: string;
+  attributes: Record<string, string>; // e.g. { difficulty: "easy", size: "3-4" }
+  provenance: Provenance;
+  comments: Comments;
+  report?: string;
+  stories?: string[];
 }
 
 export interface StreamMeta {
@@ -118,7 +140,7 @@ export interface StreamMeta {
   title: string;
   description: string;
   root_qid: string | null;
-  counters: { q: number; a: number; h: number; e: number };
+  counters: { q: number; a: number; h: number; e: number; o?: number };
   provenance: Provenance;
   comments: Comments;
   report?: string;
@@ -133,7 +155,7 @@ export interface Story {
   color: string;
 }
 
-export type Entity = Question | Answer | Hyperedge | Experiment | StreamMeta;
+export type Entity = Question | Answer | Hyperedge | Experiment | RcObject | StreamMeta;
 
 /** A fully-loaded stream: its metadata plus all nodes indexed by id. */
 export interface StreamGraph {
@@ -142,6 +164,7 @@ export interface StreamGraph {
   answers: Map<string, Answer>;
   hyperedges: Map<string, Hyperedge>;
   experiments: Map<string, Experiment>;
+  objects: Map<string, RcObject>;
 }
 
 export interface RepoEntry {

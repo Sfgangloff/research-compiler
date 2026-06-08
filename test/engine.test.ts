@@ -213,6 +213,33 @@ describe("question types + bibliography", () => {
   });
 });
 
+describe("objects (reference entities)", () => {
+  it("creates objects, links them to nodes, validates refs, and scrubs on cascade delete", () => {
+    const { eng } = fresh();
+    eng.createStream("s", "s");
+    const q = eng.addQuestion("s", { root: true, text: "root" }).question;
+    const o = eng.addObject("s", { name: "puzzle_001", kind: "puzzle", attributes: { difficulty: "easy", size: "3-4" } });
+    expect(o.id).toBe("o-0001");
+
+    const e = eng.addExperiment("s", {
+      description: "run on puzzle_001", motivation: "m", code_pointer: code,
+      formal_results: "f", results_description: "r", conclusions: "c", addresses: [q.id],
+    });
+    eng.setNodeObjects("s", e.id, [o.id]);
+    expect(eng.getStream("s").experiments.get(e.id)!.objects).toEqual([o.id]);
+
+    // unknown object id is rejected
+    expect(() => eng.setNodeObjects("s", e.id, ["o-0099"])).toThrow(ValidationError);
+
+    // deleting a referenced object refuses without cascade, scrubs with it
+    expect(() => eng.deleteEntity("s", o.id, { confirm: true })).toThrow(ConsentError);
+    eng.deleteEntity("s", o.id, { confirm: true, cascade: true });
+    expect(eng.getStream("s").objects.has(o.id)).toBe(false);
+    expect(eng.getStream("s").experiments.get(e.id)!.objects).toEqual([]);
+    expect(eng.validate("s")).toEqual([]);
+  });
+});
+
 describe("privileged deletes", () => {
   it("refuses to delete without confirm", () => {
     const { eng } = fresh();

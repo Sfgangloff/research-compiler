@@ -32,6 +32,7 @@ export interface Question {
   comments: Record<string, string>;
   report?: string;
   stories?: string[];
+  objects?: string[];
 }
 
 export interface Answer {
@@ -47,6 +48,7 @@ export interface Answer {
   comments: Record<string, string>;
   report?: string;
   stories?: string[];
+  objects?: string[];
   bibliography?: BibEntry[];
 }
 
@@ -92,6 +94,21 @@ export interface Experiment {
   comments: Record<string, string>;
   report?: string;
   stories?: string[];
+  objects?: string[];
+}
+
+export interface RcObject {
+  type: "object";
+  id: string;
+  stream: string;
+  name: string;
+  kind: string;
+  description?: string;
+  attributes: Record<string, string>;
+  provenance: Provenance;
+  comments: Record<string, string>;
+  report?: string;
+  stories?: string[];
 }
 
 export interface StreamMeta {
@@ -119,6 +136,7 @@ export interface Graph {
   answers: Answer[];
   hyperedges: Hyperedge[];
   experiments: Experiment[];
+  objects: RcObject[];
 }
 
-export type Entity = Question | Answer | Hyperedge | Experiment;
+export type Entity = Question | Answer | Hyperedge | Experiment | RcObject;

@@ -35,6 +35,7 @@ function graphJSON(g: StreamGraph) {
     answers: [...g.answers.values()],
     hyperedges: [...g.hyperedges.values()],
     experiments: [...g.experiments.values()],
+    objects: [...g.objects.values()],
   };
 }
 
@@ -166,6 +167,10 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
           );
         case "experiments":
           return send(res, 201, eng.addExperiment(slug, body));
+        case "objects":
+          return send(res, 201, eng.addObject(slug, {
+            name: body.name, kind: body.kind, description: body.description, attributes: body.attributes,
+          }));
       }
     }
   }
@@ -186,6 +191,9 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
     }
     if (parts[4] === "stories" && method === "PUT") {
       return send(res, 200, eng.setNodeStories(slug, id, body.stories ?? []));
+    }
+    if (parts[4] === "objects" && method === "PUT") {
+      return send(res, 200, eng.setNodeObjects(slug, id, body.objects ?? []));
     }
     if (parts[4] === "edge-comment" && method === "PUT") {
       // body: { qid, text }
@@ -210,6 +218,8 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
       if (kind === "a") return send(res, 200, eng.editAnswer(slug, id, { text: body.text, bibliography: body.bibliography }));
       if (kind === "e" && body.field)
         return send(res, 200, eng.editExperimentField(slug, id, body.field, body.value ?? ""));
+      if (kind === "o")
+        return send(res, 200, eng.editObject(slug, id, { name: body.name, kind: body.kind, description: body.description, attributes: body.attributes }));
     }
 
     if (parts.length === 4 && method === "DELETE") {
