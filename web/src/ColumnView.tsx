@@ -373,7 +373,7 @@ function ECard({ e, sel, onSelect, setRef, render, dim, dots }: { e: Experiment;
 }
 
 function OCard({ o, sel, onSelect, setRef, render, dim, dots }: { o: RcObject; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
-  const attrs = Object.entries(o.attributes ?? {});
+  const attrs = Object.entries(o.attributes ?? {}).filter(([k]) => k !== "clues");
   return (
     <div ref={setRef} className={"card o" + (sel ? " sel" : "") + (dim ? " dim" : "")} onClick={() => onSelect(o.id)}>
       <div className="cardhead">

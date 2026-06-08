@@ -217,14 +217,54 @@ function ESummary({ e, graph }: { e: Experiment; graph: Graph }) {
   );
 }
 
+// Draws the initial state of a Slitherlink puzzle: the dot lattice + clue
+// numbers. `clues` is rows separated by "|", each char a digit 0-3 or "." (no clue).
+function SlitherlinkBoard({ clues }: { clues: string }) {
+  const rows = clues.split("|").filter((r) => r.length);
+  const R = rows.length;
+  const C = Math.max(...rows.map((r) => r.length));
+  if (!R || !C) return null;
+  const s = 30; // cell size
+  const pad = 12;
+  const W = C * s + pad * 2;
+  const H = R * s + pad * 2;
+  const dots: ReactNode[] = [];
+  for (let j = 0; j <= R; j++)
+    for (let i = 0; i <= C; i++)
+      dots.push(<circle key={`d-${i}-${j}`} cx={pad + i * s} cy={pad + j * s} r={1.6} fill="#94a3b8" />);
+  const nums: ReactNode[] = [];
+  rows.forEach((row, r) => {
+    for (let c = 0; c < C; c++) {
+      const ch = row[c];
+      if (ch && ch !== ".")
+        nums.push(
+          <text key={`n-${c}-${r}`} x={pad + (c + 0.5) * s} y={pad + (r + 0.5) * s} className="slk-num"
+            textAnchor="middle" dominantBaseline="central">{ch}</text>,
+        );
+    }
+  });
+  return (
+    <svg className="slk-board" viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="img" aria-label="puzzle initial state">
+      {dots}
+      {nums}
+    </svg>
+  );
+}
+
 function OSummary({ o, graph }: { o: RcObject; graph: Graph }) {
-  const attrs = Object.entries(o.attributes ?? {});
+  const clues = o.attributes?.clues;
+  const attrs = Object.entries(o.attributes ?? {}).filter(([k]) => k !== "clues");
   const users = [...graph.questions, ...graph.answers, ...graph.experiments].filter(
     (n) => (n as { objects?: string[] }).objects?.includes(o.id),
   );
   return (
     <div className="summary">
       <p className="lead">{o.name} <span className="qtype-pill qtype-bibliography">{o.kind}</span></p>
+      {clues && (
+        <Sec label="Initial state">
+          <SlitherlinkBoard clues={clues} />
+        </Sec>
+      )}
       {attrs.length > 0 && (
         <Sec label="Attributes">
           <div className="objattrs">

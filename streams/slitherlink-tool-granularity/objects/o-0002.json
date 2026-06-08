@@ -9,12 +9,13 @@
     "difficulty": "hard",
     "size": "7x7",
     "source": "Puzzle-loop #25425",
-    "solution": "unique, verified"
+    "solution": "unique, verified",
+    "clues": "322.2..|...23.3|31.3...|...3..2|.13.2..|3.213.2|....222"
   },
   "provenance": {
     "created_by": "human",
     "created_at": "2026-06-08T05:27:14.173Z",
-    "updated_at": "2026-06-08T05:27:14.173Z"
+    "updated_at": "2026-06-08T05:47:28.133Z"
   },
   "comments": {}
 }

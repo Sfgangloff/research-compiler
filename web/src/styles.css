@@ -66,6 +66,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
 .objattr-k { font-weight: 700; }
 .objattr-row { display: flex; gap: 6px; align-items: center; }
 .objattr-row input { flex: 1; border: 1px solid var(--border); border-radius: 5px; padding: 4px 6px; font: inherit; }
+.slk-board { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 4px; max-width: 100%; height: auto; }
+.slk-num { font: 600 14px ui-monospace, Menlo, monospace; fill: #0f172a; }
 .card.dim { opacity: 0.28; }
 .storydots { display: inline-flex; gap: 3px; margin-left: 4px; }
 .storydot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
