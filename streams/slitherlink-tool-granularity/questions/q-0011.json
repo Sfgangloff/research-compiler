@@ -1,0 +1,15 @@
+{
+  "type": "question",
+  "id": "q-0011",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Does the granularity sweet spot depend on model capability — does the Goldilocks zone shift with the model's frontier (so coarse tools help a weaker model on an easier puzzle)?",
+  "status": "open",
+  "qtype": "empirical",
+  "tags": [],
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-09T09:39:43.492Z",
+    "updated_at": "2026-06-09T09:39:43.492Z"
+  },
+  "comments": {}
+}

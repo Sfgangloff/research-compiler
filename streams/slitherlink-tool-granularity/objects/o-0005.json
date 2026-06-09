@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "id": "o-0005",
+  "stream": "slitherlink-tool-granularity",
+  "name": "Haiku 4.5",
+  "kind": "model",
+  "description": "Weakest, cheapest rung; expected to get granularity help on easier puzzles than Opus (H-MG / MG2).",
+  "attributes": {
+    "id": "claude-haiku-4-5",
+    "capability": "low",
+    "price_in_per_mtok": "$1",
+    "price_out_per_mtok": "$5",
+    "context": "200K",
+    "role": "weak rung"
+  },
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-09T09:40:10.908Z",
+    "updated_at": "2026-06-09T09:40:10.908Z"
+  },
+  "comments": {}
+}

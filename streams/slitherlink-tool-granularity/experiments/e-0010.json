@@ -1,0 +1,34 @@
+{
+  "type": "experiment",
+  "id": "e-0010",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Model x granularity sweep: the none/fine/medium/coarse toolsets across a fixed-size (7x7) difficulty ladder, run on a capability ladder of models (Haiku 4.5 < Sonnet 4.6 < Opus 4.7 anchor), meta-off, n>=3 per cell.",
+  "motivation": "Test H-MG: whether the difficulty rung where granularity helps shifts with model capability. Completes the a-0001 model x granularity pillar, never tested before.",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/run_model_grid.py"
+  },
+  "formal_results": "(planned — no trials yet) Analysis via harness/analyze_model_x_granularity.py: per (model,puzzle,toolset) cost mu+-sigma, benefit = 1 - cheapest/none, 1-sigma separation test, and the MG1 monotonicity verdict.",
+  "results_description": "(planned)",
+  "conclusions": "(planned)",
+  "methodology": "Models: claude-haiku-4-5, claude-sonnet-4-6, and the existing Opus-4.7 baseline reused as the strong anchor (--include-default). Fixed 7x7 board size so difficulty (search_nodes) varies independent of size; ladder = two generated low rungs + puzzle_002 (~501) + gen_7x7_s3_00 (3789) + gen_7x7_s1_00 (4547); puzzle_004 (15x15) as the shared ceiling for MG3. n>=3, meta-off, same 1-sigma overlap protocol as Phase-1/2. Resumable, window-budget-capped, model-aware resume counting; live runs gated on BUDGET_AUTHORIZED. Weaker models are cheaper (~0.6x Sonnet, ~0.25x Haiku of Opus).",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [],
+  "status": "planned",
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-09T09:39:43.799Z",
+    "updated_at": "2026-06-09T09:40:10.919Z"
+  },
+  "comments": {},
+  "report": "## Planned: model x granularity sweep\n\n**Goal.** Decide H-MG ([a-0014]): does the granularity Goldilocks zone move with model capability?\n\n**Code.** `harness/run_model_grid.py` (resumable, model-aware, budget-gated) + `harness/analyze_model_x_granularity.py` (groups by model x puzzle x toolset, computes the benefit surface, tests MG1). Design note: `notes/2026-06-09_model_x_granularity.md`.\n\n**Grid.** models {Haiku 4.5, Sonnet 4.6, Opus 4.7-anchor} x ladder {2 low 7x7 rungs, puzzle_002, gen_7x7_s3_00, gen_7x7_s1_00} x toolsets {none,fine,medium,coarse}, n>=3, meta-off. The Opus anchor reuses existing baseline trials, so only Sonnet/Haiku cells cost new money.\n\n**Run.**\n```\npython -m harness.run_model_grid --dry-run --include-default ...   # free plan\nexport BUDGET_AUTHORIZED=1\npython -m harness.run_model_grid --include-default ... --window-budget 8\npython -m harness.analyze_model_x_granularity\n```\n\n**Read-out.** MG1: peak-benefit difficulty non-decreasing with capability. MG2: granularity separates from `none` on an easier rung for weaker models. MG3: solve-rate cliff lower for weaker models.",
+  "objects": [
+    "o-0003",
+    "o-0004",
+    "o-0005",
+    "o-0001",
+    "o-0002"
+  ]
+}

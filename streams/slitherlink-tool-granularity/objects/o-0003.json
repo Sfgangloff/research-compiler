@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "id": "o-0003",
+  "stream": "slitherlink-tool-granularity",
+  "name": "Opus 4.7 (anchor)",
+  "kind": "model",
+  "description": "The model behind all prior trials (SDK default). Strongest rung; its baseline trials are reused as the anchor.",
+  "attributes": {
+    "id": "claude-opus-4-7",
+    "capability": "high (anchor)",
+    "price_in_per_mtok": "$5",
+    "price_out_per_mtok": "$25",
+    "context": "1M",
+    "role": "existing baseline, reused"
+  },
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-09T09:40:10.792Z",
+    "updated_at": "2026-06-09T09:40:10.792Z"
+  },
+  "comments": {}
+}

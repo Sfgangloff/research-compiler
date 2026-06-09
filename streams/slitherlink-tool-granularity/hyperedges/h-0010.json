@@ -1,0 +1,23 @@
+{
+  "type": "hyperedge",
+  "id": "h-0010",
+  "stream": "slitherlink-tool-granularity",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0013"
+    },
+    {
+      "kind": "A",
+      "id": "a-0001"
+    }
+  ],
+  "target": "q-0011",
+  "rationale": "The Goldilocks thesis was established on a single model (Opus 4.7); a-0001 promised a model x granularity interaction that was never tested. If 'intermediate difficulty' is really 'difficulty relative to the model', the benefit band should move with capability.",
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-09T09:39:43.492Z",
+    "updated_at": "2026-06-09T09:39:43.492Z"
+  },
+  "comments": {}
+}

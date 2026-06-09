@@ -1,0 +1,19 @@
+{
+  "type": "answer",
+  "id": "a-0014",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Hypothesis H-MG (capability-relative Goldilocks): the granularity benefit peaks where puzzle difficulty ~ the model's own frontier, so the Goldilocks band is a diagonal in the (capability x difficulty) plane, not a fixed difficulty range. Predicts a weaker model gets coarse-tool help on easier puzzles than Opus does. PROPOSED — sweep coded, not yet run.",
+  "status": "proposed",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-09T09:39:43.748Z",
+    "updated_at": "2026-06-09T09:39:43.759Z"
+  },
+  "comments": {},
+  "report": "## H-MG: the Goldilocks zone is model-relative\n\nThe Phase-2 thesis ([a-0013]) says granularity cuts cost **only at intermediate difficulty**. But every trial behind it ran on **Opus 4.7**. H-MG sharpens the claim: *intermediate* is relative to the **model's own frontier**, so the band where tools help is a **diagonal** in the (capability x difficulty) plane.\n\n| | easy | mid | hard | ceiling |\n|-------|------|------|------|---------|\n| Haiku | help | — | — | xxx |\n| Sonnet| — | help | — | xxx |\n| Opus | — | — | help | xxx |\n\n### Testable predictions\n- **MG1 (shift):** peak-benefit difficulty (argmin of cheapest-toolset / none) is non-decreasing Haiku -> Sonnet -> Opus, strictly increasing on at least one step.\n- **MG2 (left-shift):** on an easy/low-node 7x7 rung where granularity did **not** separate from `none` for Opus, it **does** separate (1 sigma) for a weaker model.\n- **MG3 (ceiling tracks capability):** the all-toolsets-fail difficulty is lower for weaker models (Haiku's wall comes earlier than Opus's).\n\n### Falsifier\nIf peak-benefit difficulty is flat or non-monotone in capability, granularity benefit is a property of the **task**, not the **model-task gap**, and H-MG is wrong as stated.\n\nReframes the headline from *\"granularity helps at intermediate difficulty\"* to *\"granularity helps when difficulty ~ the model's frontier.\"*"
+}
