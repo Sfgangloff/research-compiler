@@ -10,6 +10,7 @@ import { parseArgs, type ParsedArgs } from "./args.js";
 import { Engine } from "../engine/engine.js";
 import { FsStore } from "../engine/store.js";
 import { ConsentError, NotFoundError, ValidationError } from "../engine/errors.js";
+import { ideate } from "./ideate.js";
 import type { Actor, CodePointer, NodeRef } from "../engine/types.js";
 
 const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -100,6 +101,13 @@ Repos (experiment repos referenced by name, not path)
 Cage (Claude Code restriction)
   rc cage arm | disarm | status     (toggles .rc/cage.json)
 
+Ideation (generates + judges sub-questions via the Claude Code CLI)
+  rc ideate --stream <s> --question <qid> [--target 5] [--threshold 6]
+            [--tract-floor 6] [--max-rounds 3] [--judges 2] [--batch 8]
+            [--model <m>] [--insert]
+            (scores interestingness gated on tractability; propose-only
+             unless --insert. Spends subscription compute per run.)
+
 Maintenance
   rc validate [--stream <s>]
   rc export graph --stream <s>
@@ -110,7 +118,7 @@ Maintenance
 Long text: pass --<flag>-file <path> to read any text flag from a file.
 `;
 
-function run(argv: string[]): number {
+function run(argv: string[]): number | Promise<number> {
   const a = parseArgs(argv);
   const [group, sub] = a.positionals;
 
@@ -144,6 +152,25 @@ function run(argv: string[]): number {
 
   const eng = makeEngine();
   const stream = () => a.require("stream");
+
+  if (group === "ideate") {
+    const num = (name: string, def: number) => {
+      const v = a.get(name);
+      return v === undefined ? def : Number(v);
+    };
+    return ideate(eng, {
+      slug: stream(),
+      qid: a.require("question"),
+      target: num("target", 5),
+      threshold: num("threshold", 6),
+      tractFloor: num("tract-floor", 6),
+      maxRounds: num("max-rounds", 3),
+      judges: num("judges", 2),
+      batch: num("batch", 8),
+      model: a.get("model"),
+      insert: a.bool("insert"),
+    });
+  }
 
   switch (group) {
     case "stream": {
@@ -417,9 +444,7 @@ function run(argv: string[]): number {
   return 2;
 }
 
-try {
-  process.exit(run(process.argv.slice(2)));
-} catch (err) {
+function handleError(err: unknown): never {
   if (err instanceof ValidationError) {
     process.stderr.write(`validation error: ${err.message}\n`);
     for (const p of err.problems) process.stderr.write(`  - ${p}\n`);
@@ -435,4 +460,15 @@ try {
   }
   process.stderr.write(`error: ${(err as Error).message}\n`);
   process.exit(1);
+}
+
+try {
+  const result = run(process.argv.slice(2));
+  if (result instanceof Promise) {
+    result.then((code) => process.exit(code)).catch(handleError);
+  } else {
+    process.exit(result);
+  }
+} catch (err) {
+  handleError(err);
 }
