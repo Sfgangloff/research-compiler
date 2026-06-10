@@ -113,6 +113,10 @@ export function ColumnView({
   const answers = [...graph.answers].sort(byId);
   const experiments = showExperiments ? [...graph.experiments].sort(byId) : [];
   const objects = [...(graph.objects ?? [])].sort(byId);
+  // Objects split into two columns by kind: models get their own "Models"
+  // lane; everything else (puzzles, etc.) is the "Data" lane.
+  const modelObjects = objects.filter((o) => o.kind === "model");
+  const dataObjects = objects.filter((o) => o.kind !== "model");
 
   // Glossary: terms are clickable; the definition shows in one shared box.
   const glossary = graph.stream.glossary ?? {};
@@ -281,9 +285,16 @@ export function ColumnView({
               ))}
             </Lane>
           )}
-          {objects.length > 0 && (
-            <Lane title="Objects">
-              {objects.map((o) => (
+          {dataObjects.length > 0 && (
+            <Lane title="Data">
+              {dataObjects.map((o) => (
+                <OCard key={o.id} o={o} sel={selectedId === o.id} onSelect={onSelect} setRef={setRef(o.id)} render={render} dim={!!members && !members.has(o.id)} dots={dotsFor(o.stories, storyColors)} />
+              ))}
+            </Lane>
+          )}
+          {modelObjects.length > 0 && (
+            <Lane title="Models">
+              {modelObjects.map((o) => (
                 <OCard key={o.id} o={o} sel={selectedId === o.id} onSelect={onSelect} setRef={setRef(o.id)} render={render} dim={!!members && !members.has(o.id)} dots={dotsFor(o.stories, storyColors)} />
               ))}
             </Lane>

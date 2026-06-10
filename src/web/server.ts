@@ -100,6 +100,33 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
   if (url.pathname === "/info" && method === "GET") {
     return send(res, 200, { artifact_dir: FRONTEND_DIST, feedback_dir: FEEDBACK_DIR, port: PORT });
   }
+  if (url.pathname === "/pending" && method === "GET") {
+    // Inbox comments that no history change has answered yet — lets the agent
+    // pull open feedback at any time, even with no live Monitor watching.
+    const answered = new Set<string>();
+    const hf = feedbackFile("history.json");
+    if (existsSync(hf)) {
+      try {
+        for (const b of JSON.parse(readFileSync(hf, "utf8") || "[]"))
+          for (const ch of b.changes ?? [])
+            for (const cid of ch.in_response_to ?? []) answered.add(cid);
+      } catch { /* malformed history — treat as nothing answered */ }
+    }
+    const pending: unknown[] = [];
+    const inf = feedbackFile("inbox.jsonl");
+    if (existsSync(inf)) {
+      for (const line of readFileSync(inf, "utf8").split("\n")) {
+        const t = line.trim();
+        if (!t) continue;
+        let batch: { comments?: { id?: string; comment?: string; type?: string }[]; page_url?: string; submitted_at?: string };
+        try { batch = JSON.parse(t); } catch { continue; }
+        for (const c of batch.comments ?? [])
+          if (c.id && !answered.has(c.id))
+            pending.push({ id: c.id, comment: c.comment ?? "", type: c.type, page_url: batch.page_url, submitted_at: batch.submitted_at });
+      }
+    }
+    return send(res, 200, { pending });
+  }
   if (url.pathname === "/feedback/history.json" && method === "GET") {
     const f = feedbackFile("history.json");
     if (!existsSync(f)) writeFileSync(f, "[]");
