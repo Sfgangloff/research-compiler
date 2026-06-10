@@ -12,7 +12,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:29.844Z",
-    "updated_at": "2026-06-08T02:05:30.729Z",
+    "updated_at": "2026-06-10T05:01:07.177Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
@@ -26,32 +26,27 @@
     {
       "title": "“The Tool Illusion” (COLM 2026)",
       "summary": "Web-agent study arguing that how tools are framed/granularized changes agent behaviour.",
-      "relevance": "Closest prior work — it already makes the descriptive claim that “tool granularity matters”, so that headline is scooped. Our novelty has to move past description."
+      "relevance": "Closest prior work and the one genuinely about granularity: it already makes the descriptive claim that “tool granularity matters,” so that headline is scooped. Our novelty must move past description to a difficulty-controlled cost model."
     },
     {
-      "title": "Toolformer (Schick et al., 2023)",
-      "summary": "LMs teach themselves to call external APIs via self-supervised demonstrations.",
-      "relevance": "Establishes that tool use is learnable, but treats the toolset as fixed — granularity is never a controlled variable."
+      "title": "Executable Code Actions Elicit Better LLM Agents (CodeAct; Wang et al., ICML 2024)",
+      "summary": "Replaces fixed JSON tool calls with a single expressive action space: executable Python code.",
+      "relevance": "A granularity-adjacent controlled comparison — it varies the *expressiveness* of the action space (consolidated code vs. constrained predefined tools) and finds the more expressive space wins (+up to 20%). But it argues for one extreme (collapse everything into code), not a graded none/fine/medium/coarse sweep, and never ties granularity to a formal-difficulty cost curve."
     },
     {
-      "title": "ReAct (Yao et al., 2022)",
+      "title": "Less is More: Optimizing Function Calling for LLM Execution on Edge Devices (Paramanayakam et al., DATE 2025)",
+      "summary": "Selectively reduces the number of tools exposed to the model on edge hardware.",
+      "relevance": "Exhibits a phenomenon close to ours: fewer/coarser tool exposure raises agentic success while cutting execution time up to 70% and power up to 40% — a tool-configuration→cost effect. But it tunes tool *selection/count* for a resource budget, not granularity as an axis swept against problem difficulty."
+    },
+    {
+      "title": "ReAct (Yao et al., ICLR 2023)",
       "summary": "Interleaves chain-of-thought reasoning with tool actions.",
-      "relevance": "Defines the reason–act loop we operate in, yet says nothing about varying the granularity of the action/tool space."
-    },
-    {
-      "title": "Gorilla (Patil et al., 2023)",
-      "summary": "LLM trained to call from a massive catalogue of APIs via retrieval.",
-      "relevance": "Scales the *number* of tools, which is adjacent to granularity, but optimises retrieval rather than isolating granularity as an axis with a difficulty/cost model."
-    },
-    {
-      "title": "ToolLLM / ToolBench (Qin et al., 2023)",
-      "summary": "Benchmark of 16k+ real-world APIs for tool-use agents.",
-      "relevance": "Big tool spaces, but granularity is entangled with task variety; no controlled granularity sweep on a fixed problem family."
+      "relevance": "Background, not a granularity study: it defines the reason–act loop our agents run in but holds the tool/action granularity fixed."
     },
     {
       "title": "Berkeley Function-Calling Leaderboard (BFCL, 2024)",
       "summary": "Standard evaluation of function-calling accuracy across models.",
-      "relevance": "Measures tool-calling quality but not granularity-as-a-knob — confirms the community lacks a granularity-controlled testbed, which is the gap we fill."
+      "relevance": "Motivates the gap: the community measures tool-calling quality but never granularity-as-a-knob on a fixed problem family, which is the controlled testbed we add."
     }
   ]
 }
