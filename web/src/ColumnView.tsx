@@ -263,6 +263,17 @@ export function ColumnView({
     else cardRefs.current.delete(id);
   };
 
+  // Scroll the selected card into view (e.g. after clicking a toolset link that
+  // jumps to a far column). "nearest" means an already-visible card doesn't move.
+  useLayoutEffect(() => {
+    if (!selectedId) return;
+    cardRefs.current.get(selectedId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "nearest",
+    });
+  }, [selectedId]);
+
   const stroke: Record<EdgePath["kind"], string> = {
     answers: "#475569",
     evidence: "#7c3aed",
