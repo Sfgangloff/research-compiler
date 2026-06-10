@@ -35,6 +35,10 @@
         "required": ["name", "color"],
         "properties": { "name": { "type": "string" }, "color": { "type": "string" } }
       }
+    },
+    "read": {
+      "type": "array",
+      "items": { "type": "string" }
     }
   }
 }

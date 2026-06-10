@@ -148,6 +148,8 @@ export interface StreamMeta {
   glossary?: Record<string, string>;
   /** publishable storylines: id -> { name, color }. */
   stories?: Record<string, Story>;
+  /** node ids the reader has marked "read" (personal reading-progress overlay). */
+  read?: string[];
 }
 
 export interface Story {

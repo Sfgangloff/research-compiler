@@ -648,6 +648,20 @@ export class Engine {
     return ent;
   }
 
+  // ---- reading progress (personal overlay; not part of the reasoning DAG) ----
+
+  /** Mark a node read / unread. Stored as a stream-level id set. */
+  setRead(slug: string, nodeId: string, read: boolean): StreamMeta {
+    const g = this.getStream(slug);
+    this.requireNode(g, nodeId); // node must exist
+    const cur = new Set(g.stream.read ?? []);
+    if (read) cur.add(nodeId);
+    else cur.delete(nodeId);
+    g.stream.read = [...cur].sort();
+    this.commit(g, [g.stream], [], "setRead", [nodeId], String(read));
+    return g.stream;
+  }
+
   /** Set a comment on the (answer -> question) edge. */
   setEdgeComment(slug: string, aid: string, qid: string, text: string): Answer {
     const g = this.getStream(slug);

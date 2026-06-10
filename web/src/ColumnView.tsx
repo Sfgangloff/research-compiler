@@ -97,13 +97,16 @@ export function ColumnView({
   onSelect,
   showExperiments,
   activeStory,
+  onToggleRead,
 }: {
   graph: Graph;
   selectedId: string | null;
   onSelect: (id: string | null) => void;
   showExperiments: boolean;
   activeStory: string | null;
+  onToggleRead: (id: string, read: boolean) => void;
 }) {
+  const readSet = useMemo(() => new Set(graph.stream.read ?? []), [graph.stream.read]);
   const contentRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const [edges, setEdges] = useState<EdgePath[]>([]);
@@ -270,32 +273,32 @@ export function ColumnView({
         <div className="lanes">
           <Lane title="Questions">
             {questions.map((q) => (
-              <QCard key={q.id} q={q} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} render={render} dim={!!members && !members.has(q.id)} dots={dotsFor(q.stories, storyColors)} />
+              <QCard key={q.id} q={q} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} render={render} dim={!!members && !members.has(q.id)} dots={dotsFor(q.stories, storyColors)} read={readSet.has(q.id)} onToggleRead={onToggleRead} />
             ))}
           </Lane>
           <Lane title="Answers">
             {answers.map((a) => (
-              <ACard key={a.id} a={a} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} dim={!!members && !members.has(a.id)} dots={dotsFor(a.stories, storyColors)} />
+              <ACard key={a.id} a={a} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} dim={!!members && !members.has(a.id)} dots={dotsFor(a.stories, storyColors)} read={readSet.has(a.id)} onToggleRead={onToggleRead} />
             ))}
           </Lane>
           {showExperiments && (
             <Lane title="Experiments">
               {experiments.map((e) => (
-                <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} render={render} dim={!!members && !members.has(e.id)} dots={dotsFor(e.stories, storyColors)} />
+                <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} render={render} dim={!!members && !members.has(e.id)} dots={dotsFor(e.stories, storyColors)} read={readSet.has(e.id)} onToggleRead={onToggleRead} />
               ))}
             </Lane>
           )}
           {dataObjects.length > 0 && (
             <Lane title="Data">
               {dataObjects.map((o) => (
-                <OCard key={o.id} o={o} sel={selectedId === o.id} onSelect={onSelect} setRef={setRef(o.id)} render={render} dim={!!members && !members.has(o.id)} dots={dotsFor(o.stories, storyColors)} />
+                <OCard key={o.id} o={o} sel={selectedId === o.id} onSelect={onSelect} setRef={setRef(o.id)} render={render} dim={!!members && !members.has(o.id)} dots={dotsFor(o.stories, storyColors)} read={readSet.has(o.id)} onToggleRead={onToggleRead} />
               ))}
             </Lane>
           )}
           {modelObjects.length > 0 && (
             <Lane title="Models">
               {modelObjects.map((o) => (
-                <OCard key={o.id} o={o} sel={selectedId === o.id} onSelect={onSelect} setRef={setRef(o.id)} render={render} dim={!!members && !members.has(o.id)} dots={dotsFor(o.stories, storyColors)} />
+                <OCard key={o.id} o={o} sel={selectedId === o.id} onSelect={onSelect} setRef={setRef(o.id)} render={render} dim={!!members && !members.has(o.id)} dots={dotsFor(o.stories, storyColors)} read={readSet.has(o.id)} onToggleRead={onToggleRead} />
               ))}
             </Lane>
           )}
@@ -323,9 +326,15 @@ function Lane({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-function Head({ id, color, status, root, dots, pill }: { id: string; color: string; status: string; root?: boolean; dots?: { color: string; name: string }[]; pill?: string | null }) {
+function Head({ id, color, status, root, dots, pill, read, onToggleRead }: { id: string; color: string; status: string; root?: boolean; dots?: { color: string; name: string }[]; pill?: string | null; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
   return (
     <div className="cardhead">
+      <button
+        className={"readdot" + (read ? " on" : "")}
+        title={read ? "Mark unread" : "Mark read"}
+        aria-label={read ? "Mark unread" : "Mark read"}
+        onClick={(e) => { e.stopPropagation(); onToggleRead(id, !read); }}
+      />
       <span className="statusdot" style={{ background: color }} />
       <span className="cid">{id}</span>
       {root && <span className="roottag">root</span>}
@@ -353,29 +362,29 @@ function Dots({ dots }: { dots: { color: string; name: string }[] }) {
   );
 }
 
-function QCard({ q, root, sel, onSelect, setRef, render, dim, dots }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
+function QCard({ q, root, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
   return (
-    <div ref={setRef} className={"card q" + (sel ? " sel" : "") + (root ? " root" : "") + (dim ? " dim" : "")} onClick={() => onSelect(q.id)}>
-      <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} dots={dots} pill={q.qtype && q.qtype !== "empirical" ? q.qtype : null} />
+    <div ref={setRef} className={"card q" + (sel ? " sel" : "") + (root ? " root" : "") + (dim ? " dim" : "") + (read ? " read" : "")} onClick={() => onSelect(q.id)}>
+      <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} dots={dots} pill={q.qtype && q.qtype !== "empirical" ? q.qtype : null} read={read} onToggleRead={onToggleRead} />
       <div className="ctext">{render(q.text)}</div>
     </div>
   );
 }
 
-function ACard({ a, sel, onSelect, setRef, render, dim, dots }: { a: Answer; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
+function ACard({ a, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { a: Answer; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
   return (
-    <div ref={setRef} className={"card a" + (sel ? " sel" : "") + (dim ? " dim" : "")} onClick={() => onSelect(a.id)}>
-      <Head id={a.id} color={A_COLOR[a.status] ?? "#f59e0b"} status={a.status} dots={dots} />
+    <div ref={setRef} className={"card a" + (sel ? " sel" : "") + (dim ? " dim" : "") + (read ? " read" : "")} onClick={() => onSelect(a.id)}>
+      <Head id={a.id} color={A_COLOR[a.status] ?? "#f59e0b"} status={a.status} dots={dots} read={read} onToggleRead={onToggleRead} />
       <div className="ctext">{render(a.text)}</div>
       <div className="cmeta">answers {a.answers.join(", ")}{a.backed_by.length ? ` · ⟵ ${a.backed_by.join(", ")}` : ""}</div>
     </div>
   );
 }
 
-function ECard({ e, sel, onSelect, setRef, render, dim, dots }: { e: Experiment; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
+function ECard({ e, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { e: Experiment; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
   return (
-    <div ref={setRef} className={"card e" + (sel ? " sel" : "") + (dim ? " dim" : "")} onClick={() => onSelect(e.id)}>
-      <Head id={e.id} color={E_COLOR[e.status] ?? "#7c3aed"} status={e.status} dots={dots} />
+    <div ref={setRef} className={"card e" + (sel ? " sel" : "") + (dim ? " dim" : "") + (read ? " read" : "")} onClick={() => onSelect(e.id)}>
+      <Head id={e.id} color={E_COLOR[e.status] ?? "#7c3aed"} status={e.status} dots={dots} read={read} onToggleRead={onToggleRead} />
       <div className="ctext">{render(e.description)}</div>
       {e.formal_results && <div className="cmeta">{render(e.formal_results.slice(0, 140) + (e.formal_results.length > 140 ? "…" : ""))}</div>}
       {e.report && <div className="creport">📄 report · {e.report.length.toLocaleString()} chars</div>}
@@ -383,11 +392,17 @@ function ECard({ e, sel, onSelect, setRef, render, dim, dots }: { e: Experiment;
   );
 }
 
-function OCard({ o, sel, onSelect, setRef, render, dim, dots }: { o: RcObject; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[] }) {
+function OCard({ o, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { o: RcObject; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
   const attrs = Object.entries(o.attributes ?? {}).filter(([k]) => k !== "clues");
   return (
-    <div ref={setRef} className={"card o" + (sel ? " sel" : "") + (dim ? " dim" : "")} onClick={() => onSelect(o.id)}>
+    <div ref={setRef} className={"card o" + (sel ? " sel" : "") + (dim ? " dim" : "") + (read ? " read" : "")} onClick={() => onSelect(o.id)}>
       <div className="cardhead">
+        <button
+          className={"readdot" + (read ? " on" : "")}
+          title={read ? "Mark unread" : "Mark read"}
+          aria-label={read ? "Mark unread" : "Mark read"}
+          onClick={(e) => { e.stopPropagation(); onToggleRead(o.id, !read); }}
+        />
         <span className="statusdot" style={{ background: "#0d9488" }} />
         <span className="cid">{o.id}</span>
         {dots && <Dots dots={dots} />}

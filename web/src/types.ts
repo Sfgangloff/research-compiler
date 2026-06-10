@@ -123,6 +123,7 @@ export interface StreamMeta {
   report?: string;
   glossary?: Record<string, string>;
   stories?: Record<string, Story>;
+  read?: string[];
 }
 
 export interface Story {

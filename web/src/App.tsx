@@ -31,6 +31,18 @@ export function App() {
     refresh();
   }, [refresh]);
 
+  // Reading progress: optimistic local update + persist; resync on failure.
+  const toggleRead = useCallback((id: string, read: boolean) => {
+    if (!slug) return;
+    setGraph((g) => {
+      if (!g) return g;
+      const cur = new Set(g.stream.read ?? []);
+      if (read) cur.add(id); else cur.delete(id);
+      return { ...g, stream: { ...g.stream, read: [...cur] } };
+    });
+    api.setRead(slug, id, read).catch(() => refresh());
+  }, [slug, refresh]);
+
   const selected: Entity | null =
     graph && selectedId
       ? graph.questions.find((q) => q.id === selectedId) ??
@@ -184,7 +196,7 @@ export function App() {
 
       <main className="main">
         {graph ? (
-          <ColumnView graph={graph} selectedId={selectedId} onSelect={setSelectedId} showExperiments={showExperiments} activeStory={activeStory} />
+          <ColumnView graph={graph} selectedId={selectedId} onSelect={setSelectedId} showExperiments={showExperiments} activeStory={activeStory} onToggleRead={toggleRead} />
         ) : (
           <div className="placeholder">Select or create a research stream.</div>
         )}

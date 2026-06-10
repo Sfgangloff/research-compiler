@@ -222,6 +222,9 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
     if (parts[4] === "objects" && method === "PUT") {
       return send(res, 200, eng.setNodeObjects(slug, id, body.objects ?? []));
     }
+    if (parts[4] === "read" && method === "PUT") {
+      return send(res, 200, eng.setRead(slug, id, !!body.read));
+    }
     if (parts[4] === "edge-comment" && method === "PUT") {
       // body: { qid, text }
       return send(res, 200, eng.setEdgeComment(slug, id, body.qid, body.text ?? ""));

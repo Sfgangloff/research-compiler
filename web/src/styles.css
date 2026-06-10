@@ -69,9 +69,18 @@ hr { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
 .slk-board { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 4px; max-width: 100%; height: auto; }
 .slk-num { font: 600 14px ui-monospace, Menlo, monospace; fill: #0f172a; }
 .card.dim { opacity: 0.28; }
+/* Read (personal reading progress): gray the whole card so unread ones stand out. */
+.card.read { opacity: 0.5; background: #f4f4f5; }
+.card.read .ctext { color: #6b7280; }
+.card.read.sel { opacity: 1; }
 .storydots { display: inline-flex; gap: 3px; margin-left: 4px; }
 .storydot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
 .card .cardhead { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+/* Read toggle: click to mark a card read/unread. Empty ring = unread, filled = read. */
+.readdot { width: 13px; height: 13px; border-radius: 50%; flex: none; padding: 0; cursor: pointer;
+  border: 1.5px solid var(--border); background: #fff; transition: background .1s, border-color .1s; }
+.readdot:hover { border-color: #16a34a; }
+.readdot.on { background: #16a34a; border-color: #16a34a; }
 .statusdot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
 .cid { font-weight: 700; font-size: 11px; font-family: ui-monospace, Menlo, monospace; }
 .roottag { font-size: 9px; font-weight: 700; color: #fff; background: #111827; border-radius: 4px; padding: 1px 5px; }
