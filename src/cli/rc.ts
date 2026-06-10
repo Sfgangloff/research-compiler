@@ -105,7 +105,9 @@ Ideation (generates + judges sub-questions via the Claude Code CLI)
   rc ideate --stream <s> --question <qid> [--scope local|stream] [--target 5]
             [--threshold 6] [--tract-floor 6] [--max-rounds 3] [--judges 2]
             [--batch 8] [--model <m>] [--insert]
-            (scores interestingness gated on tractability; propose-only unless
+            (scores surprise gated on BUILDABILITY — how hard the needed
+             apparatus is to produce, not whether code already exists;
+             --tract-floor is that buildability floor. Propose-only unless
              --insert. --scope local (default) = facets of this question only;
              --scope stream = frontier-finder using the whole stream. Spends
              subscription compute per run.)

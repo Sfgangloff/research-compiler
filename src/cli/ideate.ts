@@ -8,8 +8,10 @@
 //    BATCH: one call generates the whole candidate batch, one call scores the
 //    whole batch. A judge "panel" is N such scoring calls, averaged.
 //  - "Interesting" = surprise (an expert could NOT predict the answer) GATED on
-//    tractability (answerable with this stream's apparatus). Untestable or
-//    obvious questions are dropped regardless of how shiny they sound.
+//    tractability scored as BUILDABILITY — how hard it is to PRODUCE the
+//    apparatus needed to answer it (a cheap script over logs scores high; the
+//    fundamentally infeasible scores low), NOT whether existing code already
+//    answers it. Obvious or genuinely infeasible questions are dropped.
 import { execFile } from "node:child_process";
 import { tmpdir } from "node:os";
 import type { Engine } from "../engine/engine.js";
@@ -141,7 +143,7 @@ export async function ideate(eng: Engine, opts: IdeateOpts): Promise<number> {
   // stay at the seed's level of generality. In STREAM scope, the full apparatus
   // (experiment descriptions) is in play -> "frontier finder".
   const apparatus = isLocal
-    ? "An LLM agent solves instances of a formal puzzle task; we control the granularity of the tool-set it is given (from no tools up to coarse high-level tools). Per run we can measure: dollar cost, number of turns, tokens, and whether it solved - across puzzle difficulty and across models."
+    ? "An LLM agent solves instances of a formal puzzle task under a tool-set whose granularity we control (from no tools up to coarse high-level tools). Every run logs the full trajectory (messages, tool calls, outcome). Existing metrics include cost, turns, tokens, solve/fail - but new analyses over the logs, new metrics or tools, and bounded new runs can all be built; judge a question by how hard its needed apparatus is to BUILD, not whether it already exists."
     : [...g.experiments.values()].map((e) => `- ${e.description}`).slice(0, 12).join("\n");
   const domain = isLocal ? g.stream.title : `${g.stream.title}: ${g.stream.description}`;
 
@@ -177,13 +179,13 @@ Research domain: ${domain}
 
 Seed question: "${seed.text}"
 
-What is measurable (use this only to judge what is testable):
-${apparatus || "(LLM agents solving a task across controlled conditions; measurable cost/turns/tokens/success.)"}
+The research substrate (full per-run trajectories are logged; you can build NEW analyses, metrics, tools, or bounded runs on top of this — do not assume you are limited to what is already measured):
+${apparatus || "(LLM agents solving a task across controlled conditions; trajectories logged; new analyses/metrics/runs are buildable.)"}
 ${scopeConstraint}${avoidBlock}
 Propose ${opts.batch} candidate sub-questions of the seed. Each MUST be:
  (a) NON-OBVIOUS — a knowledgeable researcher could NOT confidently predict the answer in advance; avoid questions whose result is foreseeable (e.g. "does more X help"), and
- (b) TRACTABLE — answerable with what is measurable above, with a concrete measurable outcome.
-Favor questions that could overturn an assumption, expose a non-monotonicity, or reveal a mechanism. For each give: text, why_nonobvious, how_testable.`;
+ (b) FEASIBLE TO INSTRUMENT — answerable by building a reasonable amount of new analysis or experiment on this substrate (a new analyzer over the logs, a new metric/tool, or a bounded run). Do NOT avoid a question just because the code to answer it does not exist yet.
+Favor questions that could overturn an assumption, expose a non-monotonicity, or reveal a mechanism. For each give: text, why_nonobvious, how_testable (name the analysis/experiment you'd build).`;
     const gen = await callClaude(genPrompt, GEN_SCHEMA, opts.model);
     cost += gen.cost;
     let cands: Candidate[] = (gen.data.questions ?? []).map((q: any) => ({
@@ -199,16 +201,16 @@ Favor questions that could overturn an assumption, expose a non-monotonicity, or
 `You are a HARSH skeptic scoring candidate research sub-questions for a researcher who is tired of obvious, unsurprising results.
 
 Research domain: ${domain}
-Apparatus (what is actually testable):
+Research substrate (trajectories are logged; new analyses/metrics/tools/runs can be built on top — judge by what is BUILDABLE, not only what already exists):
 ${apparatus}
 
 Candidates:
 ${list}
 
 For EACH candidate, in this order:
-1. obvious_because: argue the STRONGEST case that the question is actually obvious (answer predictable a priori) or not testable with the apparatus. If you cannot, say why it genuinely resists prediction.
+1. obvious_because: argue the STRONGEST case that the question is actually obvious (answer predictable a priori) or fundamentally unanswerable. If you cannot, say why it genuinely resists prediction.
 2. surprise: 0-10. 10 = the answer would genuinely surprise an expert; 0 = the answer is foreseeable. Most questions deserve <5. Be stingy.
-3. tractability: 0-10. 10 = a concrete, measurable experiment with this apparatus; 0 = vague or unanswerable here.
+3. tractability: 0-10, scored as BUILDABILITY — how hard it is to PRODUCE what's needed to answer the question, NOT whether it is already measurable. 10 = the needed analysis/experiment is cheap and obvious to build on this substrate (e.g. a small script over existing logs); 5 = needs a moderate new instrument, metric, or bounded run; 0 = requires something fundamentally infeasible or unmeasurable in principle. Do NOT penalize a question for needing code that does not exist yet — only for genuine infeasibility.
 Return a score object per candidate (use its index).`;
 
     const sums = cands.map(() => ({ s: 0, t: 0, n: 0, why: "" as string }));
