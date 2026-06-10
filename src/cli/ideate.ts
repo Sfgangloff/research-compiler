@@ -124,6 +124,7 @@ export interface IdeateOpts {
   batch: number;
   model?: string;
   insert: boolean;
+  scope: "local" | "stream";
 }
 
 export async function ideate(eng: Engine, opts: IdeateOpts): Promise<number> {
@@ -134,11 +135,15 @@ export async function ideate(eng: Engine, opts: IdeateOpts): Promise<number> {
     return 4;
   }
   const existingQs = [...g.questions.values()].map((q) => q.text);
-  const apparatus = [...g.experiments.values()]
-    .map((e) => `- ${e.description}`)
-    .slice(0, 12)
-    .join("\n");
-  const domain = `${g.stream.title}: ${g.stream.description}`;
+  const isLocal = opts.scope === "local";
+  // In LOCAL scope, generation engages only the seed question: a generic
+  // capabilities statement (no findings, no specific instances) so candidates
+  // stay at the seed's level of generality. In STREAM scope, the full apparatus
+  // (experiment descriptions) is in play -> "frontier finder".
+  const apparatus = isLocal
+    ? "An LLM agent solves instances of a formal puzzle task; we control the granularity of the tool-set it is given (from no tools up to coarse high-level tools). Per run we can measure: dollar cost, number of turns, tokens, and whether it solved - across puzzle difficulty and across models."
+    : [...g.experiments.values()].map((e) => `- ${e.description}`).slice(0, 12).join("\n");
+  const domain = isLocal ? g.stream.title : `${g.stream.title}: ${g.stream.description}`;
 
   const log = (m: string) => process.stderr.write(m + "\n");
   log(`\nideate: seed ${opts.qid} — "${seed.text}"`);
@@ -153,6 +158,18 @@ export async function ideate(eng: Engine, opts: IdeateOpts): Promise<number> {
   while (accepted.length < opts.target && round < opts.maxRounds) {
     round++;
     // ---- generate ----
+    // In local scope the generator sees ONLY the seed (+ generic apparatus +
+    // already-accepted this run, for intra-run dedup) so candidates stay facets
+    // of the seed. In stream scope it also sees every existing question.
+    const avoidList = isLocal
+      ? accepted.map((a) => a.text)
+      : [...seenTexts, ...accepted.map((a) => a.text)];
+    const avoidBlock = avoidList.length
+      ? `\nDo NOT duplicate these already-proposed questions:\n${avoidList.map((t) => `- ${t}`).join("\n")}\n`
+      : "";
+    const scopeConstraint = isLocal
+      ? `\nSTAY STRICTLY WITHIN THE SEED QUESTION. Explore distinct facets of the seed itself, at its level of generality. Do NOT presuppose any particular finding or result, and do NOT reference specific puzzles, models, datasets, metrics, or prior experiments by name. The questions must engage only with the seed question.\n`
+      : "";
     const genPrompt =
 `You are helping a researcher find genuinely INTERESTING sub-questions of a seed question.
 
@@ -160,15 +177,12 @@ Research domain: ${domain}
 
 Seed question: "${seed.text}"
 
-The apparatus available to answer questions (use this to judge what is testable):
+What is measurable (use this only to judge what is testable):
 ${apparatus || "(LLM agents solving a task across controlled conditions; measurable cost/turns/tokens/success.)"}
-
-Already-explored questions to AVOID duplicating:
-${[...seenTexts, ...accepted.map((a) => a.text)].map((t) => `- ${t}`).join("\n")}
-
+${scopeConstraint}${avoidBlock}
 Propose ${opts.batch} candidate sub-questions of the seed. Each MUST be:
  (a) NON-OBVIOUS — a knowledgeable researcher could NOT confidently predict the answer in advance; avoid questions whose result is foreseeable (e.g. "does more X help"), and
- (b) TRACTABLE — answerable with the apparatus above, with a concrete measurable outcome.
+ (b) TRACTABLE — answerable with what is measurable above, with a concrete measurable outcome.
 Favor questions that could overturn an assumption, expose a non-monotonicity, or reveal a mechanism. For each give: text, why_nonobvious, how_testable.`;
     const gen = await callClaude(genPrompt, GEN_SCHEMA, opts.model);
     cost += gen.cost;

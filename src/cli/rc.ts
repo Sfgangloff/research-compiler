@@ -102,11 +102,13 @@ Cage (Claude Code restriction)
   rc cage arm | disarm | status     (toggles .rc/cage.json)
 
 Ideation (generates + judges sub-questions via the Claude Code CLI)
-  rc ideate --stream <s> --question <qid> [--target 5] [--threshold 6]
-            [--tract-floor 6] [--max-rounds 3] [--judges 2] [--batch 8]
-            [--model <m>] [--insert]
-            (scores interestingness gated on tractability; propose-only
-             unless --insert. Spends subscription compute per run.)
+  rc ideate --stream <s> --question <qid> [--scope local|stream] [--target 5]
+            [--threshold 6] [--tract-floor 6] [--max-rounds 3] [--judges 2]
+            [--batch 8] [--model <m>] [--insert]
+            (scores interestingness gated on tractability; propose-only unless
+             --insert. --scope local (default) = facets of this question only;
+             --scope stream = frontier-finder using the whole stream. Spends
+             subscription compute per run.)
 
 Maintenance
   rc validate [--stream <s>]
@@ -169,6 +171,7 @@ function run(argv: string[]): number | Promise<number> {
       batch: num("batch", 8),
       model: a.get("model"),
       insert: a.bool("insert"),
+      scope: (a.get("scope") === "stream" ? "stream" : "local"),
     });
   }
 
