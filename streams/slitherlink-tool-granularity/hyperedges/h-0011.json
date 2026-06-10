@@ -1,0 +1,23 @@
+{
+  "type": "hyperedge",
+  "id": "h-0011",
+  "stream": "slitherlink-tool-granularity",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0012"
+    },
+    {
+      "kind": "A",
+      "id": "a-0013"
+    }
+  ],
+  "target": "q-0012",
+  "rationale": "a-0012 says reasoning tokens (not tool calls) are what cost, and a-0013 states the Goldilocks dollar curve, but neither explains HOW granularity moves cost. Decompose cost = turns x ($/turn) on the existing trials to find the mechanism.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-10T03:08:58.496Z",
+    "updated_at": "2026-06-10T03:08:58.496Z"
+  },
+  "comments": {}
+}

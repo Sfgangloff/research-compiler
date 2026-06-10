@@ -1,0 +1,21 @@
+{
+  "type": "question",
+  "id": "q-0012",
+  "stream": "slitherlink-tool-granularity",
+  "text": "What is the mechanism behind the Goldilocks cost effect: does tool granularity reduce the solving work, or merely relocate it from generated reasoning tokens into many cheap tool-call turns?",
+  "status": "answered",
+  "tags": [
+    "mechanism",
+    "cost-model",
+    "externalization"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-10T03:08:58.494Z",
+    "updated_at": "2026-06-10T03:10:07.796Z"
+  },
+  "comments": {},
+  "stories": [
+    "main"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "type": "experiment",
+  "id": "e-0011",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Reasoning-externalization analysis: decompose granularity's cost effect into turns x ($/turn) and output-token use on the existing solved Opus-4.7 trials (no new compute), across the 3-rung difficulty ladder (puzzle_001/puzzle_002/gen_7x7_s1_00) x none/fine/medium/coarse.",
+  "motivation": "Find the mechanism behind a-0013's Goldilocks dollar curve: does granularity reduce the solving work, or relocate it from generated reasoning tokens into many cheap tool-call turns?",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/analyze_efficiency_frontier.py",
+    "commit": "7b62a06105d0a8a1b80c05150539e07aff7eddf1",
+    "run_cmd": "python -m harness.analyze_efficiency_frontier"
+  },
+  "formal_results": "Per (puzzle,toolset) over solved trials: cost mu+-sigma, turns mu+-sigma, $/turn, output_tokens. EXT1: tool/none turn-ratio. EXT2: output-token externalization ratio none/coarse. EXT3: dollar gap none-coarse vs search_nodes.",
+  "results_description": "EXT1: tools multiply turns 8.6x/22.8x/16.0x vs none (none=3-4 turns at every rung; tools=25-122). EXT2: none generates 1.8x/2.8x/1.3x more output tokens than coarse. EXT3: dollar gap none-coarse = $0.33 (low) / $2.16 (mid) / $0.01 (high); coarse/none = 0.71 / 0.55 / 1.00 -> peaked at the mid rung.",
+  "conclusions": "H-EXT: granularity externalizes reasoning. It does not cut work-steps; it trades the few token-heavy turns of the no-tools agent for many token-light tool turns (one deduction per round-trip). Tool calls are nearly free (confirms a-0012); the dollar benefit is Goldilocks-shaped (a-0013) because at the easy rung the no-tools baseline is already cheap, and at the hard rung the many tool turns each re-read a growing transcript, eroding coarse's per-turn advantage.",
+  "addresses": [
+    "q-0012"
+  ],
+  "produces": [
+    "a-0015"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-10T03:09:16.916Z",
+    "updated_at": "2026-06-10T03:10:48.030Z"
+  },
+  "comments": {},
+  "stories": [
+    "main"
+  ],
+  "report": "## Reasoning-externalization analysis (no new compute)\n\nDecomposes the granularity cost effect on the **existing** solved Opus-4.7 trials,\nacross the difficulty ladder × {none, fine, medium, coarse}. Cost factors as\n`cost ≈ turns × ($/turn)`.\n\n### Per-rung means (solved trials)\n\n| rung (search_nodes) | toolset | cost $ | turns | $/turn | out_tok |\n|---|---|---|---|---|---|\n| puzzle_001 (96) | none | 1.15 | **4.2** | 0.271 | 35200 |\n| | fine | 1.71 | 58.3 | 0.030 | 37450 |\n| | medium | 1.18 | 25.2 | 0.047 | 29972 |\n| | coarse | **0.82** | 26.0 | 0.031 | 19775 |\n| puzzle_002 (501) | none | 4.75 | **3.3** | 1.437 | 171810 |\n| | fine | 4.45 | 122.0 | 0.036 | 106181 |\n| | medium | 3.29 | 47.3 | 0.069 | 76893 |\n| | coarse | **2.59** | 58.7 | 0.045 | 61146 |\n| gen_7x7_s1_00 (4547) | none | 2.08 | **3.3** | 0.649 | 69712 |\n| | fine | 3.21 | 83.0 | 0.042 | 76127 |\n| | medium | 2.69 | 46.7 | 0.063 | 63413 |\n| | coarse | 2.07 | 30.3 | 0.073 | 52380 |\n\n### Findings\n\n- **EXT1 — turns explode, they don't shrink.** `none` uses the fewest turns at\n  every rung (3–4); tools take 8.6× / 22.8× / 16.0× as many. Granularity does\n  **not** save round-trips.\n- **EXT2 — reasoning is externalized.** `none` generates 1.8× / 2.8× / 1.3× more\n  output tokens than `coarse`: the deduction is in-context for `none` and inside\n  the tool for `coarse`. Tool calls are nearly free (confirms a-0012).\n- **EXT3 — the dollar gap is Goldilocks-shaped.** `cost(none) − cost(coarse)` =\n  $0.33 (low) / **$2.16 (mid)** / $0.01 (high); coarse/none = 0.71 / 0.55 / 1.00.\n  At easy the no-tools baseline is already cheap; at hard the many tool turns\n  each re-read a growing transcript, eroding coarse's per-turn advantage.\n\n### Caveat\n\nOpus-4.7 only; n = 3–4 per cell; three rungs. The turn/token trade is large and\nrobust; the EXT3 peak rests on three points and should be read as directional,\nnot a fitted curve. `gen_7x7_s3_00` is excluded (the `none` cell has no solved\ntrial).\n"
+}

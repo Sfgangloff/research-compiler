@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0015",
+  "stream": "slitherlink-tool-granularity",
+  "text": "H-EXT (reasoning externalization): tool granularity does not reduce solving work, it relocates it. The no-tools agent solves in very few (3-4) but token-heavy turns; tool agents take many (25-122) token-light turns, one deduction per round-trip. So granularity multiplies turns 8-23x while cutting generated output tokens up to ~2.8x, and tool calls themselves are nearly free (confirms a-0012). The dollar gap none-coarse is Goldilocks-shaped (peaks ~0.55x at the mid rung, ~0 at easy and hard): at easy the no-tools baseline is already cheap; at hard the many tool turns each re-read a growing transcript, eroding coarse's per-turn advantage. This is the mechanism behind a-0013.",
+  "status": "supported",
+  "answers": [
+    "q-0012"
+  ],
+  "backed_by": [
+    "e-0011"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-10T03:09:52.195Z",
+    "updated_at": "2026-06-10T03:10:09.624Z"
+  },
+  "comments": {},
+  "stories": [
+    "main"
+  ]
+}
