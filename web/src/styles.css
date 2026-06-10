@@ -92,6 +92,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
 /* glossary terms (clickable) + shared definition box */
 .term { border-bottom: 1px dotted #6366f1; color: #4338ca; cursor: pointer; }
 .term:hover { background: #eef2ff; }
+/* Link term: navigates to a node (e.g. a toolset name -> its Toolsets item). */
+.termlink { border-bottom: 1px solid #0d9488; color: #0f766e; cursor: pointer; font-weight: 500; }
+.termlink:hover { background: #ccfbf1; }
+.termlink::after { content: "↗"; font-size: 0.8em; vertical-align: super; opacity: 0.7; }
 .defbar { flex: none; display: flex; align-items: flex-start; gap: 10px; padding: 12px 18px;
   background: #eef2ff; border-top: 2px solid #6366f1; font-size: 13px; line-height: 1.5; }
 .defterm { font-weight: 700; color: #312e81; white-space: nowrap; }

@@ -164,6 +164,8 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
     const sub = parts[3];
     if (sub === "graph" && method === "GET") return send(res, 200, graphJSON(eng.getStream(slug)));
     if (sub === "validate" && method === "GET") return send(res, 200, { problems: eng.validate(slug) });
+    // term -> node link: clicking the term in any card navigates to that node.
+    if (sub === "links" && method === "PUT") return send(res, 200, eng.setLink(slug, body.term, body.nodeId ?? null));
 
     if (method === "POST") {
       switch (sub) {

@@ -648,6 +648,22 @@ export class Engine {
     return ent;
   }
 
+  // ---- term -> node links (clicking a term navigates to a node) -------------
+
+  /** Link a term to a node id (navigate on click). nodeId null/empty removes. */
+  setLink(slug: string, term: string, nodeId: string | null): StreamMeta {
+    const g = this.getStream(slug);
+    if (!g.stream.links) g.stream.links = {};
+    if (nodeId) {
+      this.requireNode(g, nodeId); // target must exist
+      g.stream.links[term] = nodeId;
+    } else {
+      delete g.stream.links[term];
+    }
+    this.commit(g, [g.stream], [], "setLink", [slug], term);
+    return g.stream;
+  }
+
   // ---- reading progress (personal overlay; not part of the reasoning DAG) ----
 
   /** Mark a node read / unread. Stored as a stream-level id set. */

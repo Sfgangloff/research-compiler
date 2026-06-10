@@ -150,6 +150,8 @@ export interface StreamMeta {
   stories?: Record<string, Story>;
   /** node ids the reader has marked "read" (personal reading-progress overlay). */
   read?: string[];
+  /** term -> node id: clicking the term in any card navigates to that node. */
+  links?: Record<string, string>;
 }
 
 export interface Story {

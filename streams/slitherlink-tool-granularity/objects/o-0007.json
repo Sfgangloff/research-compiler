@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "id": "o-0007",
+  "stream": "slitherlink-tool-granularity",
+  "name": "fine",
+  "kind": "toolset",
+  "description": "~15 atomic primitives (get_edge, set_edge, count_edges_at_dot, …). The tools track board state but make no inferences — the model does every deduction step itself through many small calls.",
+  "attributes": {
+    "tools": "~15 atomic primitives",
+    "role": "tools track state, model infers",
+    "size": "~15 tools"
+  },
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-10T05:12:28.102Z",
+    "updated_at": "2026-06-10T05:12:28.102Z"
+  },
+  "comments": {}
+}

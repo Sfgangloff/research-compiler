@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "id": "o-0010",
+  "stream": "slitherlink-tool-granularity",
+  "name": "scratchpad",
+  "kind": "toolset",
+  "description": "medium deductions plus a frame stack (assume / commit / retract) and try_both (engine 1-ply lookahead). Adds auto-managed bookkeeping for case-splits on top of medium.",
+  "attributes": {
+    "tools": "medium + frame stack + try_both",
+    "role": "auto case-split bookkeeping + 1-ply lookahead",
+    "size": "~12 tools"
+  },
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-10T05:12:28.201Z",
+    "updated_at": "2026-06-10T05:12:28.201Z"
+  },
+  "comments": {}
+}

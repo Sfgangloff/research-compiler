@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "id": "o-0008",
+  "stream": "slitherlink-tool-granularity",
+  "name": "medium",
+  "kind": "toolset",
+  "description": "~9 named one-step deductions (apply_edge, forced_moves, endpoints, …). The tools handle local one-step inference; the model chooses which deduction to invoke and sequences them.",
+  "attributes": {
+    "tools": "~9 named deductions",
+    "role": "tools do one-step local inference",
+    "size": "~9 tools"
+  },
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-10T05:12:28.164Z",
+    "updated_at": "2026-06-10T05:12:28.164Z"
+  },
+  "comments": {}
+}

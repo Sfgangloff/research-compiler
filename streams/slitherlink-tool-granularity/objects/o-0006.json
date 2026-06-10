@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "id": "o-0006",
+  "stream": "slitherlink-tool-granularity",
+  "name": "none",
+  "kind": "toolset",
+  "description": "Baseline toolset: judge tools only (get_puzzle, submit_solution). The model does all of the reasoning in-context; no tool tracks state or makes deductions. This is the pure-reasoning control.",
+  "attributes": {
+    "tools": "judge only (get_puzzle, submit_solution)",
+    "role": "pure-reasoning baseline",
+    "size": "2 tools"
+  },
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-10T05:12:27.963Z",
+    "updated_at": "2026-06-10T05:12:27.963Z"
+  },
+  "comments": {}
+}

@@ -5,8 +5,8 @@ import type { Answer, Experiment, Graph, Question, RcObject } from "./types";
 
 interface Matcher { re: RegExp; canonical: (m: string) => string | null }
 
-function buildMatcher(glossary: Record<string, string>): Matcher | null {
-  const terms = Object.keys(glossary);
+function buildMatcher(allTerms: string[]): Matcher | null {
+  const terms = [...new Set(allTerms)];
   if (!terms.length) return null;
   try {
     const lower: Record<string, string> = {};
@@ -30,8 +30,15 @@ function buildMatcher(glossary: Record<string, string>): Matcher | null {
   }
 }
 
-/** Render text with glossary terms as clickable spans (open the definition box). */
-function annotate(text: string, matcher: Matcher | null, onTerm: (t: string) => void): ReactNode {
+/** Render text with terms as clickable spans. A term in `links` navigates to a
+ *  node (onNavigate); otherwise it opens the glossary definition box (onTerm). */
+function annotate(
+  text: string,
+  matcher: Matcher | null,
+  onTerm: (t: string) => void,
+  links: Record<string, string>,
+  onNavigate: (id: string) => void,
+): ReactNode {
   if (!matcher) return text;
   const out: ReactNode[] = [];
   let last = 0;
@@ -43,18 +50,29 @@ function annotate(text: string, matcher: Matcher | null, onTerm: (t: string) => 
     if (m.index > last) out.push(text.slice(last, m.index));
     if (term) {
       const t = term;
-      out.push(
-        <span
-          key={i++}
-          className="term"
-          onClick={(e) => {
-            e.stopPropagation();
-            onTerm(t);
-          }}
-        >
-          {m[0]}
-        </span>,
-      );
+      const linkTarget = links[t];
+      if (linkTarget) {
+        out.push(
+          <span
+            key={i++}
+            className="termlink"
+            title={`Go to ${linkTarget}`}
+            onClick={(e) => { e.stopPropagation(); onNavigate(linkTarget); }}
+          >
+            {m[0]}
+          </span>,
+        );
+      } else {
+        out.push(
+          <span
+            key={i++}
+            className="term"
+            onClick={(e) => { e.stopPropagation(); onTerm(t); }}
+          >
+            {m[0]}
+          </span>,
+        );
+      }
     } else out.push(m[0]);
     last = m.index + m[0].length;
   }
@@ -116,16 +134,25 @@ export function ColumnView({
   const answers = [...graph.answers].sort(byId);
   const experiments = showExperiments ? [...graph.experiments].sort(byId) : [];
   const objects = [...(graph.objects ?? [])].sort(byId);
-  // Objects split into two columns by kind: models get their own "Models"
-  // lane; everything else (puzzles, etc.) is the "Data" lane.
+  // Objects split into columns by kind: models -> "Models", toolsets ->
+  // "Toolsets", everything else (puzzles, etc.) -> "Data".
   const modelObjects = objects.filter((o) => o.kind === "model");
-  const dataObjects = objects.filter((o) => o.kind !== "model");
+  const toolsetObjects = objects.filter((o) => o.kind === "toolset");
+  const dataObjects = objects.filter((o) => o.kind !== "model" && o.kind !== "toolset");
 
-  // Glossary: terms are clickable; the definition shows in one shared box.
+  // Glossary terms are clickable (definition box). Link terms instead navigate
+  // to a node (e.g. a toolset name jumps to its Toolsets item).
   const glossary = graph.stream.glossary ?? {};
-  const matcher = useMemo(() => buildMatcher(glossary), [graph.stream.glossary]);
+  const links = graph.stream.links ?? {};
+  const matcher = useMemo(
+    () => buildMatcher([...Object.keys(glossary), ...Object.keys(links)]),
+    [graph.stream.glossary, graph.stream.links],
+  );
   const [activeTerm, setActiveTerm] = useState<string | null>(null);
-  const render = useCallback((t: string) => annotate(t, matcher, setActiveTerm), [matcher]);
+  const render = useCallback(
+    (t: string) => annotate(t, matcher, setActiveTerm, links, onSelect),
+    [matcher, links, onSelect],
+  );
 
   // Storylines: which node ids belong to the active story (for dimming).
   const storyColors = graph.stream.stories ?? {};
@@ -285,6 +312,13 @@ export function ColumnView({
             <Lane title="Experiments">
               {experiments.map((e) => (
                 <ECard key={e.id} e={e} sel={selectedId === e.id} onSelect={onSelect} setRef={setRef(e.id)} render={render} dim={!!members && !members.has(e.id)} dots={dotsFor(e.stories, storyColors)} read={readSet.has(e.id)} onToggleRead={onToggleRead} />
+              ))}
+            </Lane>
+          )}
+          {toolsetObjects.length > 0 && (
+            <Lane title="Toolsets">
+              {toolsetObjects.map((o) => (
+                <OCard key={o.id} o={o} sel={selectedId === o.id} onSelect={onSelect} setRef={setRef(o.id)} render={render} dim={!!members && !members.has(o.id)} dots={dotsFor(o.stories, storyColors)} read={readSet.has(o.id)} onToggleRead={onToggleRead} />
               ))}
             </Lane>
           )}

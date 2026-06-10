@@ -124,6 +124,7 @@ export interface StreamMeta {
   glossary?: Record<string, string>;
   stories?: Record<string, Story>;
   read?: string[];
+  links?: Record<string, string>;
 }
 
 export interface Story {

@@ -39,6 +39,10 @@
     "read": {
       "type": "array",
       "items": { "type": "string" }
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
     }
   }
 }

@@ -9,7 +9,7 @@
     "a": 15,
     "h": 11,
     "e": 11,
-    "o": 5
+    "o": 10
   },
   "provenance": {
     "created_by": "claude",
@@ -39,14 +39,9 @@
     "G-CD": "Granularity-Cost Decomposition: a model of solving cost as overhead plus per-call work plus reasoning-token work.",
     "meta-tools": "Custom tools we coded ourselves for these experiments (not off-the-shelf or common tooling) that let the agent extend itself — author or modify its own tools at run time.",
     "subscription compute": "Running on a usage-capped Claude subscription rather than metered API, which imposes rolling rate limits.",
-    "scratchpad": "A toolset = medium deductions plus a frame stack plus try_both, for auto-managed case-splits.",
     "uniqueness": "An exhaustive backtracking check that a puzzle has exactly one solution.",
     "toolset": "The set of MCP tools exposed to the agent for one condition (none / fine / medium / coarse / scratchpad).",
     "Goldilocks": "The finding that granularity helps only at intermediate difficulty, collapsing at both easy and hard extremes.",
-    "none": "Baseline toolset: judge tools only (get_puzzle, submit_solution). The model reasons entirely in-context.",
-    "fine": "Toolset of ~15 atomic primitives (get_edge, set_edge, count_edges_at_dot...). Tools track state; the model does all inference.",
-    "medium": "Toolset of ~9 named one-step deductions (apply_edge, forced_moves, endpoints...). Tools handle local inference.",
-    "coarse": "Toolset of ~5 tools including suggest_next_move (propagation + 1-ply). The tool does most of the work.",
     "cost-to-solve": "The dollar cost of API usage to solve one puzzle instance (the main outcome measured).",
     "solve-rate": "The fraction of attempts that reach a correct, verified solution.",
     "engine-level bookkeeping": "Letting the tool backend (the engine) track the state of tentative case-splits for you - pushing and popping assumption contexts - instead of the model manually snapshotting and restoring the board.",
@@ -66,8 +61,16 @@
     }
   },
   "read": [
+    "a-0001",
     "q-0001",
     "q-0002",
     "q-0003"
-  ]
+  ],
+  "links": {
+    "none": "o-0006",
+    "fine": "o-0007",
+    "medium": "o-0008",
+    "coarse": "o-0009",
+    "scratchpad": "o-0010"
+  }
 }

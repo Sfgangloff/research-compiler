@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "id": "o-0009",
+  "stream": "slitherlink-tool-granularity",
+  "name": "coarse",
+  "kind": "toolset",
+  "description": "~5 tools including suggest_next_move (propagation + 1-ply lookahead). The tool does most of the work and the model mostly drives it — the control condition at the high-granularity end.",
+  "attributes": {
+    "tools": "~5 incl suggest_next_move (propagate + 1-ply)",
+    "role": "tool does most of the work; control",
+    "size": "~5 tools"
+  },
+  "provenance": {
+    "created_by": "human",
+    "created_at": "2026-06-10T05:12:28.182Z",
+    "updated_at": "2026-06-10T05:12:28.182Z"
+  },
+  "comments": {}
+}
