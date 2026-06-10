@@ -50,7 +50,8 @@
     "turn": "One round-trip with the model in the agent loop: the model reads the conversation, emits reasoning + optional tool calls, the harness runs the tools and feeds results back, then calls the model again. num_turns counts these until the agent submits or hits the cap. Distinct from tool_call_count (total tool invocations).",
     "externalization": "Moving deduction out of the model's generated tokens and into tool calls. A no-tools agent reasons in-context (few token-heavy turns); a tooled agent offloads each step to a tool (many token-light turns). Granularity trades one for the other.",
     "cost-signal": "The measurable gap in solving cost between toolsets - the evidence that granularity affects cost at all. 'Conditional on puzzle difficulty' asks whether that gap shows up only on hard-enough puzzles rather than everywhere: on the easy puzzle the toolsets cost about the same (no signal), while on the hard puzzle coarse is clearly cheaper (signal present).",
-    "Phase-1 gate": "A pre-registered go/no-go checkpoint. Phase 1 re-ran the n=1 pilot at n=3 on both puzzles; the gate criterion was 'coarse <= 0.6x none with non-overlapping CIs.' Passing it justifies spending on Phase 2; failing (ratios collapse to noise) means the granularity finding is fragile - reframe or stop. a-0004 reports coarse/none = 0.55x with non-overlapping CIs, so the gate PASSES and the project proceeds."
+    "Phase-1 gate": "A pre-registered go/no-go checkpoint. Phase 1 re-ran the n=1 pilot at n=3 on both puzzles; the gate criterion was 'coarse <= 0.6x none with non-overlapping CIs.' Passing it justifies spending on Phase 2; failing (ratios collapse to noise) means the granularity finding is fragile - reframe or stop. a-0004 reports coarse/none = 0.55x with non-overlapping CIs, so the gate PASSES and the project proceeds.",
+    "formal difficulty": "Difficulty measured from a puzzle's actual solving structure, not a subjective easy/hard label. core.generator.grade() assigns each puzzle a tier (1 = pure propagation, 2 = +1-ply lookahead, 3+ = needs search) and a search_nodes count (how many nodes a backtracking solver explores). Ordering puzzles by that computed value gives the 'formal difficulty axis' we sweep the granularity experiment along, so difficulty is reproducible and comparable across puzzles."
   },
   "stories": {
     "main": {
@@ -66,13 +67,16 @@
     "a-0001",
     "a-0002",
     "a-0003",
+    "a-0004",
     "e-0001",
     "e-0002",
     "e-0003",
+    "e-0004",
     "q-0001",
     "q-0002",
     "q-0003",
-    "q-0004"
+    "q-0004",
+    "q-0005"
   ],
   "links": {
     "none": "o-0006",
