@@ -2,7 +2,7 @@
   "type": "answer",
   "id": "a-0010",
   "stream": "slitherlink-tool-granularity",
-  "text": "Phase-2 frontier (gen_7x7_s1_00, tier-3, n=3): coarse/none = 1.00x and all four toolsets' CIs overlap at 1 sigma (within $1.14). The strong tier-2 separation collapses at tier-3 - falsifying G-CD-v1's monotonic P3.",
+  "text": "The granularity benefit is non-monotonic in difficulty, not \"harder always helps more.\" It is strong at intermediate (tier-2) difficulty but collapses again at the tier-3 frontier, where all four toolsets cost the same within noise. So the benefit lives in a middle band, and the earlier monotonic prediction (G-CD-v1's P3) is falsified. (Evidence: e-0009.)",
   "status": "supported",
   "answers": [
     "q-0006"
@@ -14,7 +14,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:43.753Z",
-    "updated_at": "2026-06-05T03:19:01.643Z",
+    "updated_at": "2026-06-10T08:59:24.067Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"

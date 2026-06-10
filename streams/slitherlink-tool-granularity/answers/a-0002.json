@@ -2,7 +2,7 @@
   "type": "answer",
   "id": "a-0002",
   "stream": "slitherlink-tool-granularity",
-  "text": "Pilot (puzzle_001 + puzzle_002, n=1): coarse is ~2x cheaper than none/fine, cost ratios appear stable across difficulty, and `none` flips from cheapest (easy) to most expensive (hard). Explicitly pilot-quality, not publishable.",
+  "text": "Tentatively yes, but not established. A single-trial pilot suggests granularity does move cost - coarse looked ~2x cheaper than none/fine, and the cheapest toolset flipped from none (easy) to coarse (hard). But at n=1 these ratios could be sampling luck, so the pilot only motivates a powered replication (q-0004); it does not yet answer q-0002. (Evidence: e-0001, e-0002.)",
   "status": "inconclusive",
   "answers": [
     "q-0002"
@@ -15,7 +15,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:32.099Z",
-    "updated_at": "2026-06-08T05:27:14.221Z",
+    "updated_at": "2026-06-10T08:59:24.145Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"

@@ -2,7 +2,7 @@
   "type": "answer",
   "id": "a-0004",
   "stream": "slitherlink-tool-granularity",
-  "text": "On the hard puzzle (puzzle_002, n=3) coarse/none = 0.55x with non-overlapping 1-sigma CIs (a $0.72 gap), so the Phase-1 gate PASSES. The granularity cost-benefit is real but conditional on hard-enough puzzles.",
+  "text": "Yes, but conditionally on difficulty. On a hard-enough puzzle the granularity cost-benefit replicates and is real - coarse is reproducibly cheaper than none with non-overlapping CIs - which answers both q-0004 (the ratios survive at the hard end) and q-0005 (the signal is conditional on difficulty), and clears the Phase-1 gate. (Evidence: e-0004, puzzle_002 n=3: coarse/none=0.55x, $0.72 gap.)",
   "status": "supported",
   "answers": [
     "q-0004",
@@ -15,7 +15,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-03T03:47:36.178Z",
-    "updated_at": "2026-06-08T05:27:14.296Z",
+    "updated_at": "2026-06-10T08:59:24.176Z",
     "source_ref": {
       "repo": "claude-sudoku-experiments",
       "commit": "0e31a015d8dab3348b6f48fdca81191e4ff97aa6"
