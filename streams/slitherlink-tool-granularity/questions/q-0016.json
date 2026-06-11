@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0016",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Is TOTAL reasoning effort (reasoning tokens + tool work) roughly conserved across tool granularity, or does granularity change the total amount of work, not just where it happens? (a-0015 showed relocation; this asks whether the total is invariant.)",
+  "status": "open",
+  "tags": [
+    "ideated",
+    "behavior"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T00:14:22.023Z",
+    "updated_at": "2026-06-11T00:14:22.023Z"
+  },
+  "comments": {}
+}

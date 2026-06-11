@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0015",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Does tool granularity change WHEN, and how confidently, the agent decides to give up (stop, submit a guess, or declare failure)? Does coarser tooling lead to earlier or later abandonment, and is its confidence at that point calibrated?",
+  "status": "open",
+  "tags": [
+    "ideated",
+    "behavior"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T00:14:21.061Z",
+    "updated_at": "2026-06-11T00:14:21.061Z"
+  },
+  "comments": {}
+}

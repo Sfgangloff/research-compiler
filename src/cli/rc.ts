@@ -103,7 +103,7 @@ Cage (Claude Code restriction)
 
 Ideation (generates + judges sub-questions via the Claude Code CLI)
   rc ideate --stream <s> --question <qid> [--scope local|stream] [--target 5]
-            [--threshold 6] [--tract-floor 6] [--max-rounds 3] [--judges 2]
+            [--threshold 5] [--tract-floor 6] [--max-rounds 3] [--judges 2]
             [--batch 8] [--model <m>] [--insert]
             (scores surprise gated on BUILDABILITY — how hard the needed
              apparatus is to produce, not whether code already exists;
@@ -166,7 +166,7 @@ function run(argv: string[]): number | Promise<number> {
       slug: stream(),
       qid: a.require("question"),
       target: num("target", 5),
-      threshold: num("threshold", 6),
+      threshold: num("threshold", 5),
       tractFloor: num("tract-floor", 6),
       maxRounds: num("max-rounds", 3),
       judges: num("judges", 2),
