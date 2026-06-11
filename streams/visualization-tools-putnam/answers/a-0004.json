@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0004",
+  "stream": "visualization-tools-putnam",
+  "text": "Reasoning depth dominates, and the corpus has no headroom. Bare recall is unreliable (~30%), but prose chain-of-thought with no tools at all reaches 18/18 (100%), matching forced-viz. The solve rate is driven by multi-turn reasoning, not visualization. Any tool evaluated on a corpus where CoT already saturates is uninterpretable; designs need an explicit CoT-incompetence baseline.",
+  "status": "supported",
+  "answers": [
+    "q-0005"
+  ],
+  "backed_by": [
+    "e-0004"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:27.619Z",
+    "updated_at": "2026-06-11T01:50:23.979Z"
+  },
+  "comments": {},
+  "stories": [
+    "modality"
+  ]
+}

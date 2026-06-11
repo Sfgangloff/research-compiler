@@ -1,0 +1,30 @@
+{
+  "type": "answer",
+  "id": "a-0010",
+  "stream": "visualization-tools-putnam",
+  "text": "Capstone thesis - Discovery dominates value. End-task tool effect decomposes as Delta_T = V_T x P(adopted | model, prompt, mode); in unattended optional mode the adoption term is identically zero (a-0001), so 'the tools don't help' is a misread of an adoption failure, not evidence about value. Adoption moves only under requirement, not information or framing (a-0002, a-0003). When the loop is forced, solving is unchanged on a corpus where prose CoT already saturates (a-0004); when verification is forced on adversarial claims the corrective work is the required pause, not the modality - visualization is sufficient but not necessary, and the picture is ignored for numeric metadata (a-0005, a-0006). The proposed constructive lever, returning images inline, did NOT move voluntary adoption (a-0007 refutes H7a), so how to elicit voluntary use remains open; a picture-decisive corpus (a-0008) and a judge audit (a-0009) are pending. Methodological corollary: tool evaluations need an explicit CoT-incompetence baseline.",
+  "status": "supported",
+  "answers": [
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0001",
+    "e-0003",
+    "e-0004",
+    "e-0005",
+    "e-0006",
+    "e-0007"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:38.852Z",
+    "updated_at": "2026-06-11T01:50:19.234Z"
+  },
+  "comments": {
+    "role": "Capstone synthesis answering the root question; stands on a-0001..a-0007. Note: it diverges from the paper's current draft, which still frames inline-content return as a validated lever - Study 7 (e-0007/a-0007) refutes that."
+  },
+  "stories": [
+    "discovery"
+  ]
+}

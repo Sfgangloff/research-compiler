@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0006",
+  "stream": "visualization-tools-putnam",
+  "text": "When verification is forced on adversarial (deliberately mis-stated) claims, is it the picture, the numerics, or merely the forced pause that catches the false claim? I.e. is visualization uniquely corrective, or just one interchangeable way to satisfy a required verification step?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:28.230Z",
+    "updated_at": "2026-06-11T01:50:57.244Z"
+  },
+  "comments": {},
+  "stories": [
+    "modality"
+  ]
+}

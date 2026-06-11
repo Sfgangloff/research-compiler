@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0008",
+  "stream": "visualization-tools-putnam",
+  "text": "H8 (pre-registered, not yet run): on a picture-decisive, sampling-fragile geometric corpus, forced_visual should catch false claims at a strictly higher rate than forced_textual. This is the program's designated best case for visualization; the corpus is built and 8/8 verified, but the run has not been executed, so the prediction stands untested.",
+  "status": "proposed",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0008"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:36.353Z",
+    "updated_at": "2026-06-11T01:50:25.781Z"
+  },
+  "comments": {},
+  "stories": [
+    "modality"
+  ]
+}

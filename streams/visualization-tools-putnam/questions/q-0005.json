@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0005",
+  "stream": "visualization-tools-putnam",
+  "text": "Is there any headroom for a tool to help - did the model already know the closed-form answers (memorization), and does prose chain-of-thought alone already solve these problems without any tools?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:26.359Z",
+    "updated_at": "2026-06-11T01:50:56.655Z"
+  },
+  "comments": {},
+  "stories": [
+    "modality"
+  ]
+}

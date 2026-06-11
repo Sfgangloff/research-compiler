@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0006",
+  "stream": "visualization-tools-putnam",
+  "text": "Modality equivalence holds at scale. Re-run at n=24/condition (144 cells), false claims are caught at 24/24 (textual), 23/24 (visual), 23/24 (reflection), pairwise Fisher's exact p=1.0000. The Study-5 finding was not a small-n artifact.",
+  "status": "supported",
+  "answers": [
+    "q-0006"
+  ],
+  "backed_by": [
+    "e-0006"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:31.371Z",
+    "updated_at": "2026-06-11T01:50:25.192Z"
+  },
+  "comments": {},
+  "stories": [
+    "modality"
+  ]
+}

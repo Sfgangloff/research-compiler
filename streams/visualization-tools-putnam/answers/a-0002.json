@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0002",
+  "stream": "visualization-tools-putnam",
+  "text": "No - input framing is not the lever. math-viz was invoked 0 times across all 27 framing-probe runs, and the Lean-stub framing explored fewer tools than prose, not more. The hypothesis that Lean framing pulls in math tools did not survive.",
+  "status": "refuted",
+  "answers": [
+    "q-0003"
+  ],
+  "backed_by": [
+    "e-0002"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:23.800Z",
+    "updated_at": "2026-06-11T01:50:17.447Z"
+  },
+  "comments": {},
+  "stories": [
+    "discovery"
+  ]
+}

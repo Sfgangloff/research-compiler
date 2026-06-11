@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0005",
+  "stream": "visualization-tools-putnam",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0003"
+    }
+  ],
+  "target": "q-0006",
+  "rationale": "Forced viz was confirmatory on TRUE claims; the pilot's one decisive episode caught a FALSE claim. Engineer the corrective mode and ablate what does the corrective work.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:28.231Z",
+    "updated_at": "2026-06-11T01:49:28.231Z"
+  },
+  "comments": {}
+}

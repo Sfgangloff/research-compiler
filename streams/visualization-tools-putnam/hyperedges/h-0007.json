@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0007",
+  "stream": "visualization-tools-putnam",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0006"
+    }
+  ],
+  "target": "q-0008",
+  "rationale": "Modality equivalence held on scalar-answer analytic problems where numerics suffice; build the adversarial best case for vision and see if forced_visual ever wins.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:35.108Z",
+    "updated_at": "2026-06-11T01:49:35.108Z"
+  },
+  "comments": {}
+}

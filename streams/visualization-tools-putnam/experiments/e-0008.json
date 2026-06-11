@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0008",
+  "stream": "visualization-tools-putnam",
+  "description": "Study 8: geometric adversarial corpus. 8 problems x 2 variants, engineered to be picture-decisive and sampling-fragile (corpus built and 8/8 verified by experiments/geometric_corpus/verify.py). Pre-registered run: 8 problems x 30 cells = 240.",
+  "motivation": "Construct the strongest possible case for visualization: if forced_visual ever beats forced_textual it must happen on a corpus where a plot is decisive but naive sampling fails.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/geometric_corpus/",
+    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "run_cmd": "python -m experiments.geometric_corpus.run_geometric"
+  },
+  "formal_results": "Corpus built and verified: verify.py --all -> 8/8 PASS (all problems confirmed picture-decisive + sampling-fragile). No run results yet (no results/ directory); the A/B comparison testing H8 has not been executed.",
+  "results_description": "Apparatus complete and verified; experiment not yet run.",
+  "conclusions": "Pending. Pre-declared as both-ways-publishable: if forced_visual beats forced_textual -> first positive visualization result; if not -> 'modality doesn't matter' survives a corpus built to break it.",
+  "addresses": [
+    "q-0008"
+  ],
+  "produces": [
+    "a-0008"
+  ],
+  "status": "planned",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:35.713Z",
+    "updated_at": "2026-06-11T01:50:28.142Z"
+  },
+  "comments": {},
+  "stories": [
+    "modality"
+  ]
+}

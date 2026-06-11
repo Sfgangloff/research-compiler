@@ -1,0 +1,40 @@
+{
+  "type": "stream",
+  "slug": "visualization-tools-putnam",
+  "title": "Do visualization tools help an LLM agent solve Putnam problems?",
+  "description": "A/B and ablation study of whether graphical/plotting MCP tools (math-viz) help Claude Code solve Putnam real-analysis problems formalized in Lean 4. Reasoning reconstructed from the graphical-reasoning experiment repo.",
+  "root_qid": "q-0001",
+  "counters": {
+    "q": 9,
+    "a": 10,
+    "h": 8,
+    "e": 9
+  },
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:17.212Z",
+    "updated_at": "2026-06-11T01:49:17.212Z"
+  },
+  "comments": {},
+  "glossary": {
+    "discovery-value decomposition": "The framing contribution: end-task tool effect = tool_value x P(adopted). Separates whether the agent USES a tool from whether the tool HELPS; a zero adoption term makes value unmeasurable.",
+    "forced pause": "A prompt-mandated commitment to a verdict before answering. Across the studies this required verification step - not the visual modality - is what does the corrective work.",
+    "modality": "Which activity satisfies a forced verification: forced_visual (plot + Read), forced_textual (SymPy numeric sample points), forced_reflection (one prose paragraph, no tools). Finding: the modalities are interchangeable.",
+    "path-not-content friction": "math-viz originally returned only a PNG filesystem path; the agent never self-initiates the Read to consume it. Generalizes to any tool returning a handle instead of inline content.",
+    "confirmatory vs corrective": "Confirmatory = a plot ratifies an answer the model already had (true claims); corrective = a plot overturns a false stated claim (the pilot's decisive use). The program engineered conditions to elicit the corrective mode.",
+    "CoT-incompetence baseline": "A corpus where prose chain-of-thought already fails. Required for any tool's value to be detectable; the study corpora had a ~100% CoT baseline (no headroom).",
+    "solved*": "The success criterion: build_ok AND zero sorries AND LLM judge verdict in {match, close}.",
+    "picture-decisive and sampling-fragile": "Study 8 corpus design criteria: a single plot makes the truth obvious, while a naive uniform numeric grid misses the falsifier (narrow dip, tangency, high-frequency wiggle).",
+    "math-viz": "The MCP visualization server under test (14 tools: plots, regions, phase portraits, LaTeX render, ...). Writes a PNG and originally returned its path; the treatment whose adoption the program measures."
+  },
+  "stories": {
+    "discovery": {
+      "name": "Discovery dominates value",
+      "color": "#2563eb"
+    },
+    "modality": {
+      "name": "Modality equivalence",
+      "color": "#d97706"
+    }
+  }
+}

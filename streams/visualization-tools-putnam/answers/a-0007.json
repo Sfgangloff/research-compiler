@@ -1,0 +1,25 @@
+{
+  "type": "answer",
+  "id": "a-0007",
+  "stream": "visualization-tools-putnam",
+  "text": "No - inline content is not the adoption lever. With the image returned inline vs path-only, voluntary (optional-mode) adoption is 0/36 in both arms; forcing reaches ~31-34/36 regardless of format. The path-not-content friction is not the barrier - the agent does not choose visualization even when the picture is handed to it directly. This refutes H7a, the paper's proposed constructive lever.",
+  "status": "refuted",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0007"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:33.873Z",
+    "updated_at": "2026-06-11T01:50:18.636Z"
+  },
+  "comments": {
+    "discrepancy": "The paper's current draft thesis names inline-content return as the constructive adoption lever, but this study's own data refutes it for voluntary adoption. Recorded faithfully here; the paper write-up lags the data."
+  },
+  "stories": [
+    "discovery"
+  ]
+}

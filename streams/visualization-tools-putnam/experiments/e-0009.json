@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0009",
+  "stream": "visualization-tools-putnam",
+  "description": "Human judge audit: inter-rater reliability between the LLM statement-match judge and a human on a stratified 120-cell sample (seed 42), drawn across Studies 3/5/6 plus calibration.",
+  "motivation": "Defend the negative results against the single-LLM-judge critique by measuring human<->LLM agreement (Cohen's kappa).",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/judge_audit/",
+    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "run_cmd": "python -m experiments.judge_audit.kappa"
+  },
+  "formal_results": "Sampling tooling and sample CSVs exist (calibration, study3, study5, study6); target overall kappa >= 0.6 (>=0.5 per stratum). No graded kappa output committed yet.",
+  "results_description": "Audit sampling is set up but human grading / kappa computation has not been completed.",
+  "conclusions": "Pending - judge reliability not yet established; the cross-study conclusions currently rest on the LLM judge alone.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0009"
+  ],
+  "status": "running",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:37.628Z",
+    "updated_at": "2026-06-11T01:49:38.261Z"
+  },
+  "comments": {}
+}

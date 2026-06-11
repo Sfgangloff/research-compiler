@@ -1,0 +1,33 @@
+{
+  "type": "experiment",
+  "id": "e-0006",
+  "stream": "visualization-tools-putnam",
+  "description": "Study 6: Study 5 scaled to n=24/condition. 4 problems x 2 variants x 3 forced conditions x 6 runs = 144 cells, pre-registered (H6: modality equivalence is not a small-n artifact).",
+  "motivation": "Confirm the Study-5 modality-equivalence result at confidence-interval scale before building the headline claim on it.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/false_claim/",
+    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "run_cmd": "python -m experiments.false_claim.run_false_claim"
+  },
+  "formal_results": "Catch rates: forced_textual 24/24, forced_visual 23/24, forced_reflection 23/24; pairwise Fisher's exact p = 1.0000. All conditions also got every true variant correct.",
+  "results_description": "Modality equivalence holds at scale: no detectable difference between visual, numeric, and reflection verification.",
+  "conclusions": "H6 supported: the modality-equivalence result is robust, not a small-n artifact.",
+  "addresses": [
+    "q-0006"
+  ],
+  "produces": [
+    "a-0006",
+    "a-0010"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:30.765Z",
+    "updated_at": "2026-06-11T01:50:27.548Z"
+  },
+  "comments": {},
+  "stories": [
+    "modality"
+  ]
+}

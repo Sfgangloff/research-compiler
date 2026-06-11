@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0004",
+  "stream": "visualization-tools-putnam",
+  "text": "What actually governs tool adoption - information (a worked primer, removing path-Read friction) or requirement (forcing the visualize-then-read loop)? And when the tool IS used, does it change the solution?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:24.439Z",
+    "updated_at": "2026-06-11T01:50:56.027Z"
+  },
+  "comments": {},
+  "stories": [
+    "discovery"
+  ]
+}

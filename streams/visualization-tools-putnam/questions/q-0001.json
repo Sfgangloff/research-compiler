@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0001",
+  "stream": "visualization-tools-putnam",
+  "text": "Do graphical-representation tools (plotting, diagram rendering, geometric visualization, via the math-viz MCP server) actually help an LLM coding agent (Claude Code) solve math problems - Putnam real-analysis problems formalized in Lean 4 - where visualization is known to help humans?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:18.033Z",
+    "updated_at": "2026-06-11T01:50:54.247Z"
+  },
+  "comments": {},
+  "stories": [
+    "discovery"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0002",
+  "stream": "visualization-tools-putnam",
+  "text": "Does an agent equipped with the math-viz toolkit solve more Putnam problems than one with only the Lean baseline (lean-lsp)?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:18.778Z",
+    "updated_at": "2026-06-11T01:50:54.851Z"
+  },
+  "comments": {},
+  "stories": [
+    "discovery"
+  ]
+}

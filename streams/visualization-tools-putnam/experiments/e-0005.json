@@ -1,0 +1,35 @@
+{
+  "type": "experiment",
+  "id": "e-0005",
+  "stream": "visualization-tools-putnam",
+  "description": "Study 5: adversarial false-claim ablation. 4 problems x 2 variants (true/false stated answer) x 3 forced conditions (forced_visual = plot+Read; forced_textual = SymPy sample points; forced_reflection = one prose paragraph, no tools) x ~2 runs = 48 cells.",
+  "motivation": "Finally exercise the corrective mode (the pilot's decisive use case) and ablate WHICH activity - visual, numeric, or a bare pause - catches a subtly false stated claim.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/false_claim/",
+    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "run_cmd": "python -m experiments.false_claim.run_false_claim"
+  },
+  "formal_results": "False claims caught at indistinguishable rates: forced_textual 8/8, forced_visual 7/8, forced_reflection 7/8 (the 2 misses are operational - a transcript-parse failure and a timeout). No cell that emitted a verdict ever sided with the false claim. In forced_visual cells the verdict grounds in the tool's NUMERIC metadata (e.g. 0.2399 matches sqrt(pi)*e^-2, not the claimed sqrt(pi)*e^-1), never a visual property read by eye.",
+  "results_description": "All three forced modalities catch false claims about equally; visualization holds no advantage, and the picture is ignored in favor of cheaper numeric metadata.",
+  "conclusions": "Modality doesn't matter; the forced verification step does. Visualization is sufficient but not necessary - the 'viz is uniquely corrective' hypothesis is refuted.",
+  "addresses": [
+    "q-0006"
+  ],
+  "produces": [
+    "a-0005",
+    "a-0010"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:28.830Z",
+    "updated_at": "2026-06-11T01:50:26.960Z"
+  },
+  "comments": {
+    "correction": "A long-form draft line ('the agent never looked at the pictures') was wrong about the CAUSE - images WERE delivered inline after math-viz commit 1622bac; the negative conclusion (verdicts ground in numeric metadata, not visual properties) is unaffected/strengthened. Per CLAUDE.md pending corrections."
+  },
+  "stories": [
+    "modality"
+  ]
+}

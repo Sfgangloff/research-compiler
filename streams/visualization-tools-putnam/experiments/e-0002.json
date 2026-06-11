@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0002",
+  "stream": "visualization-tools-putnam",
+  "description": "Study 2: input-framing probe. 3 problems x 3 framings (prose / nudge / Lean-stub) x 3 runs = 27 unattended attempts, counting tool calls by type.",
+  "motivation": "Test whether the zero-adoption result is an artifact of input framing: does Lean-syntax framing (or a soft nudge) pull in math-viz / math-compute that prose framing does not?",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/probe_framing/",
+    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "run_cmd": "python -m experiments.probe_framing.run_probe"
+  },
+  "formal_results": "math-viz invoked 0 times across all 27 runs, in every framing. Mean total tool calls: prose 9.0, nudge 10.9, Lean 7.3 (Lean framing explored the LEAST). math-compute small and not elevated under Lean.",
+  "results_description": "Framing does not move viz adoption off zero; Lean-stub framing actually reduced overall tool reach.",
+  "conclusions": "The input-framing hypothesis is refuted: framing is not the lever for visualization adoption.",
+  "addresses": [
+    "q-0003"
+  ],
+  "produces": [
+    "a-0002"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:23.153Z",
+    "updated_at": "2026-06-11T01:50:20.403Z"
+  },
+  "comments": {},
+  "stories": [
+    "discovery"
+  ]
+}

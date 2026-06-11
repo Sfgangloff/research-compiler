@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0001",
+  "stream": "visualization-tools-putnam",
+  "text": "Voluntary adoption is identically zero under optional advertisement. Across the 120-run A/B sweep the agent invoked math-viz exactly zero times - including on the picture-amenable integral/asymptotic subset - and solve rates were indistinguishable (31.7% baseline vs 28.3% +math-viz, within noise). The treatment was never delivered, so simple advertisement cannot answer whether the tools help.",
+  "status": "supported",
+  "answers": [
+    "q-0002"
+  ],
+  "backed_by": [
+    "e-0001"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:21.185Z",
+    "updated_at": "2026-06-11T01:50:16.842Z"
+  },
+  "comments": {},
+  "stories": [
+    "discovery"
+  ]
+}

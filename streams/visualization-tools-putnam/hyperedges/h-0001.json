@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0001",
+  "stream": "visualization-tools-putnam",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0001"
+    }
+  ],
+  "target": "q-0002",
+  "rationale": "The naive A/B operationalization of the root question: give one arm math-viz, compare solve rates.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:18.779Z",
+    "updated_at": "2026-06-11T01:49:18.779Z"
+  },
+  "comments": {}
+}

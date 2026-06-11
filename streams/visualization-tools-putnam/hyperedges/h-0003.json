@@ -1,0 +1,23 @@
+{
+  "type": "hyperedge",
+  "id": "h-0003",
+  "stream": "visualization-tools-putnam",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0001"
+    },
+    {
+      "kind": "A",
+      "id": "a-0002"
+    }
+  ],
+  "target": "q-0004",
+  "rationale": "Neither advertisement nor framing moves adoption; separate the two remaining levers - more information vs hard requirement - and check whether forced use changes the answer.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:24.441Z",
+    "updated_at": "2026-06-11T01:49:24.441Z"
+  },
+  "comments": {}
+}

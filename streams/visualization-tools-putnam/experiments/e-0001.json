@@ -1,0 +1,35 @@
+{
+  "type": "experiment",
+  "id": "e-0001",
+  "stream": "visualization-tools-putnam",
+  "description": "Study 1: main A/B sweep. 19 Putnam real-analysis problems x 2 conditions (A = lean-lsp only; B = lean-lsp + math-viz) x 3 runs = 120 unattended 'claude --print' formalize-and-prove attempts, scored by build_ok, sorry-count, and an LLM statement-match judge.",
+  "motivation": "Operationalize the root question directly: if visualization helps, condition B should solve more, especially on graph-friendly (integral/asymptotic) subtopics.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/runner/",
+    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "run_cmd": "python -m experiments.runner.run_matrix"
+  },
+  "formal_results": "A: 60 runs, 19 solved (31.7%), 58 build_ok; B: 60 runs, 17 solved (28.3%), 57 build_ok. Gap within +/-12pt 95% CI (noise). In all 60 B runs the model issued ZERO tool_use blocks for any math-viz tool. ~2/3 of attempts ended build-ok with exactly one sorry.",
+  "results_description": "No measurable difference in solve rate, and the visualization treatment was never invoked - the sweep measured whether the model CHOOSES viz (it does not), not whether viz helps.",
+  "conclusions": "Voluntary adoption of math-viz is zero under optional advertisement; the A/B contrast is uninformative about tool value because the treatment was never delivered.",
+  "addresses": [
+    "q-0002"
+  ],
+  "produces": [
+    "a-0001",
+    "a-0010"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:19.548Z",
+    "updated_at": "2026-06-11T01:50:19.815Z"
+  },
+  "comments": {
+    "provenance": "The 120-run raw dataset is no longer in the repo; the 31.7%/28.3% solve numbers are quoted from experiments/REPORT.md, not re-derivable from results/ (only a 6-dir later sample remains)."
+  },
+  "stories": [
+    "discovery"
+  ]
+}

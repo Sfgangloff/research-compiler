@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0003",
+  "stream": "visualization-tools-putnam",
+  "text": "Is input framing the lever for tool adoption - does presenting a problem as a Lean theorem stub (vs prose LaTeX, or a soft 'use tools as appropriate' nudge) change whether the agent reaches for visualization/compute tools?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:22.278Z",
+    "updated_at": "2026-06-11T01:50:55.443Z"
+  },
+  "comments": {},
+  "stories": [
+    "discovery"
+  ]
+}

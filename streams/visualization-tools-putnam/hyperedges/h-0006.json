@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0006",
+  "stream": "visualization-tools-putnam",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0003"
+    }
+  ],
+  "target": "q-0007",
+  "rationale": "Study 3 found the agent never self-discovers the Read-the-PNG step; maybe the barrier is that math-viz returns a path, not the image. Test inline return as the constructive lever.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:31.988Z",
+    "updated_at": "2026-06-11T01:49:31.988Z"
+  },
+  "comments": {}
+}

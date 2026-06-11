@@ -1,0 +1,35 @@
+{
+  "type": "experiment",
+  "id": "e-0007",
+  "stream": "visualization-tools-putnam",
+  "description": "Study 7: inline-content ablation. 6 problems x 4 conditions ({forced,optional} x {inline,path_only}) x 6 runs = 144 cells, comparing a math-viz that returns the image inline against a path-only wrapper.",
+  "motivation": "Test the one actionable design lever: does inline image return (vs a path handle the agent must Read) move voluntary adoption off zero (H7a), and shift grounding to image features (H7b)?",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/inline_content/",
+    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "run_cmd": "python -m experiments.inline_content.run_inline_content"
+  },
+  "formal_results": "runs-with-viz: optional_inline 0/36, optional_path_only 0/36, forced_inline 34/36, forced_path_only 31/36. Voluntary (optional) adoption is zero regardless of inline vs path-only return.",
+  "results_description": "H7a refuted: inline image return does not move voluntary adoption off zero. The barrier is not path-vs-image friction - the agent does not choose visualization even when the picture is handed to it directly.",
+  "conclusions": "Returning content inline does not raise voluntary adoption; the proposed constructive lever does not work in the optional/unattended setting.",
+  "addresses": [
+    "q-0007"
+  ],
+  "produces": [
+    "a-0007",
+    "a-0010"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T01:49:32.608Z",
+    "updated_at": "2026-06-11T01:50:21.590Z"
+  },
+  "comments": {
+    "status-note": "Runs executed (study7.log: COMPLETE genuine=144), but the paper draft still describes Study 7 as 'running' and reports only the pre-registered prediction. This graph records the OBSERVED result: H7a refuted."
+  },
+  "stories": [
+    "discovery"
+  ]
+}
