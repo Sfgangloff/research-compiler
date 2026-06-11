@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0004",
+  "stream": "operator-precedence-interpretability",
+  "text": "Which components (MLP layers, attention heads) actually write the precedence-resolved answer?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:13.116Z",
+    "updated_at": "2026-06-11T12:20:00.911Z"
+  },
+  "comments": {},
+  "stories": [
+    "circuit"
+  ]
+}

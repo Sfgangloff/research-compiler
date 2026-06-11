@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0001",
+  "stream": "operator-precedence-interpretability",
+  "text": "Yes, math LMs respect precedence (Qwen2.5-Math-7B 21/48 correct pre-FT, 48/48 post-FT; DeepSeek-Math-7B 29/48), while a non-math control (Llama-3.1-8B base) scores 0/48 and cannot do the task. Among errors, math LMs show an 18-29% left-to-right lean.",
+  "status": "supported",
+  "answers": [
+    "q-0002"
+  ],
+  "backed_by": [
+    "e-0001"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:15.022Z",
+    "updated_at": "2026-06-11T12:19:44.401Z"
+  },
+  "comments": {},
+  "stories": [
+    "circuit"
+  ]
+}

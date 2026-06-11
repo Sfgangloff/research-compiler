@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0003",
+  "stream": "operator-precedence-interpretability",
+  "text": "Where - which token and which layers - is operator precedence resolved?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:12.488Z",
+    "updated_at": "2026-06-11T12:20:00.333Z"
+  },
+  "comments": {},
+  "stories": [
+    "circuit"
+  ]
+}

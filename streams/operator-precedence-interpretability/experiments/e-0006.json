@@ -1,0 +1,33 @@
+{
+  "type": "experiment",
+  "id": "e-0006",
+  "stream": "operator-precedence-interpretability",
+  "description": "Train a top-k sparse autoencoder on the hub residual (L27, 4x expansion, k=24) pre/post-FT, find sub-product-selective features, and causally ablate a single feature at the = position. Driver: modal_app.py sae_suite / sae_feature_ablation.",
+  "motivation": "Look for a value-specific (product-keyed) feature - the signature of lookup rather than rule - and test whether it is causally used.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "opprec/sae.py",
+    "commit": "ac28308a904d431d2032bff851010c21555ff009",
+    "run_cmd": "modal run modal_app.py::sae_suite"
+  },
+  "formal_results": "Best sub-product SAE feature: #5157 |r|=0.558 pre-FT, strengthened to #13802 |r|=0.702 post-FT. Ablating #13802 at L27 = on the 9/48 expressions where it fires drops mean P(BODMAS) 0.994 -> 0.730 (Delta=-0.264), ~0 elsewhere. Caveat: SAEs undertrained (~9.5k/11k dead latents); n=9, no CI.",
+  "results_description": "A value-specific (b*c-selective) feature exists and is causally used where it fires - consistent with product-keyed lookup, inconsistent with a context-independent rule.",
+  "conclusions": "Direct evidence of a product-keyed lookup feature that fine-tuning strengthens; the multiply is at least partly memorized lookup, not a clean rule.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0008",
+    "a-0011"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:25.692Z",
+    "updated_at": "2026-06-11T12:19:57.904Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}

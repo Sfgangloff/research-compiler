@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0008",
+  "stream": "operator-precedence-interpretability",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0006"
+    }
+  ],
+  "target": "q-0009",
+  "rationale": "If FT just deepens existing bands rather than adding a rule signature, 'FT installs a rule' is false.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:24.410Z",
+    "updated_at": "2026-06-11T12:19:24.410Z"
+  },
+  "comments": {}
+}

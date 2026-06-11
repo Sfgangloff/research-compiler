@@ -1,0 +1,34 @@
+{
+  "type": "experiment",
+  "id": "e-0007",
+  "stream": "operator-precedence-interpretability",
+  "description": "Topological data analysis of integer representations (persistent homology via ripser, Mapper, circular coordinates) to fit a periodic helix, then a causal 'Clock' intervention: rotate the helix component by 2*pi/T (T=10) and decode whether the answer shifts. Driver: modal_app.py causal_clock_suite.",
+  "motivation": "Ask whether the circular integer code is causally consumed at answer-commit.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "opprec/topology.py",
+    "commit": "ac28308a904d431d2032bff851010c21555ff009",
+    "run_cmd": "modal run modal_app.py::causal_clock_suite"
+  },
+  "formal_results": "Integers lie on a helix (H1 period ~10, sinusoidal variance explained 0.20-0.41; FT sharpens it, e.g. 7B L20 R2 0.378 -> 0.425). But at the answer-commit position, no_change = 1.00 under T=10 rotation for every model - the circle is not consumed there. At the L0 input position no_change drops to 0.43-0.70 but shifts are mostly absolute, not clock-modular.",
+  "results_description": "Integers form a circular code, but rotating it does not change the committed answer - the Clock is not causally used at answer-commit.",
+  "conclusions": "Inconclusive and DELIBERATELY PULLED from the paper: the helix exists but the causal Clock result lacks the controls (random-direction, magnitude-sweep) to publish.",
+  "addresses": [
+    "q-0010"
+  ],
+  "produces": [
+    "a-0009"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:27.584Z",
+    "updated_at": "2026-06-11T12:19:58.547Z"
+  },
+  "comments": {
+    "pulled": "Pulled from the paper 2026-05-29 (HELIX_NOTES.md): the no_change=1.00 result lacks random-direction / magnitude / positive-direction controls, so it is not safe to publish as a negative claim."
+  },
+  "stories": [
+    "rulelookup"
+  ]
+}

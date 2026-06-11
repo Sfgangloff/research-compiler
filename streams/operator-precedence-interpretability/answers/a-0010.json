@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0010",
+  "stream": "operator-precedence-interpretability",
+  "text": "Proposed, not run: holding out product values at fine-tuning and testing the late band on them would settle rule (generalizes) vs product-keyed lookup (fails). It is named as the natural next probe but has not been executed.",
+  "status": "proposed",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0008"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:30.882Z",
+    "updated_at": "2026-06-11T12:19:55.353Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}

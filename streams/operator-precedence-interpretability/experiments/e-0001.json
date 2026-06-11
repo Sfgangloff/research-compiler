@@ -1,0 +1,39 @@
+{
+  "type": "experiment",
+  "id": "e-0001",
+  "stream": "operator-precedence-interpretability",
+  "description": "Behavioral baseline + mechanistic localization across models (unquantized bf16, Modal A100): accuracy on the canonical-48 set (a+b*c=, a,b,c in 1..5, distinct), BODMAS-vs-LTR error split, engagement; logit-lens commit layer at =; per-layer MLP-vs-attention DLA; path-DLA (*->=) routing heads. Core methods in opprec/interp.py.",
+  "motivation": "Establish the behavior exists, then localize where and which components resolve precedence, before attributing a circuit.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "modal_app.py",
+    "commit": "ac28308a904d431d2032bff851010c21555ff009",
+    "run_cmd": "modal run modal_app.py::baseline"
+  },
+  "formal_results": "Qwen2.5-Math-7B: 21/48 correct pre-FT, 48/48 post-FT (engagement 0.73 pre, 0.56 at b=5); Qwen-1.5B 13/48; DeepSeek-Math-7B 29/48; Llama-3.1-8B base 0/48 (cannot do the task). Precedence encoded in the = residual, late layers (commit ~L11-20). MLP 22-27 dominate DLA; path-DLA routing heads L22H13, L20H10, L27H11.",
+  "results_description": "Math LMs resolve precedence at the = token in late layers via MLP 22-27 and a small set of routing heads; a non-math control (Llama) cannot do the task.",
+  "conclusions": "The behavior exists and is localized to the = token in late layers; components are MLP 22-27 + routing heads - the substrate for the rule-vs-lookup question.",
+  "addresses": [
+    "q-0002",
+    "q-0003",
+    "q-0004"
+  ],
+  "produces": [
+    "a-0001",
+    "a-0002",
+    "a-0003",
+    "a-0011"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:13.775Z",
+    "updated_at": "2026-06-11T12:19:47.765Z"
+  },
+  "comments": {
+    "provenance": "Concrete numbers come from gitignored .modal_results/*.json (e.g. baseline_7B_pre.json); not re-derivable from git. Run on unquantized bf16 (the notebooks used 4-bit)."
+  },
+  "stories": [
+    "circuit"
+  ]
+}

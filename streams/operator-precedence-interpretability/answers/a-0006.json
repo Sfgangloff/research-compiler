@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0006",
+  "stream": "operator-precedence-interpretability",
+  "text": "Lookup-vs-rule is a property of the WHOLE model, not one layer: every math LM shows a shared FIVE-BAND layered profile across depth - early baseline, a mid surface-form band (strongly negative Cohen's d, e.g. Qwen-7B L20 d=-2.20), a transition, a late abstract-b*c band (d>0), and an assembly tail. The earlier single-layer verdicts collapsed this distributed structure.",
+  "status": "supported",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0004"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:23.065Z",
+    "updated_at": "2026-06-11T12:19:52.864Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}

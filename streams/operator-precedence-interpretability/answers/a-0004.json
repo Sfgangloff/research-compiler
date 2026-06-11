@@ -1,0 +1,24 @@
+{
+  "type": "answer",
+  "id": "a-0004",
+  "stream": "operator-precedence-interpretability",
+  "text": "L27H11 is a downstream amplifier, not a precedence enforcer (its output direction is similar across two-operator and single-operator contexts). And in unquantized bf16 it is not even strictly dominant - its path-DLA is comparable to L20H10 - so the 4-bit 'L27H11 dominant router' was partly a quantization artifact.",
+  "status": "supported",
+  "answers": [
+    "q-0005"
+  ],
+  "backed_by": [
+    "e-0002",
+    "e-0003"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:20.001Z",
+    "updated_at": "2026-06-11T12:19:46.306Z"
+  },
+  "comments": {},
+  "stories": [
+    "circuit"
+  ]
+}

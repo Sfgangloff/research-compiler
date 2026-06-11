@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0010",
+  "stream": "operator-precedence-interpretability",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0008"
+    }
+  ],
+  "target": "q-0011",
+  "rationale": "The discriminator that would actually settle rule-vs-lookup, which the invariance test cannot.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:29.606Z",
+    "updated_at": "2026-06-11T12:19:29.606Z"
+  },
+  "comments": {}
+}

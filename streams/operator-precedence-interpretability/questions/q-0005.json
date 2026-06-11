@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0005",
+  "stream": "operator-precedence-interpretability",
+  "text": "Is the top routing head L27H11 a precedence ENFORCER (it computes the decision) or a downstream AMPLIFIER (it boosts an answer already computed)?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:16.934Z",
+    "updated_at": "2026-06-11T12:20:01.473Z"
+  },
+  "comments": {},
+  "stories": [
+    "circuit"
+  ]
+}

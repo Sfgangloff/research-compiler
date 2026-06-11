@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0001",
+  "stream": "operator-precedence-interpretability",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0001"
+    }
+  ],
+  "target": "q-0002",
+  "rationale": "You cannot study a circuit for a behavior the model does not exhibit.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:11.865Z",
+    "updated_at": "2026-06-11T12:19:11.865Z"
+  },
+  "comments": {}
+}

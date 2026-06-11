@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0009",
+  "stream": "operator-precedence-interpretability",
+  "text": "Integer values do form a circular ('helix') code (period ~10, sharpened by FT), but rotating that code does not change the committed answer (no_change=1.00 at answer-commit), suggesting the circle is not causally consumed there. This result was pulled from the paper for lacking the controls needed to make a sound negative claim.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0010"
+  ],
+  "backed_by": [
+    "e-0007"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:28.951Z",
+    "updated_at": "2026-06-11T12:19:54.741Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}

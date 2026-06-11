@@ -1,0 +1,33 @@
+{
+  "type": "experiment",
+  "id": "e-0005",
+  "stream": "operator-precedence-interpretability",
+  "description": "LoRA fine-tuning (r=16, merged) to 100% canonical-48 accuracy with the canonical-48 held out of training; 3 seeds at 7B, 1 at 1.5B; measure how the invariance bands change pre vs post.",
+  "motivation": "Test the 'fine-tuning installs a rule' claim by watching whether FT adds a rule signature or just deepens existing bands.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "modal_app.py",
+    "commit": "ac28308a904d431d2032bff851010c21555ff009",
+    "run_cmd": "modal run modal_app.py::finetune"
+  },
+  "formal_results": "600 LoRA steps, 21/48 -> 48/48 (BODMAS-LTR gap ~1 -> ~13), seed-stable. Mid band L20 deepens d=-2.20 -> {-4.78,-3.91,-5.02} (~2.2x, 3 seeds); 1.5B L16 -0.61 -> -3.86 (6x); late band extends from 1 layer (L23) to 3 (L23-L25). Exp-G at L22 post-FT: rejected (supports lookup).",
+  "results_description": "Fine-tuning amplifies both load-bearing bands 2-6x seed-stably and extends the late band, but Exp-G rejects a staged b*c rule post-FT.",
+  "conclusions": "Fine-tuning AMPLIFIES the pretrained layered profile rather than installing a general rule - it augments alongside an existing lookup.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0008",
+    "a-0011"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:25.072Z",
+    "updated_at": "2026-06-11T12:19:57.302Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}

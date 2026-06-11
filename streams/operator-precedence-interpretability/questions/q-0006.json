@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0006",
+  "stream": "operator-precedence-interpretability",
+  "text": "Is the causal hub (early candidate MLP L22) a STAGED computation that computes b*c first, or an answer-specific LOOKUP - and is that even the right layer?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:17.538Z",
+    "updated_at": "2026-06-11T12:20:02.060Z"
+  },
+  "comments": {},
+  "stories": [
+    "circuit"
+  ]
+}

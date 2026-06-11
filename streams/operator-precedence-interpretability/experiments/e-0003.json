@@ -1,0 +1,34 @@
+{
+  "type": "experiment",
+  "id": "e-0003",
+  "stream": "operator-precedence-interpretability",
+  "description": "Causal-flow hub test in bf16: for each candidate component swap its = output with its single-operator (b*c=) value and measure how much the BODMAS-LTR logit gap collapses, ranking the true causal carrier; compare pre-FT vs post-FT.",
+  "motivation": "Test whether L22 is really the hub, and whether the hub is staged-computation or a transition point - in unquantized bf16 across models.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "modal_app.py",
+    "commit": "ac28308a904d431d2032bff851010c21555ff009",
+    "run_cmd": "modal run modal_app.py::causal_flow_suite"
+  },
+  "formal_results": "Qwen-7B pre-FT hub = MLP23 (+ L20H10), NOT L22 (clean gap 0.375). Post-FT the carrier SHIFTS to L22 attention (attn22h13/h10 collapse 5.6 of an 8.6 gap). L27H11 is top-10 but comparable to L20H10, not strictly dominant.",
+  "results_description": "In bf16 the base hub is MLP23 + L20H10; L22 attention becomes the hub only after fine-tuning. The notebook 'L22 hub' was a 4-bit artifact.",
+  "conclusions": "L22 is the TRANSITION layer, not the staged-multiply or lookup layer; the single-layer framing conflated causal importance with computational content.",
+  "addresses": [
+    "q-0006"
+  ],
+  "produces": [
+    "a-0004",
+    "a-0005",
+    "a-0011"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:19.364Z",
+    "updated_at": "2026-06-11T12:19:49.051Z"
+  },
+  "comments": {},
+  "stories": [
+    "circuit"
+  ]
+}

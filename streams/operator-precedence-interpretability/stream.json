@@ -1,0 +1,43 @@
+{
+  "type": "stream",
+  "slug": "operator-precedence-interpretability",
+  "title": "Operator precedence in math LMs: rule or lookup?",
+  "description": "How a math LM computes arithmetic operator precedence (a+b*c) and whether the multiply is a generalizable rule or a memorized (b,c)-keyed lookup. Reconstructed from the intepretability-operator-precedence repo; the bf16 multi-model study reframes the earlier 4-bit single-layer findings.",
+  "root_qid": "q-0001",
+  "counters": {
+    "q": 11,
+    "a": 11,
+    "h": 10,
+    "e": 8
+  },
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:10.681Z",
+    "updated_at": "2026-06-11T12:19:10.681Z"
+  },
+  "comments": {},
+  "glossary": {
+    "BODMAS vs LTR": "The two candidate answers for a+b*c: BODMAS-correct a+(b*c) vs left-to-right (a+b)*c. The error split diagnoses how the model binds operands.",
+    "canonical-48": "The evaluation set: all a+b*c= with a,b,c in {1..5}, distinct and c>=2 so BODMAS != LTR (48 expressions).",
+    "lookup vs rule": "Is the multiply a memorized (b,c)-keyed table (lookup) or a context-independent multiply routine (rule)? A product-keyed lookup is indistinguishable from a rule on the invariance test - hence the held-out-product discriminator.",
+    "LxHy / MLPx": "Head y of layer x (e.g. L27H11) / the MLP block of layer x.",
+    "logit lens / commit layer": "Projecting the residual stream through the final norm+unembed at each layer; the commit layer is the first layer where the BODMAS-LTR logit gap goes positive and stays.",
+    "DLA / path-DLA": "Direct logit attribution: per-component decomposition of the logit gap. Path-DLA restricts attribution to one source->target attention path (e.g. *->=) to find routing heads.",
+    "causal-flow patching": "Swap a component's = output with its single-operator (b*c=) value and measure how much the BODMAS-LTR gap collapses, ranking the true causal carrier ('hub').",
+    "sub-product invariance test": "Compare per-neuron DLA-profile correlations for same-b*c vs different-b*c expressions; headline statistic Cohen's d (positive = rule-like/abstract, negative = surface-form / operand-pair lookup).",
+    "SAE": "Sparse autoencoder (top-k) trained on a residual stream to find interpretable features; feature #13802 is the value-specific b*c feature that FT strengthens.",
+    "composition / recruitment": "Attention heads becoming causally load-bearing after fine-tuning (several L22 heads enter the top causal set post-FT).",
+    "helix / Clock algorithm": "A circular ('Clock') code for integers (from the modular-addition literature), probed with persistent homology and a causal rotation intervention.",
+    "negative mechanistic interpretability": "The framing: behavior underdetermines the circuit, but the underdetermination has structure - here a shared layered profile rather than a single clean mechanism."
+  },
+  "stories": {
+    "circuit": {
+      "name": "Localizing the precedence circuit",
+      "color": "#2563eb"
+    },
+    "rulelookup": {
+      "name": "Rule vs lookup (layered profile)",
+      "color": "#d97706"
+    }
+  }
+}

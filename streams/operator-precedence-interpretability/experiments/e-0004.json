@@ -1,0 +1,35 @@
+{
+  "type": "experiment",
+  "id": "e-0004",
+  "stream": "operator-precedence-interpretability",
+  "description": "Sub-product invariance test at EVERY MLP layer of every model: compare per-neuron DLA-profile correlations for expressions sharing the same b*c sub-product vs different sub-products (Pearson r; Welch t + Mann-Whitney U; headline Cohen's d, positive = rule-like/abstract, negative = surface-form/operand-pair lookup), Holm-Bonferroni corrected. Pre-FT and post-FT (multi-seed). Driver: modal_app.py rule_vs_lookup_exp_g_sweep_suite.",
+  "motivation": "Replace the fragile one-layer verdict with a full-depth profile, and test cross-model generality.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "opprec/interp.py",
+    "commit": "ac28308a904d431d2032bff851010c21555ff009",
+    "run_cmd": "modal run modal_app.py::rule_vs_lookup_exp_g_sweep_suite"
+  },
+  "formal_results": "A shared five-band profile: early baseline (d>0) -> mid surface-form band (d<<0; Qwen-7B pre min d=-2.20 at L20, p=5e-32) -> transition (d~0) -> late abstract-b*c band (d>0; L23 d=+0.65) -> assembly tail. Same band IDENTITY across Qwen-7B/1.5B/DeepSeek (DeepSeek late band genuinely staged, L23 d=+0.59); they differ only in band depth/location.",
+  "results_description": "Lookup-vs-rule is distributed across depth as a five-band parse->surface-form->transition->abstract->assembly profile, shared across math LMs.",
+  "conclusions": "The single-layer rule-vs-lookup verdict was a collapse of a distributed, layered phenomenon; the layered sub-product profile is the headline structure and it generalizes across families/scales.",
+  "addresses": [
+    "q-0007",
+    "q-0008"
+  ],
+  "produces": [
+    "a-0006",
+    "a-0007",
+    "a-0011"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:22.414Z",
+    "updated_at": "2026-06-11T12:19:56.600Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0002",
+  "stream": "operator-precedence-interpretability",
+  "text": "Does the model respect operator precedence behaviorally at all, and how do its errors split between BODMAS and left-to-right (LTR) reading?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:11.864Z",
+    "updated_at": "2026-06-11T12:19:59.753Z"
+  },
+  "comments": {},
+  "stories": [
+    "circuit"
+  ]
+}

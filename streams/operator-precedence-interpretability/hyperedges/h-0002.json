@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0002",
+  "stream": "operator-precedence-interpretability",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0002"
+    }
+  ],
+  "target": "q-0003",
+  "rationale": "Localize the computation before attributing it.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:12.489Z",
+    "updated_at": "2026-06-11T12:19:12.489Z"
+  },
+  "comments": {}
+}

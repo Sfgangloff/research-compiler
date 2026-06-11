@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0005",
+  "stream": "operator-precedence-interpretability",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0003"
+    }
+  ],
+  "target": "q-0006",
+  "rationale": "Distinguishes a multiply routine from a memorized table, and tests the localization.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:17.539Z",
+    "updated_at": "2026-06-11T12:19:17.539Z"
+  },
+  "comments": {}
+}

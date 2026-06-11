@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0004",
+  "stream": "operator-precedence-interpretability",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0003"
+    }
+  ],
+  "target": "q-0005",
+  "rationale": "A high path-DLA head may merely amplify what is already computed.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:16.936Z",
+    "updated_at": "2026-06-11T12:19:16.936Z"
+  },
+  "comments": {}
+}

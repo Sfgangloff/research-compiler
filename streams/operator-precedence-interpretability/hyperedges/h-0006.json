@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0006",
+  "stream": "operator-precedence-interpretability",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0005"
+    }
+  ],
+  "target": "q-0007",
+  "rationale": "A single-layer Cohen's d is a fragile one-number summary; the all-layer view is the pivot.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:21.217Z",
+    "updated_at": "2026-06-11T12:19:21.217Z"
+  },
+  "comments": {}
+}

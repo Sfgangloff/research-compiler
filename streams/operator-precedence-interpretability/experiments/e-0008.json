@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0008",
+  "stream": "operator-precedence-interpretability",
+  "description": "Hold out specific product values (b*c) from fine-tuning, then test whether the late abstract band still resolves precedence on the held-out products: generalization = rule, failure = product-keyed lookup.",
+  "motivation": "The discriminator that would settle rule-vs-lookup.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "MAIN_TRACK_PLAN.md",
+    "commit": "ac28308a904d431d2032bff851010c21555ff009",
+    "run_cmd": "(planned - not run)"
+  },
+  "formal_results": "Planned - not run. Named as the natural next probe in the paper's Limitations.",
+  "results_description": "No results.",
+  "conclusions": "The experiment that would resolve rule vs (product-keyed) lookup; unexecuted.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0010"
+  ],
+  "status": "planned",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:30.243Z",
+    "updated_at": "2026-06-11T12:19:59.177Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}

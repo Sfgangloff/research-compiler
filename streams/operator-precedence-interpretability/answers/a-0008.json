@@ -1,0 +1,24 @@
+{
+  "type": "answer",
+  "id": "a-0008",
+  "stream": "operator-precedence-interpretability",
+  "text": "Fine-tuning does NOT install a generalizable rule - it AMPLIFIES the existing layered profile (mid and late bands deepen 2-6x seed-stably) and even strengthens a value-specific, product-keyed SAE feature (#13802) that is causally used (ablation drops P(BODMAS) by 0.26 where it fires). The post-FT Exp-G test rejects a staged b*c rule. The multiply is at least partly a memorized lookup that FT sharpens.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0005",
+    "e-0006"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:26.311Z",
+    "updated_at": "2026-06-11T12:19:54.108Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}

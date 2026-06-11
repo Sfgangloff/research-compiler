@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0010",
+  "stream": "operator-precedence-interpretability",
+  "text": "Are integer values represented on a circular ('Clock'/helix) code in the residual stream, and is that circular code causally USED when the model commits to an answer?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:26.987Z",
+    "updated_at": "2026-06-11T12:20:04.407Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}

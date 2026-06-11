@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0005",
+  "stream": "operator-precedence-interpretability",
+  "text": "The early 'L22 is the lookup/multiply hub' claim does not survive bf16: causal-flow shows the base hub is MLP23 + L20H10, and L22 is the TRANSITION layer (the carrier shifts to L22 attention only AFTER fine-tuning). The single-layer story conflated causal importance with computational content.",
+  "status": "supported",
+  "answers": [
+    "q-0006"
+  ],
+  "backed_by": [
+    "e-0003"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:20.644Z",
+    "updated_at": "2026-06-11T12:19:46.915Z"
+  },
+  "comments": {},
+  "stories": [
+    "circuit"
+  ]
+}

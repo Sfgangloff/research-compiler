@@ -1,0 +1,35 @@
+{
+  "type": "experiment",
+  "id": "e-0002",
+  "stream": "operator-precedence-interpretability",
+  "description": "First-generation exploratory mechanistic interpretability (Qwen2.5-Math-7B, 4-bit NF4 on a T4) in Jupyter notebooks: MLP/attention and per-neuron DLA, *-token activation patching, path-DLA (L27H11 discovery), the L22 causal hub, +-token context-independence, and L27H11 enforcer-vs-amplifier tests (K1-K3: context-specific DLA, head-output cosine, head-output patching). Related: l27h11_composition_experiments.ipynb, plus_star_interaction.ipynb.",
+  "motivation": "Localize and characterize the precedence circuit in a single model before scaling.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "mlp_and_circuit.ipynb",
+    "commit": "ac28308a904d431d2032bff851010c21555ff009",
+    "run_cmd": "jupyter (4-bit, exploratory)"
+  },
+  "formal_results": "Narrated findings (notebook outputs are stripped - no saved numbers): L27H11 = strongest *->= routing head; L22 = causal hub; + token context-independent; ~40% bimodal circuit engagement; L27H11 reads as an amplifier (high head-output cosine across contexts). This is the 4-bit single-layer/single-model framing.",
+  "results_description": "An initial single-layer story (L27H11 router + L22 lookup hub); outputs are not saved in the notebooks.",
+  "conclusions": "A first-pass circuit, later found to be partly an artifact of 4-bit quantization and single-layer summaries (reframed by e-0003/e-0004).",
+  "addresses": [
+    "q-0005",
+    "q-0006"
+  ],
+  "produces": [
+    "a-0004"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:18.139Z",
+    "updated_at": "2026-06-11T12:19:48.393Z"
+  },
+  "comments": {
+    "superseded": "Notebooks have outputs stripped (methods/markdown only). The 4-bit single-layer framing (L27H11 dominant router, L22 lookup hub) is SUPERSEDED by the bf16 multi-model sweep (e-0003/e-0004), which refutes it."
+  },
+  "stories": [
+    "circuit"
+  ]
+}

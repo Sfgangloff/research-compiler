@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0008",
+  "stream": "operator-precedence-interpretability",
+  "text": "Does whatever layered structure exists generalize across model families and scales (Qwen-7B/1.5B, DeepSeek), or is it a per-model accident?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:19:21.817Z",
+    "updated_at": "2026-06-11T12:20:03.244Z"
+  },
+  "comments": {},
+  "stories": [
+    "rulelookup"
+  ]
+}
