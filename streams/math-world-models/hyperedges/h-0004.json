@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0004",
+  "stream": "math-world-models",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0003"
+    }
+  ],
+  "target": "q-0005",
+  "rationale": "The MVP's core falsifiable claim: is Lean dynamics learnable at T4 scale?",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:26.056Z",
+    "updated_at": "2026-06-11T11:01:26.056Z"
+  },
+  "comments": {}
+}

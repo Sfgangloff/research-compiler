@@ -1,0 +1,42 @@
+{
+  "type": "stream",
+  "slug": "math-world-models",
+  "title": "World models for interactive theorem proving in Lean 4",
+  "description": "Reframing ITP as model-based RL: learn a world model of Lean and plan with it (hierarchical MPC) at equal Lean-call budget. A port of HWM to Lean. Reasoning reconstructed from the mathematics-world-models repo; currently a data pipeline + a designed program.",
+  "root_qid": "q-0001",
+  "counters": {
+    "q": 9,
+    "a": 9,
+    "h": 8,
+    "e": 4
+  },
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:19.985Z",
+    "updated_at": "2026-06-11T11:01:19.985Z"
+  },
+  "comments": {},
+  "glossary": {
+    "world model (WM)": "A learned fast/approximate surrogate of the true Lean dynamics; predicts the next observation under an edit, so the planner can imagine edit sequences without calling the Lean kernel.",
+    "elementary perturbation": "A single typed edit at one source site - the RL 'action'. Low-level primitives (INSERT/DELETE/REPLACE) vs high-level macro-edits (HAVE/SUFFICES/.../BLOCK).",
+    "HWM": "Hierarchical Planning with Latent World Models (arXiv:2604.03208), the methodological template ported here: multi-scale latent world models + MPC, addressing compounding model error and exponential search.",
+    "observation (o_t)": "The canonical text block FILE || GOALS || MESSAGES || ENV || META that represents the Lean world-state for the model.",
+    "is_solved": "Terminal predicate: GOALS == 'no goals' and no error messages and no sorry/admit.",
+    "Stages A/B/C/D": "Data-pipeline stages: A forward expert transitions, B perturbed (failure + counterfactual), C macro (block-compression / structural), D round-trip forward/inverse consistency pairs.",
+    "grounding (receding horizon)": "Periodically executing the chosen edit prefix in the REAL Lean kernel and re-planning - the antidote to a world model's compounding prediction error.",
+    "equal-budget protocol": "The fair-comparison currency: a fixed number of real Lean-kernel calls per theorem (imagined model steps are free). The isolation that makes the WM-vs-baseline comparison meaningful.",
+    "wm_low / wm_high": "Two LoRA adapters on a shared frozen base model: the primitive-edit world model and the macro-edit world model.",
+    "L_cycle": "Round-trip consistency loss on Stage-D invertible-operator pairs: applying an edit then its inverse should return the original state.",
+    "theorem-disjoint splits": "Train/val/test split by declaration (sha256 of the decl name) so no theorem leaks across splits."
+  },
+  "stories": {
+    "dataset": {
+      "name": "ITP-as-RL dataset",
+      "color": "#2563eb"
+    },
+    "planning": {
+      "name": "World-model planning",
+      "color": "#d97706"
+    }
+  }
+}

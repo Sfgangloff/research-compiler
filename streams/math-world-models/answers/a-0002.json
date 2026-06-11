@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0002",
+  "stream": "math-world-models",
+  "text": "The action is one 'elementary perturbation' - a single-site typed edit from a closed algebra: low-level INSERT/DELETE/REPLACE and high-level HAVE/SUFFICES/EXTRACT_LEMMA/INDUCT/CASES/GENERALIZE/BLOCK. The plan calls this the single most important design decision; so far only the BLOCK macro is generated, and whether this algebra beats alternatives (token edits, free-form diffs, next-tactic-only) is a planned ablation.",
+  "status": "supported",
+  "answers": [
+    "q-0003"
+  ],
+  "backed_by": [
+    "e-0001"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:24.906Z",
+    "updated_at": "2026-06-11T11:01:46.908Z"
+  },
+  "comments": {},
+  "stories": [
+    "dataset"
+  ]
+}

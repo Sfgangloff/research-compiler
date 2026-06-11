@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0001",
+  "stream": "math-world-models",
+  "text": "Can interactive theorem proving be reframed as model-based RL - learning a fast neural world model that is a surrogate of Lean's state-transition function - and does planning in that learned model (hierarchical MPC) outperform model-free next-tactic search at equal Lean-kernel-call budget? (A port of Hierarchical Planning with Latent World Models, HWM, to Lean.)",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:20.588Z",
+    "updated_at": "2026-06-11T11:01:43.448Z"
+  },
+  "comments": {},
+  "stories": [
+    "dataset"
+  ]
+}

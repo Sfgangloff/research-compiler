@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0006",
+  "stream": "math-world-models",
+  "text": "Does a HIERARCHICAL world model (a macro-edit wm_high latent-coupled to a primitive wm_low) beat a flat world model on long-horizon proofs?",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:28.164Z",
+    "updated_at": "2026-06-11T11:01:49.906Z"
+  },
+  "comments": {},
+  "stories": [
+    "planning"
+  ]
+}

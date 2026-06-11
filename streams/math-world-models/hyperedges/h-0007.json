@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0007",
+  "stream": "math-world-models",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0007"
+    }
+  ],
+  "target": "q-0008",
+  "rationale": "Pre-registered, negative-capable expectation about where any benefit shows up.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:29.385Z",
+    "updated_at": "2026-06-11T11:01:29.385Z"
+  },
+  "comments": {}
+}

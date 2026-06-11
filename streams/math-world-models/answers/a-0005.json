@@ -1,0 +1,24 @@
+{
+  "type": "answer",
+  "id": "a-0005",
+  "stream": "math-world-models",
+  "text": "Proposed: a hierarchical WM (wm_high + wm_low, latent-coupled) is expected to beat a flat WM on long-horizon proofs (the direct HWM ablation), but wm_high is unimplemented and untested.",
+  "status": "proposed",
+  "answers": [
+    "q-0006"
+  ],
+  "backed_by": [
+    "e-0002",
+    "e-0004"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:32.271Z",
+    "updated_at": "2026-06-11T11:01:53.481Z"
+  },
+  "comments": {},
+  "stories": [
+    "planning"
+  ]
+}

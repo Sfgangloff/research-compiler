@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0007",
+  "stream": "math-world-models",
+  "text": "At equal Lean-kernel-call budget (and equal wall-clock), does a world-model planner outperform a model-free next-tactic baseline?",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:28.736Z",
+    "updated_at": "2026-06-11T11:01:50.496Z"
+  },
+  "comments": {},
+  "stories": [
+    "planning"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0003",
+  "stream": "math-world-models",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0003"
+    }
+  ],
+  "target": "q-0004",
+  "rationale": "Existing Lean corpora keep only successful trajectories; failure transitions are the proposed headline novelty.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:22.798Z",
+    "updated_at": "2026-06-11T11:01:22.798Z"
+  },
+  "comments": {}
+}

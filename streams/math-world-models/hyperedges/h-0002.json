@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0002",
+  "stream": "math-world-models",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0002"
+    }
+  ],
+  "target": "q-0003",
+  "rationale": "The plan calls the action algebra the single most important design decision; it must match Lean's feedback granularity.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:22.125Z",
+    "updated_at": "2026-06-11T11:01:22.125Z"
+  },
+  "comments": {}
+}

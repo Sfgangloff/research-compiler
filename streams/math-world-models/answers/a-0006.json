@@ -1,0 +1,24 @@
+{
+  "type": "answer",
+  "id": "a-0006",
+  "stream": "math-world-models",
+  "text": "Proposed (headline experiment): at equal Lean-call budget the world-model planner is hypothesized to beat the model-free baseline, but neither the planner nor the baseline is implemented.",
+  "status": "proposed",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0003",
+    "e-0004"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:32.899Z",
+    "updated_at": "2026-06-11T11:01:54.065Z"
+  },
+  "comments": {},
+  "stories": [
+    "planning"
+  ]
+}

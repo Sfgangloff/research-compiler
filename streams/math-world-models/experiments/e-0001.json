@@ -1,0 +1,39 @@
+{
+  "type": "experiment",
+  "id": "e-0001",
+  "stream": "math-world-models",
+  "description": "Four-stage data pipeline over Lean proofs: Stage A (forward expert transitions), Stage B (perturb a correct proof -> failure + counterfactual transitions with a faithful Lean error_class), Stage C (block-compression macro edits), Stage D (round-trip forward/inverse pairs for a cycle-consistency loss). Schema-v2 records (state_before, perturbation, state_after, lean_feedback); theorem-disjoint splits; backed by a vendored, built Lean REPL.",
+  "motivation": "Build the (state, edit, next-state, feedback) dataset - including failure dynamics and macro edits - that no existing Lean corpus provides, and validate the ITP-as-RL state/action design.",
+  "code_pointer": {
+    "repo": "mathematics-world-models",
+    "path": "src/data/",
+    "commit": "271cf1bc33b64a638fc2a7746db85434a13176bc",
+    "run_cmd": "make fixtures"
+  },
+  "formal_results": "Runs end-to-end on a real built Lean REPL: 66 schema-valid records from 6 standalone fixture proofs (train 33 / val 18 / test_id 15), theorem-disjoint, zero orphan round-trip pairs; outcomes solved/error/still_valid with an error_class taxonomy; 101 tests pass. Fixture scale only (target 150k-500k low-level + 20k-60k macro).",
+  "results_description": "The pipeline produces schema-valid transition records including real failure transitions; the ITP-as-RL state/action design is implemented and exercised at toy scale.",
+  "conclusions": "ITP-as-RL is operational at the data layer (states, edit-actions, failure dynamics all capturable). Scale-up (Mathlib extraction) is blocked on disk; the model, baseline, planner, and eval are not yet built.",
+  "addresses": [
+    "q-0002",
+    "q-0003",
+    "q-0004"
+  ],
+  "produces": [
+    "a-0001",
+    "a-0002",
+    "a-0003",
+    "a-0009"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:23.294Z",
+    "updated_at": "2026-06-11T11:01:48.169Z"
+  },
+  "comments": {
+    "provenance": "The 66-record fixture dataset is gitignored (present on disk, not committed); counts come from src/data/shard_stats, not re-derivable from git. The data is standalone-Lean fixtures, not Mathlib."
+  },
+  "stories": [
+    "dataset"
+  ]
+}

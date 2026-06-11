@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0001",
+  "stream": "math-world-models",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0001"
+    }
+  ],
+  "target": "q-0002",
+  "rationale": "An unambiguous observation must be fixed before any world-model I/O.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:21.298Z",
+    "updated_at": "2026-06-11T11:01:21.298Z"
+  },
+  "comments": {}
+}

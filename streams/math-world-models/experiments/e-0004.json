@@ -1,0 +1,38 @@
+{
+  "type": "experiment",
+  "id": "e-0004",
+  "stream": "math-world-models",
+  "description": "Hierarchical model-predictive control: the planner imagines macro/primitive edit sequences with the world model (CEM; energy = latent_l1 + status + error terms) and grounds only the chosen prefix in real Lean. Equal-budget downstream proving (Lean-call budget sweep 64/128/256/512) plus HWM-style ablations (hierarchy on/off, failure-dynamics on/off, action-algebra coverage, k_replan sweep 1/2/4/8, horizon 1/2/4/6).",
+  "motivation": "Run the headline equal-budget WM-planner vs model-free comparison and isolate WHERE world-model planning helps.",
+  "code_pointer": {
+    "repo": "mathematics-world-models",
+    "path": "configs/planner.yaml",
+    "commit": "271cf1bc33b64a638fc2a7746db85434a13176bc",
+    "run_cmd": "make eval"
+  },
+  "formal_results": "Planned - src/planner and src/eval are empty stubs; planner.yaml holds first-cut HWM Franka Table-10 hyperparameters pending a bake-off. No results.",
+  "results_description": "No planning/eval results.",
+  "conclusions": "Hypotheses H5/H6/H7/H8: hierarchy helps long-horizon, WM-planner beats baseline at equal budget, the advantage concentrates in long proofs, and grounding controls compounding error. Untested.",
+  "addresses": [
+    "q-0006",
+    "q-0007",
+    "q-0008",
+    "q-0009"
+  ],
+  "produces": [
+    "a-0005",
+    "a-0006",
+    "a-0007",
+    "a-0008"
+  ],
+  "status": "planned",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:31.461Z",
+    "updated_at": "2026-06-11T11:01:58.161Z"
+  },
+  "comments": {},
+  "stories": [
+    "planning"
+  ]
+}

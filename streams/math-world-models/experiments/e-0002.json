@@ -1,0 +1,33 @@
+{
+  "type": "experiment",
+  "id": "e-0002",
+  "stream": "math-world-models",
+  "description": "Train two LoRA world-model adapters on a shared frozen sub-2B base: wm_low (primitive edits) and wm_high (macro edits), with a cycle-consistency loss L_cycle and status/error prediction heads. Intrinsic eval: next-state exact-match, status-F1, error_class accuracy, k-step rollout fidelity.",
+  "motivation": "Test the MVP's core falsifiable claim - is Lean dynamics learnable at T4 scale?",
+  "code_pointer": {
+    "repo": "mathematics-world-models",
+    "path": "configs/small.yaml",
+    "commit": "271cf1bc33b64a638fc2a7746db85434a13176bc",
+    "run_cmd": "make small"
+  },
+  "formal_results": "Planned - not run. src/wm/ is an empty stub; COMPUTE_LEDGER.md records 0 T4-GPU-h.",
+  "results_description": "No model trained; no intrinsic-eval numbers.",
+  "conclusions": "Hypothesis: a sub-2B model can learn Lean dynamics well enough to be a useful surrogate. Untested.",
+  "addresses": [
+    "q-0005"
+  ],
+  "produces": [
+    "a-0004",
+    "a-0005"
+  ],
+  "status": "planned",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:26.912Z",
+    "updated_at": "2026-06-11T11:01:56.845Z"
+  },
+  "comments": {},
+  "stories": [
+    "planning"
+  ]
+}

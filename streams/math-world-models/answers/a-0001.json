@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0001",
+  "stream": "math-world-models",
+  "text": "The state ('world') is a Lean source file plus its context, rendered as a POMDP observation FILE || GOALS || MESSAGES || ENV || META (schema.Obs) - the unambiguous observation the world model consumes and predicts.",
+  "status": "supported",
+  "answers": [
+    "q-0002"
+  ],
+  "backed_by": [
+    "e-0001"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:24.324Z",
+    "updated_at": "2026-06-11T11:01:46.215Z"
+  },
+  "comments": {},
+  "stories": [
+    "dataset"
+  ]
+}

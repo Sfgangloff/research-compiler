@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0003",
+  "stream": "math-world-models",
+  "text": "Yes - Stage B manufactures failure dynamics cheaply by perturbing correct proofs (decoy-tactic replacement, deletion, no-op insertion, neighbor-replace) and recording the faithful Lean outcome and error_class. At fixture scale this yields a realistic mix (solved/error/still_valid across error classes). Recording failure transitions is the dataset's headline novelty - no existing Lean corpus models dynamics including failure.",
+  "status": "supported",
+  "answers": [
+    "q-0004"
+  ],
+  "backed_by": [
+    "e-0001"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:25.403Z",
+    "updated_at": "2026-06-11T11:01:47.460Z"
+  },
+  "comments": {},
+  "stories": [
+    "dataset"
+  ]
+}

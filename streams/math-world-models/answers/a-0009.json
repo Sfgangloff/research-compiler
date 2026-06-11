@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0009",
+  "stream": "math-world-models",
+  "text": "Capstone (proposed program): reframe interactive theorem proving as model-based RL - learn a fast hierarchical world model of Lean and plan with it under an equal-Lean-call-budget protocol (an HWM->ITP port). Status: the data layer is real - a four-stage pipeline produces (state, edit, next-state, feedback) records including the novel FAILURE dynamics, validated at fixture scale (a-0001..a-0003). The world model, baseline, planner, and evaluation are unbuilt (a-0004..a-0008), 0 GPU-hours spent. The contribution is framed as conceptual + an open dataset/benchmark + a clean equal-budget comparison, with an honest expectation of modest gains at small scale.",
+  "status": "proposed",
+  "answers": [
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0001"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T11:01:34.705Z",
+    "updated_at": "2026-06-11T11:01:56.227Z"
+  },
+  "comments": {},
+  "stories": [
+    "planning"
+  ]
+}
