@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0004",
+  "stream": "proof-hierarchies",
+  "text": "Is there ENOUGH decomposable hierarchical structure in real Mathlib proofs to support a granularity study, or are proofs mostly one-liners?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:24.420Z",
+    "updated_at": "2026-06-11T12:03:03.361Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

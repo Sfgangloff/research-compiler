@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0009",
+  "stream": "proof-hierarchies",
+  "text": "Can a model trained to PREDICT a section (the subgoal frontier) plus a solver beat a single-stage baseline on pass@k and number of LLM calls?",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:35.248Z",
+    "updated_at": "2026-06-11T12:02:56.327Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

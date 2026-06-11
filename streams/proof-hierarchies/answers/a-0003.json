@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0003",
+  "stream": "proof-hierarchies",
+  "text": "Barely. Real Mathlib proofs are overwhelmingly flat: of 1,715 theorems only ~4% are decomposable (>=2 in-proof nodes), with max dependency-poset depth 3. Extrapolated to ~8k decomposable declarations over full Mathlib - marginally clearing the 5-10k threshold. The granularity axis exists but its thin supply is the project's biggest live risk.",
+  "status": "supported",
+  "answers": [
+    "q-0004"
+  ],
+  "backed_by": [
+    "e-0004"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:26.819Z",
+    "updated_at": "2026-06-11T12:02:49.851Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

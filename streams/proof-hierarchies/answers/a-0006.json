@@ -1,0 +1,25 @@
+{
+  "type": "answer",
+  "id": "a-0006",
+  "stream": "proof-hierarchies",
+  "text": "NOT YET RUN. Whether fine vs rough SFT produces a held-out pass@k gap - and whether it grows as the model shrinks (the granularity x size interaction) - is the project's headline claim, but the SFT runs are unexecuted (a paper PLACEHOLDER), blocked on Modal credit. The paired, length-decorrelated data is prepared.",
+  "status": "proposed",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0006",
+    "e-0007",
+    "e-0008"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:33.957Z",
+    "updated_at": "2026-06-11T12:02:56.938Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

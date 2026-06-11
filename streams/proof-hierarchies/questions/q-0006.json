@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0006",
+  "stream": "proof-hierarchies",
+  "text": "Does the end-to-end training/eval loop (T4 generation + Kimina-Lean-Server verification) run within free-tier limits, and what is the pre-SFT pass@1 floor any granularity effect must beat?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:28.419Z",
+    "updated_at": "2026-06-11T12:03:04.545Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

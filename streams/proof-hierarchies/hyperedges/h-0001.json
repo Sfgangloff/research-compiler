@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0001",
+  "stream": "proof-hierarchies",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0001"
+    }
+  ],
+  "target": "q-0002",
+  "rationale": "Defines the independent variable before any data or model work.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:18.649Z",
+    "updated_at": "2026-06-11T12:02:18.649Z"
+  },
+  "comments": {}
+}

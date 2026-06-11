@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0008",
+  "stream": "proof-hierarchies",
+  "text": "Proposed and deferred: a section-predictor (subgoal frontier) + solver is hypothesized to beat a single-stage baseline on pass@k and #LLM-calls, but it is deferred until the granularity-as-data study (Variant A) shows signal.",
+  "status": "proposed",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0009"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:36.552Z",
+    "updated_at": "2026-06-11T12:02:58.090Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

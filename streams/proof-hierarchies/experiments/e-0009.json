@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0009",
+  "stream": "proof-hierarchies",
+  "description": "Variant B: train a section-predictor that proposes a decomposition frontier, paired with a solver, and compare to a single-stage prover on pass@k and number of LLM calls.",
+  "motivation": "The planning payoff of the formalism.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "EXPERIMENT.md",
+    "commit": "f21fb4ab1b142d4e3a554442a2f255aaa05d5e6d",
+    "run_cmd": "(deferred)"
+  },
+  "formal_results": "Planned / deferred until Variant A (the granularity-as-data study) shows signal.",
+  "results_description": "No results.",
+  "conclusions": "Deferred extension.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0008"
+  ],
+  "status": "planned",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:35.995Z",
+    "updated_at": "2026-06-11T12:03:01.495Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

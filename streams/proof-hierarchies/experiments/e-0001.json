@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0001",
+  "stream": "proof-hierarchies",
+  "description": "Freeze a single zero-skew Lean/Mathlib toolchain (Lean v4.26.0, Mathlib 2df2f015..., repl a9a6f5ba...) used identically for extraction, rewriting, verification, and eval - byte-identical to ntp-toolkit's v4.26.0 pin.",
+  "motivation": "A single frozen stack across all stages is the biggest de-risking rule; any extractor/verifier skew would invalidate the verified-reconstruction claim.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "modal/build_env.py",
+    "commit": "f21fb4ab1b142d4e3a554442a2f255aaa05d5e6d",
+    "run_cmd": "modal run modal/build_env.py"
+  },
+  "formal_results": "Stage 0a complete (2026-05-19): the environment builds and is byte-identical to the ntp-toolkit v4.26.0 Mathlib pin.",
+  "results_description": "A frozen, skew-free Lean/Mathlib environment on a Modal Volume.",
+  "conclusions": "The toolchain is pinned with zero extractor/verifier skew, enabling verified reconstruction.",
+  "addresses": [
+    "q-0003"
+  ],
+  "produces": [
+    "a-0002"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:19.988Z",
+    "updated_at": "2026-06-11T12:02:51.974Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

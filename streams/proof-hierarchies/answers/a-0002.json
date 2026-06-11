@@ -1,0 +1,24 @@
+{
+  "type": "answer",
+  "id": "a-0002",
+  "stream": "proof-hierarchies",
+  "text": "Yes - reconstruction is machine-verified, not assumed: a custom Lean InfoTree extractor + round-trip elaboration yields 2,668/3,151 (84.7%) verifying terms and 607 (rough, fine) pairs of the same theorems, each compiling against the original statement with an axiom audit. The 15.3% loss is a structural ceiling (private helper lemmas), not a fixable bug.",
+  "status": "supported",
+  "answers": [
+    "q-0003"
+  ],
+  "backed_by": [
+    "e-0001",
+    "e-0003"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:23.783Z",
+    "updated_at": "2026-06-11T12:02:49.130Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

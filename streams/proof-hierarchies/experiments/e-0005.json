@@ -1,0 +1,33 @@
+{
+  "type": "experiment",
+  "id": "e-0005",
+  "stream": "proof-hierarchies",
+  "description": "Run the T4 + Kimina-Lean-Server loop end-to-end: zero-shot generate with un-SFT'd Qwen2.5-0.5B on a 50-problem miniF2F_v2s/test subset (seed 0) and verify, measuring pass@1 and wall-clock.",
+  "motivation": "Establish the infrastructure gate and the no-SFT baseline floor.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "modal/eval_pilot.py",
+    "commit": "f21fb4ab1b142d4e3a554442a2f255aaa05d5e6d",
+    "run_cmd": "modal run modal/eval_pilot.py"
+  },
+  "formal_results": "Qwen2.5-0.5B zero-shot: 0/50 pass@1; gen 333s + verify 3010s ~ 55.7 min on one T4 + Kimina v2.0.0. Completions show degenerate repetition (a clean floor).",
+  "results_description": "The loop runs end-to-end on free tier; the pre-SFT floor is 0/50.",
+  "conclusions": "Infrastructure gate passed; baseline floor is 0/50 pass@1 - any SFT/granularity gain must beat zero.",
+  "addresses": [
+    "q-0006"
+  ],
+  "produces": [
+    "a-0005",
+    "a-0009"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:29.100Z",
+    "updated_at": "2026-06-11T12:02:54.583Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0004",
+  "stream": "proof-hierarchies",
+  "text": "The right contrast is BINARY rough-vs-fine, not multi-level. The original 'intermediate granularity is optimal / U-shape' framing is not supported by the data (max depth 3 leaves no room for an interior optimum); the project recalibrated to a pi_root vs pi_leaf contrast (which differ ~22% in reconstruction size).",
+  "status": "supported",
+  "answers": [
+    "q-0005"
+  ],
+  "backed_by": [
+    "e-0004"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:27.805Z",
+    "updated_at": "2026-06-11T12:02:50.508Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

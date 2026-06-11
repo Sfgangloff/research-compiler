@@ -1,0 +1,40 @@
+{
+  "type": "stream",
+  "slug": "proof-hierarchies",
+  "title": "Proof-decomposition granularity as a training-data axis for small provers",
+  "description": "Does the granularity (rough vs fine) at which a Lean/Mathlib proof is decomposed into sub-results change what a small prover learns? A formalism (sections of the proof DAG) + a machine-verified reconstruction pipeline + a planned SFT study. Reasoning reconstructed from the proof-hierarchies repo (branch iclr-foundation).",
+  "root_qid": "q-0001",
+  "counters": {
+    "q": 9,
+    "a": 9,
+    "h": 8,
+    "e": 9
+  },
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:17.207Z",
+    "updated_at": "2026-06-11T12:02:17.207Z"
+  },
+  "comments": {},
+  "glossary": {
+    "proof DAG": "Directed acyclic graph over named Lean declarations; an edge d->e means d's elaborated proof term references constant e. Internal nodes are within-declaration have/suffices/show/calc/obtain steps.",
+    "expansion frontier (F)": "The set of declarations treated as opaque leaves when unfolding a proof; bounds the otherwise super-exponential unfolding. F=V recovers the in-proof have-tree; default unfold depth delta=1.",
+    "section": "A maximal antichain (cut) of the bounded-unfolded proof poset: every root-to-leaf path meets it exactly once. THE decomposition - the independent variable of the study.",
+    "pi_root / pi_leaf (rough / fine)": "The two primary section policies: pi_root (rough) inlines intermediate haves and cites library lemmas; pi_leaf (fine) keeps haves named at the minimal antichain. They differ ~22% in reconstruction size.",
+    "generate-then-verify / yield": "Reconstruct a decomposed proof, compile it against the original statement, and audit axioms (#print axioms subset of original); non-verifying reconstructions are dropped and counted as a reported yield (84.7%).",
+    "frozen stack": "A single (Lean toolchain, Mathlib commit, repl) used identically across extraction, rewriting, verification, and eval - the biggest de-risking rule (zero extractor/verifier skew).",
+    "pass@k": "The eval metric: fraction of held-out problems solved within k sampled generations, verified by the Kimina-Lean-Server.",
+    "granularity x model-size interaction": "The core claimed effect: the rough-vs-fine held-out pass@k gap is hypothesized to GROW as the prover shrinks. Unmeasured.",
+    "Variant A / Variant B": "Variant A (primary) = granularity as a training-data serialization axis; Variant B (deferred) = a section-predictor (subgoal frontier) + solver planner."
+  },
+  "stories": {
+    "pipeline": {
+      "name": "Verified reconstruction pipeline",
+      "color": "#2563eb"
+    },
+    "study": {
+      "name": "Granularity-as-data study",
+      "color": "#d97706"
+    }
+  }
+}

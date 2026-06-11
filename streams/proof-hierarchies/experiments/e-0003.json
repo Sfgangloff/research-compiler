@@ -1,0 +1,33 @@
+{
+  "type": "experiment",
+  "id": "e-0003",
+  "stream": "proof-hierarchies",
+  "description": "Extract proof terms via a custom Lean InfoTree extractor (have-trees, premises, proof terms) over frozen Mathlib, round-trip each pretty-printed term-mode proof back through Lean (example := <term>) with an axiom audit, then join verified rough terms with the original tactic source into (rough, fine) pairs.",
+  "motivation": "Semantics preservation must be machine-checked, not assumed, or the corpus is untrustworthy.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "modal/verify_corpus.py",
+    "commit": "f21fb4ab1b142d4e3a554442a2f255aaa05d5e6d",
+    "run_cmd": "modal run modal/verify_corpus.py"
+  },
+  "formal_results": "3,151 extracted proof terms; 2,668 (84.7%) round-trip; filtering to tactic-block decls yields 607 verified (rough, fine) pairs across 20 modules (top: Algebra.Group.Basic 137, Analysis.Normed.Group.Basic 82, Data.List.Basic 64). The 15.3% loss is a structural ceiling (private _proof_N/match_N helpers with no parseable source alias).",
+  "results_description": "A 607-pair verified corpus of the same theorems at rough and fine granularity.",
+  "conclusions": "Verified reconstruction works at scale (84.7%); the corpus is real and machine-checked, with a known structural ceiling.",
+  "addresses": [
+    "q-0003"
+  ],
+  "produces": [
+    "a-0002",
+    "a-0009"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:22.978Z",
+    "updated_at": "2026-06-11T12:02:53.234Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

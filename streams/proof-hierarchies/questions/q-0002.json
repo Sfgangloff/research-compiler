@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0002",
+  "stream": "proof-hierarchies",
+  "text": "Can a single theorem be re-articulated at multiple verified granularities by cutting its proof poset - what is the right formal notion of a 'decomposition'?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:18.648Z",
+    "updated_at": "2026-06-11T12:03:02.065Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

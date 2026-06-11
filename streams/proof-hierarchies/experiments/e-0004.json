@@ -1,0 +1,37 @@
+{
+  "type": "experiment",
+  "id": "e-0004",
+  "stream": "proof-hierarchies",
+  "description": "Without spending Modal credit, estimate how decomposable real Mathlib proofs are: count theorems with >=2 in-proof nodes under F_named, and sweep the expansion frontier size F_size to see how much shrinking the frontier raises the decomposable count.",
+  "motivation": "Gate the whole study: if proofs are mostly flat, the granularity axis collapses.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "rewriter/dryrun_f_size.py",
+    "commit": "f21fb4ab1b142d4e3a554442a2f255aaa05d5e6d",
+    "run_cmd": "python -m rewriter.dryrun_f_size"
+  },
+  "formal_results": "1,715 theorems; under F_named only 68 (~4%) have >=2 in-proof nodes; max dependency-poset depth 3. F_size sweep raises decomposable counts (tau=50->106, 500->224, 2000->348). pi_root vs pi_leaf reconstruction size differs ~22%. Extrapolated ~8k decomposable decls over full Mathlib (~200k) - barely clears the 5-10k threshold.",
+  "results_description": "Real Mathlib proofs are overwhelmingly flat (~4% decomposable, depth<=3); the granularity axis exists but is marginal.",
+  "conclusions": "There is just enough decomposable structure (marginally), and the shallow depth means the contrast must be binary, not multi-level.",
+  "addresses": [
+    "q-0004",
+    "q-0005"
+  ],
+  "produces": [
+    "a-0003",
+    "a-0004",
+    "a-0009"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:25.583Z",
+    "updated_at": "2026-06-11T12:02:53.907Z"
+  },
+  "comments": {
+    "provenance": "data/dryrun_f_size.json is in the working tree but untracked at the pinned commit; the ~4% figure comes from that file (commit the WIP to make it reproducible from git)."
+  },
+  "stories": [
+    "pipeline"
+  ]
+}

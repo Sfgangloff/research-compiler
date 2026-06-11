@@ -1,0 +1,26 @@
+{
+  "type": "answer",
+  "id": "a-0009",
+  "stream": "proof-hierarchies",
+  "text": "Capstone (proposed): proof-decomposition granularity is a controllable training-data axis for small theorem provers - varying rough (pi_root) vs fine (pi_leaf) decomposition of the SAME verified proofs, unlike prior work that varies decomposition only at inference time. Established: the section formalism (a-0001), a machine-VERIFIED 607-pair reconstruction pipeline (a-0002), the data-sufficiency signal (a-0003, marginal), the binary recalibration (a-0004), and a clean 0/50 pre-SFT floor (a-0005). Unproven: the headline empirical claim that granularity changes what small provers learn, growing as they shrink (a-0006), blocked on Modal SFT.",
+  "status": "proposed",
+  "answers": [
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0002",
+    "e-0003",
+    "e-0004",
+    "e-0005"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:37.188Z",
+    "updated_at": "2026-06-11T12:02:58.684Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

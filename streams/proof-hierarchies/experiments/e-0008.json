@@ -1,0 +1,34 @@
+{
+  "type": "experiment",
+  "id": "e-0008",
+  "stream": "proof-hierarchies",
+  "description": "Stage 3: held-out pass@k of the rough- vs fine-SFT'd models across model sizes (the granularity x size interaction), with a length-covariate regression and per-area ablation, on miniF2F-test / miniF2F_v2 / ProofNet.",
+  "motivation": "Run the headline rough-vs-fine comparison and test whether the gap grows as the model shrinks.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "EXPERIMENT.md",
+    "commit": "f21fb4ab1b142d4e3a554442a2f255aaa05d5e6d",
+    "run_cmd": "(Stage 3 - not yet implemented)"
+  },
+  "formal_results": "Planned - the headline result table is a PLACEHOLDER in the paper; blocked on Modal credit.",
+  "results_description": "No eval results on the rough/fine claim.",
+  "conclusions": "Hypotheses H5/H6: a held-out pass@k gap that grows as the model shrinks and survives length control. Untested.",
+  "addresses": [
+    "q-0007",
+    "q-0008"
+  ],
+  "produces": [
+    "a-0006",
+    "a-0007"
+  ],
+  "status": "planned",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:33.185Z",
+    "updated_at": "2026-06-11T12:03:00.854Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

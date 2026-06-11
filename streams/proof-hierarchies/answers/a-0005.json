@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0005",
+  "stream": "proof-hierarchies",
+  "text": "The infrastructure gate passes (the T4 + Kimina loop runs end-to-end within free-tier limits, ~56 min for 50 problems), and the pre-SFT floor is a clean 0/50 pass@1 (Qwen2.5-0.5B zero-shot, degenerate completions). Any granularity effect must beat this floor.",
+  "status": "supported",
+  "answers": [
+    "q-0006"
+  ],
+  "backed_by": [
+    "e-0005"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:29.861Z",
+    "updated_at": "2026-06-11T12:02:51.078Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}

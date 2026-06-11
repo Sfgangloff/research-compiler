@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0007",
+  "stream": "proof-hierarchies",
+  "text": "Planned: the design is a within-theorem paired comparison with a length-covariate regression to pre-empt the obvious objection that any effect is just sequence length; untested.",
+  "status": "proposed",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0008"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:34.628Z",
+    "updated_at": "2026-06-11T12:02:57.491Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0007",
+  "stream": "proof-hierarchies",
+  "text": "Does SFT on the FINE corpus vs the ROUGH corpus produce a measurable held-out pass@k gap, and does that gap GROW as the model shrinks (a granularity x model-size interaction)?",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:30.672Z",
+    "updated_at": "2026-06-11T12:02:55.176Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

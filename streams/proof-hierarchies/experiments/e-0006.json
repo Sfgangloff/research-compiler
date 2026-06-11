@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0006",
+  "stream": "proof-hierarchies",
+  "description": "Build module-stratified 80/10/10 splits with identical theorem indices across the rough and fine policies, and serialize per-policy train/dev/test JSONL.",
+  "motivation": "Prepare the within-theorem paired SFT data for the main comparison.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/build_sft.py",
+    "commit": "f21fb4ab1b142d4e3a554442a2f255aaa05d5e6d",
+    "run_cmd": "python -m data.build_sft"
+  },
+  "formal_results": "607 pairs split into train 485 / dev 59 / test 63, identical theorem indices across rough and fine; both policies serialized (rough term-mode ~7.5MB train, fine tactic ~0.2MB).",
+  "results_description": "A paired rough/fine SFT corpus, ready to train.",
+  "conclusions": "The main experiment's data is prepared (paired, length-aware); training has not been run.",
+  "addresses": [
+    "q-0007"
+  ],
+  "produces": [
+    "a-0006"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:31.929Z",
+    "updated_at": "2026-06-11T12:02:59.331Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

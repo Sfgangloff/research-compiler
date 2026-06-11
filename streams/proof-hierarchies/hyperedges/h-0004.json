@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0004",
+  "stream": "proof-hierarchies",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0004"
+    }
+  ],
+  "target": "q-0005",
+  "rationale": "The shape of the data determines whether an interior optimum is even possible.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:24.997Z",
+    "updated_at": "2026-06-11T12:02:24.997Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,35 @@
+{
+  "type": "experiment",
+  "id": "e-0002",
+  "stream": "proof-hierarchies",
+  "description": "A graph-based section engine over the proof dependency DAG: a ProofTree with antichain / maximal-antichain checks and a frontier abstraction (F_named/F_size/F_namespace), implementing decomposition policies pi_root (rough - haves inlined) and pi_leaf (fine - haves named), plus pi_depth/pi_size/pi_reuse/pi_random. Policies are graph-only and origin-agnostic.",
+  "motivation": "Operationalize 'decomposition' as a cut of the proof poset so granularity becomes a controllable variable.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "rewriter/sections.py",
+    "commit": "f21fb4ab1b142d4e3a554442a2f255aaa05d5e6d",
+    "run_cmd": "python -m pytest rewriter/test_sections.py"
+  },
+  "formal_results": "Implemented with a passing unit-test suite (graph properties, all policies, frontiers, origin-agnosticism).",
+  "results_description": "A formal, tested section-selection engine; pi_root and pi_leaf are the two primary granularity policies.",
+  "conclusions": "A theorem can be re-articulated at multiple granularities by choosing a section (maximal antichain) of its bounded-unfolded dependency DAG.",
+  "addresses": [
+    "q-0002"
+  ],
+  "produces": [
+    "a-0001",
+    "a-0009"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:20.729Z",
+    "updated_at": "2026-06-11T12:02:52.631Z"
+  },
+  "comments": {
+    "caveat": "Dependency edges are currently TYPE-level only (Stage 0b v1, usesConsts/usesHyps = typeDeps); proof-term-level dependencies are not yet captured, so section antichains may be too sparse - a flagged soundness caveat (STAGE0B_DESIGN.md)."
+  },
+  "stories": [
+    "pipeline"
+  ]
+}

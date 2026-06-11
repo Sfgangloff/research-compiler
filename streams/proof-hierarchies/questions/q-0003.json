@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0003",
+  "stream": "proof-hierarchies",
+  "text": "Can decomposed proofs be reconstructed so they actually compile against the original theorem with no new axioms - is semantics-preservation VERIFIED rather than assumed?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T12:02:19.342Z",
+    "updated_at": "2026-06-11T12:03:02.693Z"
+  },
+  "comments": {},
+  "stories": [
+    "pipeline"
+  ]
+}
