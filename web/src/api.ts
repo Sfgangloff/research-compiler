@@ -1,4 +1,4 @@
-import type { Graph, NodeRef } from "./types";
+import type { Graph, NodeRef, IdeateCandidate } from "./types";
 
 async function j<T>(r: Response): Promise<T> {
   if (!r.ok) {
@@ -19,6 +19,18 @@ export const api = {
     }).then(j),
 
   graph: (slug: string) => fetch(`/api/streams/${slug}/graph`).then(j<Graph>),
+
+  startIdeate: (slug: string, opts: { questionId: string; scope: string; target: number }) =>
+    fetch(`/api/streams/${slug}/ideate`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(opts),
+    }).then(j<{ jobId: string }>),
+
+  pollIdeate: (slug: string, jobId: string) =>
+    fetch(`/api/streams/${slug}/ideate/${jobId}`).then(
+      j<{ status: string; progress: string[]; result?: IdeateCandidate[]; cost?: number; rounds?: number; error?: string }>,
+    ),
 
   addRootQuestion: (slug: string, text: string) =>
     post(`/api/streams/${slug}/questions`, { text, root: true }),

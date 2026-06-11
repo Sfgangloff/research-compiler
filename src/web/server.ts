@@ -9,11 +9,25 @@ import { readFileSync, existsSync, statSync, appendFileSync, writeFileSync, mkdi
 import { Engine } from "../engine/engine.js";
 import { FsStore } from "../engine/store.js";
 import { ConsentError, NotFoundError, ValidationError } from "../engine/errors.js";
+import { runIdeation, type IdeateOpts } from "../cli/ideate.js";
 import type { NodeRef, StreamGraph } from "../engine/types.js";
 
 const REPO_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const PORT = Number(process.env.RC_PORT ?? 4317);
 const eng = new Engine(new FsStore(REPO_ROOT), { actor: "human" });
+
+// Ideation is long-running (spawns claude per round), so the web flow is a job:
+// POST starts it and returns a jobId; the client polls GET for progress/result.
+interface IdeateJob {
+  status: "running" | "done" | "error";
+  progress: string[];
+  result?: unknown[];
+  cost?: number;
+  rounds?: number;
+  error?: string;
+}
+const ideateJobs = new Map<string, IdeateJob>();
+let ideateSeq = 0;
 
 // Built frontend (after `npm run build` in web/). Served if present.
 const FRONTEND_DIST = join(REPO_ROOT, "web", "dist");
@@ -166,6 +180,44 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
     if (sub === "validate" && method === "GET") return send(res, 200, { problems: eng.validate(slug) });
     // term -> node link: clicking the term in any card navigates to that node.
     if (sub === "links" && method === "PUT") return send(res, 200, eng.setLink(slug, body.term, body.nodeId ?? null));
+
+    // Ideation job: POST starts (returns jobId), GET /ideate/:jobId polls.
+    if (sub === "ideate" && method === "POST") {
+      const jobId = `job-${++ideateSeq}`;
+      const job: IdeateJob = { status: "running", progress: [] };
+      ideateJobs.set(jobId, job);
+      const opts: IdeateOpts = {
+        slug,
+        qid: String(body.questionId ?? ""),
+        target: Number(body.target ?? 5),
+        threshold: Number(body.threshold ?? 5),
+        tractFloor: Number(body.tractFloor ?? 6),
+        maxRounds: Number(body.maxRounds ?? 2),
+        judges: Number(body.judges ?? 1),
+        batch: Number(body.batch ?? 6),
+        model: body.model || "claude-sonnet-4-6",
+        insert: false,
+        scope: body.scope === "stream" ? "stream" : "local",
+      };
+      runIdeation(eng, opts, (m) => { job.progress.push(m); })
+        .then((r) => {
+          job.status = "done";
+          job.cost = r.cost;
+          job.rounds = r.rounds;
+          job.result = r.questions.map((c: any) => ({
+            text: c.text, surprise: c.surprise, tractability: c.tractability,
+            why_nonobvious: c.why_nonobvious, how_testable: c.how_testable,
+            skeptic_note: c.obvious_because,
+          }));
+        })
+        .catch((e) => { job.status = "error"; job.error = String(e?.message ?? e); });
+      return send(res, 202, { jobId });
+    }
+    if (sub === "ideate" && parts[4] && method === "GET") {
+      const job = ideateJobs.get(parts[4]);
+      if (!job) return send(res, 404, { error: "job not found" });
+      return send(res, 200, job);
+    }
 
     if (method === "POST") {
       switch (sub) {

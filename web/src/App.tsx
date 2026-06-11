@@ -2,7 +2,8 @@ import { useEffect, useState, useCallback } from "react";
 import { api } from "./api";
 import { ColumnView } from "./ColumnView";
 import { Detail } from "./Detail";
-import type { Entity, Graph, NodeRef } from "./types";
+import { IdeatePanel } from "./IdeatePanel";
+import type { Entity, Graph, NodeRef, Question } from "./types";
 
 export function App() {
   const [streams, setStreams] = useState<string[]>([]);
@@ -12,6 +13,7 @@ export function App() {
   const [showExperiments, setShowExperiments] = useState(true);
   const [activeStory, setActiveStory] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [ideateSeed, setIdeateSeed] = useState<Question | null>(null);
 
   useEffect(() => {
     api.listStreams().then(setStreams).catch((e) => setError(e.message));
@@ -91,6 +93,13 @@ export function App() {
     await guard(() => api.askQuestion(slug, text, sources, rationale));
   }
 
+  function openIdeate() {
+    if (!graph) return;
+    const q = selectedId ? graph.questions.find((x) => x.id === selectedId) : null;
+    if (!q) return alert("Click a question card first — generation seeds from it.");
+    setIdeateSeed(q);
+  }
+
   async function addAnswer() {
     if (!slug || !graph) return;
     const target = selectedId && selectedId[0] === "q" ? selectedId : prompt("Answer which question id(s)? (comma-sep)");
@@ -155,6 +164,7 @@ export function App() {
             <hr />
             <div className="toolbar">
               <button onClick={askFromSelection}>＋ ask question (from selection)</button>
+              <button onClick={openIdeate}>✨ generate questions (from selection)</button>
               <button onClick={addAnswer}>＋ answer</button>
               <button onClick={addExperiment}>＋ experiment</button>
               <button onClick={addObject}>＋ object</button>
@@ -220,6 +230,15 @@ export function App() {
           </div>
         ) : null}
       </section>
+
+      {graph && ideateSeed && (
+        <IdeatePanel
+          slug={graph.stream.slug}
+          seed={ideateSeed}
+          onClose={() => setIdeateSeed(null)}
+          onInserted={() => { setIdeateSeed(null); refresh(); }}
+        />
+      )}
     </div>
   );
 }

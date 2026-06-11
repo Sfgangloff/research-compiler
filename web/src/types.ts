@@ -111,6 +111,15 @@ export interface RcObject {
   stories?: string[];
 }
 
+export interface IdeateCandidate {
+  text: string;
+  surprise?: number;
+  tractability?: number;
+  why_nonobvious?: string;
+  how_testable?: string;
+  skeptic_note?: string;
+}
+
 export interface StreamMeta {
   type: "stream";
   slug: string;

@@ -129,13 +129,23 @@ export interface IdeateOpts {
   scope: "local" | "stream";
 }
 
-export async function ideate(eng: Engine, opts: IdeateOpts): Promise<number> {
+export interface IdeationResult {
+  questions: Candidate[];
+  cost: number;
+  rounds: number;
+}
+
+/** Core generate->judge->prune loop. Returns the surviving candidates; never
+ *  prints or inserts. onProgress receives the same per-round log lines the CLI
+ *  shows, so a caller (CLI, web job) can stream them. */
+export async function runIdeation(
+  eng: Engine,
+  opts: IdeateOpts,
+  onProgress: (m: string) => void = () => {},
+): Promise<IdeationResult> {
   const g = eng.getStream(opts.slug);
   const seed = g.questions.get(opts.qid);
-  if (!seed) {
-    process.stderr.write(`question ${opts.qid} not found in ${opts.slug}\n`);
-    return 4;
-  }
+  if (!seed) throw new Error(`question ${opts.qid} not found in ${opts.slug}`);
   const existingQs = [...g.questions.values()].map((q) => q.text);
   const isLocal = opts.scope === "local";
   // In LOCAL scope, generation engages only the seed question: a generic
@@ -147,7 +157,7 @@ export async function ideate(eng: Engine, opts: IdeateOpts): Promise<number> {
     : [...g.experiments.values()].map((e) => `- ${e.description}`).slice(0, 12).join("\n");
   const domain = isLocal ? g.stream.title : `${g.stream.title}: ${g.stream.description}`;
 
-  const log = (m: string) => process.stderr.write(m + "\n");
+  const log = onProgress;
   log(`\nideate: seed ${opts.qid} — "${seed.text}"`);
   log(`target=${opts.target} threshold=${opts.threshold} tract-floor=${opts.tractFloor} ` +
       `judges=${opts.judges} batch=${opts.batch} max-rounds=${opts.maxRounds}${opts.model ? " model=" + opts.model : ""}\n`);
@@ -249,27 +259,35 @@ Return a score object per candidate (use its index).`;
   }
 
   accepted.sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
-  const final = accepted.slice(0, opts.target);
+  return { questions: accepted.slice(0, opts.target), cost, rounds: round };
+}
 
-  // ---- output (propose-only unless --insert) ----
-  if (opts.insert && final.length) {
-    for (const c of final) {
+/** CLI wrapper: stderr progress, optional --insert, JSON result to stdout. */
+export async function ideate(eng: Engine, opts: IdeateOpts): Promise<number> {
+  let res: IdeationResult;
+  try {
+    res = await runIdeation(eng, opts, (m) => process.stderr.write(m + "\n"));
+  } catch (e) {
+    process.stderr.write(`${(e as Error).message}\n`);
+    return 4;
+  }
+  if (opts.insert && res.questions.length) {
+    for (const c of res.questions) {
       eng.addQuestion(opts.slug, {
         text: c.text,
         from: { sources: [{ kind: "Q", id: opts.qid }], rationale: `ideated from ${opts.qid}: ${c.why_nonobvious ?? ""}` },
         tags: ["ideated"],
       });
     }
-    log(`inserted ${final.length} question(s) as sub-questions of ${opts.qid}.`);
+    process.stderr.write(`inserted ${res.questions.length} question(s) as sub-questions of ${opts.qid}.\n`);
   }
-
   process.stdout.write(JSON.stringify({
     seed: opts.qid,
-    rounds: round,
-    generated_surviving: final.length,
+    rounds: res.rounds,
+    generated_surviving: res.questions.length,
     inserted: opts.insert,
-    cost_usd: Math.round(cost * 1000) / 1000,
-    questions: final.map((c) => ({
+    cost_usd: Math.round(res.cost * 1000) / 1000,
+    questions: res.questions.map((c) => ({
       text: c.text, surprise: c.surprise, tractability: c.tractability,
       why_nonobvious: c.why_nonobvious, how_testable: c.how_testable,
       skeptic_note: c.obvious_because,
