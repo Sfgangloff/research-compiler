@@ -7,7 +7,7 @@
   "code_pointer": {
     "repo": "graphical-reasoning",
     "path": "experiments/judge_audit/",
-    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "commit": "db1c4bab62ada2069e652b4f36b7b63cf187de3b",
     "run_cmd": "python -m experiments.judge_audit.kappa"
   },
   "formal_results": "Sampling tooling and sample CSVs exist (calibration, study3, study5, study6); target overall kappa >= 0.6 (>=0.5 per stratum). No graded kappa output committed yet.",
@@ -22,8 +22,8 @@
   "status": "running",
   "provenance": {
     "created_by": "claude",
-    "created_at": "2026-06-11T01:49:37.628Z",
-    "updated_at": "2026-06-11T01:49:38.261Z"
+    "created_at": "2026-06-11T03:07:06.319Z",
+    "updated_at": "2026-06-11T03:07:07.086Z"
   },
   "comments": {}
 }

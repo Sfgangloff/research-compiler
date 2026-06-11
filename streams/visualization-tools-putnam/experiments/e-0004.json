@@ -7,7 +7,7 @@
   "code_pointer": {
     "repo": "graphical-reasoning",
     "path": "experiments/recall_test/",
-    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "commit": "db1c4bab62ada2069e652b4f36b7b63cf187de3b",
     "run_cmd": "python -m experiments.recall_test.run_recall_cot"
   },
   "formal_results": "Bare single-shot recall is unreliable (~30%; e.g. 1993.A1 gave 4/9, 2/9, 3/2 across runs). Prose chain-of-thought with NO tools -> 18/18 (100%), matching forced-viz. The 4a' header records a ~30% -> ~80% answer-correctness gap between bare recall and the tool-mediated condition.",
@@ -23,8 +23,8 @@
   "status": "done",
   "provenance": {
     "created_by": "claude",
-    "created_at": "2026-06-11T01:49:26.976Z",
-    "updated_at": "2026-06-11T01:50:26.364Z"
+    "created_at": "2026-06-11T03:06:55.902Z",
+    "updated_at": "2026-06-11T03:07:31.557Z"
   },
   "comments": {},
   "stories": [

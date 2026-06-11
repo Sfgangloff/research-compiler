@@ -7,7 +7,7 @@
   "code_pointer": {
     "repo": "graphical-reasoning",
     "path": "experiments/probe_framing/",
-    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "commit": "db1c4bab62ada2069e652b4f36b7b63cf187de3b",
     "run_cmd": "python -m experiments.probe_framing.run_probe"
   },
   "formal_results": "math-viz invoked 0 times across all 27 runs, in every framing. Mean total tool calls: prose 9.0, nudge 10.9, Lean 7.3 (Lean framing explored the LEAST). math-compute small and not elevated under Lean.",
@@ -22,8 +22,8 @@
   "status": "done",
   "provenance": {
     "created_by": "claude",
-    "created_at": "2026-06-11T01:49:23.153Z",
-    "updated_at": "2026-06-11T01:50:20.403Z"
+    "created_at": "2026-06-11T03:06:52.209Z",
+    "updated_at": "2026-06-11T03:07:22.760Z"
   },
   "comments": {},
   "stories": [

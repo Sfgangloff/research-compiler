@@ -7,7 +7,7 @@
   "code_pointer": {
     "repo": "graphical-reasoning",
     "path": "experiments/forced_viz/",
-    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "commit": "db1c4bab62ada2069e652b4f36b7b63cf187de3b",
     "run_cmd": "python -m experiments.forced_viz.run_forced"
   },
   "formal_results": "viz usage: b 6%, vizprimed 11%, forced 100% (PNG read-back: b 0%, vizprimed 0%, forced 100%). solved*: b 6/18, vizprimed 5/18, forced 6/18 (forcing did not raise solve rate). viz_changed_approach=true in 0/18 of both vizprimed and forced runs.",
@@ -23,8 +23,8 @@
   "status": "done",
   "provenance": {
     "created_by": "claude",
-    "created_at": "2026-06-11T01:49:25.114Z",
-    "updated_at": "2026-06-11T01:50:20.994Z"
+    "created_at": "2026-06-11T03:06:54.076Z",
+    "updated_at": "2026-06-11T03:07:23.371Z"
   },
   "comments": {},
   "stories": [

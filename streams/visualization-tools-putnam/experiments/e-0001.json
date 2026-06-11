@@ -7,7 +7,7 @@
   "code_pointer": {
     "repo": "graphical-reasoning",
     "path": "experiments/runner/",
-    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "commit": "db1c4bab62ada2069e652b4f36b7b63cf187de3b",
     "run_cmd": "python -m experiments.runner.run_matrix"
   },
   "formal_results": "A: 60 runs, 19 solved (31.7%), 58 build_ok; B: 60 runs, 17 solved (28.3%), 57 build_ok. Gap within +/-12pt 95% CI (noise). In all 60 B runs the model issued ZERO tool_use blocks for any math-viz tool. ~2/3 of attempts ended build-ok with exactly one sorry.",
@@ -23,8 +23,8 @@
   "status": "done",
   "provenance": {
     "created_by": "claude",
-    "created_at": "2026-06-11T01:49:19.548Z",
-    "updated_at": "2026-06-11T01:50:19.815Z"
+    "created_at": "2026-06-11T03:06:49.541Z",
+    "updated_at": "2026-06-11T03:07:22.134Z"
   },
   "comments": {
     "provenance": "The 120-run raw dataset is no longer in the repo; the 31.7%/28.3% solve numbers are quoted from experiments/REPORT.md, not re-derivable from results/ (only a 6-dir later sample remains)."

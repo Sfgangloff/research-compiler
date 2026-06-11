@@ -7,7 +7,7 @@
   "code_pointer": {
     "repo": "graphical-reasoning",
     "path": "experiments/inline_content/",
-    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "commit": "db1c4bab62ada2069e652b4f36b7b63cf187de3b",
     "run_cmd": "python -m experiments.inline_content.run_inline_content"
   },
   "formal_results": "runs-with-viz: optional_inline 0/36, optional_path_only 0/36, forced_inline 34/36, forced_path_only 31/36. Voluntary (optional) adoption is zero regardless of inline vs path-only return.",
@@ -23,8 +23,8 @@
   "status": "done",
   "provenance": {
     "created_by": "claude",
-    "created_at": "2026-06-11T01:49:32.608Z",
-    "updated_at": "2026-06-11T01:50:21.590Z"
+    "created_at": "2026-06-11T03:07:01.387Z",
+    "updated_at": "2026-06-11T03:07:24.424Z"
   },
   "comments": {
     "status-note": "Runs executed (study7.log: COMPLETE genuine=144), but the paper draft still describes Study 7 as 'running' and reports only the pre-registered prediction. This graph records the OBSERVED result: H7a refuted."

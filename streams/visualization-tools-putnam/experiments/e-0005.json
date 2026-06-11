@@ -7,7 +7,7 @@
   "code_pointer": {
     "repo": "graphical-reasoning",
     "path": "experiments/false_claim/",
-    "commit": "1f86bac11f78ddd5eb30725b55d6f07c0fcdcc0f",
+    "commit": "db1c4bab62ada2069e652b4f36b7b63cf187de3b",
     "run_cmd": "python -m experiments.false_claim.run_false_claim"
   },
   "formal_results": "False claims caught at indistinguishable rates: forced_textual 8/8, forced_visual 7/8, forced_reflection 7/8 (the 2 misses are operational - a transcript-parse failure and a timeout). No cell that emitted a verdict ever sided with the false claim. In forced_visual cells the verdict grounds in the tool's NUMERIC metadata (e.g. 0.2399 matches sqrt(pi)*e^-2, not the claimed sqrt(pi)*e^-1), never a visual property read by eye.",
@@ -23,8 +23,8 @@
   "status": "done",
   "provenance": {
     "created_by": "claude",
-    "created_at": "2026-06-11T01:49:28.830Z",
-    "updated_at": "2026-06-11T01:50:26.960Z"
+    "created_at": "2026-06-11T03:06:57.726Z",
+    "updated_at": "2026-06-11T03:07:32.554Z"
   },
   "comments": {
     "correction": "A long-form draft line ('the agent never looked at the pictures') was wrong about the CAUSE - images WERE delivered inline after math-viz commit 1622bac; the negative conclusion (verdicts ground in numeric metadata, not visual properties) is unaffected/strengthened. Per CLAUDE.md pending corrections."
