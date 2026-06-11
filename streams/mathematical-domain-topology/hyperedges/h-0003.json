@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0003",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0001"
+    }
+  ],
+  "target": "q-0004",
+  "rationale": "If strategies are domain-specific, that bears on transfer learning and motivates searching for bridges in shared structure.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:06.557Z",
+    "updated_at": "2026-06-11T04:13:06.557Z"
+  },
+  "comments": {}
+}

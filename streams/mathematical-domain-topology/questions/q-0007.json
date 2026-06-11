@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0007",
+  "stream": "mathematical-domain-topology",
+  "text": "How can genuine cross-domain bridges be separated from theorems that merely share ubiquitous utility lemmas?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:11.797Z",
+    "updated_at": "2026-06-11T04:14:23.881Z"
+  },
+  "comments": {},
+  "stories": [
+    "bridges"
+  ]
+}

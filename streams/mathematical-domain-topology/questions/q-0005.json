@@ -1,0 +1,14 @@
+{
+  "type": "question",
+  "id": "q-0005",
+  "stream": "mathematical-domain-topology",
+  "text": "If strategies are domain-specific, do ANY shared proof-strategy patterns bridge domains - and are they substantive?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:08.214Z",
+    "updated_at": "2026-06-11T04:14:22.703Z"
+  },
+  "comments": {}
+}

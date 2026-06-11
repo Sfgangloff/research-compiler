@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0008",
+  "stream": "mathematical-domain-topology",
+  "text": "The detected bridges align with history: of 8 known historical bridges, 7/8 span distinct clusters, 6/8 are loosely detected, and 2/8 survive the strict theta<=2 filter (Gromov-Hausdorff, Spectral<->Representation). Galois<->Covering is the strongest qualitative hit. (Zorn/Choice fails to span - it is used too pervasively to separate.)",
+  "status": "supported",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0008"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:15.180Z",
+    "updated_at": "2026-06-11T04:14:14.740Z"
+  },
+  "comments": {},
+  "stories": [
+    "bridges"
+  ]
+}

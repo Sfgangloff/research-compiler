@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0006",
+  "stream": "mathematical-domain-topology",
+  "description": "Flag a theorem as an operational bridge if its proof directly uses premises from >=2 distinct PURE clusters (dominant module >=50%); score = number of distinct pure clusters spanned.",
+  "motivation": "Operationalize 'bridge theorem' via shared premises across domains.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_theorems.py",
+    "commit": "edfdd1e6f6abb734dd44e4a20a2c41334eb54bf0",
+    "run_cmd": "python -m src.bridge_theorems"
+  },
+  "formal_results": "280 bridge theorems (max 3 pure clusters spanned); e.g. Cardinal.sum_lt_prod (AlgebraicGeometry/CategoryTheory/SetTheory), GromovHausdorff.ghDist_le_hausdorffDist.",
+  "results_description": "280 theorems mechanically span >=2 pure domains via their premises.",
+  "conclusions": "Operational bridges are detectable via cross-cluster premises, but the raw 280 are dominated by theorems that merely use ubiquitous foundational lemmas (utility connections), not genuine cross-domain links.",
+  "addresses": [
+    "q-0006"
+  ],
+  "produces": [
+    "a-0006"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:10.636Z",
+    "updated_at": "2026-06-11T04:14:17.673Z"
+  },
+  "comments": {},
+  "stories": [
+    "bridges"
+  ]
+}

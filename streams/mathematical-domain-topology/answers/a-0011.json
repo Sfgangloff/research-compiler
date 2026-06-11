@@ -1,0 +1,18 @@
+{
+  "type": "answer",
+  "id": "a-0011",
+  "stream": "mathematical-domain-topology",
+  "text": "Proposed, not tested: the paper argues bridge-aware RLVR / structure-aware learning should improve provers and cross-domain transfer, but this is explicitly future work with no experiment in the repo.",
+  "status": "proposed",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:20.300Z",
+    "updated_at": "2026-06-11T04:13:20.300Z"
+  },
+  "comments": {}
+}

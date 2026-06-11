@@ -1,0 +1,34 @@
+{
+  "type": "experiment",
+  "id": "e-0010",
+  "stream": "mathematical-domain-topology",
+  "description": "Build a cluster-interaction matrix W (W[i,j] = number of bridge theorems linking clusters i,j); per cluster compute integration (entropy of its outgoing bridge distribution) x differentiation (1 - normalized module entropy) = a Tononi-Edelman-inspired neural complexity CN.",
+  "motivation": "Quantify the modular-yet-integrated structure of mathematics and identify its most integrative-yet-specialized domain.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/neural_complexity.py",
+    "commit": "edfdd1e6f6abb734dd44e4a20a2c41334eb54bf0",
+    "run_cmd": "python -m src.neural_complexity"
+  },
+  "formal_results": "Global CN 1.167; top cluster SetTheory CN=1.037 (integration 2.61 x differentiation 0.397); next Algebra+RingTheory+FieldTheory 0.495, Order 0.388; CategoryTheory high integration but low differentiation (0.307).",
+  "results_description": "SetTheory is by far the most integrative-yet-specialized cluster.",
+  "conclusions": "By a Tononi-Edelman-inspired complexity measure, SetTheory is the dominant integrative hub of Mathlib - both broadly connected and distinctly specialized. (The CN measure is heuristic/exploratory, not the exact Tononi-Edelman summation formula.)",
+  "addresses": [
+    "q-0010"
+  ],
+  "produces": [
+    "a-0010"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:18.060Z",
+    "updated_at": "2026-06-11T04:14:19.894Z"
+  },
+  "comments": {
+    "caveat": "CN = integration x differentiation is a Tononi-Edelman-INSPIRED heuristic, not the exact summation formula; the paper flags it as exploratory with formal justification left to future work."
+  },
+  "stories": [
+    "bridges"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0006",
+  "stream": "mathematical-domain-topology",
+  "text": "Bridge theorems can be defined operationally as theorems whose proofs use premises from >=2 distinct pure clusters: 280 are detected. But most are spurious - they share ubiquitous utility lemmas rather than specialized cross-domain premises, so a filter is needed.",
+  "status": "supported",
+  "answers": [
+    "q-0006"
+  ],
+  "backed_by": [
+    "e-0006"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:11.213Z",
+    "updated_at": "2026-06-11T04:14:13.617Z"
+  },
+  "comments": {},
+  "stories": [
+    "bridges"
+  ]
+}

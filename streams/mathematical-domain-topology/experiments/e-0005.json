@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0005",
+  "stream": "mathematical-domain-topology",
+  "description": "Score tactic n-grams by bridge_score = normalized Shannon entropy of their cross-cluster distribution x rarity (1 - mean within-cluster frequency), excluding all-generic n-grams.",
+  "motivation": "Find the proof-strategy n-grams that DO span many domains and check whether they carry mathematical content.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridges.py",
+    "commit": "edfdd1e6f6abb734dd44e4a20a2c41334eb54bf0",
+    "run_cmd": "python -m src.bridges"
+  },
+  "formal_results": "15 candidates; the top ones are TFAE scaffolding (tfae_have #-># score 0.420 across 9 clusters; tfae_have x4; tfae_finish) and generic rewriting (rw[@] x3).",
+  "results_description": "The most cross-domain tactic patterns are domain-agnostic proof scaffolding (TFAE machinery, rewriting), not content-bearing strategies.",
+  "conclusions": "Shared cross-domain proof strategies are shallow generic moves, so proof STRATEGY does not provide a substantive bridge signal - bridges must be sought in shared PREMISES.",
+  "addresses": [
+    "q-0005"
+  ],
+  "produces": [
+    "a-0005"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:08.838Z",
+    "updated_at": "2026-06-11T04:14:17.070Z"
+  },
+  "comments": {},
+  "stories": [
+    "bridges"
+  ]
+}

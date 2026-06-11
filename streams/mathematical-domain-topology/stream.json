@@ -1,0 +1,42 @@
+{
+  "type": "stream",
+  "slug": "mathematical-domain-topology",
+  "title": "Topology of the mathematical domain: can structure and bridges be recovered from a proof library?",
+  "description": "Unsupervised recovery of mathematics' domain structure and cross-domain bridges from the Lean4/Mathlib theorem dependency graph (Leiden clustering + bridge detection + historical validation). Reasoning reconstructed from the topology-of-mathematical-domain repo.",
+  "root_qid": "q-0001",
+  "counters": {
+    "q": 11,
+    "a": 12,
+    "h": 10,
+    "e": 10
+  },
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:00.302Z",
+    "updated_at": "2026-06-11T04:13:00.302Z"
+  },
+  "comments": {},
+  "glossary": {
+    "theorem dependency graph": "Directed graph over Lean/Mathlib declarations; an edge A->B means A's proof uses B as a premise (extracted from <a>Name</a> anchors in tactic strings). The substrate for all clustering and bridge analysis.",
+    "pure vs mixed cluster": "A cluster is pure if one top-level Mathlib module covers >=50% of its nodes (a single domain); otherwise mixed (multi-domain). The largest clusters are mixed.",
+    "bridge zone": "A mixed (multi-module) cluster, interpreted as a region where several domains co-develop results.",
+    "operational bridge theorem": "A theorem whose proof uses specialized (low in-degree) premises from >=2 distinct pure clusters. The project's core detected object; 34 found after filtering.",
+    "conceptual bridge": "Two results that share proof STRUCTURE (e.g. a diagonal argument) without shared premises (e.g. Brouwer<->Lawvere). NOT detected by the premise-based method - the central open problem.",
+    "in-degree depth filter (theta)": "A premise-specificity cutoff: a bridge must use a cross-cluster premise of in-degree <= theta. theta=2 chosen by the elbow/kneedle of the bridge-count curve, excluding ubiquitous utility lemmas.",
+    "utility connection": "A widely-used foundational lemma (high in-degree) appearing across domains; what the in-degree filter is designed to exclude (these caused most of the 280 raw bridges).",
+    "neural complexity (CN)": "A Tononi-Edelman-INSPIRED heuristic CN = integration (entropy of a cluster's cross-cluster bridge distribution) x differentiation (1 - normalized module entropy). Exploratory, not the exact summation formula. SetTheory scores highest.",
+    "tactic normalization": "Abstracting concrete tactics to ~200 strategy tokens (qualified/CamelCase names->@, short vars->?, numerals->#, keywords kept) so proof STRATEGY can be compared across domains independent of surface text.",
+    "Leiden clustering": "The unsupervised community-detection algorithm (modularity, seed 42) run on the dependency graph to recover domains; yields 138 clusters that map to Mathlib modules.",
+    "loose vs strict detection": "In the historical-bridge validation: loose = flagged by any bridge output; strict = survives the depth filter (theta<=2). 6/8 known bridges are loose-detected, 2/8 strict."
+  },
+  "stories": {
+    "domains": {
+      "name": "Unsupervised domain recovery",
+      "color": "#2563eb"
+    },
+    "bridges": {
+      "name": "Bridge detection",
+      "color": "#d97706"
+    }
+  }
+}

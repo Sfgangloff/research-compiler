@@ -1,0 +1,23 @@
+{
+  "type": "hyperedge",
+  "id": "h-0009",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0001"
+    },
+    {
+      "kind": "A",
+      "id": "a-0006"
+    }
+  ],
+  "target": "q-0010",
+  "rationale": "Quantify the 'modular-yet-integrated' structure expected of mathematics and find its integrative hub.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:17.454Z",
+    "updated_at": "2026-06-11T04:13:17.454Z"
+  },
+  "comments": {}
+}

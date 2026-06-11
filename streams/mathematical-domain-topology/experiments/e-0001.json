@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0001",
+  "stream": "mathematical-domain-topology",
+  "description": "Build a directed theorem dependency graph from Lean4/Mathlib: nodes are declarations, an edge A->B means A's proof uses B as a premise (extracted from <a>Name</a> anchors in tactic strings). Corpus from LeanDojo/Mathlib4 HuggingFace datasets (src/load_data.py).",
+  "motivation": "A premise-dependency graph is the substrate for any unsupervised structural analysis of mathematics.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/build_graph.py",
+    "commit": "edfdd1e6f6abb734dd44e4a20a2c41334eb54bf0",
+    "run_cmd": "python -m src.build_graph"
+  },
+  "formal_results": "186K nodes, 309K edges; 61,542 theorems with tactic sequences; corpus 180,973 declarations and 259,580 tactic steps. Largest connected component ~92,594 nodes.",
+  "results_description": "A large directed premise-dependency graph over Mathlib, the substrate for clustering and bridge analysis.",
+  "conclusions": "The proof library yields one large dependency graph suitable for community detection.",
+  "addresses": [
+    "q-0002"
+  ],
+  "produces": [
+    "a-0001"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:02.051Z",
+    "updated_at": "2026-06-11T04:14:08.444Z"
+  },
+  "comments": {},
+  "stories": [
+    "domains"
+  ]
+}

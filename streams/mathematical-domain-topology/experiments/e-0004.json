@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0004",
+  "stream": "mathematical-domain-topology",
+  "description": "Normalize tactic strings to ~200 strategy tokens (qualified/CamelCase names->@, short vars->?, numerals->#, ~200 tactic keywords kept; src/normalize_tactics.py), then sweep tactic n-grams n=1..8: per n, the fraction of n-grams appearing in >=2 clusters and the cluster spread.",
+  "motivation": "Separate proof STRATEGY from surface text and measure how domain-specific strategies are.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/ngram_analysis.py",
+    "commit": "edfdd1e6f6abb734dd44e4a20a2c41334eb54bf0",
+    "run_cmd": "python -m src.ngram_analysis"
+  },
+  "formal_results": "Fraction of n-grams in >=2 clusters: n=1 6.16%, n=2 3.25%, n=3 0.67% (first <2%), n=8 0.035%; median cluster count = 1.0 for all n>=2.",
+  "results_description": ">99% of 3-gram tactic patterns appear in only one cluster.",
+  "conclusions": "Proof strategies are highly domain-specific: beyond trigrams, nearly every tactic pattern is unique to a single domain.",
+  "addresses": [
+    "q-0004"
+  ],
+  "produces": [
+    "a-0004"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:07.098Z",
+    "updated_at": "2026-06-11T04:14:10.142Z"
+  },
+  "comments": {},
+  "stories": [
+    "domains"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0009",
+  "stream": "mathematical-domain-topology",
+  "text": "Yes - the misses reveal a distinct CONCEPTUAL bridge class that shares proof structure, not premises (e.g. Brouwer<->Lawvere via a shared diagonal argument; Lie algebras<->Lie groups via the tangent-space correspondence). An edit-distance probe finds cross-domain proofs only modestly similar (closest ED 0.586), so structure-based detection is hard. The operational-vs-conceptual gap is the project's central open problem.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0009"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:16.882Z",
+    "updated_at": "2026-06-11T04:14:15.321Z"
+  },
+  "comments": {},
+  "stories": [
+    "bridges"
+  ]
+}

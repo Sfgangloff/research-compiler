@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0002",
+  "stream": "mathematical-domain-topology",
+  "text": "Cluster purity anticorrelates with size: the largest clusters are mixed (multi-module) while small clusters are pure. The mixed clusters form a dense hub-and-spoke core and are interpreted as 'bridge zones' where multiple domains co-develop results.",
+  "status": "supported",
+  "answers": [
+    "q-0002"
+  ],
+  "backed_by": [
+    "e-0002"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:04.313Z",
+    "updated_at": "2026-06-11T04:14:06.749Z"
+  },
+  "comments": {},
+  "stories": [
+    "domains"
+  ]
+}

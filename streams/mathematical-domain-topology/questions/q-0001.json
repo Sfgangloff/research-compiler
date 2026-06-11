@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0001",
+  "stream": "mathematical-domain-topology",
+  "text": "Can the large-scale structure of mathematics - its decomposition into natural domains and the bridges between them - be recovered from a formal proof library (Lean4/Mathlib) without human-provided domain labels? (Framing: operationalizing one notion of mathematical 'interestingness' - bridges - so AI provers can choose what to prove.)",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:00.896Z",
+    "updated_at": "2026-06-11T04:14:20.468Z"
+  },
+  "comments": {},
+  "stories": [
+    "domains"
+  ]
+}

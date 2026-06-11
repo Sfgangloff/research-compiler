@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0005",
+  "stream": "mathematical-domain-topology",
+  "text": "The proof-strategy patterns that DO span many domains are generic scaffolding (TFAE machinery, rewriting), not content - so shared strategy is not a substantive bridge signal. Bridges must be sought in shared PREMISES, not shared tactics.",
+  "status": "supported",
+  "answers": [
+    "q-0005"
+  ],
+  "backed_by": [
+    "e-0005"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:09.436Z",
+    "updated_at": "2026-06-11T04:13:09.436Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0007",
+  "stream": "mathematical-domain-topology",
+  "text": "Genuine bridges are isolated by an in-degree depth filter: keeping only theorems with a specialized (in-degree <= theta) cross-cluster premise, theta=2 chosen by the elbow of the count curve, collapses 280 raw bridges to 34. Most raw bridges were just shared utility lemmas.",
+  "status": "supported",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0007"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:12.921Z",
+    "updated_at": "2026-06-11T04:14:14.180Z"
+  },
+  "comments": {},
+  "stories": [
+    "bridges"
+  ]
+}

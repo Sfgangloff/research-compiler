@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0002",
+  "stream": "mathematical-domain-topology",
+  "text": "Does unsupervised community detection on the theorem dependency graph recover named mathematical domains (Mathlib modules) without any labels?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:01.497Z",
+    "updated_at": "2026-06-11T04:14:21.049Z"
+  },
+  "comments": {},
+  "stories": [
+    "domains"
+  ]
+}

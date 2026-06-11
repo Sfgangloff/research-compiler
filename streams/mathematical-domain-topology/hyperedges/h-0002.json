@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0002",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0001"
+    }
+  ],
+  "target": "q-0003",
+  "rationale": "Tests whether the domain structure is hierarchical (sub-domains within domains).",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:04.887Z",
+    "updated_at": "2026-06-11T04:13:04.887Z"
+  },
+  "comments": {}
+}

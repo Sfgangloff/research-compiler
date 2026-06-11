@@ -1,0 +1,33 @@
+{
+  "type": "experiment",
+  "id": "e-0009",
+  "stream": "mathematical-domain-topology",
+  "description": "For each cluster pair, find the two theorems (one per cluster) with the lowest normalized Levenshtein edit distance on normalized tactic sequences (top-30 clusters, longest proofs, >=5 tactics); report pairs below the within-cluster baseline.",
+  "motivation": "Probe whether cross-domain bridges can be found via shared proof STRUCTURE (similar tactic sequences) rather than shared premises - to catch conceptual bridges.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/edit_distance_bridges.py",
+    "commit": "edfdd1e6f6abb734dd44e4a20a2c41334eb54bf0",
+    "run_cmd": "python -m src.edit_distance_bridges"
+  },
+  "formal_results": "200 cross-cluster pairs; closest normalized edit distance 0.586 (within-cluster median ~1.000). LinearAlgebra appears in 20 of the top-30 cross-cluster pairs (a lingua franca), then Analysis, RingTheory.",
+  "results_description": "Even the most similar cross-domain proofs differ substantially (ED ~0.59); structural similarity across domains is modest.",
+  "conclusions": "A second, CONCEPTUAL class of bridge exists - pairs like Brouwer<->Lawvere (shared diagonal argument) and Lie algebras<->Lie groups (tangent-space correspondence) share proof STRUCTURE, not premises, so the premise-based detector misses them. Closing the operational-vs-conceptual gap is the central open problem.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0009",
+    "a-0012"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:16.335Z",
+    "updated_at": "2026-06-11T04:14:19.342Z"
+  },
+  "comments": {},
+  "stories": [
+    "bridges"
+  ]
+}

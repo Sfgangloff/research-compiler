@@ -1,0 +1,33 @@
+{
+  "type": "experiment",
+  "id": "e-0007",
+  "stream": "mathematical-domain-topology",
+  "description": "Keep a bridge only if at least one cross-cluster premise has in-degree <= theta (a specialized lemma, not a high-in-degree utility hub); choose theta by the elbow/kneedle of the bridge-count vs theta curve on the power-law in-degree distribution.",
+  "motivation": "Filter out 'utility connections' (foundational lemmas used everywhere) to isolate genuine bridges.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/depth_filter.py",
+    "commit": "edfdd1e6f6abb734dd44e4a20a2c41334eb54bf0",
+    "run_cmd": "python -m src.depth_filter"
+  },
+  "formal_results": "In-degree sweep: theta=1->15, theta=2->34, theta=3->60; the elbow selects theta=2 -> 34 filtered bridge theorems.",
+  "results_description": "Requiring a specialized (low-in-degree) cross-cluster premise collapses 280 raw bridges to 34.",
+  "conclusions": "An in-degree depth filter (theta=2, chosen by elbow) isolates 34 genuine operational bridges from the 280 raw candidates.",
+  "addresses": [
+    "q-0007"
+  ],
+  "produces": [
+    "a-0007",
+    "a-0012"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:12.362Z",
+    "updated_at": "2026-06-11T04:14:18.239Z"
+  },
+  "comments": {},
+  "stories": [
+    "bridges"
+  ]
+}

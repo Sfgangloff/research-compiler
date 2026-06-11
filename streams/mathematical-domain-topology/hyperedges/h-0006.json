@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0006",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0006"
+    }
+  ],
+  "target": "q-0007",
+  "rationale": "The in-degree filter is needed to exclude foundational lemmas used everywhere ('utility connections').",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:11.798Z",
+    "updated_at": "2026-06-11T04:13:11.798Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0001",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0001"
+    }
+  ],
+  "target": "q-0002",
+  "rationale": "Foundational prerequisite: if clusters do not map to domains, there is no domain structure to find bridges between.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:01.498Z",
+    "updated_at": "2026-06-11T04:13:01.498Z"
+  },
+  "comments": {}
+}

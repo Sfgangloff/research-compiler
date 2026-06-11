@@ -1,0 +1,36 @@
+{
+  "type": "experiment",
+  "id": "e-0002",
+  "stream": "mathematical-domain-topology",
+  "description": "Leiden community detection (modularity, 10 iterations, seed 42) on the undirected largest connected component, then label each cluster by its dominant top-level Mathlib module (pure if dominant module >=50%; mixed otherwise). Labeling: src/label_clusters.py.",
+  "motivation": "If unsupervised clusters map to named modules, the domain structure of mathematics is latent in proof dependencies.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/cluster.py",
+    "commit": "edfdd1e6f6abb734dd44e4a20a2c41334eb54bf0",
+    "run_cmd": "python -m src.cluster"
+  },
+  "formal_results": "138 clusters over ~92,594 clustered theorems; 121 pure / 17 mixed; largest pure CategoryTheory 8,245 (54%). Concurs with Li et al. 2026 (Louvain, NMI=0.34).",
+  "results_description": "Unsupervised clustering recovers Mathlib's module structure: most clusters are dominated by a single top-level module.",
+  "conclusions": "Mathematical domains are recoverable from the proof graph with no labels.",
+  "addresses": [
+    "q-0002"
+  ],
+  "produces": [
+    "a-0001",
+    "a-0002",
+    "a-0012"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:02.615Z",
+    "updated_at": "2026-06-11T04:14:08.991Z"
+  },
+  "comments": {
+    "caveat": "README's 'top clusters by size' table uses a different convention than the paper (e.g. README C0 ~12,513 'Algebra+Analysis+Data' vs paper's largest pure CategoryTheory 8,245); divergent numbers for the same objects."
+  },
+  "stories": [
+    "domains"
+  ]
+}

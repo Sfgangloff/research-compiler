@@ -1,0 +1,28 @@
+{
+  "type": "answer",
+  "id": "a-0012",
+  "stream": "mathematical-domain-topology",
+  "text": "Capstone thesis: mathematics' global structure is recoverable from formal proofs with NO supervision - Leiden clustering of Mathlib's dependency graph reproduces named domains (a-0001), and an in-degree-filtered cross-cluster premise criterion detects operational bridge theorems (a-0007) that align with historically celebrated connections (a-0008). This operationalizes one notion of mathematical interestingness (bridges) and identifies SetTheory as the integrative hub (a-0010). The central open problem is the gap between operational bridges (shared premises, detected) and conceptual bridges (shared proof structure, undetected; a-0009). Bridge-aware proving (a-0011) is the proposed but untested payoff.",
+  "status": "supported",
+  "answers": [
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0002",
+    "e-0007",
+    "e-0008",
+    "e-0009"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:20.853Z",
+    "updated_at": "2026-06-11T04:14:16.522Z"
+  },
+  "comments": {
+    "placeholders": "The paper's 'compressibility' framing leans on a placeholder reference (compression2024, bibliographic details = TODO); authors/affiliations are also placeholders. Reasoning content is unaffected."
+  },
+  "stories": [
+    "bridges"
+  ]
+}

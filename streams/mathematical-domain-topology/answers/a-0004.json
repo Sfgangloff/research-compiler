@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0004",
+  "stream": "mathematical-domain-topology",
+  "text": "Yes - proof strategies are strongly domain-specific: >99% of normalized 3-gram tactic patterns occur in only one cluster (fraction in >=2 clusters drops 6.16%->0.67% from n=1 to n=3). Domains differ in how they prove, not just in what they name.",
+  "status": "supported",
+  "answers": [
+    "q-0004"
+  ],
+  "backed_by": [
+    "e-0004"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:07.655Z",
+    "updated_at": "2026-06-11T04:14:07.877Z"
+  },
+  "comments": {},
+  "stories": [
+    "domains"
+  ]
+}

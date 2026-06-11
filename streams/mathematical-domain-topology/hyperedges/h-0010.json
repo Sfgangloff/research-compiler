@@ -1,0 +1,23 @@
+{
+  "type": "hyperedge",
+  "id": "h-0010",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0008"
+    },
+    {
+      "kind": "A",
+      "id": "a-0009"
+    }
+  ],
+  "target": "q-0011",
+  "rationale": "The proposed payoff: if bridges operationalize interestingness, targeting them should help provers - but this is untested.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:19.739Z",
+    "updated_at": "2026-06-11T04:13:19.739Z"
+  },
+  "comments": {}
+}

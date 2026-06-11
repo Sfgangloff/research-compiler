@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0003",
+  "stream": "mathematical-domain-topology",
+  "text": "Can the clustering be pushed to finer sub-domains by re-clustering within each top-level cluster?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:04.886Z",
+    "updated_at": "2026-06-11T04:14:21.600Z"
+  },
+  "comments": {},
+  "stories": [
+    "domains"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0003",
+  "stream": "mathematical-domain-topology",
+  "description": "Re-run Leiden inside each of the top-15 largest clusters (min size 100) to find sub-domains; label each sub-cluster by dominant module.",
+  "motivation": "Test whether the recovered domain structure is hierarchical.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/hierarchical.py",
+    "commit": "edfdd1e6f6abb734dd44e4a20a2c41334eb54bf0",
+    "run_cmd": "python -m src.hierarchical"
+  },
+  "formal_results": "84,228 theorems mapped to [top_cluster, sub_cluster]; 447 sub-clusters (e.g. LinearAlgebra 42, Order 8).",
+  "results_description": "Top-level clusters split into plausible finer sub-domains.",
+  "conclusions": "Sub-domain structure appears present but is only a preliminary observation, not yet validated against Mathlib's own module hierarchy.",
+  "addresses": [
+    "q-0003"
+  ],
+  "produces": [
+    "a-0003"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:05.450Z",
+    "updated_at": "2026-06-11T04:14:09.590Z"
+  },
+  "comments": {},
+  "stories": [
+    "domains"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "answer",
+  "id": "a-0003",
+  "stream": "mathematical-domain-topology",
+  "text": "Re-clustering within top-level clusters yields 447 plausible sub-domains (84,228 theorems), suggesting the domain structure is hierarchical - but this is explicitly preliminary, not validated against Mathlib's module hierarchy.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0003"
+  ],
+  "backed_by": [
+    "e-0003"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-11T04:13:06.008Z",
+    "updated_at": "2026-06-11T04:14:07.313Z"
+  },
+  "comments": {},
+  "stories": [
+    "domains"
+  ]
+}
