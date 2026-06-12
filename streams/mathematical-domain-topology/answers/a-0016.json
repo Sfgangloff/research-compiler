@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0016",
+  "stream": "mathematical-domain-topology",
+  "text": "Router ablation confirms the bridge signal is real and not subsumed by the content ranker, while bounding it. The e-0012..e-0016 chain fixed the bridge router and varied the intra-cluster ranker; this is the dual control - fix the strong content ranker (IDF-weighted query-name token overlap) and vary the ROUTER, over the same 432 held-out cross-domain test theorems. Budget (mean candidate decls) to reach cross-domain premise recall: bridge router (home + top-5 neighbours) hits 0.90 at 19.5k candidates (pool 53.8k, ceiling 0.934); whole-library content ranking (no routing) needs 23.2k (pool 92.6k, ceiling 1.0); a global-popularity router needs 37.6k (ceiling 0.914); home-only caps at 0.619 and never reaches 0.70. So bridge routing is the cheapest arm at every achievable target - 15-16% fewer candidates than no-routing whole-library ranking at 0.80/0.90, and ~48% fewer than the popularity router at 0.90 - which means (i) the content ranker does NOT make routing redundant, and (ii) the useful routing signal is specifically bridge structure, not just 'add the biggest clusters' (it beats the global-hub router ~2x at high recall). The bound: bridge's pruned pool caps recall at 0.934, so the final ~6.6% of cross-domain premises needs the whole library - bridge routing trades a small unreachable tail for cheaper retrieval below it. This sharpens a-0015: bridge structure carries genuine, content-irreducible routing value, but remains a premise-recall proxy, not a measured prover success rate or transfer - the operational payoff of bridge-aware proving is now strongly plausible yet still unmeasured.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0017"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:10:35.691Z",
+    "updated_at": "2026-06-12T08:10:58.600Z"
+  },
+  "comments": {}
+}

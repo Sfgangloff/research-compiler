@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0017",
+  "stream": "mathematical-domain-topology",
+  "description": "Router ablation for the q-0011 premise-retrieval simulation: the dual control to e-0012..e-0016, which all held the bridge ROUTER fixed and varied the intra-cluster ranker. Here the strong CONTENT ranker (e-0016: IDF-weighted overlap of the query theorem's NAME tokens with candidate decl names, popularity tiebreak) is held FIXED and the ROUTER (candidate cluster pool) is varied across four arms over the same 432 held-out cross-domain TEST theorems and same candidate accounting (budget B = number of individual decls ranked): home_only (home cluster), bridge (home + top-5 bridge-neighbour clusters, the e-0016 router), popularity (home + top-5 globally most-cited clusters, content-ranked), whole_lib (all 138 clusters). Tests whether bridge structure adds anything once the content ranker is good, or whether whole-library content ranking subsumes it. Leakage control identical to e-0016 (W, citation popularity, IDF vocabulary from train/name-vocab only; recall on test).",
+  "motivation": "The entire e-0012..e-0016 chain varied the ranker with the bridge router fixed; the symmetric control was missing. If a content ranker over the WHOLE library reaches the same cross-domain recall at the same candidate budget as the bridge-routed pool, bridge structure adds nothing once content ranking is good (the ranker subsumes the router) - an honest bound that would temper the bridge claim. If bridge routing reaches targets at a far smaller budget, the routing genuinely prunes the search space.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_router_ablation.py",
+    "commit": "558e618",
+    "run_cmd": "python3 src/bridge_retrieval_router_ablation.py"
+  },
+  "formal_results": "432 cross-domain test theorems, content ranker fixed. Budget (mean candidate decls) to reach cross-domain premise recall, per router arm: bridge home+top-5 -> 0.70 at 7,199 / 0.80 at 11,695 / 0.90 at 19,470 (pool 53.8k, ceiling 0.934); whole_lib all clusters -> 0.70 at 7,958 / 0.80 at 13,809 / 0.90 at 23,181 (pool 92.6k, ceiling 1.0); popularity router -> 0.70 at 8,250 / 0.80 at 14,382 / 0.90 at 37,626 (pool 57.3k, ceiling 0.914); home_only -> ceiling 0.619, never reaches 0.70. Bridge is cheapest at every achievable target: vs whole_lib -16% candidates at 0.90 (19.5k vs 23.2k), -15% at 0.80; vs popularity router -48% at 0.90 (19.5k vs 37.6k).",
+  "results_description": "The strong content ranker does NOT subsume the bridge router. Bridge routing reaches every target up to 0.90 cross-domain recall at a lower candidate budget than whole-library content ranking, even though whole_lib has the strictly larger (ceiling-1.0) pool - because pruning to the bridge-neighbour clusters removes distractor declarations the content ranker would otherwise have to outrank. Bridge also beats a popularity (global-hub) router by ~2x at high recall, so the useful routing signal is specifically bridge structure, not merely 'add the biggest clusters'. Caveat: bridge's pruned pool caps recall at 0.934, so the final ~6.6% of cross-domain premises (those whose cluster is neither home nor a top-5 bridge neighbour) requires the whole library - a recall-vs-cost tradeoff, not a free win.",
+  "conclusions": "Settles the dual control left open by e-0012..e-0016 and strengthens the bridge claim within q-0011's retrieval proxy: bridge structure carries routing value that a strong content ranker does not replace. Holding the content ranker fixed, bridge routing reaches cross-domain premise recall targets up to 0.90 at fewer candidates than both no-routing whole-library ranking (-15 to -16%) and a global-popularity router (-48% at 0.90), confirming the signal is bridge-specific. The bound: bridge routing trades a small unreachable tail (ceiling 0.934) for cheaper retrieval below it; exhaustive (>0.93) cross-domain recall still needs the whole library. Still a premise-recall proxy, not a proving run - the operational payoff of bridge-aware proving remains plausible but unmeasured.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0016"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:10:19.621Z",
+    "updated_at": "2026-06-12T08:10:58.598Z"
+  },
+  "comments": {}
+}
