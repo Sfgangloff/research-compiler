@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0015",
+  "stream": "proof-hierarchies",
+  "text": "data/deep's re-opened supply (a-0014) is WIDTH, not DEPTH — and that is exactly what q-0009 needs. Splitting the recursive named-have count over the 1,261 deep decls into top-level frontier WIDTH (the antichain a one-shot section-predictor must emit) vs nesting DEPTH (granularity levels) shows: 633 decls (50.2%) have a >=2-wide top-level named frontier and 384 (30.5%) have >=3 (median 2, max 22) — ample one-shot training signal for a section-predictor, vs only ~27 on corpus_v3. So q-0009 (Variant B) is genuinely unblocked by deeper-module selection. BUT the same split shows nesting depth stays shallow (median 2, max 5; only 5.6% reach depth>=3), so q-0005's binary rough-vs-fine recalibration STANDS even on the deep corpus: there is still no room for a multi-level / U-shape granularity contrast. a-0014 should therefore be read precisely as 'wide-frontier supply'; the concrete next step is Modal round-trip verification of the 633 wide-frontier decls (a now precisely-scoped pipeline spend), not a multi-level redesign.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0015"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T05:07:41.598Z",
+    "updated_at": "2026-06-12T05:07:41.598Z"
+  },
+  "comments": {}
+}
