@@ -6,9 +6,9 @@
   "root_qid": "q-0001",
   "counters": {
     "q": 11,
-    "a": 19,
+    "a": 20,
     "h": 10,
-    "e": 20
+    "e": 22
   },
   "provenance": {
     "created_by": "claude",

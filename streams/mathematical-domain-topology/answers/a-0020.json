@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0020",
+  "stream": "mathematical-domain-topology",
+  "text": "The 'hard third' a-0018 left unreachable is CONCENTRATED, not diffuse - so its whole-library cost is an artifact of widening UNIFORMLY, not an intrinsic property of where its premises live. Holding the e-0018 setup fixed (home+top-5 bridge router, 432 held-out cross-domain TEST theorems, train-only weights, exact complete-coverage ceiling) and characterizing where escaped premises go: when a cross-domain theorem escapes its top-5 router it escapes into a MEDIAN of 1 cluster (mean 1.23); the entire hard third's escapes span just 25 distinct target clusters, with the top-10 covering 77.5% of escape demand and the top-20 covering 97.1%. A leakage-safe TARGETED router (home+top-5 + top-M of a fixed GLOBAL escape-target whitelist estimated on TRAIN) exploits this: a single whitelist cluster lifts the complete-coverage ceiling 0.674->0.708 at +1.5k candidates, and targeted whitelisting beats uniform top-K widening at the cheap end (>=0.70 ceiling: M=1 at 55.2k candidates vs uniform K=10 at 72.8k, 1.32x cheaper; >=0.75: 62.5k vs 72.8k) and again near the top (>=0.90: M=12 84.9k vs K=20 87.4k). But in the 0.80-0.85 band a fixed global whitelist - whose cost is paid by all 432 theorems - loses to home-specific uniform K=10 (72.8k beats 79.1k), because adding the same 8 clusters to everyone over-pools theorems that don't need them. Net for q-0011: a-0018's 'hard third needs the whole library' is too pessimistic - the hard third's premise demand is concentrated and train-predictable, and the right lever is per-THEOREM (not just per-home-cluster, a-0019) escape prediction, since the median escaped demand is exactly one cluster. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0021"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:49:24.183Z",
+    "updated_at": "2026-06-12T11:49:24.183Z"
+  },
+  "comments": {}
+}

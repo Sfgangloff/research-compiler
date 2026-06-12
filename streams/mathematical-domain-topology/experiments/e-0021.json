@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0021",
+  "stream": "mathematical-domain-topology",
+  "description": "Is the 'hard third' CONCENTRATED? A sparse TARGETED escape-cluster whitelist vs uniform router widening. e-0018/a-0018 found the home+top-5 bridge router caps complete-coverage at 0.674 and that widening UNIFORMLY (top-K) buys the hard third back only at whole-library cost. This asks the sharper question uniform widening never does: when a cross-domain TEST theorem ESCAPES its top-5 router, WHERE do the escaped premises live - a small train-predictable set (sparse whitelist recovers it cheaply) or diffuse (a-0018's verdict is fundamental)? Held identical to e-0018: same data, 432 held-out cross-domain TEST theorems, train-only bridge weights W, exact ranking-free complete-coverage ceiling. Adds (1) descriptive concentration of the hard third on TEST and (2) a leakage-safe TARGETED router = home+top5 + top-M of a GLOBAL escape-target whitelist estimated on TRAIN, swept M, head-to-head vs the uniform breadth sweep.",
+  "motivation": "a-0018/a-0019 framed recovering the hard third as a uniform (or per-home-cluster) breadth cost rising to whole-library scale. But uniform widening adds the next W-ranked neighbours as a prefix; it never tests whether the escapes are concentrated. If they are, a fixed sparse whitelist beats uniform widening - a genuinely new lever. If not, it confirms the hard third is intrinsically expensive.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_targeted.py",
+    "commit": "c84a91193f7e1d63af3a9df7c6a6b42d25a95c18",
+    "run_cmd": "python3 -m src.bridge_retrieval_targeted"
+  },
+  "formal_results": "Cross-domain TEST theorem t has home cluster c and premise-cluster set P. Base router R0(c)=c + top-5 W-neighbours. Escape set E(t)=P\\R0(c). Hard third = {t: E(t) nonempty}. TRAIN whitelist = clusters ranked by #train cross-domain theorems escaping into them. Targeted router R_M(c)=R0(c) + top-M whitelist (fixed, global). Complete-coverage ceiling at M = frac of TEST t with P subset R_M(c). Pool size = sum of routed cluster sizes.",
+  "results_description": "432 cross-domain TEST theorems; hard third = 141 (32.6%). CONCENTRATED: median 1 escaped cluster/theorem (mean 1.23); only 25 distinct escape-target clusters span the entire hard third; top-10 escape clusters cover 77.5% of escape demand, top-20 cover 97.1%. Targeted sweep (ceiling, mean pool of 92594 clustered decls): M=0 -> 0.674, 53.8k; M=1 -> 0.708, 55.2k; M=3 -> 0.755, 62.5k; M=8 -> 0.868, 79.1k; M=12 -> 0.924, 84.9k; M=20 -> 0.988, 90.2k. Uniform reference: K=5 -> 0.674, 53.8k; K=10 -> 0.859, 72.8k; K=20 -> 0.979, 87.4k; all -> 1.0, 92.6k. Head-to-head cheapest pool to reach ceiling: >=0.70 targeted M=1 55.2k vs uniform K=10 72.8k (1.32x cheaper); >=0.75 targeted M=3 62.5k vs 72.8k; >=0.80 and >=0.85 uniform K=10 72.8k beats targeted M=8 79.1k; >=0.90 targeted M=12 84.9k vs uniform K=20 87.4k.",
+  "conclusions": "The hard third is concentrated, not diffuse: median 1 escaped cluster/theorem, 25 distinct targets, top-10 cover 77.5%. So a-0018's whole-library cost is NOT because escapes are scattered - a single fixed whitelist cluster lifts the ceiling 0.674->0.708 at +1.5k candidates. Targeted whitelisting dominates uniform widening at the cheap end (>=0.70-0.75 ceiling, ~1.3x fewer candidates) and at >=0.90, but in the 0.80-0.85 band a fixed global whitelist (paid by all 432 theorems) loses to home-specific uniform K=10. The remaining lever is per-theorem (not just home-cluster) escape prediction, since median escape is 1 cluster. Still a premise-availability upper bound, not measured prover success/transfer.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0020"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:48:40.035Z",
+    "updated_at": "2026-06-12T11:49:24.188Z"
+  },
+  "comments": {}
+}
