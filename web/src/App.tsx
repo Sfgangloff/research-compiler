@@ -150,7 +150,7 @@ export function App() {
   return (
     <div className="app">
       <aside className="sidebar">
-        <h1>🧭 Research Compiler</h1>
+        <h1><a className="home" href="#/" title="Back to home" aria-label="Home">🏠</a> Research Compiler</h1>
         <div className="streams">
           {streams.map((s) => (
             <button key={s} className={s === slug ? "active" : ""} onClick={() => { setSlug(s); setSelectedId(null); }}>

@@ -1,6 +1,6 @@
 import { Component, StrictMode, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./App";
+import { Root } from "./Root";
 import "./styles.css";
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { err: Error | null }> {
@@ -27,7 +27,7 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { err: Error | nu
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ErrorBoundary>
-      <App />
+      <Root />
     </ErrorBoundary>
   </StrictMode>,
 );

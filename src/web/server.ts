@@ -141,6 +141,14 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
     }
     return send(res, 200, { pending });
   }
+  if (url.pathname === "/api/literature" && method === "GET") {
+    // The literature-review pipeline writes literature/clusters.json at repo root.
+    const f = join(REPO_ROOT, "literature", "clusters.json");
+    if (!existsSync(f)) return send(res, 404, { error: "literature/clusters.json not built yet" });
+    res.writeHead(200, { "content-type": "application/json", "cache-control": "no-store", "access-control-allow-origin": "*" });
+    res.end(readFileSync(f));
+    return;
+  }
   if (url.pathname === "/feedback/history.json" && method === "GET") {
     const f = feedbackFile("history.json");
     if (!existsSync(f)) writeFileSync(f, "[]");
