@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0025",
+  "stream": "mathematical-domain-topology",
+  "text": "Selective (gated) bridge routing -- the lever a-0024 named -- is the right idea but the realizable signal is too weak, and even a PERFECT gate buys only complete coverage, not recall. a-0024 showed always-on bridge routing HURTS the whole 873-theorem population at prover-realistic windows (within-domain majority suffers distractor dilution) and prescribed applying bridge SELECTIVELY to predicted-cross-domain goals. Testing it (e-0028, leakage-free name-token cross-domain gate: P(cross|token) IDF-weighted mean, threshold = train base-rate quantile; same content ranker / leakage control / windows): the gate is only moderate (AUC 0.640, precision 0.597, recall 0.618 -- the goal name barely signals cross-domain-ness). Selective routing HALVES always-bridge's population damage (recall uplift vs home_only -0.041 vs -0.067 @B=1000; complete-coverage -0.029 vs -0.046) but stays net-NEGATIVE at every window, because the weak gate misfires on 180/441 within-domain goals (needless dilution) while catching only 267/432 cross-domain. The ORACLE gate (perfect cross-domain detection, computed exactly over the cross/within partition) is the decisive bound: it TIES home_only on mean recall at every window (-0.004..+0.002) -- a perfect gate cannot improve recall because bridge has near-zero recall upside even on cross-domain goals at realistic windows (cross-domain B=1000 recall 0.460 bridge vs 0.456 home) -- but it does give a real, growing complete-coverage gain (+0.013@B=100, +0.023@B=200, +0.048@B=1000), the cross-domain solvability bar home_only structurally cannot meet. Net for q-0011: bridge-aware retrieval's realistic-window payoff is (a) confined to COMPLETE COVERAGE of cross-domain goals, not cheaper recall, and (b) bottlenecked by cross-domain-detection accuracy the goal name only weakly supports -- so the operational case for bridge-aware proving rests on the minority of goals that genuinely need an out-of-home premise AND can be identified as such. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0028"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:32:06.077Z",
+    "updated_at": "2026-06-12T13:32:18.011Z"
+  },
+  "comments": {}
+}

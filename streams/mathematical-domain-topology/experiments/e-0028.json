@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0028",
+  "stream": "mathematical-domain-topology",
+  "description": "Selective (gated) bridge routing: route home+top-5 bridge neighbours ONLY for goals a leakage-free name-token predictor flags as cross-domain; else route home cluster only. Three arms (home_only / always-bridge / selective) at prover-realistic premise windows B in {10..1000}, plus an exact oracle-gate upper bound.",
+  "motivation": "a-0024 found always-on bridge routing HURTS the whole-population retrieval at realistic windows (distractor dilution of the within-domain majority) and named the untested lever: apply bridge SELECTIVELY, only to predicted-cross-domain goals. This tests that lever and bounds it with a perfect gate.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_selective.py",
+    "commit": "a8a0b4c",
+    "run_cmd": "python3 src/bridge_retrieval_selective.py"
+  },
+  "formal_results": "Gate: P(cross|name token t)=#TRAIN cross-domain theorems with t / #TRAIN theorems with t; goal cross-score = IDF-weighted mean over tokens; decision threshold = (1-base_rate) quantile of TRAIN scores (predicted-positive rate matched to TRAIN base rate; no test labels). Content ranker, bridge weights W, IDF, popularity all TRAIN/name-vocab only. 873 held-out TEST theorems (432 cross, 441 within). Oracle-gate computed exactly as the population average of bridge-on-true-cross + home_only-on-true-within (disjoint partition).",
+  "results_description": "Gate is weak: AUC 0.640, precision 0.597, recall 0.618, acc 0.605 (fires on 51.2%: 267 TP / 180 FP / 165 FN / 261 TN). REAL gate, population mean-recall uplift vs home_only: -0.012@B10, -0.018@B100, -0.041@B1000; complete-coverage uplift -0.009@B10, -0.010@B100, -0.029@B1000 -- selective HALVES always-bridge's damage (always-bridge: -0.067 recall / -0.046 compl @B1000) but stays net-NEGATIVE at every window. ORACLE gate: mean-recall ties home_only everywhere (-0.004..+0.002), but complete-coverage is POSITIVE and grows: +0.006@B25, +0.013@B100, +0.023@B200, +0.034@B500, +0.048@B1000. On cross-domain goals alone bridge barely lifts recall (e.g. B1000 0.460 vs home 0.456), confirming a-0024.",
+  "conclusions": "The lever a-0024 named is the right idea but insufficient with the available leakage-free signal. A PERFECT cross-domain gate makes selective bridge weakly DOMINATE home_only -- but only on complete coverage (the cross-domain solvability bar home_only structurally cannot meet), NOT on mean recall, which even an oracle gate cannot improve because bridge routing has near-zero recall upside at realistic windows. The realizable name-token gate (AUC 0.64) is too weak: misfiring on 180/441 within-domain goals leaves selective net-negative on the population. So bridge-aware retrieval's realistic-window payoff is (a) confined to complete coverage and (b) gated by cross-domain-detection accuracy the goal name barely supports.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0025"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:31:33.711Z",
+    "updated_at": "2026-06-12T13:32:18.009Z"
+  },
+  "comments": {}
+}
