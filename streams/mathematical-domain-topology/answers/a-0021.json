@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0021",
+  "stream": "mathematical-domain-topology",
+  "text": "Per-theorem escape prediction - the lever a-0020 named - works and is cheaper than the global whitelist, but the routing PRINCIPLE turns out to be nearly free and the real bottleneck is now predictor accuracy. a-0020 found the hard third's escapes concentrated (median 1 cluster/theorem) and predicted that a per-THEOREM escape predictor would beat the fixed global whitelist, which pays for its M clusters on all 432 theorems though each needs ~one. Testing it: a leakage-safe predictor trained on TRAIN escapes only, scoring each candidate escape cluster d for a query theorem by sum over its NAME tokens t of IDF(t)*P(d|t), routing to home+top5 + its top-m predicted escape clusters (same e-0018/e-0022 setup, 432 held-out cross-domain TEST theorems, exact complete-coverage ceiling). It beats the a-0020 global whitelist by ~1.2-1.3x fewer candidate decls at every ceiling >=0.75, the gap widening with the target (>=0.80: 60.2k vs 74.0k; >=0.90: 70.3k vs 86.5k, ~16k fewer decls/theorem) - because it spends the budget on each theorem's own likely escape cluster, not the same M for all. The bigger finding is the ORACLE: perfect per-theorem routing reaches 0.94 complete-coverage at m=1 (mean pool +1.0k over the 53.8k base) and 1.0 at m=5 (+1.2k), so a-0018's 'hard third needs the whole library' cost is an artifact of NOT KNOWING which one cluster each theorem needs, not of where its premises live - with perfect prediction the hard third is recoverable almost for free. The real predictor captures only part of that gap because the name-token signal localizes escapes only moderately (top-1 predicted cluster hits an actual escape target 39.7%, top-3 66.0%, top-5 83.0%). Net for q-0011: bridge structure + per-theorem escape prediction makes complete cross-domain premise assembly cheaper than any uniform or global-whitelist router, and the routing principle is near-free under an oracle, so the remaining lever is a STRONGER query->escape-cluster predictor (richer features than the goal's name tokens). Still a premise-availability upper bound, not a measured prover success rate or transfer - the operational payoff of bridge-aware proving remains plausible but unmeasured.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0023"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:07:12.011Z",
+    "updated_at": "2026-06-12T12:07:21.936Z"
+  },
+  "comments": {}
+}

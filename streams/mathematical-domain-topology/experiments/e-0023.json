@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0023",
+  "stream": "mathematical-domain-topology",
+  "description": "Per-THEOREM escape predictor, the lever a-0020 named. Same e-0018/e-0022 setup (432 held-out cross-domain TEST theorems, train-only bridge weights W, exact ranking-free complete-coverage CEILING metric, home+top-5 base router); only the routing policy changes. A leakage-safe predictor trained on TRAIN escapes only scores each candidate escape cluster d for a query theorem by sum over the theorem's NAME tokens t of IDF(t)*P(d|t) (P from token x escape-cluster co-occurrence on train escapes), and routes to home+top5 + its top-m predicted escape clusters. Arms: predictor(m); whitelist(M) = the a-0020 fixed global escape whitelist (reference); oracle(m) = the theorem's m most-demanded ACTUAL escape clusters (leaky per-theorem upper bound). Head-to-head: cheapest mean candidate pool to reach each complete-coverage ceiling.",
+  "motivation": "a-0020 found the hard third's escapes concentrated (median 1 cluster/theorem) and closed by naming the real lever: per-THEOREM escape prediction, cheaper than a global whitelist that pays for its M clusters on every theorem though each needs ~one. Test whether a name-token predictor a prover always has localizes escapes well enough to beat the global whitelist at matched candidate budget.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_escape_predictor.py",
+    "commit": "8e0d846",
+    "run_cmd": "python3 src/bridge_retrieval_escape_predictor.py"
+  },
+  "formal_results": "432 cross-domain TEST theorems (141 hard-third). Name-token escape predictor accuracy: top-1 predicted cluster hits an actual escape target 39.7%, top-2 56.0%, top-3 66.0%, top-5 83.0%. Cheapest mean candidate pool (of 92.6k clustered decls) to reach a complete-coverage ceiling, predictor vs a-0020 global whitelist: >=0.75 57.0k vs 65.7k; >=0.80 60.2k vs 74.0k (1.23x); >=0.85 63.8k vs 80.9k (1.27x); >=0.90 70.3k vs 86.5k (1.23x, ~16k fewer decls/theorem). ORACLE per-theorem routing: ceiling 0.942 at m=1 (mean pool 54.7k, +1.0k over the 53.8k base) and 1.0 at m=5 (54.9k).",
+  "results_description": "Per-theorem escape prediction (a-0020's named lever) IS cheaper than the global whitelist: at matched complete-coverage ceiling it needs ~1.2-1.3x fewer candidate decls at every target >=0.75, the gap widening with the target (0.90: 70.3k vs 86.5k). But the oracle shows most of the achievable gain is still untapped: perfect per-theorem routing recovers the hard third almost for free (0.94 ceiling at +1k decls, 1.0 at +1.2k), so a-0018's 'hard third needs the whole library' cost is an artifact of NOT KNOWING which one cluster each theorem needs, not of where the premises live. The real predictor captures only part of this because the name-token signal localizes escapes weakly (top-1 40%, top-5 83%).",
+  "conclusions": "Confirms and bounds a-0020's named lever. Per-theorem escape prediction from the query theorem's own name beats the global whitelist by 1.2-1.3x fewer candidates at every complete-coverage ceiling >=0.75, because it spends the candidate budget on each theorem's own likely escape cluster rather than the same M clusters for all. The oracle proves the routing PRINCIPLE is near-free (hard third recoverable at +1-2k decls with perfect prediction), relocating the remaining bottleneck for q-0011 from routing to PREDICTOR ACCURACY: a name-token signal localizes escapes only moderately (top-1 40%). A stronger query->escape-cluster predictor (richer features than name tokens) is the next lever. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0021"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:05:52.156Z",
+    "updated_at": "2026-06-12T12:07:21.935Z"
+  },
+  "comments": {}
+}
