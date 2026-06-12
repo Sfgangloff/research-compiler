@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0017",
+  "stream": "proof-hierarchies",
+  "text": "q-0009's 'fewer LLM calls' premise holds on its EMISSION half but NOT (by the size proxy) on its SOLVER half. e-0012..e-0016 established that naming a frontier is ~88x cheaper than emitting a full proof and that 633 deep decls supply a >=2-wide named frontier; but none asked whether those subgoals are actually EASIER than the parent. e-0017 measures exactly that over the 633 wide-frontier targets: comparing each parent's CONCLUSION (recovered by a right-to-left top-level-':' scan, robust to the left-truncated binder prefix) against its top-level frontier subgoals. Decomposition does NOT reliably reduce per-subgoal difficulty: the largest frontier subgoal is a median ~90% of the parent conclusion's size (ratio_max p50 0.90, p90 3.0, mean 1.41), only 54.8% (347/633) of decls have EVERY subgoal smaller than the parent, and 45.2% (286/633) have at least one subgoal at least as large as the parent (e.g. MonotoneOn.union_right 1.5x, repr_opow_aux2 7.6x). The parent conclusion is often a short final claim (p50 43 chars) while the named haves spell out more verbose intermediate constructions. So a section-predictor+solver planner's potential advantage cannot be assumed to come from smaller/easier subproblems; it must come from INDEPENDENT solvability / search-space decomposition — which the eventual Modal pass@k comparison must measure directly. CAVEAT: chars/tokens are a size proxy for difficulty, not search space (a data-level bound like e-0010/e-0016, not pass@k).",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0017"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T07:16:27.027Z",
+    "updated_at": "2026-06-12T07:16:27.027Z"
+  },
+  "comments": {}
+}

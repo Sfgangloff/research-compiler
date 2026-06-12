@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0017",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only test of the SOLVER-SIDE half of q-0009's 'fewer LLM calls' premise over the 633 data/deep wide-frontier targets: e-0012..e-0016 only measured how cheap it is to EMIT a frontier (~88x fewer tokens than a full proof); none asked whether the named subgoals are actually EASIER than the parent. Recovers the parent CONCLUSION from each (left-truncated) statement via a right-to-left top-level-':' scan, then compares parent-conclusion size vs the top-level frontier subgoal sizes (chars + 4-char/tok proxy).",
+  "motivation": "q-0009's planner advantage ('fewer LLM calls') has two halves: cheap frontier emission (e-0016, ~88x) AND subgoals that are easier to solve than the whole. The second half was explicitly left untested by e-0016 ('per-decl emission/solver-difficulty trade-off is a data-level proxy, not measured pass@k'). A planner that splits a goal into subgoals each as hard as the original buys nothing on the solver side. Test cheaply before any Modal pass@k spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_subgoal_difficulty.py",
+    "commit": "e998ce4",
+    "run_cmd": "python3 data/analyze_deep_subgoal_difficulty.py"
+  },
+  "formal_results": "633 wide-frontier decls. Parent conclusion chars p10/p50/p90 = 13/43/109 (~3.25/10.75/27.25 tok). Largest frontier subgoal chars p10/p50/p90 = 16/40/67. RATIO largest-subgoal / parent-conclusion: p10 0.26, p50 0.90, p90 3.0, max 25, mean 1.41. RATIO sum-of-subgoals / parent: p50 1.98, p90 7.03. Only 347/633 (54.8%) of decls have EVERY subgoal smaller than the parent; 286/633 (45.2%) have at least one subgoal >= the parent conclusion. Examples with a subgoal as hard as the parent: StrictMonoOn.union (1.36), MonotoneOn.union_right (1.5), repr_opow_aux2 (7.6).",
+  "results_description": "Decomposition does NOT reliably yield easier subgoals by the size proxy: at the median the largest subgoal is ~90% of the parent conclusion's size, and in 45% of wide-frontier decls at least one subgoal is at least as large as the parent. The emission half of q-0009's premise holds (e-0016, ~88x cheaper to name a frontier) but the solver half does not — naming a frontier is cheap, but the named subgoals are not systematically smaller problems than the original.",
+  "conclusions": "q-0009's 'fewer LLM calls' advantage cannot rest on subgoals being easier (size proxy): the planner's potential value must come from INDEPENDENT solvability / search-space decomposition, not from smaller subproblems. This is a concrete caveat the eventual Modal pass@k comparison (predictor+solver vs single-stage) must confront and measure directly. CAVEAT: chars/tokens are a size proxy for difficulty, not search space — a data-level bound like e-0010/e-0016, not pass@k.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0017"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T07:16:13.326Z",
+    "updated_at": "2026-06-12T07:16:27.029Z"
+  },
+  "comments": {}
+}
