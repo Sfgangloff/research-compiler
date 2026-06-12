@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0011",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only stdlib text analysis over the 607-pair SFT corpus testing whether a terser pretty-printer serialization could close the rough/fine length gap that blocks q-0008. Re-renders each rough (pi_root, term-mode) completion under two text transforms: CONSERVATIVE (strip universe annotations .{...}, drop @ explicit sigils, collapse whitespace -- purely cosmetic, a sound lower bound on reduction) and AGGRESSIVE (additionally shorten dotted identifier chains to their last component, simulating short-name pp -- optimistic upper bound on reduction). Both are themselves lower bounds on Lean's own terser pp since neither can hide explicit type/instance arguments without re-elaboration.",
+  "motivation": "e-0010 found rough is a median 144x longer than fine with zero common support, so q-0008's length-covariate regression has no overlap. The graph's stated unblock is 'a terser rough serialization or a length-matched subset before SFT'; before spending Modal credit re-elaborating with pp.explicit false, test cheaply whether cosmetic terseness could even close the gap.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_rough_terseness.py",
+    "commit": "fa94b62",
+    "run_cmd": "python3 data/analyze_rough_terseness.py"
+  },
+  "formal_results": "607 paired decls. Rough median 7071 chars raw; conservative-pp median 4198 (removes ~40% at median); aggressive-pp median 3070 (removes ~56% at median). Fine median 46 chars. Within-theorem rough/fine ratio median 153.7x raw -> 94.9x conservative -> 68.1x aggressive; p10 ratio 28.1x -> 19.3x -> 15.2x; 0.0% of pairs reach ratio<=2x under ANY serialization. Common support: only 4.3% of aggressive-pp rough completions fall below even the fine MAX (570 chars); 0.5% below fine p90. Over a 512-token budget: raw 87.3%, conservative 75.3%, aggressive 68.5% of rough still exceed it vs 0.0% of fine.",
+  "results_description": "Cosmetic pretty-printer terseness removes at most ~56% of rough chars at the median and CANNOT bring rough into length common support with fine: even aggressive short-name single-line rendering leaves rough a median 68x longer, with 0% of pairs under a 2x ratio and only ~4% below the fine max. The 144x confound is structural to term-mode vs tactic-mode serialization (it lives in the explicit elaborated type/instance arguments, which need real re-elaboration to hide), not removable formatting verbosity.",
+  "conclusions": "The 'terser serialization' route to unblock q-0008 is NOT achievable by cheap text post-processing; it would require re-extracting rough proofs with a delaborated/pp.explicit-false rendering on Modal (a real pipeline change), and even that is not guaranteed to reach common support. The length-matched-subset route is also near-empty (~4% of rough below fine max). q-0008's length-control design therefore remains non-viable on the current corpus; the rough policy needs a fundamentally terser (re-elaborated, not reformatted) serialization.",
+  "addresses": [
+    "q-0008"
+  ],
+  "produces": [
+    "a-0011"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:57:05.827Z",
+    "updated_at": "2026-06-12T02:57:16.936Z"
+  },
+  "comments": {}
+}
