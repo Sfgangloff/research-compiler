@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0016",
+  "stream": "slitherlink-tool-granularity",
+  "text": "No — total reasoning effort is NOT conserved across tool granularity; it INFLATES. Measuring total token throughput (input + cache_creation + cache_read + output) on every solved Opus-4.7 trial, coarse processes 2.7x / 4.1x / 5.6x more total tokens than none across the low/mid/high difficulty rungs, and the inflation grows with difficulty. So the a-0015 relocation is effort-INFLATING, not effort-neutral: granularity ADDS work rather than merely moving it. The added work is almost entirely transcript RE-READS (cache_read coarse/none = 5.3x / 15.1x / 24.6x; read-fraction rises from 18-43% under none to 77-89% under coarse) — each tool turn re-processes the whole growing transcript. Generated reasoning meanwhile shrinks (none/coarse output = 1.78/2.81/1.33, the a-0015 relocation half). Dollar cost does not inflate proportionally only because cache-read tokens are billed cheaply; this re-read tax is the quantified mechanism behind the Goldilocks dollar-curve collapse at the hard end (a-0013).",
+  "status": "supported",
+  "answers": [
+    "q-0016"
+  ],
+  "backed_by": [
+    "e-0012"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:53:33.807Z",
+    "updated_at": "2026-06-12T02:53:33.807Z"
+  },
+  "comments": {}
+}

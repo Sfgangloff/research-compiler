@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0012",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Total-effort conservation analysis: decompose every solved Opus-4.7 trial's token usage (output_tokens, cache_read, cache_creation, input) into generated reasoning vs transcript-rereads vs new context, across the 3-rung difficulty ladder (puzzle_001/puzzle_002/gen_7x7_s1_00) x none/fine/medium/coarse. No new compute.",
+  "motivation": "a-0015 (H-EXT) showed granularity RELOCATES work (none = few token-heavy turns; tools = many token-light turns). It did not establish whether the TOTAL effort is conserved. q-0016 asks: is total reasoning effort invariant, or does granularity change the total amount of work, not just where it happens?",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/analyze_effort_conservation.py",
+    "commit": "288e073",
+    "run_cmd": "python -m harness.analyze_effort_conservation --meta off"
+  },
+  "formal_results": "Per (puzzle,toolset) over solved trials: mean turns, output_tokens, cache_read, cache_creation, total_processed (=input+cache_create+cache_read+output), and read-fraction. C1: none/coarse output ratio. C2: coarse/none total-throughput ratio per rung. C3: coarse/none cache_read ratio and read-fraction.",
+  "results_description": "C1 (output declines, relocation): none/coarse output = 1.78 / 2.81 / 1.33 (low/mid/high) -- none generates most reasoning at every rung. C2 (total NOT conserved, inflates): total-throughput coarse/none = 2.66x / 4.13x / 5.55x, growing with difficulty (none ~129k/316k/150k tokens vs coarse ~342k/1.31M/831k). C3 (inflation = transcript re-reads): cache_read coarse/none = 5.3x / 15.1x / 24.6x; read-fraction rises from 18-43% (none) to 77-89% (coarse).",
+  "conclusions": "Total reasoning effort is NOT conserved across granularity: it INFLATES 2.7-5.6x from none to coarse, and the inflation grows with difficulty. The a-0015 relocation is therefore effort-INFLATING, not effort-neutral -- granularity adds work, it does not merely move it. The added work is almost entirely cache_read (re-reading the growing transcript once per tool turn), not extra generated reasoning. Dollar cost does not inflate proportionally only because cache-read tokens are billed cheaply; this re-read tax is the quantified mechanism behind why coarse's per-turn advantage erodes at the hard end (a-0013 Goldilocks collapse).",
+  "addresses": [
+    "q-0016"
+  ],
+  "produces": [
+    "a-0016"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:52:36.348Z",
+    "updated_at": "2026-06-12T02:53:33.809Z"
+  },
+  "comments": {}
+}
