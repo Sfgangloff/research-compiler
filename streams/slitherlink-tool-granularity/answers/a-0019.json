@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0019",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Tool granularity changes WHEN the agent gives up but NOT how calibrated it is at that point. (1) TIMING is strongly granularity-dependent: on the 13 genuine failures the no-tools and coarse agents decline almost immediately - none at 2.0% of the turn budget (1.0 tool calls), coarse at 5.0% (3.0 calls) - whereas fine/medium/scratchpad grind much longer before declining: 25.3% (43.3 calls), 54.8% (55.7 calls), 26.0% (31.5 calls) respectively; none 2% vs tools 30.2% of budget on average. Crucially this later abandonment is VOLUNTARY, not budget-forced: only 1/13 failures (one medium trial) ever reaches max_turns; the other 12 stop early by the agent's own choice. So finer tooling buys a deeper self-directed search before giving up, it does not merely let the agent run out of room. (2) CONFIDENCE is perfectly CALIBRATED and granularity-INVARIANT. Classifying each final message as ASSERT-SOLVED / DECLINE / OTHER and cross-tabulating against the judge's verdict: the 'I solved it' assertion appears on 31 trials and every one of them actually solved (success-claim precision 31/31 = 100%, 0/49 false on failures), and the explicit honest decline appears on exactly the 13 failures and 0 solves (decline precision 13/13 = 100%). Overclaims = 0/13 and wrong-submits = 0/13 (corroborating e-0013). Every toolset declines on 100% of its own failures with 0 overclaims. So coarser tooling makes the agent give up EARLIER, but the give-up decision stays equally honest and well-calibrated regardless of granularity. This complements a-0016/e-0013 (effort inflation; early-refuse vs grind-then-refuse) by adding the timing-as-fraction-of-budget and calibration dimensions: granularity inflates effort-before-giving-up and delays the voluntary stop, without ever corrupting the truthfulness of that stop.",
+  "status": "supported",
+  "answers": [
+    "q-0015"
+  ],
+  "backed_by": [
+    "e-0015"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:12:55.491Z",
+    "updated_at": "2026-06-12T03:12:55.491Z"
+  },
+  "comments": {}
+}
