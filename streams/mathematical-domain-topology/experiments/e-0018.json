@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0018",
+  "stream": "mathematical-domain-topology",
+  "description": "Complete-coverage rate: a prover-relevant tightening of the q-0011 retrieval proxy. The whole e-0012..e-0017 chain measured MEAN premise recall (avg fraction of a theorem's premises retrieved); every answer caveated 'a premise-recall proxy, not prover success'. A retrieval-augmented prover can only make a cross-domain step if EVERY needed premise is in its window, so the prover-relevant metric is the COMPLETE-COVERAGE RATE: fraction of cross-domain TEST theorems whose ENTIRE clustered premise set lands in the top-B retrieved decls -- a strict necessary condition (hence upper bound) for solving the theorem by retrieval. Held identical to e-0016: same bridge router (home + top-5 bridge-neighbour clusters), same 432 held-out cross-domain test theorems, same candidate accounting, same three intra-cluster rankers (content=IDF-weighted query-name overlap, popularity=train-citation prior, random=EXACT hypergeometric all-k mean), same train/name-vocab-only leakage control. ONLY the metric changes: mean recall -> complete-coverage rate.",
+  "motivation": "a-0013..a-0016 all bound the bridge payoff under MEAN premise recall and repeatedly flag the gap to actual prover success. Mean recall 0.90 can hide that almost no theorem gets its COMPLETE premise set -- and a missing premise breaks a cross-domain step. This swaps in the strict all-or-nothing metric a prover actually needs, the closest CPU-only proxy to prover success, to test whether the content+bridge advantage survives the harder bar and where its ceiling really is.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_coverage.py",
+    "commit": "90b3c73",
+    "run_cmd": "python3 src/bridge_retrieval_coverage.py"
+  },
+  "formal_results": "432 cross-domain test theorems (median 5, max 45 premises each). WHOLE-POOL complete-coverage CEILING = 0.6736: even pooling the entire bridge-routed pool (~53.8k decls), only 67.4% of cross-domain theorems have their FULL premise set inside home+top-5 bridge-neighbour clusters (vs 0.934 mean-recall ceiling) -- the other ~33% need a premise outside the router, uncoverable at ANY budget. Complete-coverage budget-to-reach: content 0.25 at ~5,958 / 0.50 at ~15,509 candidates; popularity 0.25 at ~15,851 / 0.50 at ~43,281; random 0.25 at ~41,448 / 0.50 at ~48,716. 0.75 unreachable by all arms (above ceiling). Content dominates popularity at every budget (e.g. 0.59 vs 0.29 complete-coverage at ~19.9k candidates).",
+  "results_description": "Under the prover-relevant all-or-nothing metric the picture is much harsher than mean recall but the content+bridge ordering still wins. The bridge-routed pool caps at 67.4% complete coverage (vs 93.4% mean recall): a hard ~third of cross-domain theorems have at least one premise outside the top-5 bridge router and cannot be fully equipped by it at any cost. Below that ceiling, content ranking reaches 0.50 complete coverage at ~15.5k candidates vs popularity's ~43.3k (2.8x cheaper) and random's ~48.7k; content beats popularity at every budget. So the content lever and bridge routing both still help under the strict metric, but the achievable ceiling is far lower than the recall proxy advertised.",
+  "conclusions": "Sharpens and bounds a-0015/a-0016 with the metric a prover actually needs. (1) The mean-recall proxy is optimistic: the prover-relevant complete-coverage ceiling for the top-5 bridge router is 0.674, not 0.934 -- ~33% of cross-domain theorems need a premise outside the routed clusters and are out of reach at any budget. (2) Where coverage IS achievable, content-aware intra-cluster ranking keeps its edge: 0.50 complete coverage at ~15.5k candidates, 2.8x cheaper than popularity. Net for q-0011: bridge routing + content ranking make COMPLETE cross-domain premise assembly meaningfully cheaper for the two-thirds it can reach, but a wider router (more neighbour clusters, or whole-library fallback) is required for the remaining third -- the recall-vs-router-breadth tradeoff is starker under the prover bar. Still a premise-availability upper bound, not a proving run; actual prover success remains unmeasured.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0017"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:23:04.008Z",
+    "updated_at": "2026-06-12T08:24:11.982Z"
+  },
+  "comments": {}
+}

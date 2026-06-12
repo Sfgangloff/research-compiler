@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0017",
+  "stream": "mathematical-domain-topology",
+  "text": "The mean-recall proxy used throughout a-0013..a-0016 is optimistic about the q-0011 payoff; the prover-relevant complete-coverage metric tightens it. A retrieval-augmented prover can only make a cross-domain step if EVERY needed premise is in its window, so the right bar is the COMPLETE-COVERAGE RATE: fraction of cross-domain test theorems whose ENTIRE clustered premise set lands in the top-B retrieved decls (a strict necessary condition, hence an upper bound on solvable-by-retrieval). Holding the e-0016 setup fixed (bridge router home+top-5, 432 held-out cross-domain test theorems, same rankers and leakage control) and changing ONLY the metric: the whole bridge-routed pool caps complete coverage at 0.674 -- not the 0.934 mean-recall ceiling -- because ~33% of cross-domain theorems need at least one premise outside the top-5 bridge router and are unreachable at ANY budget. Below that ceiling the content+bridge edge survives: content-aware intra-cluster ranking hits 0.50 complete coverage at ~15.5k candidates vs popularity's ~43.3k (2.8x cheaper) and random's ~48.7k, dominating popularity at every budget. (Median 5 premises/theorem, max 45.) Net: bridge routing + content ranking make COMPLETE cross-domain premise assembly meaningfully cheaper for the ~two-thirds of theorems it can reach, but a hard third need a broader router (more neighbour clusters or whole-library fallback) -- the recall-vs-router-breadth tradeoff is starker under the prover bar than under mean recall. Still a premise-availability upper bound, not a proving run: actual prover success rate and transfer remain unmeasured.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0018"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:24:01.631Z",
+    "updated_at": "2026-06-12T08:24:11.984Z"
+  },
+  "comments": {}
+}
