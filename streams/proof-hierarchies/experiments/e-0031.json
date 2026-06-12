@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0031",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only routing gate (q-0009): scope e-0029's WITHIN-DEEP eval route. e-0029 collapsed the 633/558 deep wide-frontier supply to ~126 verified-AND-eval-relevant frontiers for miniF2F transfer and proposed two unscoped routes ((a) eval on a held-out slice of the SAME deep distribution; (b) source a competition-math corpus). This gate scopes (a): is a leakage-controlled (module-disjoint) within-deep train/eval split FEASIBLE over the 633 targets, and does it leave an AMPLE training band? Area-stratified, module-disjoint, every-5th-module holdout (~80/20); verified supply projected per-area via e-0028 rates. Pure stdlib; no Lean, no Modal; produces no pairs.",
+  "motivation": "e-0029 routed the Modal go/no-go to two options but scoped neither. Route (a) (within-deep eval) sidesteps the ~76% off-domain miniF2F problem and would restore the full ~558 verified supply — but only if a held-out eval slice can be carved out WITHOUT train/eval leakage. The standard leakage control for a proof corpus (and what build_sft.py already uses) is a module-disjoint split. Whether such a split is feasible AND leaves enough training signal was never checked; it decides whether (a) is the cheap supply-ample path or a dead end before any Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_within_eval_split.py",
+    "commit": "3c88044",
+    "run_cmd": "python3 data/analyze_deep_within_eval_split.py"
+  },
+  "formal_results": "633 wide-frontier targets span 452 modules with no module above 0.9% of targets (median 1/module, 334 singletons), so an area-stratified module-disjoint every-5th-module holdout partitions cleanly: 502 train / 131 eval targets over 82 eval modules, ZERO module on both sides (asserted), 17 eval areas / 23 train areas (all eval areas also in train). Projecting e-0028 per-area round-trip yield: ~442.2 verified train frontiers (>= AMPLE 300) and ~115.8 verified eval frontiers (>= the ~30 needed to score pass@k). vs e-0029's miniF2F route: ~126 on-domain verified.",
+  "results_description": "A module-disjoint within-deep split is feasible and not leakage-prone by construction (dispersed modules), yielding ~442 verified train (AMPLE) and ~116 verified eval (sufficient), all areas represented on both sides. e-0029's MARGINAL ~126 verdict is SPECIFIC to insisting on miniF2F transfer.",
+  "conclusions": "Routes the q-0009 Modal go/no-go: option (a) (within-deep eval) is the supply-ample path — a leakage-controlled module-disjoint 80/20 split restores an AMPLE ~442-frontier training band with a ~116-frontier held-out eval, vs e-0029's MARGINAL ~126 for miniF2F transfer. The cost is external-validity narrowing: the granularity/planner effect is then measured on the advanced-Mathlib (deep) distribution itself, not on competition math. CAVEATS: module-disjoint is standard but not airtight (cross-module shared frontier lemmas possible — needs a lemma-overlap audit at verify time); verified counts are the e-0028 per-area projection, not an actual round-trip; projects COUNTS not pass@k; bands are chain anchors, not a measured SFT learning curve.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0030"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:30:39.107Z",
+    "updated_at": "2026-06-12T12:32:00.054Z"
+  },
+  "comments": {}
+}

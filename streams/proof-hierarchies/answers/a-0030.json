@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0030",
+  "stream": "proof-hierarchies",
+  "text": "e-0029's go/no-go offered two unscoped routes after collapsing the deep wide-frontier supply to ~126 verified-AND-eval-relevant frontiers for miniF2F; e-0031 scopes route (a) (within-deep eval) and shows it is the supply-AMPLE path. The 633 wide-frontier targets are extremely dispersed — 452 modules, no module above 0.9% of targets, median 1/module, 334 singletons — so a leakage-controlled MODULE-DISJOINT split (the same control build_sft.py uses) is trivially feasible: an area-stratified every-5th-module 80/20 holdout partitions cleanly into 502 train / 131 eval targets over 82 eval modules with ZERO module on both sides and all 17 eval areas also present in train. Projecting e-0028's per-area round-trip yield gives ~442 verified train frontiers (>= the AMPLE 300 anchor) and ~116 verified eval frontiers (>= the ~30 needed to score pass@k). So e-0029's MARGINAL ~126 verdict is SPECIFIC to insisting the advanced targets transfer to miniF2F: evaluating WITHIN the deep distribution (e-0029's option a) restores the full ~558 supply as a clean ~442/116 train/eval split. The Modal go/no-go is thereby routed — option (a) is the cheap, supply-ample path; its only cost is external-validity narrowing (the granularity/planner effect is measured on advanced Mathlib, not competition math), which is a framing choice, not a data blocker. This is the last open scoping question on q-0009: every data-level gate (supply e-0014/16, emission e-0016, difficulty e-0017, independence e-0018/19, predictability e-0020, yield e-0028, on-domain composition e-0029, and now train/eval split feasibility e-0031) is cleared; what remains is purely the paid Modal round-trip + SFT + eval OUTCOME (pass@k, #LLM-calls). CAVEATS: module-disjoint is standard but not airtight (two decls in different modules can share a frontier lemma — a lemma-overlap audit at verify time would tighten it); verified counts are the e-0028 per-area projection, not an actual round-trip; projects COUNTS not pass@k; the AMPLE/MARGINAL bands are chain anchors, not a measured SFT learning curve.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0031"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:32:00.050Z",
+    "updated_at": "2026-06-12T12:32:00.050Z"
+  },
+  "comments": {}
+}
