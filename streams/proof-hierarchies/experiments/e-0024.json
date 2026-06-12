@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0024",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only learnability gate for q-0009's section-predictor: is the frontier's CARDINALITY (top-level named WIDTH = how many subgoals the predictor must emit) predictable from the theorem statement? e-0012..e-0023 cleared every Variant B data gate except a slice of learnability — e-0020/e-0021 measured frontier VOCAB grounding, but none asked whether the frontier's STRUCTURE/width is a learnable function of the input. Over ALL 1,261 data/deep decls (not just the >=2-wide selection, to avoid conditioning on the output), compute Spearman rank correlation between cheap statement features (chars, identifier tokens, distinct library tokens, logical/relational ops) and top-level named frontier width, plus the predictive MAE of a length-tercile predictor vs an always-predict-the-median baseline.",
+  "motivation": "Before a section-predictor can emit the right subgoal TYPES (e-0020/21) it must emit the right NUMBER of them. If frontier width is uncorrelated with any cheap statement feature, the model cannot infer its output cardinality from the goal — an untested learnability concern the prior chain skipped while clearing supply/emission/difficulty/independence/vocab gates.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_width_predictability.py",
+    "commit": "a8c134e",
+    "run_cmd": "python3 data/analyze_deep_width_predictability.py"
+  },
+  "formal_results": "1,261 deep decls; width dist 0->189,1->439,2->249,3->153,4->81,5->64,6->33,7->21,8+->32 (median 2, mean 2.17). Spearman(feature, width) over ALL decls is near-noise: ops 0.223, chars 0.189, tokens 0.164, lib_tokens 0.058; over the 633 wide-slice even weaker (ops 0.151, chars 0.099, tokens 0.095, lib 0.039). Length terciles show a weak monotone signal (mean width short 1.745 / mid 2.271 / long 2.501), but it does NOT yield usable prediction: a length-tercile predictor MAE (1.552) is WORSE than always-predict-median (1.469), -5.7%. CAVEAT (e-0017): statements are left-truncated (binder prefix cut), so surface features are partial and a learned model could exploit deeper structure — a lower-bound flag on learnability, not proof.",
+  "results_description": "Frontier cardinality is only weakly rank-correlated with surface statement features (best Spearman ~0.22) and surface length gives no usable predictive lift over a constant baseline. So a section-predictor cannot infer HOW MANY subgoals to emit from cheap surface features of the (left-truncated) statement; it must learn output cardinality from deeper semantic structure. This is the one learnability dimension that does NOT cleanly pass at the surface level — complementary to e-0020's vocab-grounding finding.",
+  "conclusions": "q-0009's section-predictor faces a real, previously-untested learnability bar: neither the frontier's vocabulary (e-0020, ~37.5% grounded) NOR its cardinality (this gate, Spearman ~0.22, no lift over median) is recoverable from surface statement features. The width target must be learned from semantic structure, not surface size — a concrete thing the Modal SFT+eval must demonstrate, not assume. Does not add a hard blocker (left-truncation means features are partial; a transformer sees more), but it sharpens the eval bar and corrects any reading of e-0012..e-0023 as proof the predictor's output is an easy function of its input.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0024"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:31:03.733Z",
+    "updated_at": "2026-06-12T11:31:28.071Z"
+  },
+  "comments": {}
+}

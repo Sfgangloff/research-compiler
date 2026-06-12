@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0024",
+  "stream": "proof-hierarchies",
+  "text": "q-0009's section-predictor has a real, previously-untested LEARNABILITY bar that the e-0012..e-0023 chain skipped: the frontier's CARDINALITY (how many subgoals to emit) is near-unpredictable from surface statement features, just as e-0020 found its vocabulary only ~37.5% grounded. The whole chain measured the frontier OUTPUT (supply, emission cost, subgoal difficulty, independence) and only e-0020/21 touched the input->output map — and only for vocabulary. e-0024 measures the structural half over ALL 1,261 data/deep decls (not just the >=2-wide slice, to avoid conditioning on the output): top-level frontier width is only weakly rank-correlated with cheap statement features (Spearman: ops 0.223, chars 0.189, tokens 0.164, lib 0.058; over the 633 wide-slice even weaker, ops 0.151), and a length-tercile predictor's MAE (1.552) is actually WORSE than always-guessing the median width of 2 (1.469, -5.7%) — surface size gives no usable lift on cardinality, despite a weak monotone trend (tercile mean width 1.745/2.271/2.501). So a predictor cannot infer either WHAT or HOW MANY subgoals from surface features of the (left-truncated) statement; both must be learned from deeper semantic structure. CAVEAT (cuts toward more-learnable, per e-0017): statements are left-truncated so these surface features are partial and a transformer can exploit structure they miss — this is a lower-bound flag on learnability, not proof of unlearnability. NET: it adds no hard data-availability blocker (the supply/emission/independence gates still hold) but corrects the chain's drift toward 'every gate cleared': the input->output learnability of the section-predictor is genuinely untested at the surface level and is exactly what the paid Modal SFT+eval must demonstrate, not assume.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0024"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:31:28.069Z",
+    "updated_at": "2026-06-12T11:31:28.069Z"
+  },
+  "comments": {}
+}
