@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0010",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only stdlib analysis over the prepared per-policy SFT JSONLs: per-split and pooled completion-length distributions (chars + token proxy) for rough (pi_root, term-mode) vs fine (pi_leaf, tactic), the within-theorem rough/fine length ratio, and the within-theorem Pearson/Spearman correlation of the two lengths, to test a-0006's 'length-decorrelated' claim and the q-0008 length-covariate design.",
+  "motivation": "The headline rough-vs-fine comparison (q-0007) is only interpretable if an effect survives controlling for sequence length (q-0008); a-0006 asserts the paired data is length-decorrelated. Test that with actual numbers before spending Modal credit on SFT.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_length_confound.py",
+    "commit": "680740f7342035e93ef8723237b6122adbbf7c33",
+    "run_cmd": "python3 data/analyze_length_confound.py"
+  },
+  "formal_results": "607 paired decls (485/59/63). Rough completions median 7,074 chars (~1,768 tok est) vs fine median 49 chars (~12 tok est): median length multiplier 144x, mean 201x. Within-theorem rough/fine ratio: p10 26.9, p50 142.5, p90 850.4 — NO overlap (even the least-inflated rough proof is 27x its fine pair). Within-theorem length correlation low (Pearson r=0.178, Spearman 0.151). Over a ~512-tok budget: 87% of rough vs 0% of fine completions exceed it. NOTE: contradicts the ~22% figure in a-0004 (which measured reconstruction-node size, not serialized term-mode chars).",
+  "results_description": "The serialized rough vs fine policies differ by a median 144x in length with zero common support, so granularity is almost perfectly collinear with sequence length in this corpus; a within-theorem length-covariate regression has no overlap region to identify the granularity effect.",
+  "conclusions": "a-0006's 'length-decorrelated' framing does not hold for the serialized SFT corpus. q-0008's length-control design is not viable as-is: any rough-vs-fine pass@k difference would be fully confounded with a 144x length gap. The corpus needs a terser rough serialization (or a length-matched subset) before the length objection can be answered.",
+  "addresses": [
+    "q-0008"
+  ],
+  "produces": [
+    "a-0010"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:52:18.080Z",
+    "updated_at": "2026-06-12T02:52:35.233Z"
+  },
+  "comments": {}
+}

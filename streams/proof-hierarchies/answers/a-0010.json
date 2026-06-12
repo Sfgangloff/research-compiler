@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0010",
+  "stream": "proof-hierarchies",
+  "text": "Measured on the prepared corpus (e-0010): the length objection is NOT yet answerable, because granularity and length are almost perfectly collinear. The serialized rough (term-mode) completions are a median 144x longer than fine (tactic) — median ~7,074 vs 49 chars (~1,768 vs ~12 tokens) — with the within-theorem ratio's 10th percentile still 27x, i.e. zero length overlap between policies (87% of rough vs 0% of fine exceed a 512-token budget). A within-theorem length-covariate regression therefore has no common support to identify the effect, and a-0006's 'length-decorrelated' claim does not hold for the serialized data. (This also corrects a-0004's ~22% size gap, which measured reconstruction-node count, not serialized term-mode length.) To make q-0008 answerable, the rough policy needs a terser serialization or a length-matched subset before SFT.",
+  "status": "supported",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0010"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:52:35.223Z",
+    "updated_at": "2026-06-12T02:52:35.223Z"
+  },
+  "comments": {}
+}
