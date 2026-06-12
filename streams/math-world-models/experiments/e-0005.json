@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0005",
+  "stream": "math-world-models",
+  "description": "Info-theoretic learnability audit of the manufactured corpus (src/data/corpus_audit.py): for the two categorical targets the world model owns - outcome (status head) and error_class (error head) - compute label balance, majority-class baseline accuracy, marginal entropy H(Y), conditional entropy H(Y|op) given the edit op, and mutual information I(op;Y). A CPU-only precondition check run over all shards. Also hardens shard_stats directory mode to skip macOS AppleDouble (._*) sidecars that crashed the post-build auto-audit.",
+  "motivation": "Before spending any GPU (e-0002), check the necessary condition for q-0005/q-0010: if the action carries ~0 information about the outcome and one class dominates, the status/error heads cannot beat a constant predictor at any model size.",
+  "code_pointer": {
+    "repo": "mathematics-world-models",
+    "path": "src/data/corpus_audit.py",
+    "commit": "afda6e96e18018eb2aa3b95ffb44b0b70e922db8",
+    "run_cmd": "python -m src.data.corpus_audit data/shards/fixtures"
+  },
+  "formal_results": "On the 66-record fixture corpus (6 decls, 3 shards): outcome distribution solved 47.0% / error 43.9% / still_valid 9.1%, majority-baseline acc 0.470, H=1.348 bits, H(Y|op)=0.760, I(op;Y)=0.588 bits. error_class: none 56.1% / other 22.7% / unsolved 18.2% / unknown_ident 1.5% / type_mismatch 1.5%, majority-baseline acc 0.561, H=1.584 bits, H(Y|op)=0.963, I(op;Y)=0.621 bits. 108 tests pass (+7).",
+  "results_description": "Both heads clear the necessary precondition: non-degenerate marginals (no class >57%) and strictly positive action->target mutual information (~0.59-0.62 bits). The edit op alone already cuts target uncertainty by ~40% before any state context is read.",
+  "conclusions": "Necessary (not sufficient) learnability condition is met at fixture scale: the manufactured labels are balanced enough and the action is informative enough that the WM status/error heads can in principle beat the majority baseline. Green light for e-0002; needs re-checking at Mathlib scale.",
+  "addresses": [
+    "q-0010",
+    "q-0005"
+  ],
+  "produces": [
+    "a-0010"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:07:02.138Z",
+    "updated_at": "2026-06-12T03:07:15.443Z"
+  },
+  "comments": {}
+}

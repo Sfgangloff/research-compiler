@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0010",
+  "stream": "math-world-models",
+  "text": "Yes, at fixture scale the necessary precondition holds. The two world-model targets have non-degenerate marginals - outcome solved 47.0% / error 43.9% / still_valid 9.1% (majority baseline 0.470) and error_class none 56.1% / other 22.7% / unsolved 18.2% / unknown_ident 1.5% / type_mismatch 1.5% (majority baseline 0.561) - and the edit op alone carries strictly positive mutual information about both targets: I(op;outcome)=0.588 bits (H drops 1.348->0.760) and I(op;error_class)=0.621 bits (H drops 1.584->0.963), i.e. the action cuts target uncertainty ~40% before any state context. This is a necessary, not sufficient, learnability condition (the WM must still read the state, and it must be re-checked at Mathlib scale), but it green-lights e-0002: the status/error heads can in principle beat the constant predictor. Computed CPU-only via src/data/corpus_audit.py@afda6e9 over the 66-record fixture corpus; 108 tests pass.",
+  "status": "supported",
+  "answers": [
+    "q-0010"
+  ],
+  "backed_by": [
+    "e-0005"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:07:15.441Z",
+    "updated_at": "2026-06-12T03:07:15.441Z"
+  },
+  "comments": {}
+}

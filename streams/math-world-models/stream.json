@@ -5,10 +5,10 @@
   "description": "Reframing ITP as model-based RL: learn a world model of Lean and plan with it (hierarchical MPC) at equal Lean-call budget. A port of HWM to Lean. Reasoning reconstructed from the mathematics-world-models repo; currently a data pipeline + a designed program.",
   "root_qid": "q-0001",
   "counters": {
-    "q": 9,
-    "a": 9,
-    "h": 8,
-    "e": 4
+    "q": 10,
+    "a": 10,
+    "h": 9,
+    "e": 5
   },
   "provenance": {
     "created_by": "claude",

@@ -1,0 +1,14 @@
+{
+  "type": "question",
+  "id": "q-0010",
+  "stream": "math-world-models",
+  "text": "Does the manufactured dataset carry enough action->outcome signal (mutual information) and label balance for the world model's status and error_class heads to be learnable in principle, before any GPU training?",
+  "status": "answered",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:06:41.452Z",
+    "updated_at": "2026-06-12T03:07:25.860Z"
+  },
+  "comments": {}
+}
