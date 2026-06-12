@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0026",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only construct-validity gate for q-0007's headline rough-vs-fine SFT claim: per-pair, does the corpus_v3 contrast carry any DECOMPOSITION-granularity signal, or is it purely a term-mode-vs-tactic-mode SERIALIZATION difference? build_pairs.py sets rough=verified elaborated proof term and fine=original tactic source, so the two axes (format vs granularity) only separate where the proof exposes named have-steps. Joins the 607 verified pairs to the have-tree records (named-have count, e-0012 logic) and scans the fine/rough completion text for literal tactic 'have'.",
+  "motivation": "q-0007 is read as a granularity effect, and a-0010 already showed the rough/fine length gap is 'structural to term-vs-tactic serialization' (144x). The distinct, untested question: does the rough/fine contrast even ISOLATE granularity? If 93% of pairs are flat (no named haves), the contrast there is format-only and a measured pass@k gap would validate a format effect, not granularity. Test cheaply before any Modal SFT spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_granularity_construct_validity.py",
+    "commit": "8148092",
+    "run_cmd": "python3 -m data.analyze_granularity_construct_validity"
+  },
+  "formal_results": "607 verified pairs, 0 missing a have-tree record. FORMAT-ONLY (zero named have-nodes -> rough/fine differ by serialization alone): 565/607 = 93.1%. GRANULARITY-BEARING (>=1 named have): 42 = 6.9%; >=2 frontier: 27 = 4.4% (matches e-0012). Fine completions literally containing a tactic 'have': only 17/607 = 2.8%; rough (term) completions containing 'have': 20. All 565 format-only pairs also have a flat fine completion (no 'have' text). Among the 42 granularity-bearing decls several have fine_has_have=false (source uses obtain/rcases/structured term, not literal have).",
+  "results_description": "On corpus_v3 the rough/fine SFT axis confounds serialization format (rough=elaborated term, fine=tactic source) with decomposition granularity; the two separate only on the 6.9% granularity-bearing pairs. 93.1% are format-only and only 2.8% of fine completions are even surface-finer (contain a have).",
+  "conclusions": "A held-out rough-vs-fine pass@k gap on corpus_v3 would chiefly measure a TERM-vs-TACTIC FORMAT effect, not decomposition granularity: the granularity construct is present in only ~7% of pairs and the 'fine' policy is surface-finer in only 2.8%. This is a construct-validity threat to q-0007's headline, distinct from the length confound (a-0010) and the supply ceiling (e-0012), and it reinforces the data/deep pivot (a-0014), where genuine wide named frontiers exist. The eventual Modal SFT must either restrict the granularity claim to the have-bearing subset or move to a corpus where granularity actually varies.",
+  "addresses": [
+    "q-0007"
+  ],
+  "produces": [
+    "a-0026"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:48:13.873Z",
+    "updated_at": "2026-06-12T11:48:40.209Z"
+  },
+  "comments": {}
+}

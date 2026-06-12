@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0026",
+  "stream": "proof-hierarchies",
+  "text": "Before any Modal SFT spend, q-0007's headline has a CONSTRUCT-VALIDITY problem on corpus_v3 distinct from the length confound: the rough/fine axis does not isolate decomposition granularity. build_pairs.py defines rough = the verified ELABORATED PROOF TERM and fine = the ORIGINAL TACTIC SOURCE, so the contrast conflates serialization FORMAT (term-mode vs tactic-mode) with decomposition GRANULARITY (haves inlined vs named) -- and the two separate only where the proof exposes named have-steps. e-0026 measures this over all 607 verified pairs: 565 (93.1%) are FORMAT-ONLY (zero named have-nodes, nothing to inline-or-keep), only 42 (6.9%) are granularity-bearing and 27 (4.4%) expose a >=2 frontier (matching e-0012); and the 'fine' policy is barely finer in surface form -- only 17/607 (2.8%) of fine completions even contain a literal tactic 'have' (several of the 42 have-bearing decls use obtain/rcases/structured terms rather than a literal have). So a held-out rough-vs-fine pass@k gap measured on corpus_v3 would chiefly validate a TERM-vs-TACTIC FORMAT effect, not a granularity effect; the granularity construct is genuinely present in only ~7% of the corpus. This reinforces the data/deep pivot (a-0014/e-0016: 633 decls with real >=2 named frontiers) and means the eventual Modal SFT must either restrict the granularity claim to the have-bearing subset or train on a corpus where granularity actually varies, or any reported effect will be attributable to serialization format. Untested as pass@k -- a data-level construct-validity bound, like a-0010/e-0010 for length.",
+  "status": "supported",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0026"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:48:40.207Z",
+    "updated_at": "2026-06-12T11:48:40.207Z"
+  },
+  "comments": {}
+}
