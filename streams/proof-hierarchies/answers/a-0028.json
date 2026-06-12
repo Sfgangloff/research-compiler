@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0028",
+  "stream": "proof-hierarchies",
+  "text": "The '~84.7% expected round-trip yield' that every recent deep-corpus answer (a-0014..a-0026) inherits from e-0003 to scope q-0009's paid Modal spend is VALIDATED and, if anything, CONSERVATIVE for data/deep -- because round-trip failure concentrates in exactly the modules data/deep avoids. e-0028 decomposes e-0003's pooled 84.7% by top Mathlib namespace over the corpus_v3 verify records: yield is LOWEST for foundational data-structure / raw-logic modules (Data 73.8%, Logic 79.8%, NumberTheory 77.0% -- the match-compiler / decidability / well-founded-recursion artifacts that caused e-0003's structural ceiling) and HIGHEST for the advanced analysis/algebra areas data/deep is built from (Analysis 92.6%, Algebra 91.5%, Order 90.9%, MeasureTheory 88.7%); the advanced-pooled rate (excl Data,Logic) is 89.4% vs the 84.7% pool. Mapping the 633 wide-frontier targets (deep_wide_targets.json) onto these per-area rates -- they are dominated by MeasureTheory (132) + Analysis (130) = 262/633, with 437/633 (69%) in corpus_v3-covered namespaces at a mean 87.6% -- projects ~87-88% verified yield (~549-558 of 633), ABOVE the naive 536 from the inherited 84.7%. So the natural worry (sophisticated advanced proofs round-trip WORSE) is inverted: the pooled figure is dragged down by foundational modules data/deep barely touches. This de-risks the scoping of the load-bearing paid pipeline run for q-0009 (and q-0007's data/deep retrain). CAVEATS: data-level projection from corpus_v3 area rates, NOT an actual round-trip of data/deep (needs the Modal pass); 196/633 targets (31%) sit in namespaces absent from corpus_v3 (RingTheory/LinearAlgebra/Probability/Geometry/AlgebraicGeometry), assigned the advanced-pooled 89.4% as reference class -- defensible but unverified for those areas; yield here is decl-count, not the tactic-block-filtered pair count that turned e-0003's round-trips into 607 pairs.",
+  "status": "supported",
+  "answers": [
+    "q-0009",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0028"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:17:11.150Z",
+    "updated_at": "2026-06-12T12:17:11.150Z"
+  },
+  "comments": {}
+}

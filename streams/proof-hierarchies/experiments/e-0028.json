@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0028",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only cost-scoping gate for q-0009/q-0007: is the '~84.7% expected round-trip yield' that every recent deep-corpus answer (a-0014..a-0026) inherits from e-0003 a valid projection for data/deep's ADVANCED modules, or a foundational-module artifact? e-0003's 84.7% is the corpus_v3 POOLED round-trip pass rate over 20 modules spanning foundational data-structure modules AND advanced ones. Joins corpus_v3 per-decl verify pass/fail bucketed by TOP Mathlib namespace, then maps the 633 data/deep wide-frontier targets (deep_wide_targets.json) onto those per-namespace rates to project the verified yield. Pure stdlib.",
+  "motivation": "Every q-0009 answer scopes the load-bearing paid Modal spend (round-trip verification of the 633 wide-frontier targets) with '~84.7% expected yield', inherited verbatim from e-0003's corpus_v3 pooled rate. But corpus_v3's pool mixes high-failure foundational data-structure modules (match/decidability artifacts) with advanced ones, and data/deep draws almost entirely from advanced areas. If yield varies by area, the pooled 84.7% is the wrong reference class. Test cheaply before recommending the spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_yield_projection.py",
+    "commit": "64164f4"
+  },
+  "formal_results": "corpus_v3 round-trip pass rate VARIES strongly by top namespace: Analysis 92.6% (491/530), Algebra 91.5% (465/508), Order 90.9% (422/464), MeasureTheory 88.7% (55/62), Topology 83.9%, Combinatorics 82.8%, Logic 79.8%, NumberTheory 77.0%, Data 73.8% (507/687). POOLED 84.7%; ADVANCED pooled (excl Data,Logic) 89.4%. The 633 data/deep wide-frontier targets are dominated by the HIGH-yield areas: MeasureTheory 132 + Analysis 130 = 262/633; 437/633 (69%) map to a corpus_v3 namespace with mean projected rate 87.6% (>pooled). 196 unmapped (RingTheory 53, LinearAlgebra 32, Probability 25, Geometry 24, ...) are advanced-algebra/analysis flavored. Projected verified yield over 633: naive-inherited 84.7% -> 536; per-ns with unmapped<-pooled -> 548.7 (86.7%); per-ns with unmapped<-advanced-pooled 89.4% -> 558.0 (88.1%).",
+  "results_description": "Round-trip yield is LOWEST for foundational data-structure/raw-logic modules (Data 73.8%, Logic 79.8%, NumberTheory 77.0% — match-compiler/decidability artifacts) and HIGHEST for the advanced analysis/algebra areas data/deep draws from (Analysis 92.6%, Algebra 91.5%, MeasureTheory 88.7%). So the inherited pooled 84.7% is dragged DOWN by modules data/deep barely touches; projecting per-area gives ~87-88% over the 633 targets — the inherited figure is a slight UNDER-estimate, not an optimistic one.",
+  "conclusions": "The '~84.7% expected yield' assumption scoping q-0009's paid Modal spend is VALIDATED and if anything conservative for data/deep: because round-trip failure concentrates in foundational data-structure modules (match/wf-recursion/decidability) that data/deep avoids, the advanced-area mix projects ~87-88% verified yield (~549-558 of 633 wide-frontier targets), above the naive 536. The opposite of the natural worry (that sophisticated advanced proofs would round-trip WORSE) holds. CAVEATS: (1) data-level projection from corpus_v3 area rates, not an actual round-trip of data/deep (needs the Modal pass); (2) 196/633 targets (31%) are in namespaces absent from corpus_v3 (RingTheory/LinearAlgebra/Probability/AlgebraicGeometry) — assigned the advanced-pooled 89.4% as reference class, defensible but unverified for those areas; (3) yield is decl-count, not the tactic-block-filtered pair count e-0003's 607 came from.",
+  "addresses": [
+    "q-0009",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0028"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:16:13.159Z",
+    "updated_at": "2026-06-12T12:17:11.153Z"
+  },
+  "comments": {}
+}
