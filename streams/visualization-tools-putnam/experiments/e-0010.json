@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0010",
+  "stream": "visualization-tools-putnam",
+  "description": "Study 5/6 follow-up: content analysis of forced_visual verdict grounding. Classify each of the 47 non-empty viz_verdict self-reports (48 genuine forced_visual cells, Studies 5+6) by whether the verdict text cites NUMERIC scalar magnitudes (decimal/scientific values) and/or RELATIONAL curve-position language (above/below/sandwich/brackets-between/ordering). CPU-only keyword heuristic over existing transcripts; png_read_back deliberately NOT used as a 'did it look' signal because math-viz returns images inline.",
+  "motivation": "a-0005/a-0006 asserted forced_visual verdicts ground in numeric metadata 'never a visual property read by eye', supported only by hand-picked 1985.B5 examples. Quantify it across all forced_visual cells and test whether the 'never visual' claim survives the inequality/ordering problem.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/false_claim/analyze_grounding.py",
+    "commit": "0a25e85",
+    "run_cmd": "python3 experiments/false_claim/analyze_grounding.py"
+  },
+  "formal_results": "47/48 forced_visual cells had a non-empty verdict. Grounding: NUMERIC_only 19/47, RELATIONAL_only 13/47, BOTH 14/47, NEITHER 1/47 (any-numeric 33/47, any-relational 27/47). By problem: 1985.B5 11/11 numeric, 0 relational; 1991.A5 9 numeric / 8 relational; 1993.A1 12/12 numeric / 8 relational; 1996.B2 1 numeric / 11 relational. png_read_back True in 0/48.",
+  "results_description": "Verdict grounding is problem-structure-dependent. On scalar-answer integral problems numeric grounding is near-universal (1985.B5 11/11, 1993.A1 12/12). On the double-inequality/ordering problem (1996.B2) verdicts are 11/12 relational ('lies above', 'sandwich', 'brackets between') and only 1/12 numeric.",
+  "conclusions": "Qualifies a-0005: the verdict text DOES use visual/relational properties - but only when the claim's truth is an ordering rather than a number; on scalar problems it is numeric. Does NOT overturn modality equivalence: forced_textual caught 1996.B2 equally (Study 6), so the relational property is one numeric sampling captures just as well. The 'never a visual property' phrasing should be narrowed to scalar-answer problems.",
+  "addresses": [
+    "q-0006"
+  ],
+  "produces": [
+    "a-0011"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:54:55.200Z",
+    "updated_at": "2026-06-12T02:55:24.553Z"
+  },
+  "comments": {}
+}

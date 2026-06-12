@@ -6,9 +6,9 @@
   "root_qid": "q-0001",
   "counters": {
     "q": 9,
-    "a": 10,
+    "a": 11,
     "h": 8,
-    "e": 9
+    "e": 10
   },
   "provenance": {
     "created_by": "claude",
@@ -36,5 +36,11 @@
       "name": "Modality equivalence",
       "color": "#d97706"
     }
-  }
+  },
+  "read": [
+    "a-0001",
+    "e-0001",
+    "q-0001",
+    "q-0002"
+  ]
 }

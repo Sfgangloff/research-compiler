@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0011",
+  "stream": "visualization-tools-putnam",
+  "text": "Refinement of a-0005's 'never a visual property by eye': forced_visual verdict grounding is problem-structure-dependent. Content analysis of all 47 non-empty forced_visual verdicts (Studies 5+6) shows numeric grounding is near-universal on scalar-answer integral problems (1985.B5 11/11, 1993.A1 12/12 cite decimal magnitudes) but the double-inequality/ordering problem 1996.B2 is 11/12 relational ('lies above', 'sandwich', 'brackets between') and only 1/12 numeric. Overall: any-numeric 33/47, any-relational 27/47. So the verdict text DOES invoke visual/relational properties - but specifically when the claim's truth is an ordering rather than a value. This does NOT overturn modality equivalence: forced_textual caught 1996.B2 at the same rate (Study 6), so the relational 'which curve is on top' property is one a numeric sampler captures equally well. The 'never a visual property' phrasing should be narrowed to scalar-answer problems.",
+  "status": "supported",
+  "answers": [
+    "q-0006"
+  ],
+  "backed_by": [
+    "e-0010"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:55:15.199Z",
+    "updated_at": "2026-06-12T02:55:24.556Z"
+  },
+  "comments": {}
+}
