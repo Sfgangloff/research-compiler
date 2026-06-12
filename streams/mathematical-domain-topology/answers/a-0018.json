@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0018",
+  "stream": "mathematical-domain-topology",
+  "text": "Router breadth is a real but unfree knob: widening the bridge router recovers the 'hard third' a-0017's 0.674 complete-coverage ceiling left unreachable, but only at steeply rising, ultimately whole-library, candidate cost. Sweeping the router from home+top-5 to broader breadths (exact, ranking-free, since the complete-coverage CEILING depends only on whether a theorem's full premise set is in the routed pool), over the same 432 held-out cross-domain test theorems and train-only bridge weights: K=5 reproduces 0.674 (mean pool 53.8k of 92.6k clustered decls); K=10 lifts the ceiling to 0.859 (pool 72.8k, 79% of the library); K=20 to 0.979 (87.4k, 94%); whole-library fallback reaches 1.0 (92.6k). The ceiling is monotone in breadth, but the marginal candidate cost per additional fully-covered theorem climbs monotonically from ~58k (top-0->1) to ~418k (top-50->all): each extra slice of the hard third costs strictly more than the last, because the routed pool converges on the entire library. So bridge routing's selectivity advantage is concentrated at LOW breadth / moderate complete-coverage (a precision-cheap pool capping near 0.67); pushing complete coverage high erases the advantage. This sharpens a-0017: under the prover-relevant complete-coverage bar the breadth tradeoff is starker than under mean recall -- bridge-aware retrieval offers a precision-cheap vs coverage-complete dial, not a free recovery of the hard third. Still a premise-availability upper bound, not a measured prover success rate or transfer; the operational payoff of bridge-aware proving remains plausible but unmeasured.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0019"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:34:53.517Z",
+    "updated_at": "2026-06-12T11:35:00.273Z"
+  },
+  "comments": {}
+}

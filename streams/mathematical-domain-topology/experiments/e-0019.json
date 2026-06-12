@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0019",
+  "stream": "mathematical-domain-topology",
+  "description": "Router-breadth sweep against the prover-relevant complete-coverage CEILING (the e-0017 metric: fraction of cross-domain test theorems whose ENTIRE clustered premise set lands in the retrieved pool, an upper bound on what a retrieval-augmented prover could solve). The ceiling at a router breadth depends only on whether a theorem's full premise set is in the routed POOL, so it is exact and ranking-free. Holding e-0017 fixed (432 held-out cross-domain TEST theorems, train-only bridge weights W, same leakage control), sweep router breadth K = home + top-K bridge-neighbour clusters for K in {0,1,2,3,5,10,20,50,all}; per breadth report the complete-coverage ceiling, mean/median/max routed-pool size, and the marginal ceiling gain vs pool-size cost of each widening step.",
+  "motivation": "a-0017 found the bridge router (home+top-5) caps complete coverage at 0.674 because ~1/3 of cross-domain theorems need a premise outside the top-5 router, and named the obvious untested lever: 'a hard third need a broader router (more neighbour clusters or whole-library fallback)'. This measures that lever directly: how fast does the ceiling climb with breadth, and at what candidate-pool cost?",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_breadth.py",
+    "commit": "f997863",
+    "run_cmd": "python3 src/bridge_retrieval_breadth.py"
+  },
+  "formal_results": "432 cross-domain test theorems, 92,594 clustered decls. Complete-coverage ceiling by router breadth K (mean routed-pool size): K=5 0.674 (53.8k) [reproduces e-0017 exactly]; K=10 0.859 (72.8k); K=20 0.979 (87.4k); K=50 0.993 (89.7k); all 1.0 (92.6k). Home-only (K=0) ceiling 0.0 (no cross-domain theorem is fully home-covered, by definition). Marginal cost per extra fully-covered theorem rises monotonically with breadth: 0->1 58.4k, 3->5 91.5k, 5->10 103.0k, 10->20 120.9k, 20->50 167.2k, 50->all 417.6k candidates/theorem.",
+  "results_description": "Widening the bridge router DOES buy back the hard third the 0.674 ceiling left unreachable, but only by approaching whole-library scale: reaching ~0.86 needs K=10 (pool 72.8k = 79% of the library), ~0.98 needs K=20 (87.4k = 94%), and 1.0 needs the whole library. The marginal candidate cost per additional fully-covered theorem climbs monotonically (58k -> 418k), so each extra slice of the hard third is strictly more expensive than the last. Bridge routing's selectivity advantage is concentrated at LOW breadth / moderate ceiling; pushing complete coverage high erases it because the pool converges on the entire library.",
+  "conclusions": "Confirms and quantifies a-0017's open lever: the complete-coverage ceiling is monotone in router breadth and reaches 1.0 only at whole-library fallback, so the 'hard third' CAN be recovered but at steeply rising, ultimately whole-library, candidate cost. This makes the breadth tradeoff starker under the prover bar than under mean recall (a-0017): bridge routing trades a cheap, high-precision pool that caps near 0.67 complete coverage against an expensive, near-exhaustive pool for the last third. The operational implication for q-0011 is a router-breadth knob (precision-cheap vs coverage-complete), not a free lunch; still a premise-availability upper bound, not a measured prover success rate.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0018"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:34:11.033Z",
+    "updated_at": "2026-06-12T11:35:00.269Z"
+  },
+  "comments": {}
+}
