@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0033",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only same-format (both-tactic-mode) serializer prototype + constructibility audit over the 633 deep wide-frontier targets. Implements a reference serializer where both decomposition policies emit TACTIC mode and SHARE the residual body, differing ONLY by the named-have headers: pi_leaf (fine) keeps each substantive frontier subgoal as 'have <name> : <type> := <body>', pi_root (rough) inlines it (header dropped). Audits the one real difficulty of the pi_root inliner: how many named substantive frontier haves are referenced by a SIBLING frontier node (substitution-required on inlining) vs independent (simple drop), and the realized header-only length delta.",
+  "motivation": "Four answers in the deep chain (a-0026/a-0027/a-0030/a-0031) carry the SAME open caveat: the construct-validity and length-confound fixes only hold IF the eventual build 'serializes BOTH policies in the SAME (tactic) mode -- a build decision NOT YET MADE.' On corpus_v3 the format confound (e-0026) came from build_pairs.py's serialization CHOICE (rough=elaborated TERM vs fine=tactic SOURCE -> 144x length gap, a-0010). Every deep answer ASSUMES this is removable by same-mode serialization, but no gate made the build concrete or checked it is well-defined over the deep have-trees. Settle cheaply before any Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_same_format_serializer.py",
+    "commit": "93259a9",
+    "run_cmd": "python3 data/analyze_deep_same_format_serializer.py"
+  },
+  "formal_results": "633 wide-frontier targets, 0 missing have-tree records. 2,225 named substantive frontier haves (+385 anonymous '_'). pi_root inliner: 1,941/2,225 = 87.2% are INDEPENDENT (name not referenced by a sibling -> simple drop); 284 = 12.8% are sibling-referenced -> substitution-required (LOWER bound: residual main body is elided to 'by', so residual->have references are unobservable). Substitution-required is uniform across areas (8-20%: Topology 20%, Algebra 14%, Combinatorics 14%, Analysis 13%, MeasureTheory/NumberTheory/RingTheory 12%, Probability 8%). FORMAT confound term-vs-tactic = 1.0x (0) BY CONSTRUCTION: both policies emit tactic mode and share body text, differing only by named headers, vs corpus_v3 144x. Realized same-format header delta (what pi_leaf adds over pi_root): median 147 char / ~37 tok, p90 307 char, max-bounded -- cross-checks e-0027's ~117 char/~29 tok header-sum estimate.",
+  "results_description": "The same-format SCHEME that every deep answer assumes is well-defined and constructible over the deep have-trees: both pi_root and pi_leaf serialize in tactic mode sharing the residual body, so the term-vs-tactic FORMAT confound (e-0026/a-0010) cannot arise by construction -- the rough/fine difference is purely the bounded named-have headers (median ~37 tok). The pi_root inliner is a trivial DROP for 87.2% of named haves; only 12.8% (lower bound) are sibling-referenced and need body substitution, uniformly across areas.",
+  "conclusions": "Retires the recurring 'serialize both policies in tactic mode -- a build decision not yet made' caveat threaded through a-0026/a-0027/a-0030/a-0031: the same-format build is well-defined and cheap (87% simple-drop inlining), and it removes the term-vs-tactic format confound by construction (delta 0 vs corpus_v3 144x). The deep rough/fine contrast measures decomposition granularity, not serialization mode. CAVEATS: data-level only, no Lean/Modal/round-trip, no verified pairs; deep bodies are mostly elided to 'by', so (a) only sibling-to-sibling references are observable -> substitution-required is a LOWER bound, (b) the emitted texts are structural skeletons, not runnable Lean -- a full rendered same-format build still needs the Modal re-extraction to capture full tactic bodies. This fixes the SCHEME, not the rendered corpus.",
+  "addresses": [
+    "q-0007",
+    "q-0009"
+  ],
+  "produces": [
+    "a-0032"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:50:16.350Z",
+    "updated_at": "2026-06-12T12:50:57.057Z"
+  },
+  "comments": {}
+}

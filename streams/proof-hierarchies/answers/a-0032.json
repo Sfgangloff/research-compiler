@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0032",
+  "stream": "proof-hierarchies",
+  "text": "The recurring caveat threaded through a-0026/a-0027/a-0030/a-0031 -- that the deep construct-validity and length-confound fixes only hold IF the eventual build 'serializes BOTH policies in the SAME (tactic) mode, a build decision not yet made' -- is now SETTLED at the data level: the same-format build is well-defined, constructible, and removes the format confound BY CONSTRUCTION. e-0033 implements a reference same-format serializer over the 633 deep wide-frontier targets where both pi_root (rough) and pi_leaf (fine) emit TACTIC mode and SHARE the residual body, differing ONLY by the named-have headers (pi_leaf keeps 'have <name> : <type> := <body>', pi_root inlines it). So the term-vs-tactic FORMAT delta that made corpus_v3's rough/fine axis a 144x serialization confound (a-0010) and 93% format-only (e-0026) is 1.0x (zero) here by construction -- the deep contrast measures decomposition GRANULARITY, not serialization mode. The one real difficulty of the inliner is small: of 2,225 named substantive frontier haves, 1,941 (87.2%) are INDEPENDENT (name not referenced by a sibling -> a trivial drop) and only 284 (12.8%, a lower bound since residual bodies are elided) are sibling-referenced and need body substitution -- uniform across areas (8-20%). The realized header-only length delta (median 147 char / ~37 tok, p90 307) cross-checks e-0027's ~117 char/~29 tok estimate from an actual emitter, so the granularity-alone length cost stays bounded and same-format pairs keep common support (no zero-overlap pathology). CAVEATS: data-level only, no Lean/Modal/round-trip, no verified pairs; deep bodies are mostly elided to 'by' so (a) only sibling-to-sibling references are observable (substitution-required is a lower bound) and (b) emitted texts are structural skeletons, not runnable Lean. This fixes the SCHEME (the build is concrete and confound-free) -- a full rendered same-format corpus still needs the Modal re-extraction to capture full tactic bodies. (also addresses q-0009: this is the build the deep section-predictor / granularity retrain would use.)",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0033"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:50:57.040Z",
+    "updated_at": "2026-06-12T12:50:57.040Z"
+  },
+  "comments": {}
+}
