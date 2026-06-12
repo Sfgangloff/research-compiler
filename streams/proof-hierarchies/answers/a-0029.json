@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0029",
+  "stream": "proof-hierarchies",
+  "text": "The data/deep wide-frontier supply that 'unblocks' q-0009 (and seeds q-0007's deep retrain) is far thinner ON-DOMAIN than the headline 633/558 implies. The e-0012..e-0028 chain measured each filter in isolation but never COMPOSED them; e-0029 multiplies the eval-domain filter (e-0022: ~24% of targets in a miniF2F-covered subject) by the per-area round-trip yield (e-0028: ~558/633 verify) over the 633-target manifest. Result: only 150 (23.7%) of the 633 are eval-relevant, and after yield only ~126 (19.8%) are BOTH verified AND eval-relevant — the rich supply is ~76% off-domain (MeasureTheory 132 + Analysis 130 + RingTheory 53 + Topology 43 dominate, all zero miniF2F coverage). Against the chain's own anchors (~27 'far too few', e-0012; ~850 'ample', e-0014), ~126 on-domain frontiers is MARGINAL: enough to attempt a section-predictor but not the comfortable supply a-0014 implied for the metric that is actually scored. So the Modal go/no-go should be scoped to ~126, not 633/558, and the design must either eval on a held-out slice of the SAME deep distribution or source a competition-math decomposable corpus — not assume the advanced targets transfer to miniF2F. CAVEAT: composes two coarse data-level filters (top-namespace eval buckets; corpus_v3 per-area yield, absent namespaces given the advanced-pooled 89.4%); projects COUNTS not pass@k; trainable bands are chain anchors, not a measured learning curve. (also addresses q-0007's deep-retrain scoping.)",
+  "status": "supported",
+  "answers": [
+    "q-0009",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0029"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:24:33.169Z",
+    "updated_at": "2026-06-12T12:24:33.169Z"
+  },
+  "comments": {}
+}

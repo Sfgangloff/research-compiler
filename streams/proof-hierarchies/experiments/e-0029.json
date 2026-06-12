@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0029",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only SYNTHESIS gate (q-0009, also q-0007): the e-0012..e-0028 chain characterized the data/deep wide-frontier supply one filter at a time but never MULTIPLIED them. Composes the eval-domain filter (e-0022 buckets) with the per-namespace round-trip yield (e-0028 corpus_v3 rates) over the 633-target manifest (deep_wide_targets.json) to project how many VERIFIED, EVAL-RELEVANT wide-frontier training targets survive the whole funnel — the on-domain training signal a section-predictor (q-0009) or the headline granularity retrain (q-0007) would actually get for the miniF2F metric the paper scores. Pure stdlib; no Lean, no Modal; produces no verified pairs.",
+  "motivation": "e-0022 gave the eval-relevant FRACTION (~24%) and e-0028 gave the per-area YIELD (~558/633 verify), each in isolation; the decision-relevant number for the Modal go/no-go is their COMPOSITION (verified AND eval-relevant), which no prior gate computed. Scope the spend on the right number before recommending it.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_eval_relevant_yield.py",
+    "commit": "c753a63"
+  },
+  "formal_results": "633 wide-frontier targets. FUNNEL: ~558.0 expected verified over ALL subjects (cross-checks e-0028); only 150 (23.7%) in an eval-covered subject (NumberTheory 40, Algebra 39, Geometry 24, Data 21, Combinatorics 19, Order 7); after per-area yield, ~125.5 are BOTH verified AND eval-relevant = 19.8% of 633. Off-domain (zero miniF2F coverage): MeasureTheory 132 + Analysis 130 + RingTheory 53 + Topology 43 + ... = 483/633 (76.3%). Verdict vs reference bands (e-0012 ~27 'far too few', e-0014 ~850 'ample'): MARGINAL (100<=126<300).",
+  "results_description": "Composing the two established filters collapses the headline 633/558 to ~126 verified-and-eval-relevant frontiers: the rich data/deep supply that 'unblocks' q-0009 is ~76% off-domain for miniF2F. The on-domain verified training signal is MARGINAL (~126), not ample.",
+  "conclusions": "The Modal go/no-go for q-0009 (and the q-0007 deep retrain) should be scoped to the COMPOSED ~126 verified-and-eval-relevant frontiers, NOT the gross 633 targets or 558 verified. ~126 on-domain frontiers is a MARGINAL band for SFT — enough to attempt a section-predictor but not the comfortable ~850 'ample' supply a-0014 implied for the metric that matters. So either (a) accept training on advanced Mathlib and EVAL on a held-out slice of the SAME deep distribution (the within-deep eval e-0022 suggested), or (b) source a competition-math decomposable corpus, rather than expecting the 633 advanced targets to transfer to miniF2F. CAVEAT: composes two coarse data-level filters (top-namespace eval buckets; corpus_v3 per-area yield with absent namespaces given the advanced-pooled rate); projects COUNTS not pass@k; the trainable bands are chain anchors, not a measured SFT learning curve.",
+  "addresses": [
+    "q-0009",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0029"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:23:53.531Z",
+    "updated_at": "2026-06-12T12:24:33.172Z"
+  },
+  "comments": {}
+}
