@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0035",
+  "stream": "proof-hierarchies",
+  "text": "The e-0033..e-0035 chain's terminal, load-bearing claim (a-0034) -- 'a Modal re-extraction is required REGARDLESS to recover the residual main proof body, absent for all 633 wide-frontier targets' -- was asserted from the data/deep record shape but never JOINED against the project's already-extracted data. e-0036 settles it: joining the 633 targets (deep_wide_targets.json, keyed module+name) against EVERY on-disk full-body source (data/corpus_v3/full_proofs + data/corpus_v2/corpus/full_proofs, 4,814 decls carrying a full `proof` := by ... field) returns 0/633 recoverable by (module,name), 0/633 by name-only, and 0 of the 452 deep modules even present on disk -- the on-disk full_proofs only ever covered the 20-21 corpus_v3 FOUNDATIONAL modules, zero overlap with the advanced deep modules. So a-0034 is VALIDATED: there is no free path, the residual-body recovery genuinely needs a fresh Modal extraction. The decision-relevant addition no prior gate computed: that extraction is NOT a new tool. The existing extract_full_proofs step (CLAUDE.md pipeline step 4) already emits full residual tactic bodies WITH multi-have blocks intact -- of 2,407 corpus_v3 full_proofs, 51 carry a `have` and 11 have >=2 haves (e.g. ContinuousOn.preimage_mem_nhdsSetWithin: ':= by  have <v,hv> := ...  have <w,hw> := ...  refine ...'), exactly the content the same-format residual + pi_leaf fine headers need. So the concrete go/no-go for q-0007's deep granularity retrain and q-0009's section-predictor is: RE-RUN extract_full_proofs over the 452 deep modules, then join with the have_tree frontiers (e-0033 serializer) to emit same-format pi_root/pi_leaf pairs -- an existing-step re-scope, not a new extractor. CAVEAT: data-level join only; the extract_full_proofs run is the unspent paid step, and yields no verified pairs by itself.",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0036"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:20:35.542Z",
+    "updated_at": "2026-06-12T13:20:35.542Z"
+  },
+  "comments": {}
+}

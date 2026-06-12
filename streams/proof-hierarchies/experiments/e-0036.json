@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0036",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only on-disk body-availability gate refining the e-0033..e-0035 chain's terminal claim (a-0034): \"a Modal re-extraction is required REGARDLESS to recover the residual main proof body, absent for all 633 wide-frontier targets.\" That was asserted from the data/deep record shape but never tested against everything else already pulled to disk. (1) Negative-shortcut join: join the 633 deep targets (deep_wide_targets.json, keyed module+name) against EVERY on-disk full-body source — data/corpus_v3/full_proofs and data/corpus_v2/corpus/full_proofs jsonls, which carry a full `proof` (:= by ...) field. (2) Existing-step scope: probe the corpus_v3 full_proofs to show whether the existing extract_full_proofs step already captures full residual bodies WITH multi-have blocks intact, i.e. whether the Modal build is a re-scope of an existing pipeline step or a new extractor. Pure stdlib.",
+  "motivation": "Every q-0007/q-0009 go/no-go inherits a-0034's 'Modal required regardless' as load-bearing, but no gate ever JOINED the 633 targets against the project's already-extracted full_proofs (which DO carry full bodies). If the bodies were on disk the load-bearing Modal cost collapses to zero; if absent, the decision-relevant follow-up is whether recovering them is a new extractor or an existing-step re-scope. Settle both cheaply before recommending the spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_body_ondisk_gate.py",
+    "commit": "2d395f6",
+    "run_cmd": "python3 data/analyze_deep_body_ondisk_gate.py"
+  },
+  "formal_results": "633 deep targets across 452 modules vs 4,814 on-disk full-body decls from 44 full_proofs jsonls spanning 21 modules. NEGATIVE-SHORTCUT JOIN: 0/633 recoverable by (module,name), 0/633 by name-only, 0 of 452 deep modules present in the on-disk full_proofs set (corpus_v3/v2 cover only the 20-21 foundational modules; zero overlap with the advanced deep modules). EXISTING-STEP SCOPE: the corpus_v3 full_proofs (2,407 decls) carry a full `proof` body (median 39 char, max 3,067) WITH multi-step tactic blocks intact — 51 decls contain a `have` in the body, 11 have >=2 haves (e.g. ContinuousOn.preimage_mem_nhdsSetWithin: ':= by  have <v,hv> := ...  have <w,hw> := ...  refine ...').",
+  "results_description": "Confirms a-0034 at the data level: there is NO on-disk shortcut — 0/633 deep target bodies are recoverable from any already-extracted source, and 0 of the 452 deep modules even appear in the on-disk full_proofs (which only ever covered the 20-21 corpus_v3 foundational modules). So the residual-body recovery the same-format deep build needs genuinely requires a fresh Modal extraction. BUT that extraction is NOT a new tool: the existing extract_full_proofs step (CLAUDE.md pipeline step 4) already emits the full residual tactic body with multi-have blocks intact, exactly the content the same-format residual + pi_leaf fine headers need.",
+  "conclusions": "The chain's terminal 'Modal required regardless' (a-0034) is VALIDATED — no free path; 0/633 bodies on disk. The decision-relevant addition: the required Modal work is CLAUDE.md pipeline step 4 (extract_full_proofs) RE-SCOPED to the 452 deep modules, NOT a new extractor — the existing step already captures full residual bodies with have-blocks intact (11 corpus_v3 decls with >=2 haves demonstrate this). This converts the e-0033..e-0035 'needs Modal re-extraction' conclusion into a concrete, existing-step build path and a clean go/no-go: re-run extract_full_proofs over the 452 deep modules, then join with have_tree frontiers to emit same-format pi_root/pi_leaf pairs. CAVEAT: data-level join only; the extract_full_proofs run itself is the unspent paid step. Confirms the negative; does not itself produce verified pairs.",
+  "addresses": [
+    "q-0007",
+    "q-0009"
+  ],
+  "produces": [
+    "a-0035"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:20:04.556Z",
+    "updated_at": "2026-06-12T13:20:35.546Z"
+  },
+  "comments": {}
+}

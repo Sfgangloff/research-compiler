@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0037",
+  "stream": "proof-hierarchies",
+  "description": "Stage 0.5 BUILD (the existing-step re-scope e-0036/a-0035 identified): recover the residual full proof bodies for the 633 data/deep wide-frontier targets by re-running the EXISTING extract_full_proofs step over the 452 deep modules (deep_wide_targets.json['modules']), then join the recovered bodies with the have_tree frontiers via the e-0033 same-format serializer to emit construct-valid, same-format (both-tactic-mode) pi_root (rough) / pi_leaf (fine) training pairs. No new extractor: extract_full_proofs already accepts a CSV  override and already emits full residual bodies with multi-have blocks intact (e-0036).",
+  "motivation": "e-0036/a-0035 confirmed 0/633 deep bodies are on disk (Modal required) AND that the recovery is a re-scope of CLAUDE.md pipeline step 4, not a new tool. This is the concrete, unspent paid step that unblocks q-0007's construct-valid deep granularity retrain and q-0009's section-predictor: produce the same-format deep corpus whose data-level validity (construct e-0032, length e-0033/e-0034, renderability e-0035, on-domain supply e-0029/e-0031) is already established.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "modal/extract_corpus.py",
+    "commit": "2d395f6",
+    "run_cmd": "modal app list  # bail if 2+ project apps running; then: modal run --detach modal/extract_corpus.py::extract_full_proofs --modules \"$(python3 -c 'import json;print(\",\".join(json.load(open(\"data/corpus_v3/deep_wide_targets.json\"))[\"modules\"]))')\"  # then modal volume get + join via e-0033 serializer"
+  },
+  "formal_results": "PLANNED — not run. Blocked on Modal credit (free tier; CLAUDE.md cost discipline). Scope: 452 deep modules to extract_full_proofs; ~558 of 633 targets expected to round-trip (e-0028 per-area projection), ~126 of those both verified AND eval-relevant for miniF2F (e-0029), or the full ~558 usable on a within-deep held-out eval (e-0031, ~442 verified train).",
+  "results_description": "PLANNED — no results. This experiment's run-cmd re-runs the existing extract_full_proofs over the deep modules and is gated behind Modal cost discipline; do not launch without budget authorization and a modal app list check.",
+  "conclusions": "PLANNED. On completion: a same-format deep (rough,fine) corpus with the term-vs-tactic format confound zero by construction (e-0033) and the granularity construct present in 95.4% of targets (e-0032) — the construct-valid corpus q-0007's headline and q-0009's section-predictor need. Until run, q-0007/q-0009's empirical payload stays a placeholder.",
+  "addresses": [
+    "q-0007",
+    "q-0009"
+  ],
+  "produces": [],
+  "status": "planned",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:21:12.355Z",
+    "updated_at": "2026-06-12T13:21:12.355Z"
+  },
+  "comments": {}
+}
