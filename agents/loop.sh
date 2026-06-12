@@ -23,7 +23,7 @@ MODELFLAG=()
 echo "[agent $SLUG] loop start in $REPO (interval ${INTERVAL}s)  $(date)"
 while true; do
   echo "[agent $SLUG] ---- iteration $(date) ----"
-  ( cd "$REPO" && claude -p "$PROMPT" --dangerously-skip-permissions "${MODELFLAG[@]}" ) \
+  ( cd "$REPO" && claude -p "$PROMPT" --dangerously-skip-permissions ${MODELFLAG[@]+"${MODELFLAG[@]}"} ) \
     || echo "[agent $SLUG] iteration errored; continuing"
   sleep "$INTERVAL"
 done
