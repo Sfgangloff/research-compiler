@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0015",
+  "stream": "mathematical-domain-topology",
+  "text": "The content-aware intra-cluster ranker a-0014 named as the remaining lever WORKS, and cracks the cross-domain tail that popularity could not. Holding the bridge routing fixed (home + top-5 bridge-neighbour clusters) and changing ONLY the intra-cluster ordering, ranking declarations by IDF-weighted overlap between the query theorem's NAME tokens and each candidate's name tokens reaches 0.90 cross-domain premise recall at ~19.5k candidates (36% of the 53.8k pool) versus the popularity prior's ~47.9k (89%) -- a 2.46x cost cut precisely where e-0015/a-0014 reported popularity collapsing to 1.07x over random. Content dominates popularity at every budget (0.70 at 7.2k vs 12.3k; 0.80 at 11.7k vs 26.8k). The mechanism is confirmed: the 1,078 premises content surfaces that popularity misses have a median of just 2 train citations -- exactly the rarely-cited specialized cross-domain lemmas a-0014 said a popularity prior could not reach. The query signal (the goal theorem's own name) is information a prover always has, and the only leakage-free content available (the corpus exposes no type text). Net for q-0011: bridge routing plus content-aware intra-cluster ranking makes EXHAUSTIVE cross-domain premise retrieval -- not just moderate recall -- substantially cheaper, closing the cost gap a-0014 left open. This remains a retrieval proxy: it measures premise recall, not prover success rate or transfer, so the operational payoff of bridge-aware proving is now strongly plausible but still unmeasured.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0016"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T07:20:56.787Z",
+    "updated_at": "2026-06-12T07:21:05.054Z"
+  },
+  "comments": {}
+}
