@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0035",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only body-RENDERABILITY gate refining e-0033/a-0032's 'structural skeletons, not runnable Lean' caveat into per-policy numbers over the 633 deep wide-frontier targets. data/deep have_tree bodies are mostly elided to the literal 'by' (tactic block dropped at extraction); e-0033/e-0034 never quantified how much of the same-format build is already renderable from disk vs how much the mandatory Modal re-extraction must recover. Classifies each named substantive top-level frontier have body as CAPTURED (term-mode or inline 'by ...', present in the record) vs ELIDED (bare 'by'), then scopes renderability for EACH policy: pi_leaf (fine) keeps 'have name : type := body' so needs a captured body for EVERY named have; pi_root (rough) inlines, where INDEPENDENT haves (87.2%, e-0033) are a header DROP needing NO body and only SIBLING-REFERENCED haves (the 284 substitution-required, e-0034) need the body, so pi_root is render-blocked only by sibling-referenced haves whose body is elided.",
+  "motivation": "Every deep answer (a-0026..a-0034) assumes the same-format build is constructible from data/deep, but e-0033/e-0034 flagged that bodies are elided to 'by' and called the emitted texts 'structural skeletons, not runnable Lean' WITHOUT quantifying how much is on disk vs needs Modal. The decision-relevant number for the build go/no-go is: what fraction of the same-format rough/fine build can be rendered from the existing extraction, per policy. Cheap to settle before any Modal re-extraction spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_body_renderability.py",
+    "commit": "56e93c3",
+    "run_cmd": "python3 data/analyze_deep_body_renderability.py"
+  },
+  "formal_results": "deep_body_renderability.json. 2225 named substantive frontier haves over 629 targets (cross-checks e-0033's 2225). Body CAPTURED on disk: 1138 (51.1%); ELIDED bare-'by' (tactic block dropped): 1087 (48.9%). pi_leaf (fine) — needs a captured body for every named have: only 127/629 (20.2%) targets FULLY renderable, 363 partial, 139 none; mean per-target capture 49.8%. pi_root (rough) — independent header-drops 1941 (87.2%, matches e-0033); sibling-referenced 284 (matches e-0033/e-0034), of which only 98 have an elided body (4.4% of named) = the genuine pi_root blockers; 553/629 (87.9%) targets FULLY pi_root-renderable.",
+  "results_description": "The same-format build's ROUGH side is almost entirely on disk while the FINE side is the expensive half: a ~4x target-level renderability asymmetry (pi_root 87.9% vs pi_leaf 20.2%), because dropping an independent header needs no body but keeping a named have needs its (49%-elided) body. The body-recovery half of the mandatory Modal re-extraction must recover ~1087 elided have bodies for the fine policy, but only ~98 (the elided sibling-referenced subset) for the rough policy.",
+  "conclusions": "Sharpens e-0033/a-0032's 'skeletons not runnable Lean' caveat into per-policy numbers: of 2225 named-have bodies, 51.1% are captured on disk and 48.9% are elided to bare 'by'. Because pi_root inlining is a body-free header DROP for 87.2% of haves, 553/629 (87.9%) targets are fully pi_root-renderable from data/deep, but only 127/629 (20.2%) are fully pi_leaf-renderable — so the rough policy is nearly free to render while the fine policy needs Modal re-extraction to recover ~half its have bodies. HARD CAVEAT (neither policy is runnable from disk ALONE): have_tree records contain only the named have nodes, not the RESIDUAL main proof body, which is absent for all 633 — so the Modal re-extraction is required regardless to recover (a) the residual for every target; this gate scopes only (b), the elided have bodies. Sibling-reference detection sees sibling bodies+types only (residual->have refs unobservable), so the 98 pi_root blockers are a LOWER bound. Data-level only; no Lean/Modal/round-trip; no verified pairs.",
+  "addresses": [
+    "q-0007",
+    "q-0009"
+  ],
+  "produces": [
+    "a-0034"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:09:10.070Z",
+    "updated_at": "2026-06-12T13:09:50.131Z"
+  },
+  "comments": {}
+}

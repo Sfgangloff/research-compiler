@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0034",
+  "stream": "proof-hierarchies",
+  "text": "e-0033/a-0032's load-bearing caveat -- that the same-format deep build emits 'structural skeletons, not runnable Lean' because data/deep have_tree bodies are elided to the literal 'by' -- now has a concrete magnitude AND a strong per-policy asymmetry. e-0035 classifies all 2225 named substantive top-level frontier haves over the 633 wide-frontier targets as body-CAPTURED on disk (term-mode or inline 'by ...', e.g. 'pow_ne_zero _ h.1.2.1') vs ELIDED (bare 'by', tactic block dropped at extraction): 1138 (51.1%) captured, 1087 (48.9%) elided. The decision-relevant finding is the renderability asymmetry between the two policies. pi_leaf (fine) keeps 'have name : type := body' for EVERY named have, so it needs every body: only 127/629 (20.2%) targets are FULLY pi_leaf-renderable from disk (mean per-target body capture 49.8%). pi_root (rough) INLINES, where 1941/2225 (87.2%) named haves are INDEPENDENT and inline by a body-free header DROP (renderable regardless of elision) and only the 284 sibling-referenced haves (e-0034) need the body substituted -- of which just 98 are elided -- so 553/629 (87.9%) targets are FULLY pi_root-renderable. So the same-format build's ROUGH side is almost entirely on disk (~4x more target-level renderable than fine) while the FINE side is the expensive half needing Modal to recover ~1087 elided bodies. Cross-checks e-0033/e-0034 exactly (2225 named, 284 sibling-referenced, 1941 independent). HARD CAVEAT, neither policy is runnable from disk ALONE: the have_tree records hold only the named have nodes, not the RESIDUAL main proof body, which is absent for all 633 -- so a Modal re-extraction is required REGARDLESS to recover the residual; this gate scopes only the elided-have-body half of that cost and shows it is concentrated on the fine policy. Lower bound on sibling refs (residual->have refs unobservable). Data-level only; no Lean/Modal/round-trip; no verified pairs. (also addresses q-0009: this is the build the deep section-predictor / granularity retrain would use.)",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0035"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:09:50.127Z",
+    "updated_at": "2026-06-12T13:09:50.127Z"
+  },
+  "comments": {}
+}
