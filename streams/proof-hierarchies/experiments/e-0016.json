@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0016",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only PRE-MODAL feasibility gate for q-0009's section-predictor over data/deep: before the Modal round-trip verification e-0012..e-0015 prescribe, (1) resolve the e-0014/e-0015 module-collision caveat by recovering full module paths from filenames and emit a scoped, deduplicated target manifest, and (2) measure whether the wide top-level named frontiers are SUBSTANTIVE predictor-emission targets (frontier ppType length distribution, degenerate fraction) and what the per-decl emission burden is vs a full rough proof (the 'fewer LLM calls' premise).",
+  "motivation": "Every recent answer (a-0012..a-0015) converges on ONE paid next step: a Modal round-trip verification over the ~633 wide-frontier data/deep decls to give q-0009 training signal. But the pre-Modal gate analogous to e-0010 (which gated q-0008 before SFT) was never run: are those frontiers genuine substantive subgoals or trivial rewrites, and is emitting a frontier actually cheaper than emitting the whole proof? Also e-0014 AND e-0015 both flagged an unresolved module-name collision blocking a scoped target list. Test cheaply before recommending the spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_target_substance.py",
+    "commit": "4bc3c21",
+    "run_cmd": "python3 data/analyze_deep_target_substance.py"
+  },
+  "formal_results": "1,261 deep decls; 633 (50.2%) have a >=2 top-level named frontier (reproduces e-0015). COLLISION RESOLVED: filenames yield 834 distinct full modules (vs e-0014's 646 last-component undercount, ~22% low); the 633 wide targets span 452 full modules; only 5 decl-names recur across modules. SUBSTANCE: 2,301 frontier subgoal types — chars p10/p50/p90 = 6/22/55 (~1.5/5.5/13.75 tok), only 329 (14.3%) degenerate (<=8 chars). EMISSION BURDEN per wide decl: total frontier chars p10/p50/p90 = 29/80/180 (~7/20/45 tok), max 613 (~153 tok), vs a full rough term-mode proof median ~7,074 chars / ~1,768 tok (e-0010). Scoped 633-target manifest written to data/corpus_v3/deep_wide_targets.json.",
+  "results_description": "The q-0009 unblock passes its pre-Modal gate on all three axes. (a) The target supply is real and scoped: 633 wide-frontier decls across 452 full modules, manifest emitted, collision caveat resolved (834 true modules, not 646). (b) The frontiers are SUBSTANTIVE, not trivial-rewrite noise: median subgoal type 22 chars / ~5.5 tok, only 14.3% degenerate. (c) The 'fewer LLM calls' premise holds at the data level: naming a whole frontier costs a median ~20 tok (p90 ~45) vs ~1,768 tok to emit a full rough proof — an ~88x reduction in what the planner must generate up front.",
+  "conclusions": "q-0009 (Variant B section-predictor) is feasibly unblocked: data/deep supplies 633 substantive wide-frontier targets over 452 modules, and the emission economics favor a predictor (~88x fewer tokens to name a frontier than to emit the proof). The concrete, now precisely-scoped next step is a Modal e-0003-style round-trip verification over data/corpus_v3/deep_wide_targets.json (~84.7% expected yield) — a real but bounded pipeline spend, NOT a cheap step. Caveat: still a have-tree supply estimate, not verified pairs; the per-decl emission/solver-difficulty trade-off is a data-level proxy, not measured pass@k.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0016"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T07:09:22.860Z",
+    "updated_at": "2026-06-12T07:09:36.209Z"
+  },
+  "comments": {}
+}

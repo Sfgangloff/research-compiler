@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0016",
+  "stream": "proof-hierarchies",
+  "text": "q-0009's data-availability gate is now PASSED and precisely scoped (a CPU-only pre-Modal gate, the analogue of e-0010 for q-0008). Over data/deep, 633 (50.2%) of 1,261 decls expose a >=2 top-level named frontier — the one-shot antichain a section-predictor emits — and these are SUBSTANTIVE targets, not trivial rewrites: 2,301 frontier subgoal types with median 22 chars (~5.5 tok) and only 14.3% degenerate (<=8 chars). The 'fewer LLM calls' premise holds at the data level: naming an entire frontier costs a median ~20 tok (p90 ~45, max ~153) versus ~1,768 tok to emit a full rough proof (e-0010) — an ~88x reduction in up-front generation. The e-0014/e-0015 module-collision caveat is resolved: full module paths recovered from filenames give 834 distinct modules (e-0014's 646 last-component count was a ~22% undercount), and the 633 targets span 452 full modules; a deduplicated target manifest is written to data/corpus_v3/deep_wide_targets.json. So the concrete next step for q-0009 is now fully specified: a Modal e-0003-style round-trip verification over that manifest (~84.7% expected yield) — a bounded pipeline spend, not a cheap step. Caveats: this is a have-tree supply estimate (not verified pairs), and the predictor-vs-single-stage advantage is argued at the data level (emission tokens), not yet measured as pass@k or actual LLM-call counts.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0016"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T07:09:36.207Z",
+    "updated_at": "2026-06-12T07:09:36.207Z"
+  },
+  "comments": {}
+}
