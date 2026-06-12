@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0023",
+  "stream": "mathematical-domain-topology",
+  "text": "The whole a-0013..a-0022 retrieval chain conditions on a known HOME CLUSTER, but that label leaks: it comes from Leiden clustering of the full dependency graph (e-0002), which includes the test theorem's own outgoing premise edges -- a signal a real prover lacks, since a fresh goal has no premises yet. A leakage control (e-0026) makes the prover instead PREDICT the home cluster from the only leakage-free content it has, the goal's NAME tokens (TRAIN-only IDF*P(c|t), same machinery as e-0023), then re-runs the exact e-0018 complete-coverage ceiling (432 held-out cross-domain TEST theorems, train-only bridge weights, prem_clusters subset of routed pool). Home is moderately predictable from the name alone: top-1 64.1%, top-3 85.7%, top-5 91.0%. Replacing the oracle home with the top-1 prediction drops the complete-coverage ceiling from 0.674 (which exactly reproduces a-0017/a-0018 at mean pool 53.8k) to 0.593 at essentially the same pool (54.7k) -- so the chain's headline complete-coverage is mildly optimistic, by ~8 absolute points, because ~36% of theorems have their in-home premises missed when the predicted home is wrong. But the leakage is recoverable: hedging the router across the union of the top-h predicted homes restores oracle-level coverage and beyond -- h=3 reaches 0.704 (>0.674) at +8k candidates, h=5 reaches 0.745 at 65.8k. Net for q-0011: the home-cluster leakage is REAL but MODEST, and the bridge-aware retrieval payoff SURVIVES removing it -- the prover can recover its home cluster from the goal's name and hedge the residual uncertainty cheaply. The proxy overstates top-1 complete coverage slightly but is not invalidated. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0026"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:30:53.900Z",
+    "updated_at": "2026-06-12T12:30:59.887Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0026",
+  "stream": "mathematical-domain-topology",
+  "description": "Home-cluster leakage control for the whole q-0011 retrieval chain. Every chain experiment routes a held-out TEST theorem to home+top-5 bridge neighbours and treats the home cluster cluster[fn] as known input, but that label comes from Leiden clustering of the FULL graph (e-0002) which includes the theorem's own outgoing premise edges -- leakage a real prover lacks (a fresh goal has no premises yet). This script makes the prover PREDICT the home cluster from a leakage-free signal (the goal's NAME tokens, TRAIN-only IDF*P(c|t), same machinery as e-0023), then re-runs the exact e-0018 complete-coverage ceiling (432 held-out cross-domain TEST theorems, train-only W, prem_clusters subset of routed pool) under oracle-home vs predicted-home routing.",
+  "motivation": "a-0013..a-0022 all condition on a known home cluster; if that label leaks the test theorem's premises, the entire retrieval proxy could overstate the bridge-aware payoff. A CPU-only check over existing data.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_retrieval_home_leakage.py",
+    "commit": "c277a35",
+    "run_cmd": "python3 src/bridge_retrieval_home_leakage.py"
+  },
+  "formal_results": "Home prediction from name tokens on 432 cross-domain TEST theorems: top-1 64.1%, top-3 85.7%, top-5 91.0%. Complete-coverage ceiling (K=5): oracle-home 0.674 at mean pool 53.8k (reproduces a-0017/a-0018); predicted-home top-1 0.593 at 54.7k. Hedging the union of top-h predicted-home routers: h=2 ceiling 0.667 (59.3k), h=3 0.704 (61.9k), h=5 0.745 (65.8k).",
+  "results_description": "Predicting home from leakage-free name tokens costs ~8 absolute points of complete coverage at top-1 (0.674->0.593) at the same pool size; routing the top-3 predicted homes restores and exceeds the oracle ceiling (0.704 > 0.674) at +8k candidates.",
+  "conclusions": "The home-cluster leakage is real but modest: the bridge-aware retrieval payoff SURVIVES removing it -- a prover can predict its home cluster from the goal's name (top-1 64%, top-5 91%) and hedge the uncertainty to recover oracle-level complete coverage at modest extra cost. The q-0011 chain's headline numbers are mildly optimistic at top-1 but not invalidated.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0023"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:29:49.928Z",
+    "updated_at": "2026-06-12T12:30:59.883Z"
+  },
+  "comments": {}
+}
