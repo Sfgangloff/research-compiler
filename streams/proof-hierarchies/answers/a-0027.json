@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0027",
+  "stream": "proof-hierarchies",
+  "text": "q-0008's fatal length confound is a SERIALIZATION artifact of corpus_v3, not an intrinsic property of granularity -- and the data/deep pivot dissolves it. e-0010/e-0011 found the corpus_v3 rough/fine length gap is 144x with ZERO common support (rough median ~1,768 tok vs fine ~12 tok), making q-0008's length-covariate regression non-identifiable, and attributed it to term-vs-tactic serialization; e-0026 found the same axis is 93% format-only. But none held format fixed to isolate the granularity-specific length cost. e-0027 does: over data/deep, the length difference attributable to GRANULARITY ALONE (frontier named vs inlined, BOTH tactic-mode) is the named-have headers inlining removes -- median only ~117 chars / ~29 tok across the 1,127 granularity-bearing decls (p90 ~82 tok, max 1,112 chars), ~60x SMALLER than corpus_v3's 7,025-char / 1,756-tok serialization delta. ZERO of 1,127 deep decls reach corpus_v3's rough median length, and a deliberately-inflated ceiling ratio (1+delta/statement) is median 2.0x / p90 4.88x vs corpus_v3's 142.5x. The zero-overlap pathology cannot arise structurally on a same-format contrast: rough and fine then SHARE all their tactic body content and differ only by the bounded named headers. So building rough(inlined)/fine(named) pairs both in tactic mode on data/deep restores the common support q-0008 requires -- the same corpus that fixes q-0007's construct validity (a-0026) and supplies q-0009's frontiers (a-0014) also unblocks q-0008's length control. CAVEATS: data-level bound, the e-0010 analogue, NOT pass@k; data/deep bodies are mostly elided so the header-sum estimates the granularity delta rather than measuring a full rendered rough/fine serialization (that needs the Modal round-trip); the ceiling ratio overstates the true gap. The length OBJECTION is now answerable in principle on the right corpus; whether a real rough/fine pass@k difference survives length control is still untested and needs the paid pipeline.",
+  "status": "supported",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0027"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:08:24.426Z",
+    "updated_at": "2026-06-12T12:08:24.426Z"
+  },
+  "comments": {}
+}

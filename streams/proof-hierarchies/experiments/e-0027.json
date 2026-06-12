@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0027",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only data-level bound (q-0008 analogue of e-0010) on the length difference attributable to GRANULARITY ALONE, holding serialization format fixed (both sides tactic-mode source). Over the 1,261 data/deep decls, computes the named-have HEADER overhead that a FINE (frontier named) serialization carries and a ROUGH (frontier inlined) serialization omits: per named have-node, len('have ')+len(name)+len(' : ')+len(type)+len(' := ') (~13-char syntax overhead), summed recursively over all named nodes. Contrasts the resulting per-decl delta with corpus_v3's measured term-vs-tactic serialization delta (e-0010). Bodies are mostly elided in data/deep so full proof length is not recoverable, but the rough/fine delta is to first order exactly the named headers inlining removes (rough and fine share all body content), so the header sum is a sound estimate of the granularity-specific length contribution.",
+  "motivation": "e-0010 found the corpus_v3 rough/fine length gap is 144x with zero common support (blocking q-0008's length-covariate regression); e-0011 called it 'structural to term-vs-tactic serialization'; e-0026 found corpus_v3's rough/fine axis is 93% format-only. All three implicate the SAME root cause: corpus_v3 set rough=elaborated TERM and fine=tactic SOURCE, so the 144x gap is the SERIALIZATION-FORMAT difference, not the GRANULARITY difference. But no experiment held format fixed and varied only granularity. data/deep (the proposed granularity corpus) lets us bound the granularity-only delta cheaply before any Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_granularity_length_delta.py",
+    "commit": "215ec2e"
+  },
+  "formal_results": "1,261 deep decls; 1,127 (89.4%) granularity-bearing (>=1 named have), 850 (67.4%) wide (>=2). GRANULARITY-ONLY length delta over the 1,127 granularity-bearing decls (same-format, tactic-mode; named headers inlining removes): chars p10/p50/p90 = 36/117/330 (~9/29/82 tok), mean ~? max 1112. A deliberately-inflated ceiling ratio 1+delta/stmt_chars (overstates the gap, since true rough proof >> statement): median 2.0x, p90 4.88x. ZERO of 1,127 decls have a granularity delta as large as corpus_v3's rough median (7,074 chars). CONTRAST: corpus_v3 (e-0010) rough-fine delta median 7,025 chars / ~1,756 tok, within-theorem ratio 142.5x, 0% common support. The deep granularity delta (117 chars / ~29 tok median) is ~60x SMALLER than the corpus_v3 serialization delta.",
+  "results_description": "On a same-format (tactic-mode) granularity contrast over data/deep, the rough-vs-fine length difference attributable to granularity is median ~117 chars / ~29 tokens -- roughly 60x smaller than corpus_v3's 7,025-char / 1,756-token term-vs-tactic SERIALIZATION delta (e-0010). Even a deliberately-inflated ceiling ratio (1+delta/statement, which overstates the gap) is median 2.0x / p90 4.88x, nowhere near corpus_v3's 142.5x; and 0% of deep decls reach corpus_v3's rough median length. Because a same-format rough/fine pair SHARES all its tactic body content and differs only by the bounded named-have headers, the zero-overlap pathology e-0010 found on corpus_v3 cannot arise structurally.",
+  "conclusions": "Confirms e-0010/e-0011 at the data level and resolves q-0008's load-bearing diagnosis: the 144x rough/fine length confound that makes q-0008's length-covariate regression non-viable is a property of corpus_v3's term-vs-tactic SERIALIZATION CHOICE (rough=elaborated term, fine=tactic source), NOT of decomposition granularity. A same-format granularity contrast on the data/deep corpus carries only a median ~29-token granularity delta and cannot reproduce the zero-overlap regime, so it restores the common support q-0008's length control requires. This makes the data/deep pivot (a-0014/a-0026) the concrete unblock for q-0008 as well as q-0007/q-0009: building rough(inlined)/fine(named) pairs both in tactic mode escapes the confound. CAVEATS: data-level bound, not pass@k (the e-0010 analogue); bodies are mostly elided so the header-sum is an estimate of the granularity delta, not a measured full rough/fine serialization (which requires the Modal round-trip); the ceiling ratio uses the statement as a rough lower bound and overstates the true ratio.",
+  "addresses": [
+    "q-0008"
+  ],
+  "produces": [
+    "a-0027"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:07:20.424Z",
+    "updated_at": "2026-06-12T12:08:24.433Z"
+  },
+  "comments": {}
+}
