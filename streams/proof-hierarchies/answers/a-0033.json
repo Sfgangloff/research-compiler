@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0033",
+  "stream": "proof-hierarchies",
+  "text": "The substitution-required subset (12.8% of named haves, e-0033/a-0032) does NOT break the rough-is-more-compressed assumption the length-confound design rests on. Reference multiplicity is mild (median 1.0, mean 1.22, max 4; only 19.4% of the subset have >=2 rewrite sites). For a SOUND pi_root inliner that duplicates the body at each use site, only 20/2225 (0.90%) of named substantive haves invert compression direction (pi_root becomes longer), net root-leaf delta median -25 char, worst case +75 char. So pi_root stays the shorter policy for ~99% of haves and the +173-char header-delta survives; q-0008's length covariate need only absorb a small bounded opposite-sign tail on the 12.8% subset. (Lower bound: sibling refs only; deep main bodies elided.)",
+  "status": "supported",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0034"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:59:11.953Z",
+    "updated_at": "2026-06-12T12:59:11.953Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0034",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only substitution-severity gate refining e-0033/a-0032: quantifies the 284/2225 (12.8%) named substantive deep-corpus haves that are sibling-referenced (substitution-required, not simple-drop) over the same 633 wide-frontier targets. e-0033 counted WHICH haves need substitution but its reference serializer modeled pi_root as drop-header-keep-body-ONCE, correct only for the independent subset; a sound inliner duplicates the body at each use site. Measures (1) reference multiplicity = sites a sound inliner must rewrite, (2) length DIRECTION = sound-inliner net char delta n_occ*(len(body)+2-len(name))-header_len, revealing where pi_root becomes LONGER than pi_leaf (compression inverts).",
+  "motivation": "Test whether body-duplication on the 12.8% substitution-required subset breaks the rough-is-more-compressed assumption that the +173-char header-delta and the q-0008 length-covariate design rest on.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_substitution_severity.py",
+    "commit": "e9f4e7b",
+    "run_cmd": "python3 data/analyze_deep_substitution_severity.py"
+  },
+  "formal_results": "284/2225 (12.8%) substitution-required (matches e-0033). Reference multiplicity MILD: median 1.0, mean 1.22, max 4; only 55/284 (19.4%) have >=2 rewrite sites (hist: 229 single-site, 48 two, 6 three, 1 four). Length direction on the 151 observable-body (term-mode) referenced haves (133 elided->unquantifiable): only 20 (13.2% of observable referenced, 0.90% of all 2225 named haves) INVERT (pi_root longer than pi_leaf); net root-leaf delta median -25, mean -20.1, p90 +6, max +75 char.",
+  "results_description": "deep_substitution_severity.json: substitution is overwhelmingly single-site and length-neutral; compression direction (pi_root shorter) holds for ~99% of named haves.",
+  "conclusions": "The 12.8% substitution-required subset is mild: median multiplicity 1, <1% of all named haves invert compression direction, worst-case inversion +75 char. The +173-char rough-is-shorter framing (e-0033/a-0032) SURVIVES sound substitution; the same-format build stays well-defined and cheap, leaving only a small bounded opposite-sign length component the q-0008 covariate should model. Lower bound (sibling refs only; residual->have refs unobservable).",
+  "addresses": [
+    "q-0007",
+    "q-0008"
+  ],
+  "produces": [
+    "a-0033"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:58:49.910Z",
+    "updated_at": "2026-06-12T12:59:11.964Z"
+  },
+  "comments": {}
+}
