@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0012",
+  "stream": "proof-hierarchies",
+  "text": "Not on the current corpus. Variant B (a section-predictor that emits the subgoal frontier + a solver) has essentially no within-corpus training signal: of the 607 verified (rough, fine) pairs, 93.1% (565) are flat with ZERO named have-nodes, only 42 (6.9%) expose any named frontier and just 27 (4.4%) expose a non-trivial >=2-subgoal frontier (among those 42, median 2 / max 7 have-nodes). ~27 supervised frontiers is far too few to SFT a section-predictor, so the 'fewer LLM calls' planner cannot even be trained, let alone beat a single-stage baseline. This is the same ~4% structural ceiling found in e-0004 (decomposability) and the supply problem behind q-0008 (length confound). q-0009 is therefore blocked on the identical unblock: re-extracting proofs with a shrunk expansion frontier (F_size, which e-0004 showed raises decomposable counts) -- a real Modal pipeline change, not a cheap post-processing step. Untested empirically (no model trained); this is a data-availability gate, not an outcome on pass@k.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0012"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:05:30.111Z",
+    "updated_at": "2026-06-12T03:05:30.111Z"
+  },
+  "comments": {}
+}

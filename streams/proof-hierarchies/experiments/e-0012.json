@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0012",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only stdlib feasibility gate for Variant B (section-predictor + solver): join the 607 verified (rough, fine) pairs against the have-tree records and count how many verified decls expose a named subgoal frontier (>=1 / >=2 have-nodes, each carrying a ppType the predictor would emit).",
+  "motivation": "A section-predictor can only be trained where the corpus exposes a named frontier to supervise on. Before any Modal/SFT spend on Variant B, test cheaply whether the current 607-pair corpus contains enough named have-frontiers.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_section_predictor_feasibility.py",
+    "commit": "d3926bd"
+  },
+  "formal_results": "607 verified pairs; 0 missing a have-tree record. have-node count distribution: 0 -> 565, 1 -> 15, 2 -> 12, 3 -> 7, 4 -> 4, 5 -> 1, 6 -> 2, 7 -> 1. With >=1 named have: 42 (6.9%); >=2: 27 (4.4%); >=3: 15 (2.5%). Among the 42 decls with any frontier: mean 2.38, median 2, max 7 have-nodes.",
+  "results_description": "93.1% (565/607) of verified proofs are flat (zero named have-nodes) -- nothing for a section-predictor to emit. Only 27 decls (4.4%) expose a non-trivial (>=2 subgoal) frontier; 42 (6.9%) expose any. This matches the ~4% decomposability ceiling found in e-0004 and the structural-supply problem behind q-0008.",
+  "conclusions": "Variant B (section-predictor + solver) has essentially no within-corpus training signal on the current corpus: ~27 supervised frontiers is far too few to SFT a predictor. q-0009 is non-viable on data/corpus_v3 as-is; like q-0008 it is blocked on the same frontier-shrinking re-extraction (F_size expansion, which e-0004 showed raises decomposable counts) -- a real Modal pipeline change, not a cheap step.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0012"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:05:13.232Z",
+    "updated_at": "2026-06-12T03:05:30.113Z"
+  },
+  "comments": {}
+}
