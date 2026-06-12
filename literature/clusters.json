@@ -1,54 +1,1911 @@
 {
-  "generated_at": "preview",
-  "note": "Preview sample — illustrative papers, not the real review. Run the literature pipeline (refresh) to fetch NeurIPS/ICML/ICLR proceedings, match on arXiv, rank by citations-per-year, and replace this file.",
-  "n_papers": 14,
-  "venues": ["NeurIPS", "ICML", "ICLR"],
+  "generated_at": "2026-06-12 08:25 UTC",
+  "n_papers": 27362,
+  "venues": [
+    "NeurIPS",
+    "ICML",
+    "ICLR"
+  ],
   "years": "2022–2025",
   "clusters": [
     {
       "id": 0,
-      "label": "Large language models & instruction tuning",
-      "size": 4,
-      "terms": ["language model", "instruction", "in-context", "reasoning"],
+      "label": "Reinforcement, policy, offline, agents",
+      "size": 2268,
+      "terms": [
+        "reinforcement",
+        "policy",
+        "offline",
+        "agents",
+        "policies",
+        "agent"
+      ],
       "reading_list": [
-        { "title": "Training language models to follow instructions with human feedback", "venue": "NeurIPS", "year": 2022, "arxiv_id": "2203.02155", "url": "https://arxiv.org/abs/2203.02155", "citations": 12000, "citations_per_year": 3000 },
-        { "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", "venue": "NeurIPS", "year": 2022, "arxiv_id": "2201.11903", "url": "https://arxiv.org/abs/2201.11903", "citations": 9000, "citations_per_year": 2250 },
-        { "title": "LoRA: Low-Rank Adaptation of Large Language Models", "venue": "ICLR", "year": 2022, "arxiv_id": "2106.09685", "url": "https://arxiv.org/abs/2106.09685", "citations": 8000, "citations_per_year": 2000 },
-        { "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models", "venue": "ICLR", "year": 2023, "arxiv_id": "2203.11171", "url": "https://arxiv.org/abs/2203.11171", "citations": 3200, "citations_per_year": 1067 }
+        {
+          "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+          "authors": "John Yang et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2405.15793",
+          "url": "https://arxiv.org/abs/2405.15793",
+          "citations": 1221,
+          "citations_per_year": 407.0
+        },
+        {
+          "title": "CAMEL: Communicative Agents for \"Mind\" Exploration of Large Language Model Society",
+          "authors": "G. Li et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2303.17760",
+          "url": "https://arxiv.org/abs/2303.17760",
+          "citations": 1478,
+          "citations_per_year": 369.5
+        },
+        {
+          "title": "LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning",
+          "authors": "Bo Liu et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2306.03310",
+          "url": "https://arxiv.org/abs/2306.03310",
+          "citations": 982,
+          "citations_per_year": 245.5
+        },
+        {
+          "title": "WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents",
+          "authors": "Shunyu Yao et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2207.01206",
+          "url": "https://arxiv.org/abs/2207.01206",
+          "citations": 1087,
+          "citations_per_year": 217.4
+        },
+        {
+          "title": "AgentVerse: Facilitating Multi-Agent Collaboration and Exploring Emergent Behaviors in Agents",
+          "authors": "Weize Chen et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2308.10848",
+          "url": "https://arxiv.org/abs/2308.10848",
+          "citations": 643,
+          "citations_per_year": 160.8
+        },
+        {
+          "title": "ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search",
+          "authors": "Dan Zhang et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2406.03816",
+          "url": "https://arxiv.org/abs/2406.03816",
+          "citations": 469,
+          "citations_per_year": 156.3
+        },
+        {
+          "title": "Diffusion Policies as an Expressive Policy Class for Offline Reinforcement Learning",
+          "authors": "Zhendong Wang et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2208.06193",
+          "url": "https://arxiv.org/abs/2208.06193",
+          "citations": 637,
+          "citations_per_year": 127.4
+        },
+        {
+          "title": "MineDojo: Building Open-Ended Embodied Agents with Internet-Scale Knowledge",
+          "authors": "Linxi (Jim) Fan et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2206.08853",
+          "url": "https://arxiv.org/abs/2206.08853",
+          "citations": 573,
+          "citations_per_year": 114.6
+        }
       ]
     },
     {
       "id": 1,
-      "label": "Diffusion & generative models",
-      "size": 3,
-      "terms": ["diffusion", "image synthesis", "latent", "guidance"],
+      "label": "Llms, language, reasoning, llm",
+      "size": 2252,
+      "terms": [
+        "llms",
+        "language",
+        "reasoning",
+        "llm",
+        "language llms",
+        "capabilities"
+      ],
       "reading_list": [
-        { "title": "High-Resolution Image Synthesis with Latent Diffusion Models", "venue": "CVPR", "year": 2022, "arxiv_id": "2112.10752", "url": "https://arxiv.org/abs/2112.10752", "citations": 11000, "citations_per_year": 2750 },
-        { "title": "Classifier-Free Diffusion Guidance", "venue": "NeurIPS-W", "year": 2022, "arxiv_id": "2207.12598", "url": "https://arxiv.org/abs/2207.12598", "citations": 3500, "citations_per_year": 875 },
-        { "title": "Elucidating the Design Space of Diffusion-Based Generative Models", "venue": "NeurIPS", "year": 2022, "arxiv_id": "2206.00364", "url": "https://arxiv.org/abs/2206.00364", "citations": 2600, "citations_per_year": 650 }
+        {
+          "title": "Chain of Thought Prompting Elicits Reasoning in Large Language Models",
+          "authors": "Jason Wei et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2201.11903",
+          "url": "https://arxiv.org/abs/2201.11903",
+          "citations": 18996,
+          "citations_per_year": 3799.2
+        },
+        {
+          "title": "Judging LLM-as-a-judge with MT-Bench and Chatbot Arena",
+          "authors": "Lianmin Zheng et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2306.05685",
+          "url": "https://arxiv.org/abs/2306.05685",
+          "citations": 9082,
+          "citations_per_year": 2270.5
+        },
+        {
+          "title": "Large Language Models are Zero-Shot Reasoners",
+          "authors": "Takeshi Kojima et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2205.11916",
+          "url": "https://arxiv.org/abs/2205.11916",
+          "citations": 7261,
+          "citations_per_year": 1452.2
+        },
+        {
+          "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+          "authors": "Xuezhi Wang et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2203.11171",
+          "url": "https://arxiv.org/abs/2203.11171",
+          "citations": 6880,
+          "citations_per_year": 1376.0
+        },
+        {
+          "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+          "authors": "Shunyu Yao et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2305.10601",
+          "url": "https://arxiv.org/abs/2305.10601",
+          "citations": 4203,
+          "citations_per_year": 1050.8
+        },
+        {
+          "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+          "authors": "Timo Schick et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2302.04761",
+          "url": "https://arxiv.org/abs/2302.04761",
+          "citations": 4202,
+          "citations_per_year": 1050.5
+        },
+        {
+          "title": "Reflexion: language agents with verbal reinforcement learning",
+          "authors": "Noah Shinn et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2303.11366",
+          "url": "https://arxiv.org/abs/2303.11366",
+          "citations": 3837,
+          "citations_per_year": 959.2
+        },
+        {
+          "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+          "authors": "Aman Madaan et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2303.17651",
+          "url": "https://arxiv.org/abs/2303.17651",
+          "citations": 3684,
+          "citations_per_year": 921.0
+        }
       ]
     },
     {
       "id": 2,
-      "label": "Efficient attention & long-context sequence models",
-      "size": 4,
-      "terms": ["attention", "memory", "state space", "long context"],
+      "label": "Label, classification, feature, labels",
+      "size": 2210,
+      "terms": [
+        "label",
+        "classification",
+        "feature",
+        "labels",
+        "features",
+        "fairness"
+      ],
       "reading_list": [
-        { "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness", "venue": "NeurIPS", "year": 2022, "arxiv_id": "2205.14135", "url": "https://arxiv.org/abs/2205.14135", "citations": 3000, "citations_per_year": 750 },
-        { "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces", "venue": "ICLR", "year": 2024, "arxiv_id": "2312.00752", "url": "https://arxiv.org/abs/2312.00752", "citations": 2400, "citations_per_year": 1200 },
-        { "title": "Efficiently Modeling Long Sequences with Structured State Spaces (S4)", "venue": "ICLR", "year": 2022, "arxiv_id": "2111.00396", "url": "https://arxiv.org/abs/2111.00396", "citations": 1900, "citations_per_year": 475 },
-        { "title": "Train Short, Test Long: Attention with Linear Biases (ALiBi)", "venue": "ICLR", "year": 2022, "arxiv_id": "2108.12409", "url": "https://arxiv.org/abs/2108.12409", "citations": 1100, "citations_per_year": 275 }
+        {
+          "title": "Why do tree-based models still outperform deep learning on typical tabular data?",
+          "authors": "Léo Grinsztajn et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": null,
+          "url": "https://doi.org/10.52202/068431-0037",
+          "citations": 1602,
+          "citations_per_year": 320.4
+        },
+        {
+          "title": "Fine-Tuning can Distort Pretrained Features and Underperform Out-of-Distribution",
+          "authors": "Ananya Kumar et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2202.10054",
+          "url": "https://arxiv.org/abs/2202.10054",
+          "citations": 949,
+          "citations_per_year": 189.8
+        },
+        {
+          "title": "TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second",
+          "authors": "Noah Hollmann et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2207.01848",
+          "url": "https://arxiv.org/abs/2207.01848",
+          "citations": 757,
+          "citations_per_year": 151.4
+        },
+        {
+          "title": "Sparse Feature Circuits: Discovering and Editing Interpretable Causal Graphs in Language Models",
+          "authors": "Samuel Marks et al.",
+          "venue": "ICLR",
+          "year": 2024,
+          "arxiv_id": "2403.19647",
+          "url": "https://arxiv.org/abs/2403.19647",
+          "citations": 364,
+          "citations_per_year": 121.3
+        },
+        {
+          "title": "BEATs: Audio Pre-Training with Acoustic Tokenizers",
+          "authors": "Sanyuan Chen et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2212.09058",
+          "url": "https://arxiv.org/abs/2212.09058",
+          "citations": 601,
+          "citations_per_year": 120.2
+        },
+        {
+          "title": "Last Layer Re-Training is Sufficient for Robustness to Spurious Correlations",
+          "authors": "P. Kirichenko et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2204.02937",
+          "url": "https://arxiv.org/abs/2204.02937",
+          "citations": 471,
+          "citations_per_year": 94.2
+        },
+        {
+          "title": "FreeMatch: Self-adaptive Thresholding for Semi-supervised Learning",
+          "authors": "Yidong Wang et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2205.07246",
+          "url": "https://arxiv.org/abs/2205.07246",
+          "citations": 454,
+          "citations_per_year": 90.8
+        },
+        {
+          "title": "Data Selection for Language Models via Importance Resampling",
+          "authors": "Sang Michael Xie et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2302.03169",
+          "url": "https://arxiv.org/abs/2302.03169",
+          "citations": 344,
+          "citations_per_year": 86.0
+        }
       ]
     },
     {
       "id": 3,
-      "label": "RL, preferences & alignment",
-      "size": 3,
-      "terms": ["preference", "policy", "reward", "decision"],
+      "label": "Visual, multimodal, vision-language, image",
+      "size": 1699,
+      "terms": [
+        "visual",
+        "multimodal",
+        "vision-language",
+        "image",
+        "images",
+        "language"
+      ],
       "reading_list": [
-        { "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model", "venue": "NeurIPS", "year": 2023, "arxiv_id": "2305.18290", "url": "https://arxiv.org/abs/2305.18290", "citations": 3000, "citations_per_year": 1500 },
-        { "title": "Decision Transformer: Reinforcement Learning via Sequence Modeling", "venue": "NeurIPS", "year": 2021, "arxiv_id": "2106.01345", "url": "https://arxiv.org/abs/2106.01345", "citations": 2500, "citations_per_year": 500 },
-        { "title": "Offline Reinforcement Learning as One Big Sequence Modeling Problem", "venue": "NeurIPS", "year": 2021, "arxiv_id": "2106.02039", "url": "https://arxiv.org/abs/2106.02039", "citations": 1100, "citations_per_year": 220 }
+        {
+          "title": "Visual Instruction Tuning",
+          "authors": "Haotian Liu et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2304.08485",
+          "url": "https://arxiv.org/abs/2304.08485",
+          "citations": 9774,
+          "citations_per_year": 2443.5
+        },
+        {
+          "title": "BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models",
+          "authors": "Junnan Li et al.",
+          "venue": "ICML",
+          "year": 2023,
+          "arxiv_id": "2301.12597",
+          "url": "https://arxiv.org/abs/2301.12597",
+          "citations": 8223,
+          "citations_per_year": 2055.8
+        },
+        {
+          "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+          "authors": "Alec Radford et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2212.04356",
+          "url": "https://arxiv.org/abs/2212.04356",
+          "citations": 7326,
+          "citations_per_year": 1465.2
+        },
+        {
+          "title": "BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation",
+          "authors": "Junnan Li et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2201.12086",
+          "url": "https://arxiv.org/abs/2201.12086",
+          "citations": 6780,
+          "citations_per_year": 1356.0
+        },
+        {
+          "title": "Flamingo: a Visual Language Model for Few-Shot Learning",
+          "authors": "Jean-Baptiste Alayrac et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2204.14198",
+          "url": "https://arxiv.org/abs/2204.14198",
+          "citations": 5947,
+          "citations_per_year": 1189.4
+        },
+        {
+          "title": "LAION-5B: An open large-scale dataset for training next generation image-text models",
+          "authors": "Christoph Schuhmann et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2210.08402",
+          "url": "https://arxiv.org/abs/2210.08402",
+          "citations": 5242,
+          "citations_per_year": 1048.4
+        },
+        {
+          "title": "InstructBLIP: Towards General-purpose Vision-Language Models with Instruction Tuning",
+          "authors": "Wenliang Dai et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2305.06500",
+          "url": "https://arxiv.org/abs/2305.06500",
+          "citations": 3526,
+          "citations_per_year": 881.5
+        },
+        {
+          "title": "MiniGPT-4: Enhancing Vision-Language Understanding with Advanced Large Language Models",
+          "authors": "Deyao Zhu et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2304.10592",
+          "url": "https://arxiv.org/abs/2304.10592",
+          "citations": 3151,
+          "citations_per_year": 787.8
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "label": "Diffusion, generation, image, generative",
+      "size": 1617,
+      "terms": [
+        "diffusion",
+        "generation",
+        "image",
+        "generative",
+        "sampling",
+        "denoising"
+      ],
+      "reading_list": [
+        {
+          "title": "Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding",
+          "authors": "Chitwan Saharia et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2205.11487",
+          "url": "https://arxiv.org/abs/2205.11487",
+          "citations": 8411,
+          "citations_per_year": 1682.2
+        },
+        {
+          "title": "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis",
+          "authors": "Patrick Esser et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2403.03206",
+          "url": "https://arxiv.org/abs/2403.03206",
+          "citations": 4026,
+          "citations_per_year": 1342.0
+        },
+        {
+          "title": "SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis",
+          "authors": "Dustin Podell et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2307.01952",
+          "url": "https://arxiv.org/abs/2307.01952",
+          "citations": 4838,
+          "citations_per_year": 1209.5
+        },
+        {
+          "title": "Flow Matching for Generative Modeling",
+          "authors": "Y. Lipman et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2210.02747",
+          "url": "https://arxiv.org/abs/2210.02747",
+          "citations": 4874,
+          "citations_per_year": 974.8
+        },
+        {
+          "title": "DreamFusion: Text-to-3D using 2D Diffusion",
+          "authors": "Ben Poole et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2209.14988",
+          "url": "https://arxiv.org/abs/2209.14988",
+          "citations": 3592,
+          "citations_per_year": 718.4
+        },
+        {
+          "title": "Elucidating the Design Space of Diffusion-Based Generative Models",
+          "authors": "Tero Karras et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2206.00364",
+          "url": "https://arxiv.org/abs/2206.00364",
+          "citations": 3483,
+          "citations_per_year": 696.6
+        },
+        {
+          "title": "Depth Anything V2",
+          "authors": "Lihe Yang et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2406.09414",
+          "url": "https://arxiv.org/abs/2406.09414",
+          "citations": 1694,
+          "citations_per_year": 564.7
+        },
+        {
+          "title": "Prompt-to-Prompt Image Editing with Cross Attention Control",
+          "authors": "Amir Hertz et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2208.01626",
+          "url": "https://arxiv.org/abs/2208.01626",
+          "citations": 2728,
+          "citations_per_year": 545.6
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "label": "Regret, bounds, online, bound",
+      "size": 1506,
+      "terms": [
+        "regret",
+        "bounds",
+        "online",
+        "bound",
+        "algorithm",
+        "bandits"
+      ],
+      "reading_list": [
+        {
+          "title": "Cross-Entropy Loss Functions: Theoretical Analysis and Applications",
+          "authors": "Anqi Mao et al.",
+          "venue": "ICML",
+          "year": 2023,
+          "arxiv_id": "2304.07288",
+          "url": "https://arxiv.org/abs/2304.07288",
+          "citations": 845,
+          "citations_per_year": 211.2
+        },
+        {
+          "title": "Improving Online Algorithms via ML Predictions",
+          "authors": "Manish Purohit et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2407.17712",
+          "url": "https://arxiv.org/abs/2407.17712",
+          "citations": 398,
+          "citations_per_year": 132.7
+        },
+        {
+          "title": "Nearly d-Linear Convergence Bounds for Diffusion Models via Stochastic Localization",
+          "authors": "Joe Benton et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2308.03686",
+          "url": "https://arxiv.org/abs/2308.03686",
+          "citations": 221,
+          "citations_per_year": 55.2
+        },
+        {
+          "title": "Optimistic posterior sampling for reinforcement learning: worst-case regret bounds",
+          "authors": "Shipra Agrawal et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": null,
+          "url": "https://doi.org/10.1287/moor.2022.1266",
+          "citations": 238,
+          "citations_per_year": 47.6
+        },
+        {
+          "title": "HyperTree Proof Search for Neural Theorem Proving",
+          "authors": "Guillaume Lample et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2205.11491",
+          "url": "https://arxiv.org/abs/2205.11491",
+          "citations": 229,
+          "citations_per_year": 45.8
+        },
+        {
+          "title": "Improved Analysis of Score-based Generative Modeling: User-Friendly Bounds under Minimal Smoothness Assumptions",
+          "authors": "Hongrui Chen et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2211.01916",
+          "url": "https://arxiv.org/abs/2211.01916",
+          "citations": 229,
+          "citations_per_year": 45.8
+        },
+        {
+          "title": "Maximization of Approximately Submodular Functions",
+          "authors": "Thibaut Horel et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2411.10949",
+          "url": "https://arxiv.org/abs/2411.10949",
+          "citations": 113,
+          "citations_per_year": 37.7
+        },
+        {
+          "title": "Theoretical guarantees on the best-of-n alignment policy",
+          "authors": "Ahmad Beirami et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2401.01879",
+          "url": "https://arxiv.org/abs/2401.01879",
+          "citations": 111,
+          "citations_per_year": 37.0
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "label": "Gradient, descent, convergence, gradient descent",
+      "size": 1505,
+      "terms": [
+        "gradient",
+        "descent",
+        "convergence",
+        "gradient descent",
+        "stochastic",
+        "sgd"
+      ],
+      "reading_list": [
+        {
+          "title": "Git Re-Basin: Merging Models modulo Permutation Symmetries",
+          "authors": "Samuel K. Ainsworth et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2209.04836",
+          "url": "https://arxiv.org/abs/2209.04836",
+          "citations": 492,
+          "citations_per_year": 98.4
+        },
+        {
+          "title": "Mitigating Neural Network Overconfidence with Logit Normalization",
+          "authors": "Hongxin Wei et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2205.09310",
+          "url": "https://arxiv.org/abs/2205.09310",
+          "citations": 400,
+          "citations_per_year": 80.0
+        },
+        {
+          "title": "Transformers learn to implement preconditioned gradient descent for in-context learning",
+          "authors": "Kwangjun Ahn et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2306.00297",
+          "url": "https://arxiv.org/abs/2306.00297",
+          "citations": 299,
+          "citations_per_year": 74.8
+        },
+        {
+          "title": "Temporal Efficient Training of Spiking Neural Network via Gradient Re-weighting",
+          "authors": "Shi-Wee Deng et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2202.11946",
+          "url": "https://arxiv.org/abs/2202.11946",
+          "citations": 373,
+          "citations_per_year": 74.6
+        },
+        {
+          "title": "Sophia: A Scalable Stochastic Second-order Optimizer for Language Model Pre-training",
+          "authors": "Hong Liu et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2305.14342",
+          "url": "https://arxiv.org/abs/2305.14342",
+          "citations": 284,
+          "citations_per_year": 71.0
+        },
+        {
+          "title": "Training Deep Learning Models with Norm-Constrained LMOs",
+          "authors": "T. Pethick et al.",
+          "venue": "ICML",
+          "year": 2025,
+          "arxiv_id": "2502.07529",
+          "url": "https://arxiv.org/abs/2502.07529",
+          "citations": 138,
+          "citations_per_year": 69.0
+        },
+        {
+          "title": "The Road Less Scheduled",
+          "authors": "Aaron Defazio et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2405.15682",
+          "url": "https://arxiv.org/abs/2405.15682",
+          "citations": 171,
+          "citations_per_year": 57.0
+        },
+        {
+          "title": "Multi-Task Learning as a Bargaining Game",
+          "authors": "Aviv Navon et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2202.01017",
+          "url": "https://arxiv.org/abs/2202.01017",
+          "citations": 261,
+          "citations_per_year": 52.2
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "label": "Graph, graphs, gnns, node",
+      "size": 1409,
+      "terms": [
+        "graph",
+        "graphs",
+        "gnns",
+        "node",
+        "nodes",
+        "gnn"
+      ],
+      "reading_list": [
+        {
+          "title": "MACE: Higher Order Equivariant Message Passing Neural Networks for Fast and Accurate Force Fields",
+          "authors": "Ilyes Batatia et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2206.07697",
+          "url": "https://arxiv.org/abs/2206.07697",
+          "citations": 1085,
+          "citations_per_year": 217.0
+        },
+        {
+          "title": "Recipe for a General, Powerful, Scalable Graph Transformer",
+          "authors": "Ladislav Rampášek et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2205.12454",
+          "url": "https://arxiv.org/abs/2205.12454",
+          "citations": 1014,
+          "citations_per_year": 202.8
+        },
+        {
+          "title": "Towards Automated Circuit Discovery for Mechanistic Interpretability",
+          "authors": "Arthur Conmy et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2304.14997",
+          "url": "https://arxiv.org/abs/2304.14997",
+          "citations": 658,
+          "citations_per_year": 164.5
+        },
+        {
+          "title": "Vision GNN: An Image is Worth Graph of Nodes",
+          "authors": "Kai Han et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2206.00272",
+          "url": "https://arxiv.org/abs/2206.00272",
+          "citations": 611,
+          "citations_per_year": 122.2
+        },
+        {
+          "title": "NodeFormer: A Scalable Graph Structure Learning Transformer for Node Classification",
+          "authors": "Qitian Wu et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2306.08385",
+          "url": "https://arxiv.org/abs/2306.08385",
+          "citations": 407,
+          "citations_per_year": 101.8
+        },
+        {
+          "title": "A critical look at the evaluation of GNNs under heterophily: are we really making progress?",
+          "authors": "Oleg Platonov et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2302.11640",
+          "url": "https://arxiv.org/abs/2302.11640",
+          "citations": 394,
+          "citations_per_year": 98.5
+        },
+        {
+          "title": "LightGCL: Simple Yet Effective Graph Contrastive Learning for Recommendation",
+          "authors": "Xuheng Cai et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2302.08191",
+          "url": "https://arxiv.org/abs/2302.08191",
+          "citations": 381,
+          "citations_per_year": 95.2
+        },
+        {
+          "title": "G-Retriever: Retrieval-Augmented Generation for Textual Graph Understanding and Question Answering",
+          "authors": "Xiaoxin He et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2402.07630",
+          "url": "https://arxiv.org/abs/2402.07630",
+          "citations": 282,
+          "citations_per_year": 94.0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "label": "Optimization, optimal, equations, transport",
+      "size": 1374,
+      "terms": [
+        "optimization",
+        "optimal",
+        "equations",
+        "transport",
+        "differential",
+        "pdes"
+      ],
+      "reading_list": [
+        {
+          "title": "Constrained Efficient Global Optimization of Expensive Black-box Functions",
+          "authors": "Donald R. Jones et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2211.00162",
+          "url": "https://arxiv.org/abs/2211.00162",
+          "citations": 1893,
+          "citations_per_year": 378.6
+        },
+        {
+          "title": "Building Normalizing Flows with Stochastic Interpolants",
+          "authors": "M. Albergo et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2209.15571",
+          "url": "https://arxiv.org/abs/2209.15571",
+          "citations": 916,
+          "citations_per_year": 183.2
+        },
+        {
+          "title": "GNOT: A General Neural Operator Transformer for Operator Learning",
+          "authors": "Zhongkai Hao et al.",
+          "venue": "ICML",
+          "year": 2023,
+          "arxiv_id": "2302.14376",
+          "url": "https://arxiv.org/abs/2302.14376",
+          "citations": 410,
+          "citations_per_year": 102.5
+        },
+        {
+          "title": "Transolver: A Fast Transformer Solver for PDEs on General Geometries",
+          "authors": "Haixu Wu et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2402.02366",
+          "url": "https://arxiv.org/abs/2402.02366",
+          "citations": 274,
+          "citations_per_year": 91.3
+        },
+        {
+          "title": "PDEBENCH: An Extensive Benchmark for Scientific Machine Learning",
+          "authors": "M. Takamoto et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2210.07182",
+          "url": "https://arxiv.org/abs/2210.07182",
+          "citations": 456,
+          "citations_per_year": 91.2
+        },
+        {
+          "title": "Message Passing Neural PDE Solvers",
+          "authors": "Johannes Brandstetter et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2202.03376",
+          "url": "https://arxiv.org/abs/2202.03376",
+          "citations": 446,
+          "citations_per_year": 89.2
+        },
+        {
+          "title": "Geometry-Informed Neural Operator for Large-Scale 3D PDEs",
+          "authors": "Zong-Yi Li et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2309.00583",
+          "url": "https://arxiv.org/abs/2309.00583",
+          "citations": 352,
+          "citations_per_year": 88.0
+        },
+        {
+          "title": "Spherical Fourier Neural Operators: Learning Stable Dynamics on the Sphere",
+          "authors": "B. Bonev et al.",
+          "venue": "ICML",
+          "year": 2023,
+          "arxiv_id": "2306.03838",
+          "url": "https://arxiv.org/abs/2306.03838",
+          "citations": 300,
+          "citations_per_year": 75.0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "label": "Transformers, transformer, attention, series",
+      "size": 1351,
+      "terms": [
+        "transformers",
+        "transformer",
+        "attention",
+        "series",
+        "vision",
+        "forecasting"
+      ],
+      "reading_list": [
+        {
+          "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+          "authors": "Tri Dao et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2205.14135",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "citations": 4481,
+          "citations_per_year": 896.2
+        },
+        {
+          "title": "A Time Series is Worth 64 Words: Long-term Forecasting with Transformers",
+          "authors": "Yuqi Nie et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2211.14730",
+          "url": "https://arxiv.org/abs/2211.14730",
+          "citations": 3642,
+          "citations_per_year": 728.4
+        },
+        {
+          "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+          "authors": "Tri Dao",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2307.08691",
+          "url": "https://arxiv.org/abs/2307.08691",
+          "citations": 2826,
+          "citations_per_year": 706.5
+        },
+        {
+          "title": "FEDformer: Frequency Enhanced Decomposed Transformer for Long-term Series Forecasting",
+          "authors": "Tian Zhou et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2201.12740",
+          "url": "https://arxiv.org/abs/2201.12740",
+          "citations": 3097,
+          "citations_per_year": 619.4
+        },
+        {
+          "title": "Vision Mamba: Efficient Visual Representation Learning with Bidirectional State Space Model",
+          "authors": "Lianghui Zhu et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2401.09417",
+          "url": "https://arxiv.org/abs/2401.09417",
+          "citations": 1826,
+          "citations_per_year": 608.7
+        },
+        {
+          "title": "Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality",
+          "authors": "Tri Dao et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2405.21060",
+          "url": "https://arxiv.org/abs/2405.21060",
+          "citations": 1563,
+          "citations_per_year": 521.0
+        },
+        {
+          "title": "Efficient Streaming Language Models with Attention Sinks",
+          "authors": "Guangxuan Xiao et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2309.17453",
+          "url": "https://arxiv.org/abs/2309.17453",
+          "citations": 1962,
+          "citations_per_year": 490.5
+        },
+        {
+          "title": "iTransformer: Inverted Transformers Are Effective for Time Series Forecasting",
+          "authors": "Yong Liu et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2310.06625",
+          "url": "https://arxiv.org/abs/2310.06625",
+          "citations": 1853,
+          "citations_per_year": 463.2
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "label": "Video, generative, protein, molecular",
+      "size": 1331,
+      "terms": [
+        "video",
+        "generative",
+        "protein",
+        "molecular",
+        "flow",
+        "generation"
+      ],
+      "reading_list": [
+        {
+          "title": "CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer",
+          "authors": "Zhuoyi Yang et al.",
+          "venue": "ICLR",
+          "year": 2024,
+          "arxiv_id": "2408.06072",
+          "url": "https://arxiv.org/abs/2408.06072",
+          "citations": 1976,
+          "citations_per_year": 658.7
+        },
+        {
+          "title": "Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow",
+          "authors": "Xingchao Liu et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2209.03003",
+          "url": "https://arxiv.org/abs/2209.03003",
+          "citations": 3161,
+          "citations_per_year": 632.2
+        },
+        {
+          "title": "Video Diffusion Models",
+          "authors": "Jonathan Ho et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2204.03458",
+          "url": "https://arxiv.org/abs/2204.03458",
+          "citations": 2639,
+          "citations_per_year": 527.8
+        },
+        {
+          "title": "Make-A-Video: Text-to-Video Generation without Text-Video Data",
+          "authors": "Uriel Singer et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2209.14792",
+          "url": "https://arxiv.org/abs/2209.14792",
+          "citations": 2047,
+          "citations_per_year": 409.4
+        },
+        {
+          "title": "VideoMAE: Masked Autoencoders are Data-Efficient Learners for Self-Supervised Video Pre-Training",
+          "authors": "Zhan Tong et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2203.12602",
+          "url": "https://arxiv.org/abs/2203.12602",
+          "citations": 1989,
+          "citations_per_year": 397.8
+        },
+        {
+          "title": "Genie: Generative Interactive Environments",
+          "authors": "Jake Bruce et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2402.15391",
+          "url": "https://arxiv.org/abs/2402.15391",
+          "citations": 614,
+          "citations_per_year": 204.7
+        },
+        {
+          "title": "DiffDock: Diffusion Steps, Twists, and Turns for Molecular Docking",
+          "authors": "Gabriele Corso et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2210.01776",
+          "url": "https://arxiv.org/abs/2210.01776",
+          "citations": 753,
+          "citations_per_year": 150.6
+        },
+        {
+          "title": "MotionGPT: Human Motion as a Foreign Language",
+          "authors": "Biao Jiang et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2306.14795",
+          "url": "https://arxiv.org/abs/2306.14795",
+          "citations": 594,
+          "citations_per_year": 148.5
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "label": "Bayesian, uncertainty, variational, inference",
+      "size": 1264,
+      "terms": [
+        "bayesian",
+        "uncertainty",
+        "variational",
+        "inference",
+        "posterior",
+        "gaussian"
+      ],
+      "reading_list": [
+        {
+          "title": "Out-of-distribution Detection with Deep Nearest Neighbors",
+          "authors": "Yiyou Sun et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2204.06507",
+          "url": "https://arxiv.org/abs/2204.06507",
+          "citations": 822,
+          "citations_per_year": 164.4
+        },
+        {
+          "title": "Conformal Risk Control",
+          "authors": "Anastasios Nikolas Angelopoulos et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2208.02814",
+          "url": "https://arxiv.org/abs/2208.02814",
+          "citations": 274,
+          "citations_per_year": 54.8
+        },
+        {
+          "title": "Extremely Simple Activation Shaping for Out-of-Distribution Detection",
+          "authors": "Andrija Djurisic et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2209.09858",
+          "url": "https://arxiv.org/abs/2209.09858",
+          "citations": 258,
+          "citations_per_year": 51.6
+        },
+        {
+          "title": "Adaptive Conformal Predictions for Time Series",
+          "authors": "Margaux Zaffran et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2202.07282",
+          "url": "https://arxiv.org/abs/2202.07282",
+          "citations": 220,
+          "citations_per_year": 44.0
+        },
+        {
+          "title": "Out-of-Distribution Detection and Selective Generation for Conditional Language Models",
+          "authors": "Jie Jessie Ren et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2209.15558",
+          "url": "https://arxiv.org/abs/2209.15558",
+          "citations": 207,
+          "citations_per_year": 41.4
+        },
+        {
+          "title": "Non-Parametric Outlier Synthesis",
+          "authors": "Leitian Tao et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2303.02966",
+          "url": "https://arxiv.org/abs/2303.02966",
+          "citations": 165,
+          "citations_per_year": 41.2
+        },
+        {
+          "title": "Language Models with Conformal Factuality Guarantees",
+          "authors": "Christopher Mohri et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2402.10978",
+          "url": "https://arxiv.org/abs/2402.10978",
+          "citations": 123,
+          "citations_per_year": 41.0
+        },
+        {
+          "title": "In or Out? Fixing ImageNet Out-of-Distribution Detection Evaluation",
+          "authors": "Julian Bitterwolf et al.",
+          "venue": "ICML",
+          "year": 2023,
+          "arxiv_id": "2306.00826",
+          "url": "https://arxiv.org/abs/2306.00826",
+          "citations": 161,
+          "citations_per_year": 40.2
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "label": "Pruning, quantization, sparse, memory",
+      "size": 1216,
+      "terms": [
+        "pruning",
+        "quantization",
+        "sparse",
+        "memory",
+        "compression",
+        "fine-tuning"
+      ],
+      "reading_list": [
+        {
+          "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+          "authors": "Tim Dettmers et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2305.14314",
+          "url": "https://arxiv.org/abs/2305.14314",
+          "citations": 4760,
+          "citations_per_year": 1190.0
+        },
+        {
+          "title": "KAN: Kolmogorov-Arnold Networks",
+          "authors": "Ziming Liu et al.",
+          "venue": "ICLR",
+          "year": 2024,
+          "arxiv_id": "2404.19756",
+          "url": "https://arxiv.org/abs/2404.19756",
+          "citations": 1752,
+          "citations_per_year": 584.0
+        },
+        {
+          "title": "SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot",
+          "authors": "Elias Frantar et al.",
+          "venue": "ICML",
+          "year": 2023,
+          "arxiv_id": "2301.00774",
+          "url": "https://arxiv.org/abs/2301.00774",
+          "citations": 1319,
+          "citations_per_year": 329.8
+        },
+        {
+          "title": "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models",
+          "authors": "Guangxuan Xiao et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2211.10438",
+          "url": "https://arxiv.org/abs/2211.10438",
+          "citations": 1635,
+          "citations_per_year": 327.0
+        },
+        {
+          "title": "Sparse Autoencoders Find Highly Interpretable Features in Language Models",
+          "authors": "Hoagy Cunningham et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2309.08600",
+          "url": "https://arxiv.org/abs/2309.08600",
+          "citations": 1250,
+          "citations_per_year": 312.5
+        },
+        {
+          "title": "Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time",
+          "authors": "Mitchell Wortsman et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2203.05482",
+          "url": "https://arxiv.org/abs/2203.05482",
+          "citations": 1555,
+          "citations_per_year": 311.0
+        },
+        {
+          "title": "DoRA: Weight-Decomposed Low-Rank Adaptation",
+          "authors": "Shih-Yang Liu et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2402.09353",
+          "url": "https://arxiv.org/abs/2402.09353",
+          "citations": 898,
+          "citations_per_year": 299.3
+        },
+        {
+          "title": "Few-Shot Parameter-Efficient Fine-Tuning is Better and Cheaper than In-Context Learning",
+          "authors": "Haokun Liu et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2205.05638",
+          "url": "https://arxiv.org/abs/2205.05638",
+          "citations": 1332,
+          "citations_per_year": 266.4
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "label": "Detection, segmentation, object, semantic",
+      "size": 1045,
+      "terms": [
+        "detection",
+        "segmentation",
+        "object",
+        "semantic",
+        "anomaly",
+        "distillation"
+      ],
+      "reading_list": [
+        {
+          "title": "YOLOv10: Real-Time End-to-End Object Detection",
+          "authors": "Ao Wang et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2405.14458",
+          "url": "https://arxiv.org/abs/2405.14458",
+          "citations": 4470,
+          "citations_per_year": 1490.0
+        },
+        {
+          "title": "SAM 2: Segment Anything in Images and Videos",
+          "authors": "Nikhila Ravi et al.",
+          "venue": "ICLR",
+          "year": 2024,
+          "arxiv_id": "2408.00714",
+          "url": "https://arxiv.org/abs/2408.00714",
+          "citations": 3405,
+          "citations_per_year": 1135.0
+        },
+        {
+          "title": "DINO: DETR with Improved DeNoising Anchor Boxes for End-to-End Object Detection",
+          "authors": "Hao Zhang et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2203.03605",
+          "url": "https://arxiv.org/abs/2203.03605",
+          "citations": 2738,
+          "citations_per_year": 547.6
+        },
+        {
+          "title": "TimesNet: Temporal 2D-Variation Modeling for General Time Series Analysis",
+          "authors": "Haixu Wu et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2210.02186",
+          "url": "https://arxiv.org/abs/2210.02186",
+          "citations": 2164,
+          "citations_per_year": 432.8
+        },
+        {
+          "title": "SegNeXt: Rethinking Convolutional Attention Design for Semantic Segmentation",
+          "authors": "Meng-Hao Guo et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2209.08575",
+          "url": "https://arxiv.org/abs/2209.08575",
+          "citations": 1175,
+          "citations_per_year": 235.0
+        },
+        {
+          "title": "PointNeXt: Revisiting PointNet++ with Improved Training and Scaling Strategies",
+          "authors": "Guocheng Qian et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2206.04670",
+          "url": "https://arxiv.org/abs/2206.04670",
+          "citations": 1095,
+          "citations_per_year": 219.0
+        },
+        {
+          "title": "Segment Everything Everywhere All at Once",
+          "authors": "Xueyan Zou et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2304.06718",
+          "url": "https://arxiv.org/abs/2304.06718",
+          "citations": 807,
+          "citations_per_year": 201.8
+        },
+        {
+          "title": "Language-driven Semantic Segmentation",
+          "authors": "Boyi Li et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2201.03546",
+          "url": "https://arxiv.org/abs/2201.03546",
+          "citations": 911,
+          "citations_per_year": 182.2
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "label": "Adversarial, attacks, robustness, attack",
+      "size": 1027,
+      "terms": [
+        "adversarial",
+        "attacks",
+        "robustness",
+        "attack",
+        "against",
+        "robust"
+      ],
+      "reading_list": [
+        {
+          "title": "Jailbroken: How Does LLM Safety Training Fail?",
+          "authors": "Alexander Wei et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2307.02483",
+          "url": "https://arxiv.org/abs/2307.02483",
+          "citations": 1892,
+          "citations_per_year": 473.0
+        },
+        {
+          "title": "HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal",
+          "authors": "Mantas Mazeika et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2402.04249",
+          "url": "https://arxiv.org/abs/2402.04249",
+          "citations": 1208,
+          "citations_per_year": 402.7
+        },
+        {
+          "title": "AutoDAN: Generating Stealthy Jailbreak Prompts on Aligned Large Language Models",
+          "authors": "Xiaogeng Liu et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2310.04451",
+          "url": "https://arxiv.org/abs/2310.04451",
+          "citations": 790,
+          "citations_per_year": 197.5
+        },
+        {
+          "title": "Jailbreaking Leading Safety-Aligned LLMs with Simple Adaptive Attacks",
+          "authors": "Maksym Andriushchenko et al.",
+          "venue": "ICLR",
+          "year": 2024,
+          "arxiv_id": "2404.02151",
+          "url": "https://arxiv.org/abs/2404.02151",
+          "citations": 518,
+          "citations_per_year": 172.7
+        },
+        {
+          "title": "JailbreakBench: An Open Robustness Benchmark for Jailbreaking Large Language Models",
+          "authors": "Patrick Chao et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2404.01318",
+          "url": "https://arxiv.org/abs/2404.01318",
+          "citations": 500,
+          "citations_per_year": 166.7
+        },
+        {
+          "title": "DecodingTrust: A Comprehensive Assessment of Trustworthiness in GPT Models",
+          "authors": "Boxin Wang et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2306.11698",
+          "url": "https://arxiv.org/abs/2306.11698",
+          "citations": 653,
+          "citations_per_year": 163.2
+        },
+        {
+          "title": "Diffusion Models for Adversarial Purification",
+          "authors": "Weili Nie et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2205.07460",
+          "url": "https://arxiv.org/abs/2205.07460",
+          "citations": 695,
+          "citations_per_year": 139.0
+        },
+        {
+          "title": "Safety Alignment Should Be Made More Than Just a Few Tokens Deep",
+          "authors": "Xiangyu Qi et al.",
+          "venue": "ICLR",
+          "year": 2024,
+          "arxiv_id": "2406.05946",
+          "url": "https://arxiv.org/abs/2406.05946",
+          "citations": 412,
+          "citations_per_year": 137.3
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "label": "Scene, reconstruction, scenes, multi-view",
+      "size": 1021,
+      "terms": [
+        "scene",
+        "reconstruction",
+        "scenes",
+        "multi-view",
+        "rendering",
+        "representation"
+      ],
+      "reading_list": [
+        {
+          "title": "DreamGaussian: Generative Gaussian Splatting for Efficient 3D Content Creation",
+          "authors": "Jiaxiang Tang et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2309.16653",
+          "url": "https://arxiv.org/abs/2309.16653",
+          "citations": 988,
+          "citations_per_year": 247.0
+        },
+        {
+          "title": "LRM: Large Reconstruction Model for Single Image to 3D",
+          "authors": "Yicong Hong et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2311.04400",
+          "url": "https://arxiv.org/abs/2311.04400",
+          "citations": 861,
+          "citations_per_year": 215.2
+        },
+        {
+          "title": "Objaverse-XL: A Universe of 10M+ 3D Objects",
+          "authors": "Matt Deitke et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2307.05663",
+          "url": "https://arxiv.org/abs/2307.05663",
+          "citations": 821,
+          "citations_per_year": 205.2
+        },
+        {
+          "title": "Rethinking Network Design and Local Geometry in Point Cloud: A Simple Residual MLP Framework",
+          "authors": "Xu Ma et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2202.07123",
+          "url": "https://arxiv.org/abs/2202.07123",
+          "citations": 871,
+          "citations_per_year": 174.2
+        },
+        {
+          "title": "One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape Optimization",
+          "authors": "Minghua Liu et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2306.16928",
+          "url": "https://arxiv.org/abs/2306.16928",
+          "citations": 688,
+          "citations_per_year": 172.0
+        },
+        {
+          "title": "CAT3D: Create Anything in 3D with Multi-View Diffusion Models",
+          "authors": "Ruiqi Gao et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2405.10314",
+          "url": "https://arxiv.org/abs/2405.10314",
+          "citations": 419,
+          "citations_per_year": 139.7
+        },
+        {
+          "title": "LION: Latent Point Diffusion Models for 3D Shape Generation",
+          "authors": "Xiaohui Zeng et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2210.06978",
+          "url": "https://arxiv.org/abs/2210.06978",
+          "citations": 697,
+          "citations_per_year": 139.4
+        },
+        {
+          "title": "Real-time Photorealistic Dynamic Scene Representation and Rendering with 4D Gaussian Splatting",
+          "authors": "Zeyu Yang et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2310.10642",
+          "url": "https://arxiv.org/abs/2310.10642",
+          "citations": 557,
+          "citations_per_year": 139.2
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "label": "Federated, privacy, private, clients",
+      "size": 884,
+      "terms": [
+        "federated",
+        "privacy",
+        "private",
+        "clients",
+        "communication",
+        "differentially"
+      ],
+      "reading_list": [
+        {
+          "title": "MUSE: Machine Unlearning Six-Way Evaluation for Language Models",
+          "authors": "Weijia Shi et al.",
+          "venue": "ICLR",
+          "year": 2024,
+          "arxiv_id": "2407.06460",
+          "url": "https://arxiv.org/abs/2407.06460",
+          "citations": 228,
+          "citations_per_year": 76.0
+        },
+        {
+          "title": "Stochastic Controlled Averaging for Federated Learning with Communication Compression",
+          "authors": "Xinmeng Huang et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2308.08165",
+          "url": "https://arxiv.org/abs/2308.08165",
+          "citations": 300,
+          "citations_per_year": 75.0
+        },
+        {
+          "title": "On Bridging Generic and Personalized Federated Learning for Image Classification",
+          "authors": "Hong-You Chen et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": null,
+          "url": "https://www.semanticscholar.org/paper/36a7bb5f85d79acee1b859588017564367a0ecc6",
+          "citations": 338,
+          "citations_per_year": 67.6
+        },
+        {
+          "title": "Improving LoRA in Privacy-preserving Federated Learning",
+          "authors": "Youbang Sun et al.",
+          "venue": "ICLR",
+          "year": 2024,
+          "arxiv_id": "2403.12313",
+          "url": "https://arxiv.org/abs/2403.12313",
+          "citations": 191,
+          "citations_per_year": 63.7
+        },
+        {
+          "title": "Federated Learning from Pre-Trained Models: A Contrastive Learning Approach",
+          "authors": "Yue Tan et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2209.10083",
+          "url": "https://arxiv.org/abs/2209.10083",
+          "citations": 287,
+          "citations_per_year": 57.4
+        },
+        {
+          "title": "FLoRA: Federated Fine-Tuning Large Language Models with Heterogeneous Low-Rank Adaptations",
+          "authors": "Ziyao Wang et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2409.05976",
+          "url": "https://arxiv.org/abs/2409.05976",
+          "citations": 161,
+          "citations_per_year": 53.7
+        },
+        {
+          "title": "PrivacyLens: Evaluating Privacy Norm Awareness of Language Models in Action",
+          "authors": "Yijia Shao et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2409.00138",
+          "url": "https://arxiv.org/abs/2409.00138",
+          "citations": 142,
+          "citations_per_year": 47.3
+        },
+        {
+          "title": "FedRolex: Model-Heterogeneous Federated Learning with Rolling Sub-Model Extraction",
+          "authors": "Samiul Alam et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2212.01548",
+          "url": "https://arxiv.org/abs/2212.01548",
+          "citations": 232,
+          "citations_per_year": 46.4
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "label": "Adaptation, domain, continual, domain adaptation",
+      "size": 873,
+      "terms": [
+        "adaptation",
+        "domain",
+        "continual",
+        "domain adaptation",
+        "test-time",
+        "target"
+      ],
+      "reading_list": [
+        {
+          "title": "Reversible Instance Normalization for Accurate Time-Series Forecasting against Distribution Shift",
+          "authors": "Taesung Kim et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": null,
+          "url": "https://www.semanticscholar.org/paper/0e95008a8c49a4c2538aed62ff61977ff7b47ca5",
+          "citations": 1097,
+          "citations_per_year": 219.4
+        },
+        {
+          "title": "Towards Stable Test-Time Adaptation in Dynamic Wild World",
+          "authors": "Shuaicheng Niu et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2302.12400",
+          "url": "https://arxiv.org/abs/2302.12400",
+          "citations": 500,
+          "citations_per_year": 125.0
+        },
+        {
+          "title": "Efficient Test-Time Model Adaptation without Forgetting",
+          "authors": "Shuaicheng Niu et al.",
+          "venue": "ICML",
+          "year": 2022,
+          "arxiv_id": "2204.02610",
+          "url": "https://arxiv.org/abs/2204.02610",
+          "citations": 605,
+          "citations_per_year": 121.0
+        },
+        {
+          "title": "Self-Supervised Contrastive Pre-Training For Time Series via Time-Frequency Consistency",
+          "authors": "Xiang Zhang et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2206.08496",
+          "url": "https://arxiv.org/abs/2206.08496",
+          "citations": 489,
+          "citations_per_year": 97.8
+        },
+        {
+          "title": "DoReMi: Optimizing Data Mixtures Speeds Up Language Model Pretraining",
+          "authors": "Sang Michael Xie et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2305.10429",
+          "url": "https://arxiv.org/abs/2305.10429",
+          "citations": 368,
+          "citations_per_year": 92.0
+        },
+        {
+          "title": "Towards Unbounded Machine Unlearning",
+          "authors": "Meghdad Kurmanji et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2302.09880",
+          "url": "https://arxiv.org/abs/2302.09880",
+          "citations": 305,
+          "citations_per_year": 76.2
+        },
+        {
+          "title": "S-Prompts Learning with Pre-trained Transformers: An Occam's Razor for Domain Incremental Learning",
+          "authors": "Yabin Wang et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2207.12819",
+          "url": "https://arxiv.org/abs/2207.12819",
+          "citations": 355,
+          "citations_per_year": 71.0
+        },
+        {
+          "title": "Data Engineering for Scaling Language Models to 128K Context",
+          "authors": "Yao Fu et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2402.10171",
+          "url": "https://arxiv.org/abs/2402.10171",
+          "citations": 211,
+          "citations_per_year": 70.3
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "label": "Causal, treatment, variables, effects",
+      "size": 819,
+      "terms": [
+        "causal",
+        "treatment",
+        "variables",
+        "effects",
+        "effect",
+        "discovery"
+      ],
+      "reading_list": [
+        {
+          "title": "Locating and Editing Factual Associations in GPT",
+          "authors": "Kevin Meng et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2202.05262",
+          "url": "https://arxiv.org/abs/2202.05262",
+          "citations": 2663,
+          "citations_per_year": 532.6
+        },
+        {
+          "title": "Interpretability in the Wild: a Circuit for Indirect Object Identification in GPT-2 small",
+          "authors": "Kevin Wang et al.",
+          "venue": "ICLR",
+          "year": 2022,
+          "arxiv_id": "2211.00593",
+          "url": "https://arxiv.org/abs/2211.00593",
+          "citations": 1051,
+          "citations_per_year": 210.2
+        },
+        {
+          "title": "The Linear Representation Hypothesis and the Geometry of Large Language Models",
+          "authors": "Kiho Park et al.",
+          "venue": "ICML",
+          "year": 2023,
+          "arxiv_id": "2311.03658",
+          "url": "https://arxiv.org/abs/2311.03658",
+          "citations": 567,
+          "citations_per_year": 141.8
+        },
+        {
+          "title": "Does Localization Inform Editing? Surprising Differences in Causality-Based Localization vs. Knowledge Editing in Language Models",
+          "authors": "Peter Hase et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2301.04213",
+          "url": "https://arxiv.org/abs/2301.04213",
+          "citations": 259,
+          "citations_per_year": 64.8
+        },
+        {
+          "title": "Towards Best Practices of Activation Patching in Language Models: Metrics and Methods",
+          "authors": "Fred Zhang et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2309.16042",
+          "url": "https://arxiv.org/abs/2309.16042",
+          "citations": 253,
+          "citations_per_year": 63.2
+        },
+        {
+          "title": "Function Vectors in Large Language Models",
+          "authors": "Eric Todd et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2310.15213",
+          "url": "https://arxiv.org/abs/2310.15213",
+          "citations": 252,
+          "citations_per_year": 63.0
+        },
+        {
+          "title": "Memorization Without Overfitting: Analyzing the Training Dynamics of Large Language Models",
+          "authors": "Kushal Tirumala et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2205.10770",
+          "url": "https://arxiv.org/abs/2205.10770",
+          "citations": 276,
+          "citations_per_year": 55.2
+        },
+        {
+          "title": "Can Large Language Models Infer Causation from Correlation?",
+          "authors": "Zhijing Jin et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2306.05836",
+          "url": "https://arxiv.org/abs/2306.05836",
+          "citations": 201,
+          "citations_per_year": 50.2
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "label": "Preference, human, alignment, feedback",
+      "size": 690,
+      "terms": [
+        "preference",
+        "human",
+        "alignment",
+        "feedback",
+        "reward",
+        "preferences"
+      ],
+      "reading_list": [
+        {
+          "title": "Training language models to follow instructions with human feedback",
+          "authors": "Long Ouyang et al.",
+          "venue": "NeurIPS",
+          "year": 2022,
+          "arxiv_id": "2203.02155",
+          "url": "https://arxiv.org/abs/2203.02155",
+          "citations": 21535,
+          "citations_per_year": 4307.0
+        },
+        {
+          "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+          "authors": "Rafael Rafailov et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2305.18290",
+          "url": "https://arxiv.org/abs/2305.18290",
+          "citations": 9094,
+          "citations_per_year": 2273.5
+        },
+        {
+          "title": "Let's Verify Step by Step",
+          "authors": "H. Lightman et al.",
+          "venue": "ICLR",
+          "year": 2023,
+          "arxiv_id": "2305.20050",
+          "url": "https://arxiv.org/abs/2305.20050",
+          "citations": 3523,
+          "citations_per_year": 880.8
+        },
+        {
+          "title": "Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference",
+          "authors": "Wei-Lin Chiang et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2403.04132",
+          "url": "https://arxiv.org/abs/2403.04132",
+          "citations": 1304,
+          "citations_per_year": 434.7
+        },
+        {
+          "title": "KTO: Model Alignment as Prospect Theoretic Optimization",
+          "authors": "Kawin Ethayarajh et al.",
+          "venue": "ICML",
+          "year": 2024,
+          "arxiv_id": "2402.01306",
+          "url": "https://arxiv.org/abs/2402.01306",
+          "citations": 1049,
+          "citations_per_year": 349.7
+        },
+        {
+          "title": "SimPO: Simple Preference Optimization with a Reference-Free Reward",
+          "authors": "Yu Meng et al.",
+          "venue": "NeurIPS",
+          "year": 2024,
+          "arxiv_id": "2405.14734",
+          "url": "https://arxiv.org/abs/2405.14734",
+          "citations": 1025,
+          "citations_per_year": 341.7
+        },
+        {
+          "title": "LIMA: Less Is More for Alignment",
+          "authors": "Chunting Zhou et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2305.11206",
+          "url": "https://arxiv.org/abs/2305.11206",
+          "citations": 1313,
+          "citations_per_year": 328.2
+        },
+        {
+          "title": "ImageReward: Learning and Evaluating Human Preferences for Text-to-Image Generation",
+          "authors": "Jiazheng Xu et al.",
+          "venue": "NeurIPS",
+          "year": 2023,
+          "arxiv_id": "2304.05977",
+          "url": "https://arxiv.org/abs/2304.05977",
+          "citations": 1070,
+          "citations_per_year": 267.5
+        }
       ]
     }
   ]
