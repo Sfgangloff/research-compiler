@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0013",
+  "stream": "proof-hierarchies",
+  "text": "The graph's load-bearing unblock for q-0009 -- 're-extract proofs with a shrunk expansion frontier F_size, which e-0004 showed raises decomposable counts' -- is MIS-STATED and will not fix q-0009. Decomposing the F_size 'decomposability' rise (e-0013) shows it is almost entirely library-lemma citations, not named subgoals: the named-subgoal supply (>=2 have-nodes) -- which is exactly what a section-predictor must EMIT -- is tau-INVARIANT at 68/1715 (4.0%) and 27/607 (4.4%) across every tau from 50 to 2000, identical to the F_named baseline; at tau=2000, 80.5% (full) / 82.8% (verified) of newly 'decomposable' theorems have <2 have-nodes and cross the bar only via expandable library lemmas. Shrinking F merely converts opaque library-lemma leaves into named citations -- which the rough policy already names and which are not subgoals a planner invents. So q-0009 is NOT blocked on the same F_size re-extraction as the prior answer claimed; the named-have-frontier supply is structurally pinned at the ~4% ceiling regardless of frontier size, and raising it requires a fundamentally different corpus (proofs that genuinely contain more named have-steps -- e.g. deeper/longer source tactic proofs), not a smaller expansion frontier. (Caveat: F_size may still help q-0008's length confound via a separate mechanism -- more lemmas cited rather than inlined shortens the rough term -- but that is a distinct, still-unproven claim and must not be inherited from the shared 'decomposability' headline.)",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0013"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:10:40.205Z",
+    "updated_at": "2026-06-12T03:10:40.205Z"
+  },
+  "comments": {}
+}

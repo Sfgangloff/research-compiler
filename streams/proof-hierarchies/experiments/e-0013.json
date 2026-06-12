@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0013",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only stdlib analysis decomposing e-0004's F_size 'decomposability' rise into have-driven (named subgoal frontiers, the q-0009 section-predictor target) vs library-lemma-assisted (decls with <2 have-nodes pushed over the >=2-interior bar only by expandable library lemmas). Reuses dryrun_f_size loaders over proof_terms/have-trees/premises; reports the sweep on both the full 1715-theorem set and the 607 verified pairs.",
+  "motivation": "Three graph answers (the q-0008 length unblock and the q-0009 section-predictor unblock) both point at the SAME remedy -- re-extract with a shrunk expansion frontier F_size, 'which raises decomposable counts' -- as the load-bearing justification for every proposed Modal spend. But e-0004's 'decomposability' counts interior nodes = have-nodes + expandable library lemmas, and the have contribution is tau-invariant. Test cheaply whether F_size actually adds the NAMED-subgoal supply q-0009 needs, before recommending the spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_fsize_unblock.py",
+    "commit": "52ca5387"
+  },
+  "formal_results": "Named-subgoal supply (>=2 have-nodes) is CONSTANT across every tau in {50,100,200,500,1000,2000}: 68/1715 (4.0%, full) and 27/607 (4.4%, verified) -- identical to the F_named baseline. The F_size 'decomposability' rise is almost entirely library-lemma-assisted (decls with <2 have-nodes): at tau=2000, 280/348=80.5% (full) and 130/157=82.8% (verified) of 'decomposable' theorems are lemma-only; even at tau=50 it is 35.8%/37.2%. Only ~4% of invoked library lemmas have an extracted body size at all, so the lemma-assisted counts are themselves lower bounds while the have-driven count is exact and fixed.",
+  "results_description": "F_size re-extraction CANNOT raise the named-subgoal-frontier supply that q-0009's section-predictor must emit: that supply is structurally pinned at the ~4% have-node ceiling (68 full / 27 verified) regardless of frontier size. Shrinking F only converts opaque library-lemma leaves into named citations -- which the rough policy already names and which are not subgoals a planner invents. The graph conflates 'decomposability rises under F_size' (true, lemma-driven) with 'named-subgoal supply rises' (false, tau-invariant).",
+  "conclusions": "The load-bearing 're-extract with F_size' unblock is mis-stated for q-0009: it adds library-lemma citations, not named subgoals, so it cannot fix q-0009's section-predictor training-signal shortage. q-0009 needs proofs that genuinely contain more named have-frontiers (a different corpus, e.g. deeper/longer source proofs), not a smaller expansion frontier. F_size may still help q-0008 (length) via a separate mechanism (more lemmas cited-not-inlined shortens rough serialization), but that is unproven and must not be assumed from the shared 'decomposability' headline.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0013"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:10:16.244Z",
+    "updated_at": "2026-06-12T03:10:40.212Z"
+  },
+  "comments": {}
+}
