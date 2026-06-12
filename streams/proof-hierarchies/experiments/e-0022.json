@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0022",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only domain-transfer gate for q-0009's section-predictor: cross-tabulate the SUBJECT of the 633 data/deep wide-frontier TRAINING targets (deep_wide_targets.json manifest, bucketed by top Mathlib namespace) against the miniF2F EVAL distribution (488 problems, bucketed by name prefix mathd_algebra/mathd_numbertheory/amc/imo/aime/induction). The whole e-0012..e-0021 chain characterized the frontier supply in isolation but never connected the training corpus to the eval target where pass@k is scored.",
+  "motivation": "Every q-0009 data-level gate (supply, emission, difficulty, independence, predictability) cleared the section-predictor by analyzing the deep-corpus frontier IN ISOLATION. None asked whether that supply matches the EVAL distribution. The headline metric is pass@k on miniF2F (competition math); the wide-frontier supply lives in advanced Mathlib. If the two distributions are disjoint, the rich supply may not transfer to the scored metric — the q-0009 analogue of e-0013 catching the mis-stated F_size unblock. Test cheaply before recommending the Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_eval_domain_match.py",
+    "commit": "59a4389",
+    "run_cmd": "python3 data/analyze_deep_eval_domain_match.py"
+  },
+  "formal_results": "633 deep wide-frontier targets vs 488 miniF2F problems. DEEP supply by subject: measure/prob-advanced 157, analysis-advanced 133, ring/field-advanced 66, elementary-algebra 60, topology-advanced 47, number-theory 40, linear-algebra-advanced 32, geometry 24, combinatorics 19, ... EVAL by subject: elementary-algebra 176, competition-elementary(amc/imo/aime) 160, number-theory 136, induction 16 — entirely elementary algebra / number theory / olympiad. OVERLAP: only 150/633 (23.7%) of training targets fall in a subject the eval exercises (elementary-algebra/number-theory/combinatorics/geometry/order); 483/633 (76.3%) are research-level subjects (measure theory, advanced analysis, ring/field, topology, linear algebra, category theory) with ZERO miniF2F representation. The two largest training buckets (measure/prob 157, analysis 133) are absent from the eval.",
+  "results_description": "The deep wide-frontier TRAINING supply is dominated (76.3%) by research-level Mathlib disjoint from the miniF2F EVAL set, which is entirely elementary algebra/NT/olympiad. Only ~24% (150 decls) of the supply shares a subject with the eval; after e-0003's unverified ~84.7% round-trip yield that domain-matched usable supply is ~127, an order of magnitude below the headline '633 targets'. A section-predictor trained on this supply learns to emit wide frontiers for a distribution where pass@k is never scored.",
+  "conclusions": "q-0009's data-level 'every gate cleared' conclusion (e-0012..e-0021) carries an unstated TRANSFER confound: wide-frontier supply EXISTS but is ~76% in subjects with zero eval coverage. The Modal run must control for this — eval on a held-out slice of the SAME deep distribution, or source a competition-math decomposable corpus matched to miniF2F — else any predictor+solver pass@k result is a domain-transfer measurement, not a clean test of the planner. Does not refute Variant B; names a confound the prior chain skipped. CAVEAT: coarse top-namespace buckets; olympiad problems span elementary algebra/NT/combinatorics/geometry so 'zero coverage' is at the RESEARCH-LEVEL granularity. Distribution mismatch measured, not transfer itself (an outcome only Modal SFT+eval settles).",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0022"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:30:51.386Z",
+    "updated_at": "2026-06-12T08:32:04.597Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0022",
+  "stream": "proof-hierarchies",
+  "text": "q-0009's 'every data-level gate cleared' verdict (e-0012..e-0021) carries an unstated DOMAIN-TRANSFER confound: the wide-frontier training supply is ~76% in subjects the eval never exercises. The entire chain characterized the data/deep frontier supply IN ISOLATION and never connected the TRAINING corpus to the EVAL distribution where pass@k is scored. e-0022 cross-tabulates the 633 deep wide-frontier targets (by top Mathlib namespace) against the 488 miniF2F problems (by name prefix): the eval is ENTIRELY elementary algebra (176) / olympiad amc-imo-aime (160) / number theory (136) / induction (16), while the training supply is dominated by research-level subjects — measure/prob-advanced 157, analysis-advanced 133, ring/field 66, topology 47, linear-algebra 32 — none of which appear in miniF2F. Only 150/633 (23.7%) of the training targets fall in a subject the eval covers; 483 (76.3%) are advanced Mathlib with ZERO eval representation. After e-0003's (unverified-for-deep) ~84.7% round-trip yield, the domain-MATCHED usable supply is ~127, an order of magnitude below the headline '633 targets'. So a section-predictor trained on this supply learns to emit wide frontiers for a distribution disjoint from where the headline metric is scored. This is the q-0009 analogue of e-0013 (which caught the mis-stated F_size unblock): wide-frontier supply EXISTS but is not eval-relevant supply. It does NOT refute Variant B — it names the confound the Modal run must control for: eval on a held-out slice of the SAME deep distribution, or source a competition-math decomposable corpus matched to miniF2F; otherwise any predictor+solver pass@k is a domain-transfer measurement, not a clean planner test. CAVEAT: coarse top-namespace buckets; olympiad problems do span elementary algebra/NT/combinatorics/geometry, so 'zero coverage' is at the RESEARCH-LEVEL granularity, not the broad area. Distribution mismatch is measured; transfer itself is an outcome only the Modal SFT+eval can settle.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0022"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:32:04.586Z",
+    "updated_at": "2026-06-12T08:32:04.586Z"
+  },
+  "comments": {}
+}
