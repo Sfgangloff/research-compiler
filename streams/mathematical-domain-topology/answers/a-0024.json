@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0024",
+  "stream": "mathematical-domain-topology",
+  "text": "At the retrieval-window scale a prover ACTUALLY operates in, the bridge-aware advantage the whole a-0013..a-0023 chain celebrated largely evaporates -- the chain's headline numbers live at 20k-90k-candidate-decl budgets no prover's context window can hold. Re-measuring at prover-realistic windows B in {10..1000} individual premise decls, head-to-head within-domain (home_only) vs bridge-aware (home+top-5), content ranker and leakage control held fixed (432 held-out cross-domain TEST theorems): (1) For cross-domain theorems, bridge routing barely moves mean premise recall and is slightly NEGATIVE below B=200 (uplift -0.004@10, -0.009@50, -0.006@100), crossing positive only at B>=500 (+0.004@1000) -- because injecting 5 neighbour clusters adds distractors the content ranker must outrank inside a tiny window. (2) The only thing bridge buys at small windows is the POSSIBILITY of complete coverage: home_only is structurally 0 for cross-domain goals (they always need an out-of-home premise), while bridge realizes 1.2% at B=25 rising to just 9.7% at B=1000. (3) Applied to the whole 873-theorem population (50% within-domain), bridge routing HURTS at every window -- within-domain theorems suffer pure distractor dilution -- so home_only beats bridge on both mean recall (0.652 vs 0.585 @B=1000) and complete coverage (0.355 vs 0.309 @B=1000). Operational implication: bridge routing must be applied SELECTIVELY (only to predicted-cross-domain goals, cf. a-0023 home prediction), and even then its small-window value is the ABILITY to cover cross-domain premises at all, not cheaper recall. The tens-of-thousands-budget efficiency results overstate the realistic-window payoff. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0027"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:04:18.995Z",
+    "updated_at": "2026-06-12T13:04:18.995Z"
+  },
+  "comments": {}
+}

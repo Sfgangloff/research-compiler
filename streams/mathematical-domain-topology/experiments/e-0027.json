@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0027",
+  "stream": "mathematical-domain-topology",
+  "description": "Prover-realistic retrieval WINDOW comparison: within-domain (home_only) vs bridge-aware (home+top-5), content ranker fixed. The whole q-0011 chain (e-0011..e-0026) reports budget-to-reach numbers at TENS OF THOUSANDS of candidate decls; no prover holds that many premises. This re-measures the payoff at small retrieval windows B in {10,25,50,100,200,500,1000} individual premise decls (the scale a prover's context actually allows), head-to-head: home_only (home cluster pool) vs bridge (home + top-5 bridge-neighbour clusters), SAME content ranker (IDF-weighted query-name token overlap), same 432 held-out cross-domain TEST theorems (+ a 873-theorem all-test view). Metrics: mean premise recall and the strict complete-coverage rate (e-0018 bar) at each window. Leakage control identical to e-0016/e-0018 (W, IDF, citation popularity from train/name-vocab only).",
+  "motivation": "Every q-0011 answer caveats 'a premise-availability proxy, not prover success' AND reports budgets (19k-90k decls) far beyond any prover's window. This asks whether the celebrated bridge-aware budget-efficiency advantage survives at the ~10-200-premise window a retrieval-augmented prover actually uses. CPU-only over existing data.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_retrieval_window.py",
+    "commit": "9775992",
+    "run_cmd": "python3 src/bridge_retrieval_window.py"
+  },
+  "formal_results": "432 cross-domain (of 873) held-out TEST theorems, 49.5% cross-domain. CROSS-DOMAIN mean recall by window B=10/50/100/500/1000: home_only 0.133/0.239/0.282/0.399/0.456; bridge 0.129/0.231/0.276/0.399/0.460 (bridge-minus-home uplift NEGATIVE at B<=200: -0.004 @10, -0.009 @50, -0.006 @100; ~tie @500 +0.0001; +0.004 @1000). CROSS-DOMAIN complete-coverage: home_only=0.0 at EVERY window (structural: a cross-domain goal always needs an out-of-home premise); bridge 0.0/0.012/0.016/0.026/0.046/0.069/0.097 at B=10/25/50/100/200/500/1000. ALL-TEST (873) mean recall B=10/1000: home_only 0.237/0.652 vs bridge 0.215/0.585; ALL-TEST complete-coverage B=1000: home_only 0.355 vs bridge 0.309 -- home_only BEATS bridge at every window.",
+  "results_description": "At prover-realistic windows the bridge-aware advantage the chain celebrated (budget-efficiency at ~20-90k decls) largely evaporates. (1) For cross-domain theorems, routing to home+top-5 barely changes mean recall and is slightly NEGATIVE at small windows (B<=200), because adding 5 neighbour clusters injects distractors the content ranker must outrank inside a tiny window; recall only crosses positive at B>=500. (2) The one thing bridge buys is the POSSIBILITY of complete coverage (home_only is structurally 0 for cross-domain goals), but realized complete coverage is small: 1.2% at B=25, 9.7% at B=1000. (3) Applied to the whole population (50% within-domain), bridge routing HURTS at every window -- within-domain theorems suffer pure distractor dilution -- so home_only beats bridge on both metrics.",
+  "conclusions": "Sharpens and tempers the entire a-0013..a-0023 chain by moving to the regime a prover actually operates in. The chain's headline 'bridge routing reaches recall/coverage targets at fewer candidates' lives at 20-90k-decl budgets; at a realistic <=1000-premise window the within-window payoff is modest-to-negative: (i) cross-domain mean recall is ~unchanged (slightly negative below B=200 from distractor dilution), (ii) complete coverage stays <=9.7%, and (iii) blindly bridge-routing every theorem hurts the population because within-domain theorems lose to distractors. Operational implication for q-0011: bridge routing must be applied SELECTIVELY (only to predicted-cross-domain goals) and even then the small-window benefit is the ABILITY to cover cross-domain premises at all, not cheaper recall -- the tens-of-thousands-budget numbers overstate the realistic-window payoff. Still a premise-availability proxy, not a measured prover success rate or transfer.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0024"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:03:59.636Z",
+    "updated_at": "2026-06-12T13:04:19.001Z"
+  },
+  "comments": {}
+}
