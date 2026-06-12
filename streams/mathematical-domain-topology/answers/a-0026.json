@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0026",
+  "stream": "mathematical-domain-topology",
+  "text": "The low oracle-gate complete-coverage gain a-0025 reported has a clean STRUCTURAL cause: the static top-K bridge router cannot reach the foreign cluster many cross-domain proofs need. Over the same 432 held-out cross-domain TEST theorems (e-0029, no windows/ranker -- a pure combinatorial ceiling above any ranker), cross-domain premise need is CONCENTRATED: 59.5% of cross-domain goals draw on exactly one distinct foreign cluster, 82% on <=2, and 46% need just a single out-of-home premise (median out-of-home premises = 2, median foreign clusters = 1). Yet a cross-domain goal can achieve complete coverage ONLY if EVERY one of its foreign clusters sits in the home's top-K routed neighbours, and at the chain's standard K=5 that holds for only 67.4% of cross-domain goals -- so ~1/3 are structurally uncompletable before any window or ranking loss. This is exactly the ceiling a-0025's oracle gate was pressing against (its complete-coverage gain cannot exceed it). The ceiling rises steeply with breadth (router_complete@K: K1 0.213, K5 0.674, K10 0.861, K20 0.977), but widening the static router is precisely what a-0024 showed dilutes the within-domain majority with distractors. Net for q-0011: bridge-aware retrieval's realistic payoff is capped by router BREADTH, not window B, and because cross-domain need is concentrated (one foreign cluster for ~60% of goals) the lever the burden structure points to is a GOAL-SPECIFIC router -- route the 1-2 clusters a given goal actually needs -- rather than a wider static one. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0029"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:39:24.866Z",
+    "updated_at": "2026-06-12T13:39:24.866Z"
+  },
+  "comments": {}
+}
