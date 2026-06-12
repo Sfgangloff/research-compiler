@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0020",
+  "stream": "proof-hierarchies",
+  "text": "q-0009's frontier-PREDICTABILITY premise -- never tested by e-0012..e-0019, which all characterized the frontier OUTPUT in isolation -- is plausible but UNPROVEN, and is the one data-level gate that does not cleanly pass. A section-predictor sees only the theorem statement and must emit the frontier; e-0020 measures how much of that target is derivable from the input. Over the 633 data/deep wide-frontier decls, the frontier's genuine-content (library) vocabulary is only median 37.5% grounded in the parent statement (mean 41.4%); the median decl introduces ~2 novel library identifiers (p90 ~6, max 15) absent from the goal, and only 17.5% (97/553) have a FULLY grounded frontier producible by pure recombination. So the predictor target is a PARTIAL recombination of the statement PLUS genuine novel content the model must generate from parametric Mathlib knowledge -- not the pure input-function that 'every data gate cleared' would imply. Two caveats, both cutting toward MORE learnable than measured: (1) statements are left-truncated (binder/hypothesis prefix cut, per e-0017), so grounding is a LOWER bound and novel-count an UPPER bound; (2) a novel common library name can still be emitted from parametric knowledge. NET for q-0009: this fills the input->output learnability dimension the prior chain skipped and shows it is the bar the eval must clear -- the section-predictor must do real (if modest, <= median 2 tokens/decl) content generation, so its trainability cannot be inferred from supply/emission/independence and must be demonstrated by the Modal SFT+eval. It does not add a new blocker, but it corrects reading e-0012..e-0019 as proof the predictor is learnable.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0020"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:16:06.440Z",
+    "updated_at": "2026-06-12T08:16:06.440Z"
+  },
+  "comments": {}
+}

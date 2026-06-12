@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0020",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only test of q-0009's untouched premise: is the section frontier PREDICTABLE from the theorem statement? e-0012..e-0019 measured the frontier OUTPUT in isolation (supply, emission cost, subgoal size, independence) but never whether it is a learnable function of the predictor's INPUT (the goal). Over the 633 data/deep wide-frontier decls, tokenize the parent statement and each top-level frontier subgoal type into Lean identifier components (dot-split), classify each as LIBRARY/content (any uppercase char, Mathlib casing convention) vs LOCAL (lowercase bound-var-like), and measure how much of the frontier's LIBRARY vocabulary is GROUNDED (occurs in the statement, = recombination the predictor can derive) vs NOVEL (must be invented from parametric Mathlib knowledge).",
+  "motivation": "A section-predictor's input is only the theorem statement; its output is the frontier. Every prior q-0009 gate (e-0012..e-0019) characterized the frontier in isolation -- none asked whether it is a function the predictor can learn from the statement. If frontier subgoals introduce many new library identifiers absent from the goal, the target is not identifiable from the input and a small predictor must do genuine content generation. Test this learnability axis cheaply before treating Variant B as fully data-unblocked.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_frontier_predictability.py",
+    "commit": "8a5ed30",
+    "run_cmd": "python3 data/analyze_deep_frontier_predictability.py"
+  },
+  "formal_results": "633 wide-frontier decls; 553 have >=1 library frontier token (80 have none -- all-lowercase/local). LIBRARY-token grounded fraction (frontier content vocab found in the statement): p10 0.0, p50 0.375, p90 1.0, mean 0.414. ALL-token grounded: p50 0.429, mean 0.456. Novel library tokens per decl (content the predictor must invent): p50 2, p90 6, max 15, mean 2.58. Library tokens per decl: p50 3, p90 7, max 18. Only 97/553 decls (17.5%) are FULLY grounded (entire library frontier vocab present in the statement -> producible by pure recombination). Low-grounding examples: iCyclesNatTrans (novel CokernelCofork/KernelFork/IsColimit/IsLimit), sub_convs_eq (novel TerminatedAt/pA/pB). CAVEAT: statements are LEFT-TRUNCATED (binder/hypothesis prefix cut, per e-0017), so binder vocabulary that would ground more tokens is invisible -> grounding is a LOWER bound and novel-count an UPPER bound.",
+  "results_description": "The section-predictor target is NOT a pure function of its input: at the median only ~37.5% of the frontier's genuine-content (library) vocabulary is grounded in the parent statement, and the median wide-frontier decl introduces ~2 novel library identifiers (p90 ~6) the predictor must produce without seeing them in the goal. Only 17.5% of decls have a frontier the predictor could emit by pure recombination of statement vocabulary. Both measurement caveats (left-truncated statements; parametric knowledge can supply common library names) cut the SAME way -- toward MORE learnable than the raw numbers -- so true grounding is >= measured and novel-content <= measured.",
+  "conclusions": "This adds the one data-level dimension the e-0012..e-0019 chain skipped: input->output learnability of the predictor target. Verdict is plausible-but-unproven, not a clear pass: the frontier is a PARTIAL recombination of the statement plus genuine novel content (<= median 2 library tokens/decl), so the predictor must do real content generation, not just rearrange the input. Trainability cannot be inferred from supply/emission/independence alone; it is exactly what the Modal SFT+eval must demonstrate. This does NOT add a new blocker to Variant B (the novel-content burden is modest and is an upper bound), but it sharpens the bar the eval has to clear and corrects any reading of e-0012..e-0019 as proving the predictor is learnable.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0020"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:15:50.636Z",
+    "updated_at": "2026-06-12T08:16:06.442Z"
+  },
+  "comments": {}
+}
