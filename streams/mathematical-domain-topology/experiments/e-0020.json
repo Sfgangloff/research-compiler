@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0020",
+  "stream": "mathematical-domain-topology",
+  "description": "Home-cluster-ADAPTIVE router breadth vs the single global breadth dial of e-0019. e-0019 applied one global router breadth K to all cross-domain theorems; this conditions K on the one feature a prover knows before proving (the theorem's home cluster). Leakage-safe: estimate per-home-cluster TRAIN complete-coverage at each breadth K in {0,1,2,3,5,10,20,50,all}; the adaptive policy at target t routes each TEST theorem to the MINIMAL breadth whose home cluster's TRAIN coverage reaches t (whole-library fallback). Held identical to e-0019: same data, same 432 held-out cross-domain TEST theorems, same train-only bridge weights W, same exact ranking-free complete-coverage metric (ENTIRE clustered premise set must be in the routed pool). Only the routing changes: global K -> per-home-cluster K(t).",
+  "motivation": "a-0018 framed the breadth dial as a global, ultimately-whole-library cost. But hardness is conditioned by the home cluster, a feature available before proving. If clusters differ in how wide a router their cross-domain theorems need, setting breadth per home cluster should reach a target complete-coverage cheaper than any single global K. Tests whether the breadth dial can be made cheaper by conditioning on home cluster.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_retrieval_adaptive.py",
+    "commit": "93b2b1fdd29d203df74b4102086e8eeff3a2e274",
+    "run_cmd": "python3 src/bridge_retrieval_adaptive.py"
+  },
+  "formal_results": "432 cross-domain test theorems, 27,705 train, 92,594 clustered decls. Per-home-cluster K=5 complete-coverage is heterogeneous across the 16 clusters with >=5 test theorems (train coverage 0.566-0.802, median 0.689) and TRAIN predicts TEST (Pearson r=0.5545). Matched-coverage (adaptive per-home K vs cheapest single global K reaching the same coverage): 0.572 cov 43.3k vs 53.8k (0.806x, -10.4k cand/thm); 0.669 cov 54.4k vs 53.8k (1.013x, tie at the K=5 ceiling); 0.822 cov 67.6k vs 72.8k (0.928x); 0.887 cov 73.5k vs 87.4k (0.842x, -13.8k); 0.965 cov 85.0k vs 87.4k (0.973x); 0.995 cov 90.1k vs 92.6k (all).",
+  "results_description": "Per-home-cluster hardness is real and predictable (train->test r=0.55), so router breadth can be set per home cluster instead of globally. At matched complete-coverage the per-home-cluster-adaptive router is ~6-16% cheaper than the best single global breadth across most of the frontier (saving up to ~13.8k candidate decls/theorem at 0.887 coverage), except right at the top-5 global ceiling (~0.67) where global K=5 is already optimal and adaptive ties. The advantage shrinks toward zero as coverage->1 because both converge on the whole library.",
+  "conclusions": "Refines a-0018: the breadth dial does NOT have to be global. Because cross-domain hardness is conditioned by the home cluster and that hardness is predictable from train (r=0.55), routing breadth set per home cluster reaches a given complete-coverage at ~6-16% lower candidate cost than the best one-size-fits-all global breadth. The gain is modest (cluster heterogeneity is moderate, train K=5 coverage only spans 0.57-0.80) and vanishes at the extremes (tie at the K=5 ceiling; converges to whole-library near full coverage), so per-home routing is a cheaper-but-not-free refinement of the breadth tradeoff, not a recovery of the hard third. Still a premise-availability upper bound, not measured prover success.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0019"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:41:31.954Z",
+    "updated_at": "2026-06-12T11:41:45.491Z"
+  },
+  "comments": {}
+}

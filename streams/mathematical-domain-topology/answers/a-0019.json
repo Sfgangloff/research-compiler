@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0019",
+  "stream": "mathematical-domain-topology",
+  "text": "The breadth dial of a-0018 need not be GLOBAL: it can be set per home cluster, and that is cheaper. Cross-domain hardness (whether a theorem's full premise set escapes the top-K bridge router) is conditioned by the theorem's home cluster - the one feature a prover knows before proving - and is predictable from train (per-cluster K=5 complete-coverage train->test Pearson r=0.55; heterogeneous, train coverage 0.57-0.80 across clusters). A leakage-safe policy that routes each held-out cross-domain test theorem to the MINIMAL breadth whose home cluster's TRAIN coverage reaches target t reaches a given complete-coverage at ~6-16% fewer candidate decls than the best single global breadth across most of the frontier (e.g. 0.887 coverage at 73.5k vs global K=20's 87.4k; up to ~13.8k candidates/theorem saved), tying only at the top-5 ceiling (~0.67, where global K=5 is already optimal) and converging to the whole library as coverage->1. So per-home-cluster routing is a cheaper-but-not-free refinement of the e-0019 breadth tradeoff: bridge structure lets the prover spend its candidate budget where its home domain actually needs it, rather than widening uniformly. The gain is modest (cluster heterogeneity is moderate) and does not recover the hard third for free. Still a premise-availability upper bound, not measured prover success or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0020"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:41:45.489Z",
+    "updated_at": "2026-06-12T11:41:45.489Z"
+  },
+  "comments": {}
+}
