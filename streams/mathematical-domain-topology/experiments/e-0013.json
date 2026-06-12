@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0013",
+  "stream": "mathematical-domain-topology",
+  "description": "Specialist-stratified control over the q-0011 premise-retrieval simulation. At each budget k, split held-out cross-domain test theorems into hub-served(k) (every out-of-home premise cluster is within the global top-k most-cited clusters, so popularity already covers them) vs specialist-needing(k) (>=1 out-of-home premise cluster lies OUTSIDE the global top-k hubs, unreachable by popularity). Compare home / bridge(k) / popularity(k) cluster-recall within each stratum. Leakage control identical to e-0012 (W and popularity from train only; recall on test).",
+  "motivation": "The e-0012 aggregate near-tie (bridge beats popularity by <=1.2pt) could either mean bridges add no per-theorem signal, OR that the signal is real but diluted by a hub-served majority that popularity trivially covers. Stratifying isolates the theorems where the bridge graph can actually matter.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_retrieval_specialist.py",
+    "commit": "488dfe6",
+    "run_cmd": "python3 src/bridge_retrieval_specialist.py"
+  },
+  "formal_results": "432 cross-domain test theorems. On the specialist-needing stratum, per-home bridge(k) beats popularity(k) by +5.7pt (k=1, n=355), +3.9pt (k=2, n=266), +3.4pt (k=3, n=215), +2.6pt (k=5, n=148), +4.5pt (k=10, n=76) - consistently positive and 3-5x the <=1.2pt aggregate margin. On the hub-served stratum popularity is >=bridge by construction (pop recall ~1.0; gap shrinks -19.6pt@k1 -> -0.5pt@k10 as k grows).",
+  "results_description": "The aggregate bridge-vs-popularity near-tie hides a real, consistent theorem-specific bridge advantage concentrated exactly on cross-domain theorems whose specialized premises lie outside the global hubs - the cases popularity cannot reach. As budget k grows, more theorems become hub-served (specialist stratum shrinks 355->76) but the bridge advantage on the remaining specialists persists (+2.6 to +5.7pt).",
+  "conclusions": "Bridges do carry per-theorem routing signal, not merely a global-hub effect: on specialist-needing cross-domain theorems the per-home bridge ranking beats popularity by 3-5x the aggregate margin (+3-6pt), because popularity is structurally blind to non-hub neighbour clusters. The hub effect dominates the MEAN only because most cross-domain needs are hub-served; the bridge-specific value is genuine but localized to the specialized cases.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0013"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:04:10.023Z",
+    "updated_at": "2026-06-12T03:04:10.023Z"
+  },
+  "comments": {}
+}

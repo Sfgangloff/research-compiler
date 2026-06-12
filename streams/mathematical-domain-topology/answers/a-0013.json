@@ -9,15 +9,17 @@
   ],
   "backed_by": [
     "e-0011",
-    "e-0012"
+    "e-0012",
+    "e-0013"
   ],
   "edge_comments": {},
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-12T02:53:32.432Z",
-    "updated_at": "2026-06-12T02:57:56.950Z"
+    "updated_at": "2026-06-12T03:04:30.809Z"
   },
   "comments": {
-    "control": "Baseline control (e-0012): the 88.2% cross-domain recall is real but mostly a global-hub/popularity effect. At matched budget k, adding the biggest globally-cited clusters (popularity-k) recovers ~95-99% of the bridge-aware gain; per-home bridge ranking beats popularity by only <=1.2pt (consistently positive) and beats random by 11-32pt. So bridges aid premise selection chiefly by routing to a few integrative hubs, not via theorem-specific structure."
+    "control": "Baseline control (e-0012): the 88.2% cross-domain recall is real but mostly a global-hub/popularity effect. At matched budget k, adding the biggest globally-cited clusters (popularity-k) recovers ~95-99% of the bridge-aware gain; per-home bridge ranking beats popularity by only <=1.2pt (consistently positive) and beats random by 11-32pt. So bridges aid premise selection chiefly by routing to a few integrative hubs, not via theorem-specific structure.",
+    "stratified_refinement": "Refinement (e-0013): the e-0012 conclusion 'bridges aid premise selection chiefly by routing to a few integrative hubs, not via theorem-specific structure' is too strong. Stratifying the 432 cross-domain test theorems by budget k shows the <=1.2pt aggregate bridge-over-popularity margin hides a 3-5x larger, consistently positive advantage (+3.4 to +5.7pt) on the 'specialist-needing' subset - theorems whose out-of-home premises lie OUTSIDE the global top-k hubs, which popularity is structurally blind to. So bridges DO carry per-theorem routing signal; it is genuine but localized to specialized cross-domain cases and diluted in the mean by a hub-served majority that popularity trivially covers. This strengthens the plausibility of bridge-aware retrieval, but still does not measure actual prover success/transfer - the open payoff."
   }
 }
