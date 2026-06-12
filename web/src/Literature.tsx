@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 interface Paper {
+  pid?: string;
   title: string;
   authors?: string;
   year?: number;
@@ -32,6 +33,36 @@ export function Literature() {
   const [loading, setLoading] = useState(false);
 
   const [regen, setRegen] = useState<string | null>(null);
+  const [read, setRead] = useState<Set<string>>(new Set());
+  const [perCluster, setPerCluster] = useState<number>(() => {
+    const v = Number(localStorage.getItem("lit.perCluster"));
+    return v && v > 0 ? v : 8;
+  });
+
+  function setCount(n: number) {
+    setPerCluster(n);
+    localStorage.setItem("lit.perCluster", String(n));
+  }
+
+  function loadRead() {
+    fetch("/api/literature/read")
+      .then((r) => r.json())
+      .then((j) => setRead(new Set(j.read ?? [])))
+      .catch(() => {});
+  }
+  useEffect(loadRead, []);
+
+  function toggleRead(pid: string | undefined) {
+    if (!pid) return;
+    const next = new Set(read);
+    const nowRead = !next.has(pid);
+    if (nowRead) next.add(pid); else next.delete(pid);
+    setRead(next); // optimistic
+    fetch("/api/literature/read", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ pid, read: nowRead }),
+    }).catch(loadRead);
+  }
 
   function load() {
     setLoading(true);
@@ -74,6 +105,12 @@ export function Literature() {
             {data.years ? " · " + data.years : ""}
           </span>
         )}
+        <label className="lit-count">show&nbsp;
+          <select value={perCluster} onChange={(e) => setCount(Number(e.target.value))}>
+            {[5, 8, 10, 15, 25].map((n) => <option key={n} value={n}>{n}</option>)}
+          </select>
+          &nbsp;/ cluster
+        </label>
         {regen != null && <span className="lit-regen">⏳ {regen}</span>}
         <button className="lit-refresh" onClick={regenerate} disabled={regen != null || loading}
           title="Re-fetch top-conference papers and re-cluster (takes a few minutes)">
@@ -105,24 +142,35 @@ export function Literature() {
               {c.terms?.length ? (
                 <div className="lit-terms">{c.terms.join(" · ")}</div>
               ) : null}
-              <ol className="lit-readlist">
-                {c.reading_list.map((p, i) => (
-                  <li key={i}>
-                    <span className="lit-paper-title">
-                      {p.url ? (
-                        <a href={p.url} target="_blank" rel="noreferrer">{p.title}</a>
-                      ) : (
-                        p.title
-                      )}
-                    </span>
-                    <span className="lit-paper-meta">
-                      {[p.venue, p.year].filter(Boolean).join(" ")}
-                      {p.citations != null ? ` · ${p.citations} cites` : ""}
-                      {p.citations_per_year != null ? ` (${p.citations_per_year}/yr)` : ""}
-                    </span>
-                  </li>
-                ))}
-              </ol>
+              <ul className="lit-readlist">
+                {c.reading_list.slice(0, perCluster).map((p, i) => {
+                  const done = !!(p.pid && read.has(p.pid));
+                  return (
+                    <li key={p.pid ?? i} className={done ? "lit-paper read" : "lit-paper"}>
+                      <button
+                        className={"lit-check" + (done ? " on" : "")}
+                        onClick={() => toggleRead(p.pid)}
+                        title={done ? "Mark unread" : "Mark read"}
+                        aria-label="Toggle read"
+                      />
+                      <span className="lit-paper-body">
+                        <span className="lit-paper-title">
+                          {p.url ? (
+                            <a href={p.url} target="_blank" rel="noreferrer">{p.title}</a>
+                          ) : (
+                            p.title
+                          )}
+                        </span>
+                        <span className="lit-paper-meta">
+                          {[p.venue, p.year].filter(Boolean).join(" ")}
+                          {p.citations != null ? ` · ${p.citations} cites` : ""}
+                          {p.citations_per_year != null ? ` (${p.citations_per_year}/yr)` : ""}
+                        </span>
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
             </section>
           ))}
         </div>

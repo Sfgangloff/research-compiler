@@ -10,7 +10,7 @@ Usage:
   python3 scripts/build_literature.py --years 2022-2025 --venues NeurIPS,ICML,ICLR
   python3 scripts/build_literature.py --years 2024-2024 --venues ICLR --k 10   # quick slice
 """
-import argparse, json, math, os, random, re, sys, time
+import argparse, json, math, os, random, re, subprocess, sys, time
 from collections import Counter
 from datetime import datetime, timezone
 from urllib.parse import urlencode
@@ -219,12 +219,47 @@ def authors_str(p):
     return a[0] + (" et al." if len(a) > 1 else "")
 
 
+def name_clusters(clusters, model="claude-sonnet-4-6"):
+    """Replace keyword labels with concise THEMATIC names, derived a posteriori from
+    each cluster's top paper titles via one `claude` call. Keeps keyword `terms` as a
+    subtitle. Falls back to keyword labels if the call fails."""
+    blocks = []
+    for c in clusters:
+        titles = [p["title"] for p in c["reading_list"][:12] if p.get("title")]
+        blocks.append(f"Cluster {c['id']} (keywords: {', '.join(c.get('terms', [])[:5])}):\n"
+                      + "\n".join("  - " + t for t in titles))
+    prompt = (
+        "Below are clusters of machine-learning papers (top titles per cluster). For EACH "
+        "cluster, write a concise, specific thematic NAME (3 to 7 words) that captures the "
+        "common research theme of its papers — a real topic name, not a list of keywords. "
+        "Return ONLY a JSON object mapping each cluster id (as a string) to its name, e.g. "
+        '{"0": "Parameter-efficient fine-tuning of LLMs"}.\n\n' + "\n\n".join(blocks)
+    )
+    try:
+        r = subprocess.run(["claude", "-p", prompt, "--model", model],
+                           capture_output=True, text=True, timeout=240)
+        m = re.search(r"\{.*\}", r.stdout, re.S)
+        names = json.loads(m.group(0)) if m else {}
+        renamed = 0
+        for c in clusters:
+            nm = names.get(str(c["id"]))
+            if isinstance(nm, str) and nm.strip():
+                c["label"] = nm.strip()
+                renamed += 1
+        print(f"named {renamed}/{len(clusters)} clusters via {model}", file=sys.stderr)
+    except Exception as e:
+        print(f"  (cluster naming skipped, keeping keyword labels: {e})", file=sys.stderr)
+    return clusters
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--years", default="2022-2025")
     ap.add_argument("--venues", default="NeurIPS,ICML,ICLR")
     ap.add_argument("--k", type=int, default=0, help="num clusters (0 = auto)")
-    ap.add_argument("--top", type=int, default=8, help="reading-list size per cluster")
+    ap.add_argument("--top", type=int, default=25, help="papers stored per cluster (UI chooses how many to show)")
+    ap.add_argument("--model", default="claude-sonnet-4-6", help="model for thematic cluster naming")
+    ap.add_argument("--no-name", action="store_true", help="skip LLM cluster naming (keep keyword labels)")
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "literature", "clusters.json"))
     ap.add_argument("--cache", default=os.path.join(os.path.dirname(__file__), "..", "literature", "_corpus.json"))
     ap.add_argument("--use-cache", action="store_true", help="re-cluster from the cached corpus (no fetch)")
@@ -265,6 +300,7 @@ def main():
             p["_cpy"] = round(cites / max(1, this_year - yr + 1), 1)
         members.sort(key=lambda p: p["_cpy"], reverse=True)
         reading = [{
+            "pid": p.get("paperId") or (p.get("externalIds") or {}).get("ArXiv") or (p.get("title") or "")[:90],
             "title": p.get("title"),
             "authors": authors_str(p),
             "venue": p.get("_venue_key"),
@@ -285,6 +321,10 @@ def main():
     clusters.sort(key=lambda c: c["size"], reverse=True)
     for i, c in enumerate(clusters):
         c["id"] = i
+
+    if not args.no_name:
+        print("naming clusters thematically...", file=sys.stderr)
+        name_clusters(clusters, model=args.model)
 
     out = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),

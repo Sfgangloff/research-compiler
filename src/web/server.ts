@@ -172,6 +172,20 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
   if (url.pathname === "/api/literature/refresh" && method === "GET") {
     return send(res, 200, litJob ?? { status: "idle" });
   }
+  // Personal reading checklist, keyed by stable paper id (pid). Survives rebuilds.
+  if (url.pathname === "/api/literature/read") {
+    const f = join(REPO_ROOT, "literature", "read.json");
+    const cur: string[] = existsSync(f) ? (JSON.parse(String(readFileSync(f))).read ?? []) : [];
+    if (method === "GET") return send(res, 200, { read: cur });
+    if (method === "POST") {
+      const pid = String(body.pid ?? "");
+      const set = new Set(cur);
+      if (body.read) set.add(pid); else set.delete(pid);
+      if (!existsSync(dirname(f))) mkdirSync(dirname(f), { recursive: true });
+      writeFileSync(f, JSON.stringify({ read: [...set] }, null, 2));
+      return send(res, 200, { ok: true, read: [...set] });
+    }
+  }
   if (url.pathname === "/feedback/history.json" && method === "GET") {
     const f = feedbackFile("history.json");
     if (!existsSync(f)) writeFileSync(f, "[]");
