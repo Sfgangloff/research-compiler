@@ -31,6 +31,8 @@ export function Literature() {
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  const [regen, setRegen] = useState<string | null>(null);
+
   function load() {
     setLoading(true);
     fetch("/api/literature?t=" + Date.now())
@@ -40,6 +42,24 @@ export function Literature() {
       .finally(() => setLoading(false));
   }
   useEffect(load, []);
+
+  function poll() {
+    fetch("/api/literature/refresh")
+      .then((r) => r.json())
+      .then((j) => {
+        if (j.status === "running") { setRegen(j.tail || "working…"); setTimeout(poll, 3000); }
+        else if (j.status === "done") { setRegen(null); load(); }
+        else { setRegen(null); setErr(j.error || "regeneration failed"); }
+      })
+      .catch(() => setTimeout(poll, 4000));
+  }
+  function regenerate() {
+    if (regen != null) return;
+    setRegen("starting…");
+    fetch("/api/literature/refresh", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" })
+      .then(() => setTimeout(poll, 1500))
+      .catch((e) => { setRegen(null); setErr(String(e)); });
+  }
 
   return (
     <div className="lit">
@@ -54,8 +74,10 @@ export function Literature() {
             {data.years ? " · " + data.years : ""}
           </span>
         )}
-        <button className="lit-refresh" onClick={load} disabled={loading} title="Reload the saved review">
-          {loading ? "…" : "↻ refresh"}
+        {regen != null && <span className="lit-regen">⏳ {regen}</span>}
+        <button className="lit-refresh" onClick={regenerate} disabled={regen != null || loading}
+          title="Re-fetch top-conference papers and re-cluster (takes a few minutes)">
+          {regen != null ? "rebuilding…" : "↻ rebuild"}
         </button>
       </header>
       {data?.note && <div className="lit-note">{data.note}</div>}

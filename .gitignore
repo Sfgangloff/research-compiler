@@ -12,3 +12,4 @@ feedback/
 agents/logs/
 agents/run.pids
 agents/run.pids.tmp
+literature/_corpus.json

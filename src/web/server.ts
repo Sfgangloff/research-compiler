@@ -3,6 +3,7 @@
 // identically. The web actor is "human" (it is you, editing in the browser).
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { dirname, join, extname } from "node:path";
 import { readFileSync, existsSync, statSync, appendFileSync, writeFileSync, mkdirSync } from "node:fs";
@@ -28,6 +29,11 @@ interface IdeateJob {
 }
 const ideateJobs = new Map<string, IdeateJob>();
 let ideateSeq = 0;
+
+// Literature review regeneration: re-runs the pipeline (fetch + cluster). One at a
+// time; the client POSTs to start and polls GET for status, then reloads the data.
+interface LitJob { status: "running" | "done" | "error"; tail: string; error?: string }
+let litJob: LitJob | null = null;
 
 // Built frontend (after `npm run build` in web/). Served if present.
 const FRONTEND_DIST = join(REPO_ROOT, "web", "dist");
@@ -148,6 +154,23 @@ async function handle(req: IncomingMessage, res: ServerResponse): Promise<void> 
     res.writeHead(200, { "content-type": "application/json", "cache-control": "no-store", "access-control-allow-origin": "*" });
     res.end(readFileSync(f));
     return;
+  }
+  if (url.pathname === "/api/literature/refresh" && method === "POST") {
+    if (litJob?.status === "running") return send(res, 200, { status: "running" });
+    const years = typeof body.years === "string" && /^\d{4}-\d{4}$/.test(body.years) ? body.years : "2022-2025";
+    const venues = typeof body.venues === "string" && /^[A-Za-z0-9,]+$/.test(body.venues) ? body.venues : "NeurIPS,ICML,ICLR";
+    const job: LitJob = { status: "running", tail: "starting…" };
+    litJob = job;
+    const child = spawn("python3", [join(REPO_ROOT, "scripts", "build_literature.py"), "--years", years, "--venues", venues], { cwd: REPO_ROOT });
+    const onData = (d: Buffer) => { const s = String(d).trim(); if (s) job.tail = s.split("\n").pop()!; };
+    child.stdout.on("data", onData);
+    child.stderr.on("data", onData);
+    child.on("close", (code) => { job.status = code === 0 ? "done" : "error"; if (code !== 0) job.error = `exit ${code}`; });
+    child.on("error", (e) => { job.status = "error"; job.error = String(e); });
+    return send(res, 202, { status: "running" });
+  }
+  if (url.pathname === "/api/literature/refresh" && method === "GET") {
+    return send(res, 200, litJob ?? { status: "idle" });
   }
   if (url.pathname === "/feedback/history.json" && method === "GET") {
     const f = feedbackFile("history.json");
