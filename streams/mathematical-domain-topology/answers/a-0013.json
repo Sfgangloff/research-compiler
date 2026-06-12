@@ -10,16 +10,18 @@
   "backed_by": [
     "e-0011",
     "e-0012",
-    "e-0013"
+    "e-0013",
+    "e-0014"
   ],
   "edge_comments": {},
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-12T02:53:32.432Z",
-    "updated_at": "2026-06-12T03:04:30.809Z"
+    "updated_at": "2026-06-12T03:09:56.765Z"
   },
   "comments": {
     "control": "Baseline control (e-0012): the 88.2% cross-domain recall is real but mostly a global-hub/popularity effect. At matched budget k, adding the biggest globally-cited clusters (popularity-k) recovers ~95-99% of the bridge-aware gain; per-home bridge ranking beats popularity by only <=1.2pt (consistently positive) and beats random by 11-32pt. So bridges aid premise selection chiefly by routing to a few integrative hubs, not via theorem-specific structure.",
-    "stratified_refinement": "Refinement (e-0013): the e-0012 conclusion 'bridges aid premise selection chiefly by routing to a few integrative hubs, not via theorem-specific structure' is too strong. Stratifying the 432 cross-domain test theorems by budget k shows the <=1.2pt aggregate bridge-over-popularity margin hides a 3-5x larger, consistently positive advantage (+3.4 to +5.7pt) on the 'specialist-needing' subset - theorems whose out-of-home premises lie OUTSIDE the global top-k hubs, which popularity is structurally blind to. So bridges DO carry per-theorem routing signal; it is genuine but localized to specialized cross-domain cases and diluted in the mean by a hub-served majority that popularity trivially covers. This strengthens the plausibility of bridge-aware retrieval, but still does not measure actual prover success/transfer - the open payoff."
+    "stratified_refinement": "Refinement (e-0013): the e-0012 conclusion 'bridges aid premise selection chiefly by routing to a few integrative hubs, not via theorem-specific structure' is too strong. Stratifying the 432 cross-domain test theorems by budget k shows the <=1.2pt aggregate bridge-over-popularity margin hides a 3-5x larger, consistently positive advantage (+3.4 to +5.7pt) on the 'specialist-needing' subset - theorems whose out-of-home premises lie OUTSIDE the global top-k hubs, which popularity is structurally blind to. So bridges DO carry per-theorem routing signal; it is genuine but localized to specialized cross-domain cases and diluted in the mean by a hub-served majority that popularity trivially covers. This strengthens the plausibility of bridge-aware retrieval, but still does not measure actual prover success/transfer - the open payoff.",
+    "cost_control": "e-0014 (candidate-budget control): the e-0012 cluster-k near-tie with popularity does not reverse into a large bridge win once retrieval is priced by CANDIDATE COUNT (clusters vary ~1000x in size). At matched candidate budget bridge beats popularity by only ~4-9% fewer candidates to reach 0.80/0.90/0.95 cross-domain recall; both converge on the same large hub clusters. And cluster-granular routing is intrinsically candidate-heavy: ~64% of Mathlib (~60k/92.6k decls) must be pooled for 0.90 recall. So the bridge payoff is 'visit the right clusters slightly sooner', not 'retrieve cheaply'; intra-cluster premise ranking is the missing piece."
   }
 }

@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0014",
+  "stream": "mathematical-domain-topology",
+  "description": "Candidate-budget control over the q-0011 premise-retrieval simulation. e-0012/e-0013 matched bridge vs popularity at equal CLUSTER count k, but cluster count is not a retriever's real cost: clusters differ ~1000x in size (largest hubs ~10-12k members; median cluster 9). For each held-out cross-domain test theorem, walk k=0..15 adding clusters in each method's ranked order and record both cluster-recall and CANDIDATE COST (sum of selected cluster sizes = the pool a retriever must rank). Average over theorems to get a (mean candidate cost -> mean recall) efficiency curve per method; interpolate the candidate budget each needs to reach 0.80/0.90/0.95 recall. W, popularity and sizes from train/full clustering; recall on TEST. Methods: bridge(k), popularity(k), random(k, 20 seeds).",
+  "motivation": "Matching at cluster-k flatters popularity, whose hubs are the biggest clusters: adding one popularity hub costs ~10k candidate premises vs ~9 for a specialist bridge neighbour. Re-test bridge vs popularity at matched RETRIEVAL COST (candidate count), the metric a real premise retriever actually pays.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_cost.py",
+    "commit": "4f9b18c",
+    "run_cmd": "python3 src/bridge_retrieval_cost.py"
+  },
+  "formal_results": "432 cross-domain test theorems. At matched candidate budget, bridge reaches each recall target with fewer candidates than popularity: recall>=0.80 bridge 40,834 vs pop 44,523 (-8.3%); >=0.90 59,538 vs 62,319 (-4.5%); >=0.95 72,785 vs 79,807 (-8.8%). Random is cheap (picks tiny clusters: 16,253 candidates at k=15) but ineffective (recall 0.45, never reaches 0.80). Both bridge and popularity need ~60k of 92.6k clustered decls (~64% of Mathlib) in the candidate pool to hit 0.90 cross-domain cluster-recall.",
+  "results_description": "At matched RETRIEVAL COST (not just cluster count) the bridge ranking is consistently more candidate-efficient than popularity, but only by ~4-9% fewer candidates - both rules converge on the same large hub clusters. The bigger finding: cluster-granular routing is candidate-expensive regardless of routing rule (must pool ~64% of Mathlib for 90% recall), so bridge structure improves WHICH clusters to visit first more than it makes retrieval cheap. Random's low cost is an artifact of picking tiny clusters that rarely hold the needed premises.",
+  "conclusions": "Refines a-0013: the e-0012 cluster-k near-tie does NOT reverse into a large bridge win once retrieval cost is measured properly - bridge beats popularity by a modest, consistent 4-9% candidate-budget margin at every recall target (directionally confirming real bridge signal, consistent with the e-0013 specialist effect). But cluster-level routing is intrinsically coarse and candidate-heavy (~64% of the library needed for 90% recall), so the operational payoff of bridge structure is 'visit the right clusters slightly sooner', not 'retrieve cheaply'; intra-cluster premise ranking is the missing piece. Honest, leakage-controlled cost accounting that bounds the q-0011 payoff claim.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0013"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:09:04.971Z",
+    "updated_at": "2026-06-12T03:09:56.763Z"
+  },
+  "comments": {}
+}
