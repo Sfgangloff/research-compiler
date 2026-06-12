@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0025",
+  "stream": "proof-hierarchies",
+  "text": "The 'statements are left-truncated' caveat that softens q-0009's three recent learnability gates (e-0017, e-0020, e-0024) is REAL but too SHALLOW to rescue them — so the section-predictor's learnability concern stands close to face value. Those gates each hedged their pessimistic findings ('only ~37.5% of frontier library vocab is grounded in the statement'; 'frontier width is unpredictable from surface features') with 'statements are left-truncated, so a real transformer sees more / these are lower bounds', and never measured it. e-0025 measures it over the 1,261 data/deep statements: left-truncation is DOMINANT (88.6%, itself a lower bound since bracket-balanced lost prefixes are undetectable) but SHALLOW — 99.6% lose exactly ONE leading binder group (running bracket depth hits exactly -1; only 5 reach -2), the cut sits at the binder-name boundary (surviving cut-binder type tail median 6 chars, and 72.2% of those tails still carry a library token, i.e. types are preserved), and the recovered conclusion is bracket-balanced/intact in 99.6%. So the lost material is one binder group's variable NAMES (lowercase locals), while the library/content vocabulary e-0020 grounds against and the conclusion+hypotheses e-0024's features derive from are PRESERVED. The 'transformer sees more' escape hatch is therefore bounded to one binder group's names — it cannot lift the 37.5%-grounding or the no-width-prediction findings by much. NET for q-0009: this is a META-gate that audits (not adds) a premise — it removes the load-bearing caveat the recent chain leaned on, leaving the section-predictor's input->output learnability as a genuine bar the Modal SFT+eval must clear, not an artifact of partial statements. CAVEAT: 11.2% of statements show no detectable truncation, and the 88.6% is a lower bound; a fuller statement (with binder names) would still ground slightly more, but only by one group's worth of lowercase locals.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0025"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:42:01.690Z",
+    "updated_at": "2026-06-12T11:42:01.690Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0025",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only audit of the 'left-truncation' caveat that softens three recent q-0009 section-predictor learnability gates (e-0017, e-0020, e-0024): all three assert 'statements are left-truncated, so a real transformer sees more / the pessimistic numbers are lower bounds', but none measured the truncation. Over the 1,261 data/deep statements, detect left-truncation by running bracket depth going negative (a closing bracket with no opener = a cut binder-group prefix), measure how many binder LEVELS are lost (min depth), the surviving fragment of the cut binder's type, and whether the conclusion (recovered by e-0017's right-to-left ':' scan) is bracket-balanced (intact).",
+  "motivation": "The 'statements are left-truncated' hedge is the escape hatch keeping q-0009's section-predictor plausibly learnable despite e-0020 (only 37.5% frontier vocab grounded) and e-0024 (width unpredictable from surface features). It was asserted in three experiments and never quantified. If truncation hides a lot of context the pessimistic gates are weak lower bounds; if shallow they stand near face value. Measure it cheaply before treating the escape hatch as load-bearing.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_statement_truncation.py",
+    "commit": "7499bb0",
+    "run_cmd": "python3 data/analyze_deep_statement_truncation.py"
+  },
+  "formal_results": "1,261 deep statements. LEFT-TRUNCATED: 1,117 (88.6%) — dominant (and itself a lower bound: bracket-balanced lost prefixes are undetectable). But SHALLOW: min-depth -1 for 1,112/1,117 (99.6%), only 5 at -2 — exactly ONE leading binder group cut. Surviving cut-binder TYPE tail: chars p50=6, p90=22, max=177 (the cut sits at the binder-name boundary, type preserved). 72.2% of truncated tails still carry an uppercase/library token (content lives in the preserved types). Recovered conclusion bracket-balanced (intact) in 1,112/1,117 (99.6%).",
+  "results_description": "Truncation is dominant but shallow: 88.6% of statements lose exactly one leading binder group (depth -1, 99.6%), the full conclusion survives in 99.6%, and the lost material is that group's variable NAMES (lowercase locals), not library content (which lives in the preserved types and conclusion). The e-0020/e-0024 'lower bound / transformer sees more' hedge is therefore bounded to one binder group's names.",
+  "conclusions": "The load-bearing left-truncation caveat behind q-0009's recent learnability gates is real (88.6%) but too shallow to rescue them: it removes one binder group's NAMES, not the library vocabulary e-0020 grounds against nor the conclusion/hypotheses e-0024's features derive from. So e-0020's 37.5%-grounding and e-0024's no-width-prediction findings stand close to face value — the section-predictor's learnability is a genuine bar the Modal SFT+eval must clear, NOT an artifact of partial statements. This audits (does not add) a premise: it removes the escape hatch the recent chain leaned on.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0025"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T11:41:32.297Z",
+    "updated_at": "2026-06-12T11:42:01.692Z"
+  },
+  "comments": {}
+}
