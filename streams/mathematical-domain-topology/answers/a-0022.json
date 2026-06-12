@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0022",
+  "stream": "mathematical-domain-topology",
+  "text": "The richer-feature predictor a-0021 named has a clear first answer: the obvious structural feature -- the HOME CLUSTER -- does NOT beat the goal's name tokens, so name tokens are near the predictable ceiling of the available leakage-free signal. a-0021's per-theorem escape predictor scored escape clusters purely from the goal's NAME tokens (top-1 escape-localization 39.7%) and closed by naming the remaining lever as 'richer features than the goal's name tokens'. The one strong leakage-free feature it discarded is the home cluster, which a-0019 proved conditions escape behaviour in aggregate (per-home K=5 coverage train->test r=0.55). Adding it (e-0024, same e-0018/e-0023 setup, 432 held-out cross-domain TEST theorems, exact complete-coverage ceiling) HURTS: a per-home escape prior alone localizes far worse than name tokens (top-1 17.0% vs 39.7%, top-5 66.7% vs 83.0%), and a naive-Bayes-style combo P(d|home)*(1+name evidence) lands in between (top-1 32.6%, top-5 72.3%) -- still below name-only. Name-only is the cheapest arm at every complete-coverage target (e.g. 0.90 ceiling: name 70.3k candidate decls vs home/combo ~80.0k; base 53.8k of 92.6k). The mechanism: home conditioning predicts the cluster's AVERAGE escape distribution (effectively a per-home whitelist) and so discards the theorem-specific name signal that finds ATYPICAL escape targets -- mirroring content>popularity in a-0015/a-0016. Since the oracle still reaches 0.942 complete coverage at +1.0k candidates (m=1), the residual gap is real but is NOT closed by structural home features; it would need richer CONTENT (type/statement text) the corpus does not expose (a-0015). Net for q-0011: within the available leakage-free features, name-token content is near the ceiling for per-theorem escape prediction, bounding how far the cheap retrieval proxy can be pushed; the operational payoff of bridge-aware proving remains a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0024"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:15:43.024Z",
+    "updated_at": "2026-06-12T12:15:43.024Z"
+  },
+  "comments": {}
+}

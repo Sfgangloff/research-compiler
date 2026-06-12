@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0024",
+  "stream": "mathematical-domain-topology",
+  "description": "Richer escape-predictor features for per-theorem cross-domain routing (follow-on to e-0023/a-0021). Holding the e-0018/e-0023 setup fixed (home+top-5 bridge router, 432 held-out cross-domain TEST theorems, train-only counts, exact ranking-free complete-coverage ceiling), add the theorem's HOME CLUSTER as an escape-prediction feature the a-0021 name-only predictor ignores. Compare three leakage-safe per-theorem escape rankers -- name: sum_t IDF(t)*P(d|t) [a-0021 baseline]; home: P(d|home=c) from train escapes; combo: P(d|home=c)*(1+name evidence) -- on escape-localization accuracy and on cost-to-ceiling, vs the leaky oracle.",
+  "motivation": "a-0021 closed by naming the remaining lever: 'a STRONGER query->escape-cluster predictor (richer features than the goal's name tokens).' The one strong leakage-free feature the name-only predictor throws away is the home cluster, which a-0019 showed conditions escape behaviour (per-home K=5 coverage train->test Pearson r=0.55). Does conditioning on home sharpen per-theorem escape localization and lower the candidate cost?",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_retrieval_escape_features.py",
+    "commit": "3f462dce3dfba27d82cec57470d77dbaf2b067e5",
+    "run_cmd": "python3 src/bridge_retrieval_escape_features.py"
+  },
+  "formal_results": "432 cross-domain TEST theorems, 141 hard-third (escape home+top-5). Escape-localization accuracy (top-k pick hits an actual escape target): name top1 0.397/top3 0.660/top5 0.830; home top1 0.170/top3 0.475/top5 0.667; combo top1 0.326/top3 0.560/top5 0.723. Complete-coverage cost-to-ceiling (mean candidate pool, base 53.8k of 92.6k): at 0.80 name 60.2k vs home 64.0k vs combo 61.4k; at 0.90 name 70.3k vs home 80.0k vs combo 80.0k. Oracle reaches 0.942 at +1.0k (m=1). Name dominates home and combo at every ceiling.",
+  "results_description": "Adding the home cluster as an escape-prediction feature does NOT help and slightly hurts: the per-home escape prior alone localizes far worse than name tokens (top1 17.0% vs 39.7%), and multiplying it into the name signal degrades it (combo top1 32.6%, top5 72.3% vs name 83.0%). Name-only stays the cheapest arm at every complete-coverage target.",
+  "conclusions": "The home cluster -- the most natural richer leakage-free feature, and one a-0019 proved conditions escape behaviour in aggregate -- is NOT the missing predictor lever: the theorem-specific name-token content signal already subsumes and exceeds it. Home conditioning is too coarse, predicting the home cluster's AVERAGE escape distribution (a per-home whitelist) rather than THIS theorem's specific escape, and so discards the name signal's ability to find atypical escape targets -- consistent with content>popularity in a-0015/a-0016. So within the available leakage-free features (the corpus exposes names but no type text, a-0015), name tokens are near the predictable ceiling; the residual oracle gap is not closed by structural home features and would need richer CONTENT (e.g. type/statement text) the corpus does not provide. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0022"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:14:05.820Z",
+    "updated_at": "2026-06-12T12:15:43.033Z"
+  },
+  "comments": {}
+}
