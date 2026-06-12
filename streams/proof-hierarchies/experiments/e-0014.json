@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0014",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only supply gate testing whether the deeper data/deep/ have-tree extraction (1,261 decls over 646 advanced Mathlib modules: analysis, measure theory, number theory) breaks the ~4% named-have-frontier ceiling that e-0012/e-0013 found on corpus_v3 and that blocks q-0007/q-0008/q-0009. Counts named-with-type have-nodes (name != '_', non-empty ppType — the e-0012 section-predictor target) recursively per decl.",
+  "motivation": "e-0012/e-0013 concluded the named-subgoal supply is structurally pinned at ~4% (27/607) regardless of F_size, and the only unblock is 'a different corpus with proofs that genuinely contain more named have-steps — deeper/longer source proofs'. data/deep/ is exactly that candidate corpus, already extracted locally. Test cheaply whether deeper-module selection raises the supply before recommending any Modal re-extraction.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_frontier_supply.py",
+    "commit": "23a808e"
+  },
+  "formal_results": "1,261 decls, 646 distinct modules. Named-have-node distribution: 0->134, 1->277, 2->255, 3->184, 4->113, 5->102, 6->55, 7->40, 8+->101. Named-frontier supply: >=1 = 1,127 (89.4%), >=2 = 850 (67.4%), >=3 = 595 (47.2%). Among the 1,127 with any frontier: mean 3.61, median 3, max 26 named haves. Baseline corpus_v3 (e-0012): >=1 6.9%, >=2 4.4%, >=3 2.5%. Rich examples: FloorPow.tendsto_div_of_monotone... (26), Four.not_minimal (25), FermatPsp.psp_from_prime_psp (24).",
+  "results_description": "Deeper-module selection raises the >=2 named-subgoal-frontier supply from 4.4% (corpus_v3) to 67.4% — a ~15x jump — and >=1 from 6.9% to 89.4%. The ~4% ceiling e-0012/e-0013 reported is a property of corpus_v3's foundational-module selection (Algebra.Group.Basic, Data.List.Basic, etc.), NOT a structural Mathlib limit. ~850 decls with a >=2 frontier is ample to SFT a section-predictor (vs ~27 before). Caveat: NOT verified pairs (no round-trip elaboration like e-0003); a supply estimate, the same role e-0004 played. e-0003's 84.7% round-trip yield would apply. The stored 'module' field is the last path component only, so X.Basic modules collide in the per-module table.",
+  "conclusions": "The named-have-frontier supply problem behind q-0007/q-0008/q-0009 is a CORPUS-SELECTION problem, not a structural ceiling: extracting from deeper Mathlib areas yields 67% >=2-frontier decls. e-0013's prescription ('a different corpus, deeper/longer proofs') is correct AND the candidate decls already exist locally. The concrete unblock is now a Modal round-trip verification over these deeper modules (data/deep/'s 646 modules), turning the vague 'deeper proofs' into a named target list. This re-opens Variant B (q-0009) and gives q-0007/q-0008 a corpus with real decomposable structure.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0014"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:15:30.640Z",
+    "updated_at": "2026-06-12T03:15:46.950Z"
+  },
+  "comments": {}
+}

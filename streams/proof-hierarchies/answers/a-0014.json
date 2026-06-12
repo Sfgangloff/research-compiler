@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0014",
+  "stream": "proof-hierarchies",
+  "text": "The named-have-frontier supply that blocks q-0009 (and q-0007/q-0008) is a CORPUS-SELECTION artifact, not a structural Mathlib ceiling — and the unblocking corpus already exists locally. e-0012/e-0013 reported only 4.4% of corpus_v3 decls expose a >=2 named-subgoal frontier and called it ~tau-invariant/structurally pinned, with the only fix being 'a different corpus of deeper/longer source proofs'. Measuring exactly such a corpus (data/deep/: 1,261 decls over 646 advanced modules — analysis, measure theory, number theory) shows the supply jumps ~15x: 67.4% (850 decls) expose a >=2 named-subgoal frontier, 89.4% expose >=1, 47.2% expose >=3 (median 3, max 26 named haves). So the ~4% ceiling was a property of corpus_v3's FOUNDATIONAL-module selection (Algebra.Group.Basic, Data.List.Basic, ...), where proofs really are flat — not of Mathlib. ~850 supervised >=2-frontiers is ample to SFT a section-predictor (vs the ~27 e-0012 found). This CONFIRMS e-0013's prescription and makes it concrete: the unblock for q-0009 is a Modal round-trip verification (e-0003-style, ~84.7% expected yield) over these deeper modules, NOT the mis-stated F_size frontier-shrink. Caveat: data/deep/ is a have-tree supply estimate, not yet verified pairs; the per-module table collides on last-component module names. Empirically q-0009 (pass@k, #LLM-calls of predictor+solver vs single-stage) is still untested — this lifts the data-availability gate that made it non-viable.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0014"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:15:46.943Z",
+    "updated_at": "2026-06-12T03:15:46.943Z"
+  },
+  "comments": {}
+}
