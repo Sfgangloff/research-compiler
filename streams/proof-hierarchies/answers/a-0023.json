@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0023",
+  "stream": "proof-hierarchies",
+  "text": "e-0022's domain-transfer confound for q-0009 resolves in the CONSTRUCTIVE direction: the eval-relevant slice of the deep wide-frontier supply is small but NOT thin. e-0022 found only ~150/633 wide-frontier training targets fall in subjects miniF2F exercises (76% are research-level Mathlib with zero eval coverage) and proposed remedy-2 (source a competition-math decomposable corpus matched to miniF2F) — but never checked whether that ~150 slice retains wide/substantive structure. e-0023 partitions the 633 targets (reusing e-0022's bucketing) and compares shape: the MATCHED slice (n=150: elem-algebra 60, NT 40, geometry 24, combinatorics 19, order 7) is near-identical to the 483-target ADVANCED bulk on every shape axis — frontier WIDTH p50=3 both (max 22 vs 21), per-subgoal AVG ~25 chars both, frac width>=3 0.62 vs 0.60 — differing only in headcount and a slightly higher degenerate fraction (8% vs 2.3% avg<=8 chars). So remedy-2 is feasible in STRUCTURE (not a hollow slice), but bounded in SIZE: ~127 usable matched targets after e-0003's 84.7% yield, an order of magnitude below the 633 headline. NET for q-0009: a competition-matched section-predictor corpus inherits genuine training-grade wide frontiers — the confound e-0022 named is a supply-VOLUME limit, not a supply-QUALITY collapse. Unchanged: the OUTCOME (predictor frontier-accuracy, predictor+solver pass@k vs single-stage) is still untested and needs the paid Modal round-trip + SFT + eval. CAVEAT: per-subgoal AVG chars is coarser than e-0016's per-subgoal type-length distribution; coarse top-namespace subject buckets.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0023"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:38:26.792Z",
+    "updated_at": "2026-06-12T08:38:26.792Z"
+  },
+  "comments": {}
+}

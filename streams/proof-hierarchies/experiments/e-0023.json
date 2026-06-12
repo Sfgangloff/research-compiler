@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0023",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only follow-up to e-0022's domain-transfer gate (q-0009): partition the 633 data/deep wide-frontier targets into EVAL-COVERED (elementary-algebra/number-theory/combinatorics/geometry/order — the subjects miniF2F exercises) vs ADVANCED (zero eval coverage), reusing e-0022's top-namespace subject bucketing verbatim, then compare the two strata on frontier WIDTH (#subgoals, the predictor's one-shot emission target), frontier CHARS (emission burden), and per-subgoal AVG chars (chars/width, a substance proxy; e-0016's degeneracy bar is <=8 chars). e-0022 measured the SIZE of the matched slice (150) but never its SHAPE — remedy-2 (a competition-matched decomposable corpus) only has signal if the matched slice is still wide and substantive, not small AND thin.",
+  "motivation": "e-0022 named a domain-transfer confound (76% of wide-frontier supply is research-level Mathlib with zero miniF2F coverage; only ~150 eval-matched) and proposed remedy-2: source a competition-math decomposable corpus matched to miniF2F. But it never checked whether the ~150 eval-relevant targets retain wide/substantive frontier structure or collapse to a thin near-degenerate slice. If the wide structure lives only in the advanced bulk, remedy-2 is hollow. Test cheaply over the existing manifest before recommending any Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_matched_subset_substance.py",
+    "commit": "b55ea0c"
+  },
+  "formal_results": "633 deep wide-frontier targets. MATCHED (eval-covered) n=150: elem-algebra 60, number-theory 40, geometry 24, combinatorics 19, order 7. ADVANCED (zero eval coverage) n=483. SHAPE is near-identical across strata: frontier WIDTH p50=3 both (matched max 22 mean 3.89 vs advanced max 21 mean 3.56); per-subgoal AVG chars p50=25.2 matched vs 26.0 advanced; frontier CHARS p50=81 vs 79. frac width>=3: matched 0.62 vs advanced 0.60. frac degenerate (avg<=8 chars): matched 0.08 vs advanced 0.023 (matched slightly MORE degenerate, both small). Matched usable after e-0003's 84.7% yield est ~127.",
+  "results_description": "The eval-matched deep slice is SMALL but NOT THIN: it carries the same wide-and-substantive frontier shape as the 483-target advanced bulk (width p50=3 both, per-subgoal ~25 chars both, frac width>=3 ~0.61 both), differing only in headcount (150 vs 483) and a slightly higher degenerate fraction (8% vs 2.3%). So e-0022's remedy-2 (a competition-matched decomposable corpus) inherits genuine training-grade structure, not a hollow slice — but the usable matched supply stays capped at ~127 after the 84.7% round-trip yield, an order of magnitude below the 633 headline.",
+  "conclusions": "Tightens e-0022's domain-transfer confound in the CONSTRUCTIVE direction for q-0009: the eval-relevant slice of the deep wide-frontier supply is shape-equivalent to the advanced bulk, so a competition-math-matched section-predictor corpus is feasible in structure (remedy-2 is not hollow) — it is bounded in SIZE (~150 targets, ~127 after yield), not degraded in shape. The matched slice is marginally more degenerate (8% vs 2.3% avg<=8 chars), the one axis where it is weaker. Does not change the blocker: the OUTCOME (predictor frontier-accuracy, predictor+solver pass@k vs single-stage) is still untested and needs the paid Modal round-trip + SFT + eval. CAVEAT: per-subgoal AVG chars is coarser than e-0016's per-subgoal type-length distribution; coarse top-namespace subject buckets from e-0022.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0023"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:38:12.509Z",
+    "updated_at": "2026-06-12T08:38:26.793Z"
+  },
+  "comments": {}
+}
