@@ -3,7 +3,7 @@
   "id": "q-0013",
   "stream": "slitherlink-tool-granularity",
   "text": "Does tool granularity change the TYPE of agent failure, not just the failure rate? On puzzles where toolsets fail, does the dominant failure mode differ across none/fine/medium/coarse (e.g. budget-exhaustion vs wrong-submit vs stuck-loop vs blind tool-trust)?",
-  "status": "open",
+  "status": "answered",
   "tags": [
     "ideated",
     "failure-modes"
@@ -11,7 +11,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-10T23:45:01.822Z",
-    "updated_at": "2026-06-10T23:46:31.902Z"
+    "updated_at": "2026-06-12T03:02:27.962Z"
   },
   "comments": {
     "feasibility": "Not answerable on current data (checked 2026-06-11): of 39 failed trials only 13 are genuine reasoning failures - the other 26 are rate-limit/harness aborts (exit-code-1, 0-1 tool calls). The 13 give no structured signal (0 wrong-submit, 0 budget-exhaustion; all 'early-stop'/'gave-up'), and the discriminating modes (stuck-loop, blind tool-trust, bookkeeping-drown) require reading the trajectories. To answer it needs: (a) a clean batch of genuine non-aborted failures, n>=5 per toolset, on a puzzle where all toolsets fail (puzzle_003/004); (b) an LLM trajectory classifier labelling each failed log's failure mode; then test whether the mode distribution differs by granularity (chi-square / its small-n exact analog)."

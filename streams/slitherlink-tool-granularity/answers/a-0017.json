@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0017",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Yes - tool granularity changes the TYPE of failure, but along a single axis and only conditionally. First, two of the four hypothesized failure modes never occur: across all 13 genuine failures Opus-4.7 has ZERO wrong-submits and zero blind-tool-trust - it always declines honestly (submit_attempts=0) rather than submit a guess. The one axis granularity does move is early-refuse vs grind-then-refuse. On the 15x15 puzzle (puzzle_004) the failure type splits cleanly: no-tools refuses immediately (~1 call) while fine/medium/scratchpad grind 62-162 tool calls of case-analysis before declining - none mean 1.0 vs tools mean 116.7 calls, a ~117x engagement gap with the SAME outcome (honest decline). But on the extreme 25x30 puzzle (puzzle_003) EVERY toolset early-refuses (1-3 calls): the grid is so large that even tool agents recognize manual edge-by-edge solving is infeasible and refuse up front, so granularity has no effect there. So tools convert an immediate principled refusal into a deep, ~100x-longer search that still ends in the same honest decline - but only in the tool-tractable regime. This complements a-0016 (effort inflation): granularity raises effort-before-giving-up by ~100x without changing the rate, the type-at-the-extreme, or the honesty of the outcome. (Evidence: e-0013.)",
+  "status": "supported",
+  "answers": [
+    "q-0013"
+  ],
+  "backed_by": [
+    "e-0013"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:02:18.217Z",
+    "updated_at": "2026-06-12T03:02:18.217Z"
+  },
+  "comments": {}
+}

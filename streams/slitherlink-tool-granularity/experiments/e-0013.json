@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0013",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Failure-mode taxonomy across granularity: classify all 13 genuine agent failures (harness error=None, not solved) on the two never-solved puzzles (puzzle_003 25x30/~750 cells, puzzle_004 15x15/~225 cells) x none/fine/medium/coarse/scratchpad, by submit-behaviour and engagement depth (tool_call_count). No new compute.",
+  "motivation": "q-0013 asks whether granularity changes the TYPE of failure, not just the rate. The cost/solve-rate axes are covered; failure-mode is the untouched behaviour axis. Tests the hypothesized modes: budget-exhaustion vs wrong-submit vs stuck-loop vs early-refuse.",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/analyze_failure_modes.py",
+    "commit": "95d23d7",
+    "run_cmd": "python3 harness/analyze_failure_modes.py"
+  },
+  "formal_results": "Per (puzzle,toolset): n, mean tool_call_count, dominant mode in {early-refuse(<=5 calls), grind-exhaust(>5), wrong-submit(submit_attempts>0)}, and #wrong-submits. Plus none-vs-tools mean-calls per puzzle.",
+  "results_description": "WRONG-SUBMIT failures: 0/13 (agent never blind-guesses; every failure is an honest decline, submit_attempts=0 across all). puzzle_003 (25x30): ALL toolsets early-refuse (none 1.0 calls, tools mean 2.3) - granularity does NOT change failure type at extreme size. puzzle_004 (15x15): failure type SPLITS by granularity - none early-refuses (1 call) while fine/medium/scratchpad grind-exhaust (126/162/62 calls); none mean 1.0 vs tools mean 116.7 calls (~117x engagement gap), same outcome (honest decline).",
+  "conclusions": "Yes - granularity changes the failure TYPE, but along ONE axis and conditionally. Two of the four hypothesized modes (wrong-submit, blind-tool-trust) never occur: Opus-4.7 always declines honestly rather than submit a guess. The axis granularity moves is early-refuse vs grind-then-refuse: tools convert an immediate principled refusal (none, ~1 call) into a deep ~117x-longer case-analysis search that still ends in the SAME honest decline - but only in the tool-tractable regime (15x15). At extreme size (25x30) even tool agents recognize manual edge-by-edge solving is infeasible and refuse up front, so granularity has no effect. Complements a-0016 (effort inflation): tools raise effort-before-giving-up by ~100x without changing the rate or honesty of the outcome.",
+  "addresses": [
+    "q-0013"
+  ],
+  "produces": [
+    "a-0017"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:59:43.355Z",
+    "updated_at": "2026-06-12T03:02:18.220Z"
+  },
+  "comments": {}
+}
