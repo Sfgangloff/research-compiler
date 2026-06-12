@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0038",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only CONSTRUCTIVE run of e-0033's same-format (both-tactic-mode) serializer over REAL, non-elided proof bodies — the first to escape the 'bodies elided / skeleton / sibling-only lower bound' caveat threaded through a-0026..a-0035. Every prior figure in the e-0033..e-0036 chain (header-delta e-0027/e-0033; sibling-referenced substitution rate e-0034=12.8%; compression-inversion rate a-0033=0.90%) was estimated from data/deep have_tree records whose proof bodies are ELIDED to a bare 'by', so emitted serializations were explicitly 'structural skeletons, not runnable Lean' and reference counts were sibling-only (residual unobservable). corpus_v3/full_proofs instead carries FULL residual tactic bodies (a-0035). This runs the serializer over the 7 corpus_v3 full_proofs with >=2 real top-level haves and measures format delta, realized header-only length delta, downstream reference counts INCLUDING the residual, and the compression-inversion rate.",
+  "motivation": "The same-format build's confound-freeness is established by construction, but its quantitative claims (how big the granularity-only header delta is; how often pi_root must substitute rather than drop; how often a sound pi_root inliner becomes LONGER than pi_leaf) were all skeleton/sibling-only lower bounds. Settle whether those figures hold on real captured Lean before the load-bearing Modal extract_full_proofs re-run (e-0037) commits to them, and to tell q-0008's length covariate how large an opposite-sign tail to expect.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_realbody_same_format.py",
+    "commit": "8264b35",
+    "run_cmd": "python3 data/analyze_realbody_same_format.py --show"
+  },
+  "formal_results": "7 corpus_v3 full_proofs carry >=2 real top-level haves (an 8th, eq_one_of_inv_eq', is a term-mode match excluded by the tactic-top-level parser). 17 top-level haves total: 13 inline-able named/anon-this, 4 destructuring binders (hypotheses, not inline-able sub-derivations, excluded matching e-0032). FORMAT delta = 0 by construction (both policies tactic-mode, shared residual). Realized header-only length delta pi_leaf adds over pi_root: median 39 char, range 12-158. Downstream reference distribution over the 13 inline-able haves, now counting RESIDUAL refs (not just siblings): 2 referenced 0x, 7 referenced 1x, 4 referenced >=2x -> 11/13 (85%) referenced >=1, 4/13 (31%) referenced >=2. Net length pi_root-minus-pi_leaf (crude full-body-duplication-per-site model): median -38 char (pi_root shorter), min -80, max +249 (obs: 305-char body referenced 2x). Compression-inversion (refs>=2 -> sound pi_root duplicating body becomes longer): 4/13 = 30.8%. One refs=0 case is a typeclass instance-have (RingHomIsometric) used via resolution, textually 0 refs yet undroppable.",
+  "results_description": "On real non-elided bodies the same-format SCHEME works end-to-end (format delta 0, granularity reduces to bounded named headers), and the realized header-delta (median ~39 char) is the same order as e-0027 (~117) / e-0033 (~147 from deep skeletons), foundational haves skewing shorter. The decision-relevant correction: with residual references observable, the downstream-referenced rate is 85% and the compression-inversion rate is ~31% (4/13), vastly above e-0034's sibling-only 12.8% and a-0033's 0.90% — confirming those were genuine LOWER BOUNDS. The pi_root-shorter DIRECTION still holds for the median/majority (net median -38 char, ~9/13 shorter), but the opposite-sign tail is materially heavier than the deep skeletons implied, driven by haves referenced from the residual the skeletons could not see.",
+  "conclusions": "Validates the same-format build SCHEME on real captured Lean (first non-skeleton demonstration) but TIGHTENS the warning attached to it: e-0034's 12.8% substitution and a-0033's 0.90% compression-inversion are lower bounds; once residual references count, ~31% of inline-able haves on this subset are referenced >=2x and would make a naive duplicating pi_root LONGER. So (1) the Modal extract_full_proofs re-run (e-0037) must measure substitution/inversion on residual-inclusive bodies, not assume the skeleton rates; (2) q-0008's length covariate must absorb a non-trivial opposite-sign tail (~tens of percent of granularity-bearing decls), not the ~1% a-0033 implied; (3) pi_root inlining must handle multi-reference haves (share via let / re-derive) and undroppable zero-textual-ref instance-haves, not blind header drop. CAVEAT: N=7 over foundational modules (granularity rare here); heuristic indentation parse, no Lean elaboration; textual ref counts; crude net-length model; this anchors the rates' DIRECTION and shows the skeleton figures undercount, it is not the corpus-scale measurement (that needs e-0037).",
+  "addresses": [
+    "q-0008",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0036"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:33:20.948Z",
+    "updated_at": "2026-06-12T13:33:59.891Z"
+  },
+  "comments": {}
+}

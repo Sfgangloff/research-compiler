@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0036",
+  "stream": "proof-hierarchies",
+  "text": "The same-format build's quantitative safety margins — how much of the rough/fine length gap is granularity-only (q-0008) and how often pi_root inlining stays the SHORTER, simple-drop policy (a-0033) — were every one estimated from data/deep have_tree SKELETONS whose bodies are elided to a bare 'by', so they counted only sibling references and were flagged as lower bounds. e-0038 runs the e-0033 serializer over the 7 corpus_v3 full_proofs that carry >=2 REAL, non-elided top-level haves (a-0035's captured bodies) — the first non-skeleton run. Confirmed: the same-format SCHEME works end-to-end (FORMAT delta 0 by construction; granularity reduces to bounded named headers), the realized header-only delta is median ~39 char (12-158), same order as e-0027's ~117 / e-0033's ~147, and the pi_root-shorter DIRECTION holds for the median (net pi_root-minus-pi_leaf median -38 char, ~9/13 shorter). BUT the decision-relevant correction: with RESIDUAL references now observable (not just siblings), 11/13 (85%) inline-able named haves are referenced downstream and 4/13 (30.8%) >=2 times — so a sound pi_root that duplicates the body at each site becomes LONGER for ~31% of haves on this subset, vastly above e-0034's sibling-only 12.8% and a-0033's 0.90%. Those were genuine LOWER BOUNDS. Implications: (1) e-0037's Modal extract_full_proofs re-run must measure substitution/inversion on residual-INCLUSIVE bodies, not inherit the skeleton rates; (2) q-0008's length covariate must absorb an opposite-sign tail of order tens-of-percent of granularity-bearing decls, not ~1%; (3) the pi_root inliner must handle multi-reference haves (share via let / re-derive) and undroppable zero-textual-ref instance-haves (1/13 here was a RingHomIsometric instance, 0 textual refs yet required), not a blind header drop. CAVEAT: N=7 over foundational modules where the construct is rare (e-0026); heuristic indentation parse, no Lean elaboration; textual ref counts; crude full-body-duplication net-length model. This anchors the rates' DIRECTION and proves the skeleton figures undercount; the corpus-scale number still needs e-0037. (refines a-0033; also addresses q-0007's deep-retrain length-confound scoping.)",
+  "status": "supported",
+  "answers": [
+    "q-0008",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0038"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:33:59.889Z",
+    "updated_at": "2026-06-12T13:33:59.889Z"
+  },
+  "comments": {}
+}
