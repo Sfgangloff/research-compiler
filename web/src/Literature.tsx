@@ -19,6 +19,7 @@ interface Cluster {
 }
 interface LitData {
   generated_at?: string;
+  note?: string;
   n_papers?: number;
   venues?: string[];
   years?: string;
@@ -28,13 +29,17 @@ interface LitData {
 export function Literature() {
   const [data, setData] = useState<LitData | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetch("/api/literature")
+  function load() {
+    setLoading(true);
+    fetch("/api/literature?t=" + Date.now())
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
-      .then((d: LitData) => setData(d))
-      .catch((e) => setErr(e.message));
-  }, []);
+      .then((d: LitData) => { setData(d); setErr(null); })
+      .catch((e) => setErr(e.message))
+      .finally(() => setLoading(false));
+  }
+  useEffect(load, []);
 
   return (
     <div className="lit">
@@ -49,7 +54,11 @@ export function Literature() {
             {data.years ? " · " + data.years : ""}
           </span>
         )}
+        <button className="lit-refresh" onClick={load} disabled={loading} title="Reload the saved review">
+          {loading ? "…" : "↻ refresh"}
+        </button>
       </header>
+      {data?.note && <div className="lit-note">{data.note}</div>}
 
       {err && !data && (
         <div className="lit-empty">
@@ -65,8 +74,8 @@ export function Literature() {
 
       {data && (
         <div className="lit-clusters">
-          {data.clusters.map((c) => (
-            <section key={c.id} className="lit-cluster">
+          {data.clusters.map((c, ci) => (
+            <section key={c.id} className={"lit-cluster lit-c" + (ci % 8)}>
               <h2>
                 {c.label}
                 <span className="lit-clustersize">{c.size} papers</span>

@@ -1,0 +1,55 @@
+{
+  "generated_at": "preview",
+  "note": "Preview sample — illustrative papers, not the real review. Run the literature pipeline (refresh) to fetch NeurIPS/ICML/ICLR proceedings, match on arXiv, rank by citations-per-year, and replace this file.",
+  "n_papers": 14,
+  "venues": ["NeurIPS", "ICML", "ICLR"],
+  "years": "2022–2025",
+  "clusters": [
+    {
+      "id": 0,
+      "label": "Large language models & instruction tuning",
+      "size": 4,
+      "terms": ["language model", "instruction", "in-context", "reasoning"],
+      "reading_list": [
+        { "title": "Training language models to follow instructions with human feedback", "venue": "NeurIPS", "year": 2022, "arxiv_id": "2203.02155", "url": "https://arxiv.org/abs/2203.02155", "citations": 12000, "citations_per_year": 3000 },
+        { "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", "venue": "NeurIPS", "year": 2022, "arxiv_id": "2201.11903", "url": "https://arxiv.org/abs/2201.11903", "citations": 9000, "citations_per_year": 2250 },
+        { "title": "LoRA: Low-Rank Adaptation of Large Language Models", "venue": "ICLR", "year": 2022, "arxiv_id": "2106.09685", "url": "https://arxiv.org/abs/2106.09685", "citations": 8000, "citations_per_year": 2000 },
+        { "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models", "venue": "ICLR", "year": 2023, "arxiv_id": "2203.11171", "url": "https://arxiv.org/abs/2203.11171", "citations": 3200, "citations_per_year": 1067 }
+      ]
+    },
+    {
+      "id": 1,
+      "label": "Diffusion & generative models",
+      "size": 3,
+      "terms": ["diffusion", "image synthesis", "latent", "guidance"],
+      "reading_list": [
+        { "title": "High-Resolution Image Synthesis with Latent Diffusion Models", "venue": "CVPR", "year": 2022, "arxiv_id": "2112.10752", "url": "https://arxiv.org/abs/2112.10752", "citations": 11000, "citations_per_year": 2750 },
+        { "title": "Classifier-Free Diffusion Guidance", "venue": "NeurIPS-W", "year": 2022, "arxiv_id": "2207.12598", "url": "https://arxiv.org/abs/2207.12598", "citations": 3500, "citations_per_year": 875 },
+        { "title": "Elucidating the Design Space of Diffusion-Based Generative Models", "venue": "NeurIPS", "year": 2022, "arxiv_id": "2206.00364", "url": "https://arxiv.org/abs/2206.00364", "citations": 2600, "citations_per_year": 650 }
+      ]
+    },
+    {
+      "id": 2,
+      "label": "Efficient attention & long-context sequence models",
+      "size": 4,
+      "terms": ["attention", "memory", "state space", "long context"],
+      "reading_list": [
+        { "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness", "venue": "NeurIPS", "year": 2022, "arxiv_id": "2205.14135", "url": "https://arxiv.org/abs/2205.14135", "citations": 3000, "citations_per_year": 750 },
+        { "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces", "venue": "ICLR", "year": 2024, "arxiv_id": "2312.00752", "url": "https://arxiv.org/abs/2312.00752", "citations": 2400, "citations_per_year": 1200 },
+        { "title": "Efficiently Modeling Long Sequences with Structured State Spaces (S4)", "venue": "ICLR", "year": 2022, "arxiv_id": "2111.00396", "url": "https://arxiv.org/abs/2111.00396", "citations": 1900, "citations_per_year": 475 },
+        { "title": "Train Short, Test Long: Attention with Linear Biases (ALiBi)", "venue": "ICLR", "year": 2022, "arxiv_id": "2108.12409", "url": "https://arxiv.org/abs/2108.12409", "citations": 1100, "citations_per_year": 275 }
+      ]
+    },
+    {
+      "id": 3,
+      "label": "RL, preferences & alignment",
+      "size": 3,
+      "terms": ["preference", "policy", "reward", "decision"],
+      "reading_list": [
+        { "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model", "venue": "NeurIPS", "year": 2023, "arxiv_id": "2305.18290", "url": "https://arxiv.org/abs/2305.18290", "citations": 3000, "citations_per_year": 1500 },
+        { "title": "Decision Transformer: Reinforcement Learning via Sequence Modeling", "venue": "NeurIPS", "year": 2021, "arxiv_id": "2106.01345", "url": "https://arxiv.org/abs/2106.01345", "citations": 2500, "citations_per_year": 500 },
+        { "title": "Offline Reinforcement Learning as One Big Sequence Modeling Problem", "venue": "NeurIPS", "year": 2021, "arxiv_id": "2106.02039", "url": "https://arxiv.org/abs/2106.02039", "citations": 1100, "citations_per_year": 220 }
+      ]
+    }
+  ]
+}
