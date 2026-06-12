@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0012",
+  "stream": "visualization-tools-putnam",
+  "text": "Refinement of H8's premise (CPU-only fragility sweep, e-0011): the Study-8 corpus is sampling-fragile only relative to a LOW-resolution / heuristic textual verifier, NOT in principle. Every continuous problem is robustly caught by a moderately denser uniform sampler (N_all: geom_01 22, geom_03 37, geom_04 20, geom_06 86, geom_10 17), and the two non-continuous problems fall to a dense integer scan (geom_05, prefix K=45) or any generic h-grid (geom_09, N=4) - the designer's naive grids (N=5-11) miss only because they are coarse. Consequence for the (still unrun) Study 8: forced_visual could only 'win' if forced_textual's sampler is held at the crippled low-N/sparse/decimal strategy; a forced_textual allowed ~100 uniform points would catch every falsifier. To make H8 a fair test of visual advantage rather than a baseline artifact, the forced_textual sampling strategy must be pinned and pre-registered. This does not change the pre-registered prediction but bounds its interpretation.",
+  "status": "supported",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0011"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:06:22.173Z",
+    "updated_at": "2026-06-12T03:06:22.173Z"
+  },
+  "comments": {}
+}
