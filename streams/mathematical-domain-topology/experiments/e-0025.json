@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0025",
+  "stream": "mathematical-domain-topology",
+  "description": "Validate the hierarchical sub-clustering (e-0003) against Mathlib's OWN module hierarchy, the ground truth a-0003 left unchecked. Ground truth = the 2-level Mathlib module path (e.g. LinearAlgebra/Matrix) from each declaration's file_path. Metric: normalized mutual information (same family as e-0002's top-level NMI=0.34 anchor), measuring whether splitting a top-level cluster into sub-clusters recovers FINER module structure than the top cluster already captures; plus sub-cluster purity at 2-level granularity and a within-top-cluster permutation null (shuffle sub labels within each top cluster). 79,760 of 84,228 sub-clustered declarations resolved to a file path; 447 sub-clusters, 867 distinct 2-level modules.",
+  "motivation": "a-0003 was explicitly inconclusive: the 447 sub-domains were 'a preliminary observation, not yet validated against Mathlib's own module hierarchy.' Mathlib's file_path IS that hierarchy, so the validation is a cheap CPU-only check over existing data.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/validate_subclusters.py",
+    "commit": "61a4c74",
+    "run_cmd": "python3 src/validate_subclusters.py"
+  },
+  "formal_results": "79,760/84,228 sub-clustered declarations resolved; 447 sub-clusters vs 867 2-level Mathlib modules. NMI(top_cluster ; 1-level module)=0.307 (anchors to e-0002's 0.34). NMI(top ; 2-level module)=0.358; NMI(full hierarchy (top,sub) ; 2-level module)=0.506 -> hierarchy gain +0.148. Within-top-cluster weighted-mean NMI(sub ; 2-level module)=0.383 vs permutation null 0.094 (4.1x). Mean sub-cluster purity at 2-level granularity 0.463 (38.3% of sub-clusters >=0.5 pure) vs top-cluster purity at 2-level granularity 0.173.",
+  "results_description": "Sub-splitting genuinely recovers finer Mathlib module structure: it lifts agreement with the 2-level module hierarchy from NMI 0.358 (top-only) to 0.506 (+0.148), and within each top cluster the sub-assignment tracks 2-level modules at 4.1x the permutation null. Sub-cluster purity at the finer granularity (0.46) nearly triples the top cluster's (0.17). But purity is only moderate - most sub-clusters still mix several 2-level modules - so the recovered sub-domains are real-but-coarse, not clean one-module-each partitions.",
+  "conclusions": "Resolves a-0003 from inconclusive to supported-with-caveats: the hierarchical sub-clustering IS validated against Mathlib's own module hierarchy - sub-splitting adds finer-module signal well above chance (+0.148 NMI, 4.1x null, purity 0.17->0.46). The domain structure is genuinely hierarchical. Caveat: moderate sub-cluster purity (0.46) means sub-domains are coarser than Mathlib's 2-level modules, not a clean refinement.",
+  "addresses": [
+    "q-0003"
+  ],
+  "produces": [
+    "a-0003"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:22:01.771Z",
+    "updated_at": "2026-06-12T12:22:01.771Z"
+  },
+  "comments": {}
+}

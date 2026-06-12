@@ -3,20 +3,23 @@
   "id": "a-0003",
   "stream": "mathematical-domain-topology",
   "text": "Re-clustering within top-level clusters yields 447 plausible sub-domains (84,228 theorems), suggesting the domain structure is hierarchical - but this is explicitly preliminary, not validated against Mathlib's module hierarchy.",
-  "status": "inconclusive",
+  "status": "supported",
   "answers": [
     "q-0003"
   ],
   "backed_by": [
-    "e-0003"
+    "e-0003",
+    "e-0025"
   ],
   "edge_comments": {},
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T04:13:06.008Z",
-    "updated_at": "2026-06-11T04:14:07.313Z"
+    "updated_at": "2026-06-12T12:22:39.435Z"
   },
-  "comments": {},
+  "comments": {
+    "resolution": "Updated inconclusive->supported by e-0025 (src/validate_subclusters.py@61a4c74): the 447 sub-clusters ARE now validated against Mathlib's own 2-level module hierarchy. Sub-splitting lifts agreement with 2-level modules from NMI 0.358 (top-only) to 0.506 (+0.148), tracks 2-level modules within each top cluster at 4.1x the permutation null (0.383 vs 0.094), and triples finer-grained purity (0.17->0.46). Caveat: purity is only moderate, so sub-domains are real-but-coarse, not a clean one-module-each refinement."
+  },
   "stories": [
     "domains"
   ]
