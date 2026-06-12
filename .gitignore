@@ -9,3 +9,6 @@ coverage/
 
 # make-pages-interactive runtime state
 feedback/
+agents/logs/
+agents/run.pids
+agents/run.pids.tmp
