@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0021",
+  "stream": "proof-hierarchies",
+  "text": "The load-bearing caveat under a-0020's 'plausible but unproven' predictability verdict resolves toward LEARNABLE. a-0020 found the section frontier is only ~37.5% grounded in the statement, leaving a median ~2 NOVEL library tokens the predictor must produce — but explicitly left untested whether those are genuinely-invented content or common Mathlib names a model recalls from pretraining. e-0021 measures it via corpus document-frequency (df) over all 1,261 data/deep decls: the median novel library token recurs in 16 decls (NOT a singleton), 42.6% of the 1,424 pooled novel tokens are common (df>=25, i.e. >=2% of even this sample) and only 25.7% are rare (df<=2); per-decl the median common-novel fraction is 0.43. Grounded tokens calibrate higher (median df 39.5) as expected, but novel tokens are still substantially common. Because data/deep is a SAMPLE of Mathlib, df UNDER-counts true frequency, so the common share is a LOWER bound and the rare share an upper bound — both cut toward more recallable. The genuinely-rare residue (~26%) is real and concentrated in specialised namespaces (category-theory cofork/fork constructors, continued-fraction convergent fields, LieModule maps), where a small predictor would have to invent specialised content. NET for q-0009: the predictor target is a partial recombination of the statement PLUS mostly-common, recurring Mathlib vocabulary — not invented mathematics — so a-0020's one not-cleanly-passing data gate is weakened in the learnable direction. It adds no new blocker. What stays untested is the OUTCOME: actual predictor frontier-accuracy and predictor+solver pass@k vs single-stage, which only the paid Modal round-trip + SFT + eval can settle.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0021"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:23:44.341Z",
+    "updated_at": "2026-06-12T08:23:44.341Z"
+  },
+  "comments": {}
+}

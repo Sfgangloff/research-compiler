@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0021",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only test of the load-bearing caveat in a-0020 (q-0009): are the ~2 NOVEL library tokens per wide-frontier decl genuinely-invented content or COMMON Mathlib names a model recalls from pretraining? Reuses e-0020's tokenization/library/grounded/novel classification verbatim, then builds a corpus document-frequency (df) map over ALL 1,261 data/deep decls (df = #distinct decls whose statement or any have-tree node type contains the token, a commonness proxy) and reports the df distribution of the pooled novel library tokens vs the grounded tokens as calibration.",
+  "motivation": "a-0020 left q-0009's predictability gate at 'plausible but unproven' precisely because it flagged but never measured this: a NOVEL library token is not proof of unlearnability since a Mathlib-trained model can emit a common name (mul_comm, Finset) absent from the statement. The whole verdict hinges on whether the novel content is common-recall vs rare-invention. Measure it cheaply before any Modal SFT spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_novel_token_commonness.py",
+    "commit": "3ff785f",
+    "run_cmd": "python3 data/analyze_deep_novel_token_commonness.py"
+  },
+  "formal_results": "633 wide-frontier decls; 1,424 pooled novel library tokens, 868 grounded (calibration). Novel-token corpus df distribution (over 1,261 decls): p10 1, p25 2, p50 16, p75 56, p90 118, max 343, mean 46.8 — the median novel token recurs in 16 decls, NOT a singleton. Grounded-token df (calibration): p50 39.5, mean 72.3 (grounded more common, as expected, but novel still substantially common). Bands of the 1,424 novel tokens: df==1 singleton 17.8%, df2-4 rare 15.7%, df5-24 uncommon 24.0%, df25-99 common 23.6%, df>=100 very-common 19.0%. So 42.6% are common (df>=25) and only 25.7% rare (df<=2). Per-decl common-novel fraction median 0.43, mean 0.44. Most-frequent novel tokens: Nonempty(21), IsClosed(16), Disjoint(14)... Rare residue concentrated in specialised namespaces: CokernelCofork/KernelFork (category theory), nextConts/TerminatedAt (continued fractions), LieModule.toEnd.",
+  "results_description": "The novel-content burden a-0020 flagged is substantially milder than the raw novel-count implied. ~43% of the novel library tokens the predictor must produce are common Mathlib names (df>=25, i.e. >=2% of even this 1,261-decl sample), the median novel token recurs in 16 decls, and only ~26% are genuinely rare (df<=2). Because data/deep is a SAMPLE, these df values UNDER-count true Mathlib frequency, so the common share is a LOWER bound and the singleton share an upper bound — both cut toward MORE recallable. The genuinely-rare residue is real and concentrated in specialised areas (category theory cofork/fork constructors, continued-fraction convergent fields, Lie-module maps), where a small predictor would have to invent specialised content.",
+  "conclusions": "Sharpens a-0020's predictability gate toward learnable: the section-predictor's novel content is mostly common, recurring Mathlib vocabulary (median novel token df 16; >=43% common at df>=25, a lower bound), not invented mathematics — so the input->output target is a partial recombination PLUS mostly-recallable common names, with a rare specialised tail (~26%, df<=2). This does NOT add a blocker; it removes weight from the one gate the e-0012..e-0020 chain could not cleanly pass. CAVEAT: corpus df is a sample-based frequency proxy (under-counts full Mathlib), and commonness-of-name is still not a trained-predictor accuracy — only the Modal SFT+eval settles whether the predictor emits the right frontier.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0021"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:23:30.565Z",
+    "updated_at": "2026-06-12T08:23:44.343Z"
+  },
+  "comments": {}
+}
