@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0014",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Self-correction taxonomy across tool granularity: read every solved+failed Opus-4.7 meta-off trial transcript and detect, per toolset (fine/medium/coarse/scratchpad), two self-correction events: FLIP (an edge re-set to a DIFFERENT value than it currently holds on that board handle = reversing a placed deduction) and EXPLICIT-UNDO (dedicated retraction primitive: fine reset_edge, medium restore, scratchpad assume/try_both/retract; coarse has none by design). No new compute.",
+  "motivation": "q-0014 asks whether granularity changes the agent's ability to SELF-CORRECT mid-trajectory: once a deduction is committed, is it more/less likely to be detected and reversed under fine vs coarse tools? Pure read over existing trials isolates the behavioral signal.",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/analyze_self_correction.py",
+    "commit": "fb84484c24",
+    "run_cmd": "python -m harness.analyze_self_correction --meta off"
+  },
+  "formal_results": "Per toolset over Opus-4.7 meta-off trials: trials, commits (edge-set ops), flips, flip%=flips/commits, explicit_undo, self_corr%=(flips+undo)/commits; plus flip% by difficulty rung.",
+  "results_description": "fine: 10 trials, 826 commits, 0 flips (0.0%), 0 undo, selfcorr 0.0%. coarse: 10 trials, 226 commits, 0 flips (0.0%), 0 undo, 0.0%. medium: 11 trials, 266 commits, 3 flips (1.1%), 11 undo (restore), selfcorr 5.3%. scratchpad: 5 trials, 68 commits, 0 flips, 50 undo (assume/try_both/retract), selfcorr 73.5%. flip% by rung is 0.0% for fine and coarse at every difficulty (easy/hard/tier3/15x15); medium 3.0% (hard) and 1.4% (15x15). The 20 fine reset_edge calls in the corpus all live in one infra-errored trial (excluded).",
+  "conclusions": "Granularity does change self-correction, but in a binary capability-gated way, not a graded fine-vs-coarse way. Direct in-place reversals (FLIPs) are essentially nonexistent across ALL toolsets (<=1.1%): once Opus-4.7 places a concrete edge it almost never overwrites that specific placement. Self-correction occurs ONLY through dedicated retraction primitives, so it is entirely determined by whether the toolset PROVIDES one: scratchpad (assume/try_both/retract) 73.5%, medium (restore) 5.3%, fine (reset_edge available but unused in clean trials) 0%, coarse (no undo primitive) 0%. Self-correction is provisioned, not emergent: the agent backtracks when given a branch/snapshot tool and essentially never improvises reversal by overwriting a committed edge. Coarse's apparent 0% is not a deficit of will but of API surface (no undo lever); fine's 0% IS a behavioral choice (reset_edge exists, unused).",
+  "addresses": [
+    "q-0014"
+  ],
+  "produces": [
+    "a-0018"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:07:19.919Z",
+    "updated_at": "2026-06-12T03:07:57.788Z"
+  },
+  "comments": {}
+}

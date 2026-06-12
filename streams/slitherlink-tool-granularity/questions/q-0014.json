@@ -3,7 +3,7 @@
   "id": "q-0014",
   "stream": "slitherlink-tool-granularity",
   "text": "Does tool granularity change the agent's ability to SELF-CORRECT mid-trajectory: once it has committed a wrong deduction, is it more or less likely to detect and reverse it under fine vs coarse tools?",
-  "status": "open",
+  "status": "answered",
   "tags": [
     "ideated",
     "behavior"
@@ -11,7 +11,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T00:14:19.440Z",
-    "updated_at": "2026-06-11T00:14:19.440Z"
+    "updated_at": "2026-06-12T03:07:50.219Z"
   },
   "comments": {}
 }

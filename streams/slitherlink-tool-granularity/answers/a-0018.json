@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0018",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Yes — but in a binary, capability-gated way rather than a graded fine-vs-coarse way. The key empirical fact is that in-place reversals (FLIPs: re-setting a committed edge to a different value) are essentially nonexistent under EVERY toolset: fine 0/826 commits (0.0%), coarse 0/226 (0.0%), medium 3/266 (1.1%), with flip% = 0.0% for fine and coarse at every difficulty rung (easy/hard/tier3/15x15). Once Opus-4.7 places a concrete edge it almost never overwrites that specific placement. Consequently self-correction happens ONLY through dedicated retraction primitives, so it is determined entirely by whether the toolset PROVIDES one, not by granularity as such: scratchpad (assume/try_both/retract) 73.5% self-correction rate, medium (restore) 5.3%, fine (reset_edge — available but unused in clean trials) 0%, coarse (no undo primitive at all) 0%. So self-correction is provisioned, not emergent: the agent backtracks readily when given a branch/snapshot tool and essentially never improvises a reversal by overwriting. Two distinct 0%s underlie this: coarse's is a missing API surface (no undo lever exists), whereas fine's is a behavioral choice (reset_edge exists and goes unused). This complements a-0016/e-0013: granularity inflates effort-before-giving-up and converts early-refuse into grind-then-refuse, but it does not buy in-trajectory error recovery unless an explicit backtracking primitive is supplied.",
+  "status": "supported",
+  "answers": [
+    "q-0014"
+  ],
+  "backed_by": [
+    "e-0014"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:07:45.209Z",
+    "updated_at": "2026-06-12T03:07:57.791Z"
+  },
+  "comments": {}
+}
