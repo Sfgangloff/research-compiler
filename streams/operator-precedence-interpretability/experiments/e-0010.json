@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0010",
+  "stream": "operator-precedence-interpretability",
+  "description": "Confound control for the a-0012 product-magnitude grading (q-0011): CPU/stdlib reanalysis of the saved rule_vs_lookup_exp_g_* JSONs with ZERO new forward passes. In canonical-48 each product b*c maps to a unique operand pair (b,c), so product is collinear with operand size (large products need operands 4,5). Per file, regress per-product mean same-subproduct r on three correlated-but-distinct magnitude covariates (product b*c, operand sum b+c, max operand) and compute PARTIAL correlations: product|max-operand and max-operand|product. Tests whether the grading is specifically PRODUCT-keyed or generically operand-magnitude-keyed.",
+  "motivation": "a-0012 read the rising same-subproduct similarity with product value as product-keyed lookup, but product magnitude is confounded with operand magnitude and answer magnitude in canonical-48. If the band merely tracked operand size, product would lose its edge once max-operand is partialled out.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "heldout_product_confound.py",
+    "run_cmd": "python3 heldout_product_confound.py"
+  },
+  "formal_results": "Headline genuine staged band DeepSeek-Math-7B L23: corr(meanr,product)=+0.83 >> corr(meanr,max-operand)=+0.31; partialling dissociates them cleanly: partial(product|max)=+0.69, partial(max|product)=-0.26 -> specifically PRODUCT-keyed, not operand-size. DeepSeek L29 also product>=max after partial (+0.43 vs +0.39). At the FT Qwen-7B L22 bands the three covariates are tied/collinear (e.g. ft1 r_prod=r_sum=r_max~+0.63) so the proxy CANNOT separate product from generic magnitude there; Qwen-1.5B ft L27 and Qwen-7B pre L22 even lean max-operand (partial(prod|max)=+0.11 and -0.46). n<=10 products, so partials are indicative not decisive.",
+  "results_description": "For the one band e-0004 called a genuinely staged b*c (DeepSeek L23), the magnitude grading is specifically product-VALUE-keyed and dissociates from operand size; for the FT-amplified Qwen L22 bands product and operand size are collinear and the proxy cannot separate them.",
+  "conclusions": "Strengthens a-0012 exactly where it matters: the headline product-keyed-lookup signal is not an operand-magnitude artifact. But it also bounds the claim - at most layers within-distribution data cannot separate product-keyed from magnitude-keyed structure, which only the GPU held-out-product finetune (e-0008/a-0010) can settle.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0013"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:08:45.993Z",
+    "updated_at": "2026-06-12T03:09:01.564Z"
+  },
+  "comments": {}
+}

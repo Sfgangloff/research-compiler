@@ -2,7 +2,7 @@
   "type": "experiment",
   "id": "e-0011",
   "stream": "visualization-tools-putnam",
-  "description": "Study 8 corpus sampling-fragility MARGIN sweep (CPU-only). For each of the 5 continuous-domain geometric problems, sweep a naive uniform textual-verifier's resolution N=3..400 across 12 grid alignments; record N_any (>=1 alignment catches the falsifier) and N_all (every alignment catches). geom_05 (sequence) and geom_09 (diff-quotient) probed separately as heuristic-specific.",
+  "description": "Study 8 corpus sampling-fragility MARGIN sweep (CPU-only), now covering all 8 problems. For each continuous-domain problem sweep a naive uniform textual-verifier's resolution N=3..400 across 12 grid alignments; record N_any (>=1 alignment catches) and N_all (every alignment catches). geom_02 (self-intersection) probed with the agent's natural pairwise-distance check; geom_05 (sequence) and geom_09 (diff-quotient) probed as heuristic-specific.",
   "motivation": "verify.py asserts 'sampling-fragile' as a BINARY property at one hand-picked naive grid (N=5-11). A skeptic can object the miss is cherry-picked to that resolution/alignment, undermining H8's premise that numeric sampling cannot easily win. Quantify how robust the fragility actually is.",
   "code_pointer": {
     "repo": "graphical-reasoning",
@@ -10,20 +10,21 @@
     "commit": "0db6188",
     "run_cmd": ".venv-corpus/bin/python experiments/geometric_corpus/fragility_sweep.py"
   },
-  "formal_results": "Robust-catch threshold N_all (designer naive grid in parens): geom_01 22 (11), geom_03 37 (11), geom_04 20 (5x5), geom_06 86 (11), geom_10 17 (11). N_any as low as 3-10 for all. geom_05: dense integer scan catches at prefix K=45 (sparse logspace {1,2,5,10,20,50,100,200} misses). geom_09: decimal-h heuristic gives max|sin(pi/h)|=4.1e-12 (ratifies false f'(0)=0) but ANY generic uniform h-grid catches at N=4.",
+  "formal_results": "Robust-catch threshold N_all (designer naive grid in parens): geom_01 22 (11), geom_03 37 (11), geom_04 20 (5x5), geom_06 86 (11), geom_10 17 (11). geom_02 (NEW): naive pairwise-distance self-intersection check (eps=0.05) needs N_all=126 over all alignments; restricted to ODD N (the designer's N=37 odd-prime regime) N_any=127, N_all=141; the designer's exact config (N=37 + irrational offset sqrt(2)/200) is reproduced as NOT caught. geom_05: dense integer scan catches at prefix K=45 (sparse logspace misses). geom_09: decimal-h heuristic gives max|sin(pi/h)|=4.1e-12 but any generic uniform h-grid catches at N=4.",
   "results_description": "Every continuous problem is robustly caught by a moderately denser UNIFORM sampler at N_all=17-86; the two non-continuous problems are caught trivially by a dense integer scan (K=45) or any generic h-grid (N=4). The designer's naive grids (N=5-11) miss only because they are coarse/heuristic, not because sampling is in-principle blind to the falsifier.",
-  "conclusions": "The corpus's sampling-fragility is REAL but SHALLOW and partly heuristic-specific: a forced_textual verifier allowed N~100 uniform points (or a dense integer scan) would catch every falsifier. So H8's premise ('numeric sampling cannot easily win') holds only relative to the LOW-resolution/heuristic sampler the agent tends to use, not as an in-principle barrier. METHODOLOGICAL COROLLARY for Study 8: a forced_visual 'win' would hinge on the forced_textual baseline's sampler being crippled (low N / sparse / decimal-h); to be a fair test of visual advantage, forced_textual must be pinned to a documented low-resolution strategy and that choice pre-registered, else any visual edge is a baseline artifact.",
+  "conclusions": "Fragility is REAL but mostly SHALLOW: for 7/8 problems a forced_textual verifier allowed N~100 uniform points (or a dense integer scan) catches every falsifier (N_all 17-86), so 'numeric sampling cannot win' holds only against the LOW-resolution/heuristic sampler the agent tends to use. The exception is geom_02: its naive pairwise-distance check needs ~10x the resolution (N_all 126-141, odd-N regime) before it reliably finds the figure-eight crossing, making it the corpus's single most robustly sampling-fragile problem and the best candidate for a genuine forced_visual edge. METHODOLOGICAL COROLLARY for Study 8: a forced_visual win on the 7 shallow problems would hinge on crippling the forced_textual baseline (low N / sparse / decimal-h); to be a fair test, forced_textual's sampler must be pinned and pre-registered. geom_02 is the one problem where even a moderately dense numeric baseline still misses, so it should be analyzed separately.",
   "addresses": [
     "q-0008"
   ],
   "produces": [
-    "a-0012"
+    "a-0012",
+    "a-0013"
   ],
   "status": "done",
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-12T03:06:08.672Z",
-    "updated_at": "2026-06-12T03:06:22.175Z"
+    "updated_at": "2026-06-12T03:14:06.177Z"
   },
   "comments": {}
 }

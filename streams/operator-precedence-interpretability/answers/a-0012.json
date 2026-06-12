@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0012",
+  "stream": "operator-precedence-interpretability",
+  "text": "Cheap CPU proxy (no finetune): the late abstract-b*c band is NOT product-general -- on DeepSeek-Math-7B L23 (the genuinely staged band, aggregate d=+0.59) same-subproduct profile similarity is graded by PRODUCT MAGNITUDE (corr +0.83): large products 10-20 sit well above the diff baseline (r 0.39-0.63) while small products 3/4/5/8 sit AT/BELOW it (r 0.02-0.09), with 40% of products below baseline and a permutation heterogeneity p<5e-5. Positive magnitude grading replicates at every model/layer (Qwen-7B/1.5B, +0.21..+0.64). This is a necessary-condition proxy, not the discriminator: it predicts the band would FAIL on held-out (especially small/novel) products -- favouring product-keyed lookup over a clean rule -- but the definitive FT held-out test (a-0010/e-0008) is still unrun.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0009"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:02:20.397Z",
+    "updated_at": "2026-06-12T03:02:28.758Z"
+  },
+  "comments": {}
+}

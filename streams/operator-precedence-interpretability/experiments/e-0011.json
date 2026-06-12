@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0011",
+  "stream": "operator-precedence-interpretability",
+  "description": "Cluster-bootstrap CIs (B=10000, resampling the n<=10 distinct b*c products with replacement) for the product-keyed-vs-magnitude dissociation of a-0013, over the saved rule_vs_lookup_exp_g single-layer JSONs. CPU/stdlib-only, zero new forward passes. Reports 90% percentile CIs for the raw product correlation, partial(product|max-operand), partial(max-operand|product), and their difference (>0 => product-keying beats generic operand magnitude).",
+  "motivation": "a-0013's partial-correlation dissociation (DeepSeek L23 partial(prod|max)=+0.69 vs partial(max|prod)=-0.26) was flagged 'indicative, not decisive' on n<=10 products with no uncertainty quantification. Bootstrap CIs say which claim survives resampling and which bands are genuinely indeterminate.",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "heldout_product_bootstrap.py",
+    "run_cmd": "python3 heldout_product_bootstrap.py"
+  },
+  "formal_results": "DeepSeek-Math-7B L23 (the one genuinely staged late band): difference partial(prod|max)-partial(max|prod) point=+0.95, 90% CI [+0.50,+1.50], P(diff>0)=1.00 across 10000 replicates -> product-keying robustly beats max-operand control. The partial(prod|max) effect-size point is +0.69 but its CI is wide [-0.43,+0.94]. Every FT-amplified Qwen-7B L22 band (pre + 3 FT seeds), Qwen-1.5B L27, and DeepSeek L29: difference CI straddles 0 (P(diff>0) 0.15-0.52) -> indeterminate.",
+  "results_description": "The DIRECTION of the DeepSeek L23 dissociation (product > operand-magnitude) is bootstrap-robust (100% of replicates), but its effect SIZE is uncertain; all other bands cannot separate product from generic magnitude under resampling.",
+  "conclusions": "Hardens a-0013 with proper uncertainty: the product-keyed-lookup signal survives operand-magnitude control only at DeepSeek L23, and only as a robust direction, not a tight effect size; the within-distribution proxy is exhausted and the GPU held-out-product finetune (e-0008/a-0010) remains the sole decisive test.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0014"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:17:37.234Z",
+    "updated_at": "2026-06-12T03:17:58.977Z"
+  },
+  "comments": {}
+}

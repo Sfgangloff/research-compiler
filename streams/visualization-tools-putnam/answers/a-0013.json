@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0013",
+  "stream": "visualization-tools-putnam",
+  "text": "Refinement of a-0012, completing the fragility sweep to 8/8 (geom_02 was previously omitted). geom_02 (self-intersection of the figure-eight gamma=(cos t, sin 2t)) is the corpus's OUTLIER: the agent's natural numeric check - pairwise distances between non-adjacent samples (eps=0.05) - needs N_all=126 alignments-robustly, and within the designer's odd-prime regime (N=37) N_any=127 / N_all=141, roughly 10x the resolution the 7 other problems require (N_all 17-86). The miss is partly heuristic (an even N divides pi, co-sampling both crossing preimages pi/2 and 3pi/2, and catches by N~4 at lucky alignments; odd N cannot) and partly genuine resolution depth. The designer's exact config (N=37 + irrational offset sqrt(2)/200) is reproduced as a confirmed MISS. Consequence: geom_02 is the single problem where even a moderately dense forced_textual sampler still fails, so it is the strongest candidate for a real forced_visual advantage in the (still unrun) Study 8 - while the other 7 remain shallow baseline artifacts unless forced_textual's sampler is pinned low.",
+  "status": "supported",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0011"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:14:06.168Z",
+    "updated_at": "2026-06-12T03:14:06.168Z"
+  },
+  "comments": {}
+}

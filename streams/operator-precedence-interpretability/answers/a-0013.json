@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0013",
+  "stream": "operator-precedence-interpretability",
+  "text": "Confound control tightens a-0012: the product-magnitude grading is NOT merely an operand-size artifact where it matters most. In canonical-48 product b*c is collinear with operand magnitude, but for the one genuinely staged late band (DeepSeek-Math-7B L23) the grading is specifically PRODUCT-keyed - corr(mean same-subproduct r, product)=+0.83 vs corr with max-operand=+0.31, and partialling cleanly dissociates them: partial(product|max)=+0.69 while partial(max|product)=-0.26. So the headline product-keyed-lookup signal survives the operand-magnitude control. Caveat: at the FT-amplified Qwen-7B L22 bands the three covariates (product, b+c, max-operand) are collinear and tied, so this within-distribution proxy cannot separate product-keyed from generic-magnitude structure there - only the GPU held-out-product finetune (e-0008/a-0010) can. Necessary-condition evidence for product-keyed lookup; not a substitute for the held-out discriminator.",
+  "status": "supported",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0010"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:09:01.563Z",
+    "updated_at": "2026-06-12T03:09:01.563Z"
+  },
+  "comments": {}
+}

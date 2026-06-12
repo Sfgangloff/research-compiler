@@ -1,0 +1,27 @@
+{
+  "type": "experiment",
+  "id": "e-0006",
+  "stream": "math-world-models",
+  "description": "Next-state head learnability audit of the manufactured corpus (src/data/nextstate_audit.py): the complement to e-0005's categorical-head audit, targeting the world model's hardest head — next-state exact-match. CPU-only over all shards, it reports the copy baseline P(obs_after==obs_before), the (obs_before,action)->obs_after determinism / exact-match ceiling, per-Obs-field change rates (file/goals/messages/env), and the char/approx-token context budget of model input and target (tokens≈chars/4) to check single-T4/QLoRA feasibility.",
+  "motivation": "e-0005 cleared the necessary precondition for the two categorical heads (status/error). The next-state exact-match head was unaudited. Before any GPU (e-0002) we can cheaply check the matching preconditions: is the transition deterministic (so exact-match isn't capped by label noise), is it non-trivial (copy baseline well below 1), and does the observation fit a T4 context?",
+  "code_pointer": {
+    "repo": "mathematics-world-models",
+    "path": "src/data/nextstate_audit.py",
+    "commit": "bb003aa063",
+    "run_cmd": "python -m src.data.nextstate_audit data/shards/fixtures"
+  },
+  "formal_results": "On the 66-record fixture corpus (6 decls, 3 shards): copy baseline 0.000 (no transition is a no-op echo); 58 distinct (obs_before,action) groups, 0 non-deterministic collisions -> exact-match ceiling 1.000. Field-change rates: file 0.970, goals 0.818, messages 0.788, env 0.000. Context budget: input mean 125c / p95 190c(48t) / max 256c(64t); target mean 127c / p95 311c(78t) / max 578c(145t). 118 tests pass (+10).",
+  "results_description": "The next-state head clears its necessary precondition: the transition is a deterministic function in the data (ceiling 1.0, zero collisions) so exact-match is not capped by label noise, and it is non-trivial (copy baseline 0.0) so a copy-the-input model scores 0 — the head must genuinely predict. Dynamics concentrate in file/goals/messages; env never moves at fixture scale (the env sub-target is trivially copy here). The observation is tiny — p95 input ~48 tokens, max target ~145 — so a sub-2B model at a 2k QLoRA context on a T4 has enormous headroom.",
+  "conclusions": "Together with e-0005 (positive action->target MI on the status/error heads), the learnability preconditions for q-0005 now hold across ALL of the world model's heads: categorical (status/error) AND next-state (exact-match deterministic + non-trivial + context-feasible). Necessary, not sufficient (the model must still read state; env-dynamics and length both grow at Mathlib scale and must be re-checked). Green light for e-0002 stands and is strengthened.",
+  "addresses": [
+    "q-0005"
+  ],
+  "produces": [],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T05:08:04.563Z",
+    "updated_at": "2026-06-12T05:08:04.563Z"
+  },
+  "comments": {}
+}

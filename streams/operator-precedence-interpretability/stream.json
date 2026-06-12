@@ -6,9 +6,9 @@
   "root_qid": "q-0001",
   "counters": {
     "q": 11,
-    "a": 11,
+    "a": 14,
     "h": 10,
-    "e": 8
+    "e": 11
   },
   "provenance": {
     "created_by": "claude",
@@ -28,7 +28,8 @@
     "SAE": "Sparse autoencoder (top-k) trained on a residual stream to find interpretable features; feature #13802 is the value-specific b*c feature that FT strengthens.",
     "composition / recruitment": "Attention heads becoming causally load-bearing after fine-tuning (several L22 heads enter the top causal set post-FT).",
     "helix / Clock algorithm": "A circular ('Clock') code for integers (from the modular-addition literature), probed with persistent homology and a causal rotation intervention.",
-    "negative mechanistic interpretability": "The framing: behavior underdetermines the circuit, but the underdetermination has structure - here a shared layered profile rather than a single clean mechanism."
+    "negative mechanistic interpretability": "The framing: behavior underdetermines the circuit, but the underdetermination has structure - here a shared layered profile rather than a single clean mechanism.",
+    "product-magnitude grading": "Disaggregating the sub-product invariance test by product VALUE: if same-subproduct profile similarity rises with b*c magnitude (large products distinct, small products collide), the late 'abstract b*c' band is value-specific (lookup-like) rather than a product-general multiply rule. DeepSeek L23 corr=+0.83."
   },
   "stories": {
     "circuit": {

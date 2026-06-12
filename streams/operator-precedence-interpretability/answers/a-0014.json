@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0014",
+  "stream": "operator-precedence-interpretability",
+  "text": "Bootstrap quantification of a-0013's caveat: the product-keyed-vs-magnitude dissociation is robust in DIRECTION but uncertain in SIZE, and only at one band. Cluster-bootstrapping the n<=10 distinct products (B=10000), DeepSeek-Math-7B L23 -- the one genuinely staged late band -- has product-keying beat max-operand control in 100% of replicates (difference partial(prod|max)-partial(max|prod) = +0.95, 90% CI [+0.50,+1.50]), but the partial(prod|max) effect-size point of +0.69 carries a wide CI [-0.43,+0.94]. Every FT-amplified Qwen-7B L22 band (pre + 3 FT seeds), Qwen-1.5B L27 and DeepSeek L29 are indeterminate (difference CI straddles 0, P(diff>0)=0.15-0.52). So the within-distribution proxy chain (a-0012 magnitude grading -> a-0013 operand-control -> this) is now exhausted: it gives bootstrap-robust necessary-condition evidence for product-keyed lookup at DeepSeek L23 but cannot pin the effect size or separate product from magnitude anywhere else. The GPU held-out-product finetune (e-0008/a-0010) remains the only decisive rule-vs-lookup discriminator.",
+  "status": "supported",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0011"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:17:58.976Z",
+    "updated_at": "2026-06-12T03:17:58.976Z"
+  },
+  "comments": {}
+}

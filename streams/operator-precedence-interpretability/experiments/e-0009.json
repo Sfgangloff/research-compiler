@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0009",
+  "stream": "operator-precedence-interpretability",
+  "description": "CPU-only held-out-product PROXY for q-0011: re-analyse the saved rule_vs_lookup_exp_g_* sub-product-invariance JSONs with ZERO new forward passes (local box has no numpy/scipy, so stdlib only). Recover each same_subproduct_r value's product label from canonical_48 ordering, then per product compute mean same-subproduct r, a permutation heterogeneity test (between-product variance of group means), the Pearson corr between product VALUE and same-subproduct similarity, and leave-one-product-out Cohen's d.",
+  "motivation": "The definitive held-out-product discriminator (e-0008) needs a GPU finetune and is unrun. This asks for free whether the late abstract-b*c band is product-GENERAL (a multiply rule predicts uniform same-subproduct elevation, no magnitude dependence) or value-graded/concentrated (the signature of a product-keyed lookup).",
+  "code_pointer": {
+    "repo": "intepretability-operator-precedence",
+    "path": "heldout_product_proxy.py",
+    "run_cmd": "python3 heldout_product_proxy.py"
+  },
+  "formal_results": "Genuine late abstract band DeepSeek-Math-7B L23 (aggregate d=+0.592): same-subproduct similarity is NOT product-general -- corr(product value, mean same-sub r)=+0.83. Large products 10/12/15/20 have mean r 0.39-0.63 (>> diff baseline 0.162); small products 3/4/5/8 have mean r 0.02-0.09 (AT/BELOW baseline); 40% of products sit at/below baseline; permutation heterogeneity p<5e-5; leave-one-product-out d stays in [+0.42,+0.75] (not driven by any single product). Positive product-magnitude grading replicates at every model/layer with a raw r-list: Qwen-7B pre L22 +0.21, ft L22 +0.44..+0.64, Qwen-1.5B ft L27 +0.52, DeepSeek L29 +0.69.",
+  "results_description": "The late 'abstract b*c' band that reads rule-like on the aggregate Cohen's d is, on disaggregation, carried by large-magnitude products and absent for small ones -- a necessary condition for product-keyed lookup, not a product-general multiply rule. The effect is robust to leave-one-product-out, so it is not an artifact of a single product.",
+  "conclusions": "Within-distribution proxy evidence favours product-keyed lookup over a clean rule and predicts the late band would FAIL on held-out (especially small/novel) products. It does not replace the definitive FT held-out discriminator (e-0008/a-0010), which remains unrun.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0012"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T03:01:14.905Z",
+    "updated_at": "2026-06-12T03:02:28.742Z"
+  },
+  "comments": {}
+}
