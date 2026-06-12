@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0032",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only construct-validity gate for the data/deep PIVOT (the e-0026 analogue on the corpus the project pivoted TO). e-0026/a-0026 found corpus_v3's headline rough-vs-fine axis is 93.1% FORMAT-ONLY: only 42/607 (6.9%) pairs are granularity-bearing and 27 (4.4%) expose a >=2 named frontier, because rough=elaborated proof term and fine=tactic source differ by serialization alone wherever the proof has no named have to inline-or-keep. The project's response was the data/deep pivot (a-0014): 633 decls with a top-level named frontier of >=2 subgoals -- but that was only ever measured as frontier-WIDTH COUNTS (e-0014/e-0016), never as a construct-validity check. This gate runs e-0026's logic over the 633 deep wide-frontier targets, defining the SUBSTANTIVE frontier width = # top-level named subgoals with their own non-empty proof body (the unit pi_root inlines and pi_leaf keeps named); empty-body nodes are hypotheses/obtain binders, not inline-able sub-derivations.",
+  "motivation": "The entire data/deep pivot (a-0014..a-0031) ASSUMES the 633 wide frontiers carry genuine decomposition granularity -- the construct corpus_v3 was shown to lack -- but no gate ever verified the construct on deep itself; it only counted widths. If most of the 633 collapse once you require an inline-able have-step (non-empty proof body), the pivot inherits e-0026's threat; if most survive, the pivot genuinely fixes it. Cheap to settle before any Modal SFT spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_construct_validity.py",
+    "commit": "f9746f4",
+    "run_cmd": "python3 data/analyze_deep_construct_validity.py"
+  },
+  "formal_results": "633 wide-frontier targets, 0 missing have-tree records. SUBSTANTIVE frontier width (named subgoals with own proof body) >=2: 604/633 = 95.4%; >=3: 457/633 = 72.2%; ==0 (all empty-body): 4; median 3, mean 4.12. Of 2,869 top-level frontier nodes: 1,254 tactic have (bare `by`), 1,067 term have, 289 tactic have (inline `by ...`), only 259 (9.0%) empty-body (hypothesis/obtain binder). Robust across all areas: MeasureTheory 125/132 (95%), Analysis 126/130 (97%), RingTheory 53/53 (100%), Topology 41/43, NumberTheory 38/40, Algebra 37/39, LinearAlgebra 30/32, Probability 22/25 (88%). vs corpus_v3 (e-0026): 6.9% granularity-bearing, 4.4% frontier>=2, 93.1% format-only -> data/deep is ~22x richer in construct-valid wide frontiers.",
+  "results_description": "The data/deep pivot genuinely FIXES the construct-validity threat e-0026 raised for corpus_v3, at the data level: 95.4% of the 633 wide-frontier targets carry a substantive (inline-able have-step) granularity construct of width >=2 and 72.2% of width >=3 (median 3 sub-derivations), uniformly across areas (88-100%). Where corpus_v3's rough/fine axis was 93.1% format-only with nothing to inline-or-name, data/deep is the inverse: ~9% of frontier nodes are empty-body binders, the other ~91% are genuine sub-derivations.",
+  "conclusions": "Closes the missing link in the a-0014 pivot: the data/deep wide-frontier supply is not just WIDE (e-0014/e-0016) but construct-VALID -- 604/633 (95.4%) carry the inline-or-name have-step construct corpus_v3 lacked, ~22x the 4.4% there. So a rough-vs-fine (pi_root vs pi_leaf) SFT contrast built on data/deep would measure decomposition granularity, not corpus_v3's term-vs-tactic format confound (a-0026). This strengthens the within-deep route (e-0031: ~442 verified train) as the construct-valid path for q-0007's headline and q-0009's section-predictor. CAVEAT: this measures the PRESENCE of the granularity construct (inline-able have-steps), NOT the term-vs-tactic FORMAT confound, which on corpus_v3 came from build_pairs.py's serialization CHOICE; eliminating it on deep requires the eventual build to serialize BOTH policies in the same (tactic) mode -- a build decision, not yet made. Data-level only: no round-trip, no Modal, no verified pairs.",
+  "addresses": [
+    "q-0007",
+    "q-0009"
+  ],
+  "produces": [
+    "a-0031"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:40:57.167Z",
+    "updated_at": "2026-06-12T12:41:24.937Z"
+  },
+  "comments": {}
+}

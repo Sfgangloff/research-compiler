@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0031",
+  "stream": "proof-hierarchies",
+  "text": "The data/deep PIVOT genuinely FIXES the construct-validity threat e-0026/a-0026 raised for corpus_v3 -- verified at the data level, not just assumed. e-0026 showed corpus_v3's headline rough-vs-fine axis is 93.1% FORMAT-ONLY (rough=elaborated proof term vs fine=tactic source differ by serialization alone; only 42/607=6.9% granularity-bearing, 27=4.4% with a >=2 named frontier), so a measured pass@k gap there would validate a term-vs-tactic format effect, not granularity. The pivot to data/deep (a-0014: 633 wide-frontier decls) was justified only by frontier-WIDTH counts (e-0014/e-0016) and never checked for the construct itself. e-0032 runs e-0026's logic over the 633 deep targets, scoring the SUBSTANTIVE frontier width = top-level named subgoals with their OWN non-empty proof body (the unit pi_root inlines and pi_leaf keeps named; empty-body nodes are hypotheses/obtain binders, not inline-able). Result: 604/633 (95.4%) have substantive width >=2 and 457/633 (72.2%) >=3, median 3 / mean 4.12, with only 259/2,869 (9%) frontier nodes empty-body; robust across every area (MeasureTheory 95%, Analysis 97%, RingTheory 100%, ... Probability 88%). That is ~22x corpus_v3's 4.4%. So a rough-vs-fine (pi_root/pi_leaf) SFT contrast built on data/deep would measure decomposition GRANULARITY, not corpus_v3's format confound -- closing the missing link in the a-0014 pivot and strengthening the within-deep route (e-0031, ~442 verified train) as the construct-valid path for q-0007's headline and q-0009's section-predictor. CAVEAT: this validates the PRESENCE of the granularity construct (inline-able have-steps), NOT the term-vs-tactic FORMAT confound, which on corpus_v3 came from build_pairs.py's serialization CHOICE; eliminating it on deep requires the eventual build to serialize BOTH policies in tactic mode -- a build decision, not yet made. Data-level only: no round-trip, no Modal, no verified pairs. (also addresses q-0009.)",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0032"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T12:41:24.933Z",
+    "updated_at": "2026-06-12T12:41:24.933Z"
+  },
+  "comments": {}
+}
