@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0014",
+  "stream": "mathematical-domain-topology",
+  "text": "Intra-cluster ranking partly closes the gap e-0014 left open, but bounds the payoff. e-0014 found cluster-level bridge routing is candidate-heavy (~64% of Mathlib for 0.90 cross-domain recall) and named intra-cluster premise ranking as the missing lever. Testing it: fixing the bridge router (home + top-5 neighbours) and ranking individual declarations INSIDE the routed clusters by a leakage-safe train-citation popularity prior, on 432 held-out cross-domain test theorems (whole-pool ceiling 0.934 recall at ~53.8k candidates). The prior is a real lever at MODERATE recall - 0.70 premise recall at ~12.8k candidates (24% of the pool) vs random ordering's ~40.1k (75%), a 3.1x cost cut; 0.80 at 28k vs 46k. But near the ceiling it barely helps: 0.90 recall still needs ~48.5k of ~53.8k candidates (~90% of the pool), only 1.07x cheaper than random. The last ~20% of cross-domain premises are rarely-cited specialized lemmas - exactly the cross-domain links bridges are about - so a popularity prior cannot surface them cheaply. Net for q-0011: bridge structure plus intra-cluster popularity ranking makes cross-domain premise retrieval substantially cheaper at moderate recall, but EXHAUSTIVE cross-domain retrieval stays intrinsically expensive; a content-aware intra-cluster ranker is the remaining lever. Still a retrieval proxy, not a proving run - the operational payoff remains plausible but unmeasured.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0015"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T07:08:27.893Z",
+    "updated_at": "2026-06-12T07:08:27.893Z"
+  },
+  "comments": {}
+}
