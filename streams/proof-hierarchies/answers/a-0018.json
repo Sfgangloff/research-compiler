@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0018",
+  "stream": "proof-hierarchies",
+  "text": "q-0009's LAST data-level objection is now cleared: the frontier subgoals are observably NEAR-INDEPENDENT, so the planner's parallel-solve / 'fewer LLM calls' premise survives. e-0017 had ruled out 'smaller subgoals' and pinned the planner's only remaining justification on independent solvability / search-space decomposition -- then left it untested. e-0018 measures it over the same 633 data/deep wide-frontier decls by scanning each top-level subgoal's reconstructed proof BODY for whole-identifier references to its sibling frontier names and building the inter-sibling dependency graph. Result: only 117 decls (18.5%) show ANY observable proof-level coupling, 353 (55.8%) are observably independent, and the coupling is SHALLOW -- 208 citation edges over 2,301 nodes, longest dependency chain max 2, ZERO decls reach a chain >=3, and ~94% of subgoals (ready-fraction mean 0.942) carry no dependence on a sibling's proof. So the frontier factorizes into near-independent subproblems, structurally amenable to parallel solving -- consistent with e-0015's wide-and-shallow finding extended from the type/nesting axis to the proof-dependency axis. HONEST CAVEAT (cuts one way): only 43.8% of bodies are scannable (47.2% elided to bare 'by', 9.0% empty), so every coupling number is a LOWER bound and every parallelism number an upper bound; high observed coupling would have been strong evidence against factorization, but high observed independence is only weak evidence for it. NET: e-0012..e-0018 have cleared every data-level gate for Variant B -- supply (633 substantive wide frontiers over 452 modules), emission economics (~88x cheaper to name a frontier), and now factorizability. What stays genuinely untested is the OUTCOME: whether a trained predictor+solver beats single-stage on pass@k and #LLM-calls, which only the Modal round-trip verification + SFT + eval can settle. q-0009 is no longer blocked on a data-availability or structural objection; it is blocked only on the (paid) pipeline run.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0018"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T07:24:15.319Z",
+    "updated_at": "2026-06-12T07:24:15.319Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0018",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only test of q-0009's LAST surviving planner premise: INDEPENDENT solvability. e-0017 ruled out 'smaller subgoals' and concluded the section-predictor+solver's value 'must come from independent solvability / search-space decomposition' -- then left that untested. Over the 633 data/deep wide-frontier decls, scan each top-level frontier subgoal's reconstructed proof BODY for whole-identifier references to its sibling frontier names, build the inter-sibling dependency graph (edge j->i iff body_i cites name_j), and measure how factorizable the frontier is (coupled-decl fraction, longest dependency chain, per-decl 'ready' = no-sibling-dep fraction).",
+  "motivation": "The whole e-0012..e-0017 chain narrowed Variant B to one load-bearing assumption: that emitting a frontier (~88x cheaper than a full proof, e-0016) actually buys parallel/cheaper solving. e-0017 showed the subgoals are NOT reliably smaller, so the only surviving justification is that they are independently solvable (search space factorizes). That was asserted, never measured. Test it cheaply at the data level before any Modal pass@k spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_frontier_independence.py",
+    "commit": "4041a8c"
+  },
+  "formal_results": "633 wide-frontier decls, 2,301 top-level named frontier nodes; only 43.8% (1,008) carry a scannable body (47.2% elided to bare 'by', 9.0% empty), and 163 decls (25.8%) have NO scannable body. Inter-sibling proof-body coupling: 117 decls (18.5%) show >=1 observable edge; 353 (55.8%) are observably independent (>=1 scannable body, zero edges); 208 total citation edges over 2,301 nodes (mean 0.33/decl). Coupling is SHALLOW: longest observable dependency chain max 2, ZERO decls reach chain>=3; per-decl 'ready' fraction (subgoals with no incoming sibling edge) mean 0.942, median 1.0, p10 0.75. Examples coupled: cauchy_product (10 nodes, 3 edges), exists_pow_btwn (5,2).",
+  "results_description": "The frontier subgoals factorize into near-independent subproblems: even with bodies only 43.8% visible, only 18.5% of decls show ANY sibling coupling, the coupling never forms a serial chain deeper than 2 (0 decls at >=3), and ~94% of subgoals carry no dependence on a sibling's proof. So the search-space-decomposition / parallel-solve premise that e-0017 left as the planner's last justification SURVIVES this data-level test -- the frontiers are structurally amenable to independent solving. Honest caveat that cuts one way: scannable=43.8% so every coupling number is a LOWER bound (an 'observably independent' decl could be coupled through an elided body), and the parallelism numbers are correspondingly upper bounds; a high observed-coupling rate would be strong evidence against factorization, a high observed-independence rate is only weak evidence for it.",
+  "conclusions": "q-0009's independent-solvability premise holds at the data level: the data/deep wide frontiers are observably near-independent (median 0 inter-sibling edges, max chain 2, ~94% ready), consistent with e-0015's wide-and-shallow finding extended to the proof-dependency axis. Combined with e-0016 (~88x cheaper emission) this means the planner's 'fewer LLM calls via parallel subgoal solving' story is structurally available -- the corpus does not refute it. What remains genuinely untested is the OUTCOME: whether a trained predictor+solver actually achieves higher pass@k / fewer LLM calls than single-stage, which only the Modal round-trip + SFT + eval can settle. This experiment removes the last data-level objection (coupling) but cannot substitute for that pass@k measurement.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0018"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T07:23:29.847Z",
+    "updated_at": "2026-06-12T07:24:15.320Z"
+  },
+  "comments": {}
+}
