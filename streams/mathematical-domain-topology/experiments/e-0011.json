@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0011",
+  "stream": "mathematical-domain-topology",
+  "description": "Bridge-aware premise retrieval simulation. Map each theorem to its Leiden home cluster and to the set of clustered premises its tactic steps cite. Estimate a cluster->cluster bridge weight W[c][d] (how often a proof in cluster c cites a premise in cluster d) on the TRAIN split only, then on held-out TEST theorems measure premise recall for retrievers allowed to draw from {home}, {home}+top-k bridge-neighbour clusters (k=1,2,3,5,10), and all clusters.",
+  "motivation": "Cheap CPU-only proxy for the untested payoff (q-0011): premise selection is the core of retrieval-augmented proving, so if a bridge-aware (cluster-expanding) retriever recovers far more true premises than a within-domain one, bridge structure plausibly aids proving and cross-domain transfer.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_premise_retrieval.py",
+    "commit": "acad6775",
+    "run_cmd": "python3 src/bridge_premise_retrieval.py"
+  },
+  "formal_results": "898 test theorems (873 with >=1 clustered premise), 49.5% cross-domain (>=1 out-of-home premise). Mean premise recall ALL: home-only 0.812, +top1 0.871, +top2 0.919, +top3 0.942, +top5 0.967, +top10 0.987. CROSS-DOMAIN theorems only: home-only 0.619, +top1 0.740, +top2 0.836, +top3 0.882, +top5 0.934, +top10 0.973. 138 clusters total.",
+  "results_description": "A within-domain retriever misses ~38% of premises on cross-domain theorems; expanding to just the top-3 of 138 bridge-connected neighbour clusters recovers 88.2% (a +26.3 point lift), and top-5 reaches 93.4%. The bridge graph (built on train only) concentrates a theorem's out-of-domain premise demand into a handful of clusters.",
+  "conclusions": "First quantitative, leakage-controlled evidence that bridge structure is highly informative for premise selection: a bridge-aware retriever expanding to a theorem's top few bridge-neighbour clusters recovers most cross-domain premises a within-domain retriever misses. This is a retrieval proxy, NOT a proving experiment, so it supports the plausibility of bridge-aware proving (q-0011) without settling it.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0013"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:52:50.883Z",
+    "updated_at": "2026-06-12T02:53:32.443Z"
+  },
+  "comments": {}
+}

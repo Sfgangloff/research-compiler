@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0013",
+  "stream": "mathematical-domain-topology",
+  "text": "Partial, proxy evidence (not yet settled by a proving run): a leakage-controlled premise-retrieval simulation shows bridge structure is highly informative for premise selection, the core of retrieval-augmented proving. On held-out test theorems, ~49.5% are cross-domain (need an out-of-home-cluster premise); a within-domain retriever recovers only 61.9% of their premises, but expanding to the top-3 of 138 bridge-connected neighbour clusters lifts recall to 88.2% (top-1 74.0%, top-5 93.4%). So a theorem's out-of-domain premise demand concentrates into a handful of bridge-neighbour clusters - exactly what a bridge-aware retriever would exploit. This makes bridge-aware proving plausible but does NOT measure actual prover success rate or transfer; that remains the open payoff.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0011"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T02:53:32.432Z",
+    "updated_at": "2026-06-12T02:53:32.432Z"
+  },
+  "comments": {}
+}
