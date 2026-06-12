@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0019",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only robustness test of e-0018's near-independence finding against its own load-bearing caveat (only 43.8% of frontier bodies are scannable, so e-0018's coupling counts are lower bounds and independence counts upper bounds). Over the same 633 data/deep wide-frontier decls, stratify by per-decl body visibility (NONE / PARTIAL / FULL scannable) and correlate per-decl scannable fraction against coupling. The artifact hypothesis predicts coupling RISES with visibility; the FULL-scannable stratum is the honest one (no elided body can hide an edge, so its coupled fraction is a real rate, not a bound). Reuses e-0018's whole-identifier sibling-citation logic verbatim.",
+  "motivation": "e-0018 concluded q-0009's wide frontiers are observably near-independent (only 18.5% of decls show inter-sibling proof-body coupling; max chain 2) but flagged one caveat that cuts one way: bodies are only 43.8% scannable, so a decl counted 'observably independent' could be coupled through an elided body. The skeptic's first objection is that the independence is an artifact of not seeing half the proofs. Test that falsifiable prediction cheaply before treating e-0018's independence premise as established.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_independence_robustness.py",
+    "commit": "91bc36c"
+  },
+  "formal_results": "633 wide-frontier decls stratified by body visibility. FULL-scannable (n=94, the honest stratum where no hidden body can hide an edge): coupled_frac 0.181 -- essentially identical to e-0018's 0.185 headline; max chain 2, only 3/94 reach chain>=2, mean ready-fraction 0.916, mean edge-density 0.059. PARTIAL (n=376): coupled_frac 0.266, edge-density 0.031, ready 0.923. NONE (n=163): trivially 0. Visibility-vs-coupling Pearson: scanfrac vs coupled +0.27, scanfrac vs edge-density +0.26 (weak positive).",
+  "results_description": "The artifact objection is REFUTED at the decl level: where every frontier body is visible (FULL stratum, n=94), the honest coupling rate is 18.1% -- within noise of e-0018's 18.5% lower-bound headline -- with max chain still 2 and ~92% of subgoals ready. The scannable-fraction vs coupling correlation is only weakly positive (Pearson ~0.27), so coupling is mildly under-counted in elided decls, but the magnitude is small: even at full visibility 82% of wide-frontier decls have ZERO inter-sibling coupling and no serial chain exceeds 2. (Per-decl coupled-fraction is actually HIGHER in PARTIAL than FULL because partial decls have larger frontiers; per-pair edge-density is the cleaner visibility signal and is small everywhere.)",
+  "conclusions": "e-0018's near-independence headline survives its own load-bearing visibility caveat: it is not an elision artifact. The honest full-visibility coupling rate (18.1%) matches the lower-bound headline (18.5%), and the weak positive visibility-coupling correlation (~0.27) bounds the hidden coupling as small. q-0009's parallel-solve / 'fewer LLM calls' premise therefore rests on a robust data-level finding, not an artifact of partial proof visibility. This closes the strongest remaining data-level objection to Variant B; what stays untested is the OUTCOME (pass@k, #LLM-calls), which only the paid Modal round-trip + SFT + eval can settle.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0019"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:07:38.480Z",
+    "updated_at": "2026-06-12T08:08:22.892Z"
+  },
+  "comments": {}
+}

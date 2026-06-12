@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0019",
+  "stream": "proof-hierarchies",
+  "text": "e-0018's load-bearing near-independence finding (q-0009's last data-level premise) SURVIVES its own honest caveat. e-0018 flagged that only 43.8% of frontier proof bodies are scannable, so its 18.5% coupling figure is a lower bound and its independence an upper bound -- the skeptic's first objection being that the near-independence is an artifact of not seeing half the proofs. e-0019 tests that falsifiable prediction by stratifying the 633 deep wide-frontier decls by body visibility: in the FULL-scannable stratum (n=94), where NO elided body can hide an edge so the coupled fraction is a real rate not a bound, coupling is 18.1% -- within noise of the 18.5% headline -- with max chain still 2, only 3/94 reaching chain>=2, and ~92% of subgoals ready. The scannable-fraction vs coupling correlation is only weakly positive (Pearson ~0.27), bounding the hidden coupling as small. So the artifact objection is refuted at the decl level: even at full visibility 82% of wide-frontier decls have ZERO inter-sibling coupling and no serial chain exceeds 2. q-0009's parallel-solve / 'fewer LLM calls' premise rests on a robust data-level finding. With supply (e-0014/15/16), emission economics (e-0016, ~88x), subgoal-difficulty (e-0017), independence (e-0018) and now its robustness (e-0019) all cleared, every data-level gate for Variant B is passed; the only remaining blocker is the OUTCOME measurement (pass@k, #LLM-calls of predictor+solver vs single-stage), which requires the paid Modal round-trip verification over data/corpus_v3/deep_wide_targets.json + SFT + eval.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0019"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T08:08:22.890Z",
+    "updated_at": "2026-06-12T08:08:22.890Z"
+  },
+  "comments": {}
+}
