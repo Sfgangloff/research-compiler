@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0049",
+  "stream": "mathematical-domain-topology",
+  "text": "The e-0049 config-null DEPLETION is algorithm-robust in DIRECTION but not in MAGNITUDE -- the follow-up e-0052/a-0052 explicitly flagged. e-0052 showed the operational-bridge population is not algorithm-invariant in absolute scale (98-23,134 raw) or named identity (cross-algo Jaccard 0.03, empty all-algo core), but left open whether the RELATIVE depletion-vs-null survives, since a finer partition inflates BOTH the observed and the null-expected bridge rate. e-0053 recomputes the e-0049 degree-preserving (configuration-model) null ENTIRELY within each of the 5 partitions' pure-cluster universes over the same deterministically-sorted LCC. Result: ALL 5 algorithms show DEPLETION (observed cross-domain bridging strictly below the degree-matched null; all_partitions_depleted=true), so the underlying claim -- premises are strongly DOMAIN-LOCAL and true operational bridges are rarities that defy that locality -- is NOT a Leiden artifact; it holds for leiden, louvain, fastgreedy, label_propagation and infomap alike. But the MAGNITUDE is resolution-dependent and decays monotonically as the partition gets finer: usage-depletion 16.46x (leiden, 138 clusters) -> 10.05x (louvain, 198) -> 12.83x (fastgreedy, 1106) -> 3.55x (label_prop, 816) -> 1.38x (infomap, 4190); usage-mean 8.85x, type-mean 20.09x. At infomap's ~4k-cluster resolution ~41% of the graph is already an observed bridge and the null expects ~57%, so the ratio collapses toward parity. Net for q-0006/q-0007: the depletion result is MORE robust than e-0052's absolute scale/identity -- its DIRECTION (premise domain-locality) is an algorithm-invariant property of Mathlib's premise structure -- but the headline ~16-20x FACTOR is specific to the coarse modularity regime (leiden/louvain, ~140-200 clusters), the same regime in which the scarce ~280-raw / ~34-strict object lives. Both the named bridge lists and the depletion magnitude should be read relative to that modularity resolution. *(also addresses q-0007)*",
+  "status": "supported",
+  "answers": [
+    "q-0006",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0053"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T12:11:25.025Z",
+    "updated_at": "2026-06-15T12:11:25.025Z"
+  },
+  "comments": {}
+}
