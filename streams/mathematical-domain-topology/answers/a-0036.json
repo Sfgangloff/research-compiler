@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0036",
+  "stream": "mathematical-domain-topology",
+  "text": "Confirmed with a hard number: the conceptual-bridge detector (edit_distance_bridges, the 200 MIN-closest cross-cluster proof pairs) matches on GENERIC proof scaffolding, not on domain-specific shared structure -- the mechanism a-0033 only hypothesized. Measuring token genericity as the number of distinct Leiden clusters (of ~138) a normalized tactic token appears in, the detector's MIN-closest pairs share 4.1 tactic tokens on average vs 0.72 for random cross-cluster pairs from the same selection -- so it is matching real shared tokens, not noise -- but those tokens are ubiquitous scaffolding: 'rw [@]' (38 clusters), 'apply @' (36), 'constructor' (34), 'intro ?' (33), 'simp', 'exact @'. Only 1/200 conceptual-bridge pairs shares even a single domain-specific (<=3-cluster) tactic token -- statistically indistinguishable from the random control (0.0005) and robust to the cutoff (relax 'specific' to <=10 clusters and still only 3/200 qualify). ~45% of the shared-token mass is outright ubiquitous; the remainder is mid-frequency, never domain-rare. This explains WHY the edit-distance probe cannot recover Brouwer<->Lawvere-type conceptual bridges (a-0009): normalized-tactic edit distance is dominated by scaffolding common to every domain, so 'most similar cross-domain proof' selects universal-method coincidences rather than genuine shared concepts. It concretizes the central open problem (a-0001): a real conceptual-bridge detector must key on domain-specific shared structure (IDF/TF-IDF-weighted tactic tokens, or aligning only the rare tokens), down-weighting ubiquitous scaffolding, not raw tactic-sequence similarity. Caveats: same top-30-cluster/top-30-longest-proof high-similarity sample as the detector; genericity is measured per single token, so longer domain-specific tactic MOTIFS assembled from individually-generic tokens are not captured -- a natural next probe.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0039"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T04:20:10.318Z",
+    "updated_at": "2026-06-15T04:20:10.318Z"
+  },
+  "comments": {}
+}
