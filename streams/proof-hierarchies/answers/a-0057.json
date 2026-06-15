@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0057",
+  "stream": "proof-hierarchies",
+  "text": "The Stage-0.5 gate chain priced supply (e-0029/e-0046/e-0057), power (e-0040/e-0041/e-0042) and budget (e-0048) IN ISOLATION and -- at pass@1 -- e-0041 declared the HEADLINE gap-grows-as-model-shrinks INTERACTION 'unresolvable at any affordable n'. e-0059 is the first to COMPOSE all three axes into one (route x design) go/no-go, reusing the e-0040/e-0042 McNemar Gaussian-copula machinery verbatim. The composition REVERSES that verdict. At floor per-sample rates (p_lo 0.05-0.10, exactly the e-0005 0/50 regime) the best-interior-k (k=4-8) interaction MDE falls to +0.047-0.068 absolute on the two supply-ample construct-valid routes -- within-deep-binary (n=116) and on-domain-deep (n=126) -- which is INSIDE a plausible +0.05-0.10 effect band, at ~34x the proven-affordable baseline. So pass@k amplification (e-0042) at the floor rates the small model actually sits at is the escape hatch that rescues the headline e-0041 had buried, and it is now composed end-to-end rather than asserted. Three load-bearing qualifications fall out of the SAME table: (1) feasibility is CONDITIONAL on a low base rate -- at p_lo=0.20 the interaction MDE rises to +0.115-0.121 and only the loosest +0.15 band resolves it, so the design must bank on the small model sitting near the floor where amplification is strongest (plausible given the 0/50 pre-SFT floor) and would FAIL if SFT lifts the base rate to ~0.20 with a still-small gap; (2) corpus_v3-test is DEAD at every threshold (n=3 construct-valid carriers), re-confirming the deep pivot was necessary, not optional; (3) the pi_mid 3rd U-shape arm (q-0005) resolves the interaction only at the +0.10 band and the highest 51x cost, so it is the most expensive and least powered arm -- the binary deep route, not the U-shape, is the one to commit to. GO/NO-GO: commit to a floor-rate, interior-k (k~4-8) pass@k design on a supply-ample deep route (within-deep-binary or on-domain-deep) for the headline; do NOT bank the interaction on pi_mid or corpus_v3. CAVEATS: design-stage synthesis; supply numbers are the chain's per-area COUNT projections, not real round-trips; the DiD MDE uses e-0041's measured 1.35x multiplier rather than a four-arm re-simulation; base rate is swept because the true within-deep small-model pass rate is Modal-blocked; single seed; and this gate does NOT cover the pass@1-blind VARIANCE mechanism (e-0056), which still needs multi-k logging to separate from a mean effect.",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0059"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:39:57.496Z",
+    "updated_at": "2026-06-15T08:39:57.496Z"
+  },
+  "comments": {}
+}

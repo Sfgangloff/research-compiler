@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0059",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only JOINT feasibility frontier for q-0007/q-0001: composes the chain's per-axis Stage-0.5 gates -- SUPPLY (e-0029 on-domain ~126, e-0046 within-deep ~116, e-0057 pi_mid ~63, e-0032 corpus_v3 construct-valid ~3), POWER (e-0040 single-gap McNemar, e-0042 interior best-k pass@k, e-0041 DiD ~1.35x), BUDGET (e-0048 8.5x single-size / 34-204x interaction) -- into ONE (route x design) go/no-go table. For each construct-valid eval route (supply fixes n) and each design (single-size gap vs the headline gap-grows-as-model-shrinks INTERACTION) it computes the achievable best-interior-k MDE (reusing e-0040/e-0042 McNemar Gaussian-copula machinery verbatim) and the compute multiple, then marks RESOLVABLE iff MDE clears a stated effect band {+0.05,+0.10,+0.15}.",
+  "motivation": "The chain priced every axis in isolation but never COMPOSED them; e-0040/e-0041 declared the headline interaction 'unresolvable at any affordable n' but ONLY at pass@1 (k=1), while e-0042 showed pass@k amplifies small gaps at floor rates -- nobody checked whether composing amplification with the supply-ample routes flips that verdict. This is the capstone go/no-go the whole gate chain circles but never assembles.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_joint_feasibility_frontier.py",
+    "commit": "0f2f15b",
+    "lines": "280",
+    "run_cmd": "python3 data/analyze_joint_feasibility_frontier.py"
+  },
+  "formal_results": "Paired McNemar exact, alpha=0.05, power=0.80, rho=0.5, M=1200/cell, seed 0; per-sample p_lo in {0.05,0.10,0.20}, k in {1,2,4,8}, DiD MDE = single-gap x 1.35 (e-0041). SINGLE-GAP best-k per-sample MDE [best k]: within-deep-binary n=116: +0.035[k8]/+0.050[k8]/+0.090[k4] at p_lo .05/.10/.20; on-domain-deep n=126: +0.035[k8]/+0.050[k8]/+0.085[k4]; within-deep-pi_mid n=63: +0.050[k8]/+0.075[k8]/+0.130[k4]; corpus_v3-test n=3: >0.50 all (DEAD). INTERACTION MDE (x1.35): within-deep-binary +0.047/+0.068/+0.121; on-domain-deep +0.047/+0.068/+0.115; pi_mid +0.068/+0.101/+0.176. FEASIBILITY at +0.10 band (favourable base rate): single-gap YES for all three deep routes (cheapest on-domain-deep MDE +0.035, ~8x); INTERACTION YES for within-deep-binary & on-domain-deep (MDE +0.047, ~34x) and pi_mid (+0.068, 51x); corpus_v3-test NO at every threshold.",
+  "results_description": "Composition REVERSES the pessimistic pass@1 verdict. At floor per-sample rates (p_lo 0.05-0.10, the e-0005 0/50 regime) the best-interior-k (k=4-8) interaction MDE falls to +0.047-0.068 absolute on the supply-ample within-deep-binary (n=116) and on-domain-deep (n=126) routes -- INSIDE a plausible +0.05-0.10 effect band -- at ~34x baseline compute. Feasibility is CONDITIONAL on a low base rate: at p_lo=0.20 the interaction MDE rises to +0.115-0.121 (only the +0.15 band resolves it). corpus_v3-test is dead at every threshold (n=3). The pi_mid 3rd U-shape arm resolves the interaction only at +0.10+ and the highest 51x cost.",
+  "conclusions": "There IS a jointly feasible design for the headline: the within-deep-binary or on-domain-deep route, scored at interior k=4-8 pass@k, resolves the gap-grows-as-model-shrinks interaction at ~34x baseline IF the small-model base rate sits near the 0/50 floor (where pass@k amplification is strongest) and the true effect is >=+0.05-0.07. This rescues the headline that e-0041's pass@1 DiD MDE had declared unresolvable -- the escape hatch is real and now composed end-to-end. Go/no-go: commit to a floor-rate, interior-k pass@k design on a supply-ample deep route; do NOT bank on pi_mid (most expensive, least powered) or on corpus_v3 (dead). CAVEATS: design-stage synthesis; supply = chain COUNT projections not real round-trips; DiD = e-0041's 1.35x multiplier not a re-simulation; base rate swept (true rate Modal-blocked); single seed; pass@1-blind variance mechanism (e-0056) still unaddressed by this gate.",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0057"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:39:18.688Z",
+    "updated_at": "2026-06-15T08:39:57.499Z"
+  },
+  "comments": {}
+}
