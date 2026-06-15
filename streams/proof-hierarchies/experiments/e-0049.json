@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0049",
+  "stream": "proof-hierarchies",
+  "description": "Train/eval LEAKAGE gate for the within-deep every-5th-module holdout (q-0007/q-0001): quantifies the 'module-disjoint but not airtight' caveat that e-0031 raised and e-0040..e-0048 all inherited without measuring. Reuses the e-0046 area-stratified split UNCHANGED, then measures two cross-split leakage modes over local data/deep/*.json (CPU-only, no Modal): (A) statement duplication — an eval target whose whitespace-normalized statement matches a train target's; (B) name-citation — an eval target's declared name appearing as an identifier token in any have_tree body across ALL records in train-split modules (630 records, 3127 tokens), reported at name-length thresholds and restricted to the granularity-bearing eval targets that set the headline effective n.",
+  "motivation": "The entire Stage-0.5 power chain priced the within-deep route's effective n (~116, e-0046) and compute cost (e-0048) but took its leakage-cleanliness ON FAITH. If eval theorems are duplicated in train modules or cited by name in train proofs, a measured rough-vs-fine pass@k gap is partly memorization and the construct-valid effective n must be discounted before the headline can be read off it.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_split_leakage.py",
+    "commit": "0dee53c",
+    "lines": "230",
+    "run_cmd": "python3 -m data.analyze_deep_split_leakage"
+  },
+  "formal_results": "Split: 131 eval targets (130 granularity-bearing, substantive_width>=1) vs 502 train manifest targets across module-disjoint every-5th holdout; train-body token net broadened to all 630 deep records in train modules (3127 unique identifier tokens incl. last-'.'-components).",
+  "results_description": "(A) statement-duplicated eval targets: 0/131 (0.0%). (B) eval name cited in a train body: at last-component length>=6/>=10/>=16 = 0/0/0 (0.0% of eval and of GB eval); only 3 hits at length>=1, all generic-token collisions (HasFPowerSeriesWithinAt.comp, IsIntegral.coeff, StrictMonoOn.union -> last comps comp/coeff/union). HEADLINE: 0/130 granularity-bearing eval targets leak -> e-0046 effective n_ge1 ~116 needs NO leakage discount.",
+  "conclusions": "The within-deep module-disjoint holdout is leakage-clean at the target level: zero statement duplication and zero genuine eval-theorem-as-lemma citation in train proofs. The 'not airtight' caveat carried unmeasured through e-0031..e-0048 is now quantified and the route SURVIVES it — the headline's effective n is not inflated by memorization. CAVEAT: token-level citation is a proxy for a resolved dependency graph; have_tree leaf bodies sample (do not exhaust) the train proof terms; statement match is whitespace-normalized only (alpha-equivalent restatements uncaught).",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0047"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T06:47:15.863Z",
+    "updated_at": "2026-06-15T06:47:40.961Z"
+  },
+  "comments": {}
+}

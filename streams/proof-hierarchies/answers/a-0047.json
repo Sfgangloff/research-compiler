@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0047",
+  "stream": "proof-hierarchies",
+  "text": "The Stage-0.5 power chain (e-0040..e-0048) crowned the within-deep every-5th-module holdout as the headline's only construct-valid + adequately-powered eval route (effective n ~116, e-0046), but inherited ONE caveat it never measured: e-0031's 'module-disjoint is the standard but NOT AIRTIGHT leakage control.' If eval theorems are duplicated in train modules, or cited by name inside train proofs, the rough-vs-fine pass@k gap on those targets is partly MEMORIZATION and the effective n must be discounted. e-0049 measures it CPU-only over data/deep/*.json, reusing the e-0046 split UNCHANGED so the numbers compose: (A) 0/131 eval targets share a whitespace-normalized statement with any train target; (B) over a broadened net of all 630 train-module deep records (3127 identifier tokens), 0 eval target names are cited in train have_tree bodies at last-component length>=6 — the only 3 hits are length<=5 generic-token collisions (comp/coeff/union from HasFPowerSeriesWithinAt.comp, IsIntegral.coeff, StrictMonoOn.union), not genuine eval-as-lemma citations. HEADLINE: 0/130 granularity-bearing eval targets leak, so e-0046's effective n ~116 takes NO leakage discount and the route survives the one threat the chain assumed away. This removes a memorization confound from the headline before any Modal spend — the within-deep holdout is clean at the target level. CAVEAT: token-citation is a proxy for a resolved dependency graph, have_tree leaf bodies sample rather than exhaust the train proof terms, and statement matching is whitespace-normalized only (alpha-equivalent restatements uncaught); a residual import-graph leakage check still needs the Modal round-trip. (also addresses q-0001.)",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0049"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T06:47:40.960Z",
+    "updated_at": "2026-06-15T06:47:49.926Z"
+  },
+  "comments": {}
+}
