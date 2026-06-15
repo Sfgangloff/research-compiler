@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0057",
+  "stream": "proof-hierarchies",
+  "description": "Construct-valid hardening of e-0055/a-0053's pi_mid eval-power verdict: recompute the deep route's named-nesting-depth counting ONLY substantive (non-empty-body) named haves, then re-run e-0055's held-out eval-power gate. Tests whether the U-shape reopening is a real intermediate-cut or an empty-binder-chain artifact.",
+  "motivation": "a-0053's own headline caveat names its unmet gate: 'depth is a STRUCTURAL count; whether each named frontier carries distinct granularity signal is the unmet construct-validity gate.' e-0055's named_depth counts EVERY named have including empty-body binders (obtain/rcases/intro), which carry no inline-or-name contrast (e-0026). A binder->binder chain inflates depth>=2 with no genuine pi_mid. The substantive-body filter existed for the TOP frontier only; never composed into the nested depth pi_mid depends on. This half of the construct gate is on-disk (bodies live in data/deep/*.json) -- only the FORMAT half (e-0036/e-0037) is paid.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_umid_substantive_depth.py",
+    "commit": "5c7120c",
+    "run_cmd": "python3 data/analyze_deep_umid_substantive_depth.py"
+  },
+  "formal_results": "SUBSTANTIVE named depth = longest root->leaf chain counting a named node iff its body is non-empty (reuses analyze_deep_construct_validity.py body classification). Re-runs e-0046 area-stratified module-disjoint every-5th-module holdout + e-0028 per-area yield + e-0045 McNemar D>=6 floor, all verbatim; swaps only the depth definition. RAW vs SUBSTANTIVE side-by-side.",
+  "results_description": "pi_mid (depth>=2) eval supply: 70.4 verified carriers RAW (e-0055) -> 63.3 SUBSTANTIVE (90% retained), ~10.5x the D=6 floor, still POWERABLE. Whole-study availability 55.9% (raw) -> 50.2% (substantive). Binary depth>=1 unchanged at 115.8 eval verified. 4-level depth>=3: 15.3 -> 12.6 verified, still POWERABLE. Train pi_mid: 241.4 -> 216.8.",
+  "conclusions": "a-0053's U-shape reopening is NOT a binder-chain artifact: the intermediate named level carries real inline-able sub-derivations, and substantive pi_mid stays power-resolvable (~10.5x floor) on the existing deep holdout. The on-disk half of a-0053's construct gate is now CLEARED for the 3-level contrast; the remaining 3rd-arm gate shrinks to the term-vs-tactic FORMAT confound (e-0036/e-0037, off-disk/paid) + ~1.5x compute (a-0054).",
+  "addresses": [
+    "q-0005"
+  ],
+  "produces": [
+    "a-0055"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:18:21.557Z",
+    "updated_at": "2026-06-15T08:18:43.463Z"
+  },
+  "comments": {}
+}

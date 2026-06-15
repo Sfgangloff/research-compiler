@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0055",
+  "stream": "proof-hierarchies",
+  "text": "a-0053 (e-0055) reopened q-0005's U-shape on the deep route but flagged its own unmet gate: 'depth is a STRUCTURAL count; whether each named frontier carries distinct granularity signal is the unmet construct-validity gate.' e-0055's named_depth counts EVERY named have node, INCLUDING empty-body binders (obtain/rcases/intro) that carry no inline-or-name contrast (e-0026) -- so a binder->binder chain inflates depth>=2 with no genuine pi_mid. e-0057 hardens the ON-DISK half of that gate: it recomputes named-nesting-depth counting ONLY substantive (non-empty-body) named haves -- reusing analyze_deep_construct_validity.py's body classification verbatim -- and re-runs e-0055's eval-power gate verbatim (e-0046 area-stratified module-disjoint every-5th-module holdout, e-0028 per-area yield, e-0045 McNemar D>=6 floor). RESULT: pi_mid SURVIVES. The intermediate-cut (depth>=2) eval supply falls only 70.4->63.3 verified carriers (90% retained), still ~10.5x the D=6 floor and POWERABLE; whole-study availability holds at 50.2% (vs e-0054's 55.9% raw); even the 4-level depth>=3 arm keeps 12.6 verified (POWERABLE). The binary depth>=1 route is untouched (115.8 eval verified). CONSEQUENCE: a-0053's U-shape reopening is NOT an empty-binder-chain artifact -- the intermediate named level carries real inline-able sub-derivations -- so q-0005's binary verdict stays overturned for the construct-valid deep route on supply+power+substantive-construct grounds. The remaining gates on adding the 3rd (pi_mid) arm shrink to (1) the term-vs-tactic FORMAT confound (e-0036/e-0037, the genuinely off-disk part, needs the paid extract) and (2) the ~1.5x compute of a 3rd adapter+eval arm (a-0054), which the 2-arm cost chain (e-0048/e-0052) never priced. CAVEATS: only the substantive-body half of construct validity is cleared (the FORMAT half is untouched); eval 'verified' is the e-0028 per-area COUNT projection, not a real round-trip, and projects supply not pass@k; verified carriers UPPER-bound the McNemar discordant total so >=6 is NECESSARY not sufficient; body classification is syntactic (a one-token term-mode body counts as substantive).",
+  "status": "supported",
+  "answers": [
+    "q-0005"
+  ],
+  "backed_by": [
+    "e-0057"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:18:43.461Z",
+    "updated_at": "2026-06-15T08:18:43.461Z"
+  },
+  "comments": {}
+}
