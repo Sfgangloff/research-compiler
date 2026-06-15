@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0031",
+  "stream": "mathematical-domain-topology",
+  "text": "The residual oracle gap a-0029/a-0030 attributed to 'predictor RANKING quality' is PART ranking-algorithm and PART genuine name-token signal exhaustion -- a better ranker recovers a real but bounded slice of it. Every prior arm (e-0030 linear, e-0031 demand de-bias, e-0032 home bridge prior, e-0033 set-union) kept the SAME naive-Bayes linear token->cluster aggregation; e-0034 supplies the missing control -- a k-NN target predictor over the IDENTICAL non-leaky name-token signal (IDF-weighted cosine to train cross-domain theorems, foreign clusters ranked by the similarity-weighted vote of the k nearest neighbours' own foreign-cluster sets, k=25, same 432 held-out cross-domain TEST theorems, same complete-coverage ceiling, all stats TRAIN-only). k-NN BEATS the linear ranker where a prover actually operates: at matched breadth it covers ALL foreign clusters more often (top3 0.609 vs 0.537, top5 0.771 vs 0.729) and reaches matched ceilings at 0.87-0.91x the pool (0.68x at the 0.60 target) -- a free ~9-13% cut, larger than the de-bias trick's 6-10% (a-0028) and the hybrid's ~0% (a-0030). So the ranking ALGORITHM is a genuine lever, contra the implicit 'signal-only' reading of a-0029/a-0030. BUT it is BOUNDED: k-NN's ceiling SATURATES at ~0.898 (b=10 0.894 -> b=20 0.898, cannot pass 0.90) because the k nearest name-token neighbours' union of foreign clusters is a finite set, whereas the linear ranker can reach any token-co-occurring cluster and climbs to 0.914 (b=10) / 0.993 (b=20). The leaky oracle reaches 0.93 at ~21.8k decls (b=3); k-NN sits at 2.0-3.0x the oracle pool and cannot reach the 0.90/0.95 high-coverage TAIL at any breadth. Net for q-0011: a smarter ranking algorithm gives a cheap mid-band win but does NOT realize the oracle's near-exhaustive routing -- the high-coverage tail genuinely needs type/statement CONTENT the corpus does not expose (a-0015), confirming and sharpening a-0029/a-0030's bound. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0034"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:28:13.261Z",
+    "updated_at": "2026-06-15T02:28:13.261Z"
+  },
+  "comments": {}
+}

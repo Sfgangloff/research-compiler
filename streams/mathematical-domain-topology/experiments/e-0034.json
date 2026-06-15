@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0034",
+  "stream": "mathematical-domain-topology",
+  "description": "k-NN target predictor vs the naive-Bayes linear goal-router (q-0011). Same 432 held-out cross-domain TEST theorems, same complete-coverage CEILING metric, same TRAIN-only leakage control and same name-token query signal as e-0030. NEW arm goal_knn(m): represent the goal and every train cross-domain theorem as an IDF-weighted name-token vector, find the goal's k nearest train neighbours by IDF-weighted cosine, rank foreign clusters by the similarity-weighted vote of those neighbours' OWN foreign-cluster sets, route home+top-m. k swept over {10,25,50,100,200}, best k=25 by top3-covers-ALL.",
+  "motivation": "The whole a-0013..a-0030 chain concluded the residual oracle gap is 'predictor RANKING quality, not a missing structural signal', but every prior attempt (e-0030 linear, e-0031 demand de-bias, e-0032 home bridge prior, e-0033 set-union) kept the SAME linear token->cluster aggregation. None tested a DIFFERENT ranking algorithm over the IDENTICAL non-leaky name-token signal. k-NN supplies that missing control: decisive either way (beats linear -> ranking algo was the lever; ties/saturates -> the name-token signal itself is exhausted).",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_goalrouter_knn.py",
+    "commit": "cc008fa",
+    "run_cmd": "python3 src/bridge_retrieval_goalrouter_knn.py"
+  },
+  "formal_results": "Each train cross-domain theorem i -> IDF-weighted name-token vector v_i (foreign-cluster set F_i = prem_clusters_i - home_i). Test goal q -> v_q. cosine(q,i)=<v_q,v_i>/(||v_q|| ||v_i||) via inverted index. Top-k neighbours N_k(q); foreign-cluster score(d)=sum_{i in N_k(q)} cosine(q,i)*[d in F_i]; route {home}+top-m. Complete-coverage ceiling = frac of TEST theorems whose entire clustered premise set is in the routed pool. All IDF/index/demand TRAIN-only.",
+  "results_description": "best k=25. top-k covers ALL foreign clusters: k-NN vs linear = top1 0.266 vs 0.264, top2 0.454 vs 0.435, top3 0.609 vs 0.537, top5 0.771 vs 0.729. Ceiling@matched breadth: b=3 0.609 vs 0.537 (pool 36.6k vs 40.1k); b=5 0.771 vs 0.729 (49.3k vs 53.9k). Cheapest pool to matched ceiling: knn/linear ratio 0.87-0.91x (0.68x at the 0.6 target). BUT k-NN ceiling SATURATES: b=10 0.894, b=20 0.898 (cannot pass 0.90), while linear climbs b=10 0.914, b=20 0.993. Oracle reaches 0.93 at 21.8k (b=3); k-NN sits at 2.0-3.0x oracle pool and cannot reach 0.90/0.95 at all.",
+  "conclusions": "The ranking ALGORITHM is a real but BOUNDED lever. k-NN's instance-based co-occurrence ranking finds the needed small cluster more precisely than the linear predictor in the mid-coverage operating band, giving a free ~9-13% pool cut (bigger than the de-bias trick's 6-10% and the hybrid's 0%). But k-NN SATURATES below 0.90 because the k nearest name-token neighbours' union of foreign clusters is a finite set, while the linear ranker can reach any token-co-occurring cluster and climbs to 0.99. So a better ranking algorithm helps where a prover actually operates but does NOT close the ~3x oracle gap or reach the high-coverage tail: the name-token SIGNAL exhausts before the oracle. This sharpens a-0029/a-0030 -- the residual gap is PART ranking quality (recoverable cheaply) and PART genuine signal exhaustion (the tail needs type/statement content the corpus does not expose).",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0031"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:26:53.963Z",
+    "updated_at": "2026-06-15T02:28:14.206Z"
+  },
+  "comments": {}
+}
