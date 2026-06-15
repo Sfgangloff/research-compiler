@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0047",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only DEEP-ROUTE HEADLINE gate: prices the gap x model-SIZE INTERACTION (DiD) under pass@k at the construct-valid within-deep eval route's EFFECTIVE n (e-0046), the cell no prior gate computed. e-0046 gave the deep route's effective n (~115 for >=1 substantive frontier, ~106 for >=2) but only the SINGLE-comparison pass@1 MDE, flagging in its own caveat that the true headline is the gap-grows-as-model-shrinks INTERACTION needing the larger DiD budget. This fuses e-0046's effective n with e-0043's interaction-pass@k DiD machinery (simulate_did_passk_power/mde_did_passk) and e-0040's single-comparison McNemar machinery, ALL imported UNCHANGED, to report three nested MDEs side by side ON THE SAME route: single-comparison pass@1 (the e-0046 floor), interaction pass@1 (the DiD surcharge), interaction pass@k (the escape hatch, swept k in {1,2,4,8,16}, s_f in {0.05,0.10,0.20}). Pure stdlib; seed 0; M=1200; rho=0.5; size LIFT=0.10; delta_large=0.",
+  "motivation": "e-0046/a-0044 named the within-deep eval as the ONLY construct-valid AND adequately-powered route for the headline, but reported only the single-size pass@1 MDE and explicitly deferred the interaction: 'the gap x model-SIZE INTERACTION (the true headline) needs the larger DiD budget (e-0041/e-0043), so this single-comparison MDE is a LOWER bound.' e-0041/e-0043 priced the DiD and its pass@k fix but on the GENERIC n-grid {50,63,116,200}, never at the deep route's own effective n. The decision-relevant product no one computed: at the deep route's effective n, what is the MDE of the ACTUAL capstone (q-0001) interaction, and does tuned pass@k bring it within a plausible few-point granularity effect? That is the number the capstone Modal go/no-go turns on.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_interaction_passk_power.py",
+    "commit": "6b297e9",
+    "lines": "233",
+    "run_cmd": "python3 -m data.analyze_deep_interaction_passk_power"
+  },
+  "formal_results": "Deep effective n (e-0046): 115 (>=1 frontier) / 106 (>=2). At n=106 (the real >=2-frontier route), per weaker-policy/small-model fine rate s_f: single-comparison pass@1 MDE = +0.11/+0.14/+0.16 (p_lo=0.05/0.10/0.20), reproducing e-0046. INTERACTION pass@1 MDE = +0.17/+0.19/+0.21 -- a ~+0.05-0.06 absolute DiD surcharge (~1.3x), matching e-0041's predicted 1.3-1.4x. INTERACTION pass@k MDE drops sharply then saturates: s_f=0.05 +0.17(k1)/+0.11(k2)/+0.07(k4)/+0.05(k8)/+0.04(k16); s_f=0.10 +0.19/+0.13/+0.09/+0.07/+0.06 (best k=16); s_f=0.20 +0.21/+0.16/+0.13/+0.13/>0.50 (best k=4, k=16 unreachable -- weaker policy pass@16 saturates). n=115 (>=1 frontier) is marginally easier (interaction pass@1 +0.16/+0.17/+0.20). Bottom line at n=106,s_f=0.10: single pass@1 +0.14 -> interaction pass@1 +0.19 -> interaction tuned-pass@k +0.06.",
+  "results_description": "On the ONLY construct-valid AND adequately-powered route (within-deep, effective n~106-115), the ACTUAL capstone claim -- the gap x model-size INTERACTION -- is UNRESOLVABLE at pass@1: it needs +0.16-0.21 absolute small-model gaps against a zero large-model gap, ~1.3x the single-size pass@1 MDE (+0.11-0.16) e-0046 reported and far above any plausible few-point effect. The ONLY lever that rescues it is a TUNED pass@k: at floor-level rates (s_f=0.05-0.10) an interior k (4-16) cuts the interaction MDE to ~+0.04-0.07, within reach of a plausible granularity effect -- but the optimum is INTERIOR, not maximized (at s_f=0.20 k=16 is unreachable and best k=4), so k must be tuned to keep the weaker policy in the sensitive pass@k band. Larger n and rho are second-order (e-0044); pass@k is first-order.",
+  "conclusions": "Capstone (q-0001) Modal go/no-go, sharpened: the headline 'gap grows as the model shrinks' is resolvable ONLY on the within-deep route AND ONLY with a tuned pass@k -- single-seed pass@1 at the deep effective n cannot see the interaction (+0.16-0.21 MDE). Design prescription, now quantified end-to-end: (1) draw the held-out eval from granularity-bearing deep decls (e-0046, not corpus_v3 which is power-0); (2) score pass@k with k tuned to keep the weaker policy near pass@k~0.3-0.5 (interior optimum; maximizing k backfires at higher base rates); (3) report effect sizes with CIs across sizes, not a DiD significance verdict; expected interaction MDE under the tuned design ~+0.05-0.07. If only single-size (q-0007) is claimed, pass@1 at the deep n suffices for +0.11-0.16 gaps. CAVEATS: design-stage power calc, not a measured pass@k outcome; effective n is the e-0028 per-area yield PROJECTION (needs the Modal round-trip); exchangeable rho=0.5 (real likely higher -> conservative); large-model gap fixed at 0 (optimistic). Reuses e-0046 + e-0043/e-0040 machinery unchanged.",
+  "addresses": [
+    "q-0001",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0045"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T04:07:50.971Z",
+    "updated_at": "2026-06-15T04:08:58.577Z"
+  },
+  "comments": {}
+}

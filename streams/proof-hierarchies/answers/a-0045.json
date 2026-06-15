@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0045",
+  "stream": "proof-hierarchies",
+  "text": "e-0046/a-0044 named the within-deep eval as the ONLY construct-valid AND adequately-powered route for the headline (effective n ~115 for >=1 substantive frontier, ~106 for >=2, vs corpus_v3's DEAD 5), but reported only the SINGLE-comparison pass@1 MDE (+0.11/+0.14/+0.16) and explicitly deferred the true headline in its caveat: 'the gap x model-SIZE INTERACTION needs the larger DiD budget (e-0041/e-0043), so this single-comparison MDE is a LOWER bound.' e-0047 supplies that deferred number by feeding e-0046's effective n through e-0043's interaction-pass@k DiD machinery (imported unchanged) and contrasting three nested MDEs on the SAME route. Result at n=106 (the real >=2-frontier route): the capstone INTERACTION is UNRESOLVABLE at pass@1 -- it needs +0.17/+0.19/+0.21 small-model gaps (s_f=0.05/0.10/0.20) against a zero large-model gap, a ~1.3x surcharge over the single-size pass@1 MDE (matching e-0041's prediction) and far above any plausible few-point effect. The ONLY first-order rescue is a TUNED pass@k: at floor-level rates an interior k (4-16) cuts the interaction MDE to ~+0.04-0.07, within reach -- but the optimum is INTERIOR not maximized (at s_f=0.20, k=16 is unreachable as the weaker policy's pass@16 saturates; best k=4), so k must keep the weaker policy near pass@k~0.3-0.5. CONSEQUENCE for the capstone (q-0001) Modal go/no-go: the headline 'gap grows as the model shrinks' is resolvable ONLY (a) on the within-deep route (not corpus_v3, power-0), (b) with pass@k tuned to the sensitive band, and (c) reported as effect-sizes-with-CIs rather than a single-seed DiD significance verdict -- expected interaction MDE under that design ~+0.05-0.07. If the paper claims only the single-SIZE gap (q-0007), pass@1 at the deep n already resolves +0.11-0.16 gaps. CAVEATS: design-stage power calc, not a measured pass@k outcome; effective n is the e-0028 per-area yield PROJECTION (needs the Modal round-trip); exchangeable rho=0.5 across all four arms (real same-base correlation likely higher -> conservative); large-model gap fixed at 0 (optimistic -- a real positive large gap shrinks the DiD, demanding still more power).",
+  "status": "supported",
+  "answers": [
+    "q-0001",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0047"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T04:08:58.575Z",
+    "updated_at": "2026-06-15T04:08:58.575Z"
+  },
+  "comments": {}
+}
