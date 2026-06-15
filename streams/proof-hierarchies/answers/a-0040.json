@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0040",
+  "stream": "proof-hierarchies",
+  "text": "e-0040/a-0038 and e-0041/a-0039 both close the Modal go/no-go with the SAME load-bearing fix -- 'use pass@k>1 / continuous-margin outcomes (which raise both pass rates and power)' to escape the pass@1 underpowering -- but neither computes how much pass@k helps or whether it has a limit. e-0042 supplies the number, reusing e-0040's paired McNemar Gaussian-copula machinery unchanged with each policy's marginal replaced by its pass@k transform P=1-(1-p)^k. Two competing forces emerge. (+) AMPLIFICATION: at the LOW per-sample rates that matter near the e-0005 0/50 floor (p_lo=0.05-0.10), pass@k pushes a small per-sample gap onto a more favorable scale ((0.95)^8-(0.90)^8=0.23 for a 0.05 sample gap), cutting the per-sample MDE ~2-3x -- n=116 (the supply-ample route) from +0.11 at k=1 down to +0.04 at k=8; n=50 from +0.19 to +0.06; n=200 to ~+0.03. (-) SATURATION: once the weaker policy's pass@k rate climbs past ~0.5-0.6 both policies approach the ceiling, the gap collapses and binomial noise peaks, so the MDE RISES again -- at p_lo=0.20 the best k is ~4 and k=8 (+0.26 at n=50) is strictly WORSE than k=4 (+0.15), with k=16 entirely unreachable (pass@16~0.97). So the best k is INTERIOR (~4-8 at floor-level rates, lower as rates rise), not maximized. DECISION for the go/no-go: the pass@k escape hatch is REAL but BOUNDED -- adopt pass@k scoring with k TUNED to keep the weaker policy near pass@k~0.3-0.5 (maximizing k is counterproductive), which brings a plausible few-point per-sample granularity gap within reach of the n=116 route (~+0.04-0.07) where pass@1 left it invisible (+0.11-0.15); pair this with e-0040/e-0041's larger-n and effect-sizes-with-CIs prescriptions, and report the chosen k's MDE. CAVEAT: design-stage power calc; k samples assumed i.i.d. per problem (no shared-difficulty random effect collapsing them); rho fixed at e-0040's 0.5 in pass@k-outcome space (real pass@k correlation likely exceeds pass@1's -> more power, so conservative); the per-sample MDE drop is largely gap-amplification onto a better scale rather than new information; projects power, not a measured pass@k outcome.",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0042"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:27:28.934Z",
+    "updated_at": "2026-06-15T02:27:28.934Z"
+  },
+  "comments": {}
+}

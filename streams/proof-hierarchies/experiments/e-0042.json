@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0042",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only pass@k power/MDE gate refining e-0040/a-0038 and e-0041/a-0039, which both close the Modal go/no-go with the SAME unquantified advice ('use pass@k>1 / continuous-margin outcomes, which raise both pass rates and power') but never compute how much pass@k helps or whether the gain saturates. Reuses the e-0040 paired McNemar exact Gaussian-copula machinery UNCHANGED; the only change is each policy's per-problem outcome is now pass@k, with marginal P(k)=1-(1-p)^k for per-sample rate p. Per-sample weaker-policy rate p_lo in {0.05,0.10,0.20}, k in {1,2,4,8,16}, n in {50,63,116,200}; for each cell finds the smallest PER-SAMPLE rough-fine gap reaching 80% power, rho=0.5 (e-0040 assumption, applied in pass@k-outcome space). Pure stdlib; seed 0; M=1200.",
+  "motivation": "e-0041 quantified the interaction surcharge that e-0040 only flagged; the parallel still-unquantified load-bearing claim is the recommended FIX: both gates assert pass@k>1 'raises both pass rates and power' to escape the pass@1 underpowering, but neither computes the gain or its limit. Pin the number cheaply before the Modal go/no-go so the design can pick k, not just be told 'use more'.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_passk_power_mde.py",
+    "commit": "042ee67",
+    "lines": "232",
+    "run_cmd": "python3 data/analyze_passk_power_mde.py"
+  },
+  "formal_results": "Per-sample MDE (smallest per-sample rough-fine gap at 80% power) drops sharply with k at low rates then REVERSES via saturation. p_lo=0.05: n=50 +0.19(k1)/+0.12(k2)/+0.08(k4)/+0.06(k8)/+0.05(k16); n=116 +0.11/+0.07/+0.05/+0.04/+0.03; n=200 +0.08/+0.05/+0.04/+0.03/+0.02. p_lo=0.10: n=116 +0.13/+0.09/+0.07/+0.05/+0.06 (k16 worse than k8 — saturation onset). p_lo=0.20: n=50 +0.24/+0.18/+0.15/+0.26/>0.50 (k8 WORSE than k4; k16 unreachable, weaker policy pass@16~0.97 saturates); n=116 +0.15/+0.11/+0.09/+0.10/>0.50. p_lo-averaged best interior k: n=116 k1:0.13->k4:0.07/k8:0.06/k16:0.04; n=200 k1:0.09->best ~0.03-0.05. McNemar/copula identical to e-0040.",
+  "results_description": "Quantifies e-0040/e-0041's 'pass@k raises power' recommendation: at the low pass rates that matter near the e-0005 0/50 floor (p_lo=0.05-0.10), pass@k with k~4-8 cuts the per-sample MDE ~2-3x (n=116: +0.11 at k=1 -> +0.04 at k=8; n=50: +0.19 -> +0.06), because pass@k AMPLIFIES a small per-sample gap onto a more favorable scale ((0.95)^8-(0.90)^8=0.23 for a 0.05 sample gap). BUT the gain saturates and REVERSES: once the weaker policy's pass@k rate climbs past ~0.5-0.6 both policies approach the ceiling, the gap collapses and binomial noise peaks, so MDE rises again — at p_lo=0.20 the best k is ~4 and k=16 is entirely unreachable. So pass@k is a real fix only when k is tuned to keep the weaker-policy pass@k rate in a sensitive ~0.2-0.5 band; maximizing k is counterproductive.",
+  "conclusions": "The pass@k>1 escape hatch e-0040/e-0041 recommended is REAL but BOUNDED and must be tuned: an interior k (~4-8 at the floor-level rates, lower as rates rise) roughly halves-to-thirds the per-sample MDE (n=116 supply-ample route from +0.11-0.15 down to ~+0.04-0.07; n=200 to ~+0.03-0.05), bringing a plausible few-point per-sample granularity gap within reach where pass@1 left it invisible — but only if k is chosen against the expected weaker-policy pass rate, because past pass@k~0.5-0.6 saturation collapses the gap and k=16 can be strictly worse than k=4. Decision for the Modal go/no-go: adopt pass@k scoring with k set to keep the weaker policy near pass@k~0.3-0.5 (not maximized), pair it with the larger-n / effect-sizes-with-CIs prescriptions from e-0040/e-0041, and report the chosen k's MDE. CAVEAT: design-stage power calc; k samples assumed i.i.d. per problem (no shared-difficulty random effect); rho fixed at e-0040's 0.5 in pass@k space (real pass@k correlation likely higher -> more power, so conservative); the per-sample MDE drop is largely gap-amplification onto a better scale, not new information; projects power, not a measured pass@k outcome.",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0040"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:26:15.785Z",
+    "updated_at": "2026-06-15T02:27:29.063Z"
+  },
+  "comments": {}
+}
