@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0047",
+  "stream": "mathematical-domain-topology",
+  "description": "Does bridge-aware retrieval pay off SPECIFICALLY on the project's own DETECTED operational-bridge theorems (q-0006/q-0007: premises span >=2 distinct PURE clusters), or only on generic cross-domain theorems? Partition the 873 held-out TEST theorems (>=1 clustered premise) into detected_bridge (>=2 distinct pure premise clusters, the bridge_theorems.py PURITY>=0.50 / min_pure_clusters=2 rule), cross_nonbridge (>=1 out-of-home premise but <2 pure clusters), within_domain (all premises home). For each group measure premise recall and the bridge-aware lift home->home+top-k neighbour clusters (k=1,2,3,5,10). Same leakage control as e-0011 (W train-only, clusters/labels graph-level, recall on test).",
+  "motivation": "The entire q-0011 retrieval chain (e-0011..e-0036) measures premise recall on GENERIC cross-domain test theorems and NEVER on the theorems the DETECTION half (q-0006/q-0007) actually calls operational bridges. The two halves of the paper are disconnected. If bridge-aware retrieval helps MOST on detected bridges, the pipeline is coherent; if the payoff population and the detection population are disjoint, detection and retrieval-payoff are independent phenomena. Cheap CPU-only over existing data.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_on_detected.py",
+    "commit": "7098e2e",
+    "run_cmd": "python3 src/bridge_retrieval_on_detected.py"
+  },
+  "formal_results": "873 test theorems with >=1 clustered premise. Group sizes: detected_bridge n=2 (0.2%), cross_nonbridge n=430, within_domain n=441. mean distinct PURE premise clusters per group: detected 2.0 (by construction), cross_nonbridge 0.151, within_domain 0.166. Mean recall home->bridge10: detected 0.632->0.924 (lift +0.071@k1,+0.292@k10); cross_nonbridge 0.619->0.973 (lift +0.121@k1,+0.354@k10); within_domain 1.0 flat. 110/138 pure clusters.",
+  "results_description": "Detected operational bridges are RARE on held-out test theorems: only 2/873 (~0.2%), consistent with the ~0.3% whole-graph detection rate (280/92,594). The retrieval-payoff population (430 cross-domain non-bridge theorems, +35pt lift at top-10) is near-DISJOINT from the detection population. Cross-domain theorems span only 0.15 distinct PURE premise clusters on average - their out-of-home premises live in the big MIXED hub clusters, not pure ones - which is exactly why bridge-aware retrieval's gain is a hub-routing effect (a-0012) rather than specialized pure-cluster bridging. The 2 detected bridges do benefit (up to +0.29 at top-10) but n=2 is far too small for a direction claim, and at top-1 they lift LESS than cross_nonbridge (+0.071 vs +0.121).",
+  "conclusions": "Bridge DETECTION (q-0006/q-0007: >=2 pure clusters) and bridge-aware RETRIEVAL payoff (q-0011: cross-domain premise recall) operate on near-DISJOINT theorem populations. The retrieval gain accrues almost entirely to theorems the detection method does NOT flag (430 cross_nonbridge vs 2 detected_bridge in the test split), because cross-domain premise demand concentrates in the big MIXED hub clusters (mean 0.15 PURE clusters spanned), not the pure-cluster bridges detection requires. This corroborates a-0012 (the retrieval payoff is a global-hub effect) and exposes a coherence gap: the paper's two operationalizations of 'bridge' are not measuring the same objects. Caveat: detected bridges are too rare in the held-out split (n=2) to compare lift magnitude directly.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0043"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:43:56.292Z",
+    "updated_at": "2026-06-15T07:44:17.958Z"
+  },
+  "comments": {}
+}

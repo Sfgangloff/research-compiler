@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0043",
+  "stream": "mathematical-domain-topology",
+  "text": "Bridge DETECTION and bridge-aware RETRIEVAL payoff operate on near-DISJOINT theorem populations -- the paper's two halves are not measuring the same objects. The entire q-0011 retrieval chain (a-0013..a-0034) measures premise recall on GENERIC cross-domain test theorems and never on the theorems the detection half (q-0006/q-0007) calls operational bridges (proof premises spanning >=2 distinct PURE clusters). e-0047 partitions the 873 held-out TEST theorems (>=1 clustered premise) by the exact bridge_theorems.py rule (PURITY>=0.50, min_pure_clusters=2): only 2/873 (~0.2%) are DETECTED bridges -- consistent with the ~0.3% whole-graph detection rate (280/92,594) -- vs 430 cross-domain non-bridge and 441 within-domain. So the retrieval-payoff population (430 cross_nonbridge theorems, the +35pt top-10 lift the chain celebrates) is essentially disjoint from the 2 detected bridges. Mechanism: cross-domain theorems span only 0.15 distinct PURE premise clusters on average -- their out-of-home premise demand lands in the big MIXED hub clusters, NOT pure ones -- which is exactly why bridge-aware retrieval's gain is a global-hub routing effect (corroborating a-0012) rather than specialized pure-cluster bridging. The 2 detected bridges do benefit from routing (recall 0.63->0.92 home->top-10, lift up to +0.29) but n=2 is far too small for a direction claim, and at top-1 they lift LESS than cross_nonbridge (+0.071 vs +0.121). Net for q-0011: the bridge-aware retrieval payoff does NOT concentrate on the theorems the project detects as bridges; the operational-bridge DETECTOR (premises in >=2 pure clusters) and the retrieval PROXY (cross-domain premise recall) are independent operationalizations of 'bridge' measuring different objects. This is a coherence gap in the q-0011 payoff story, not a new lever. Caveat: detected bridges are too rare in the held-out split (n=2) to compare lift magnitude; the finding is the population disjointness and the pure-vs-mixed-cluster mechanism, not the per-bridge lift.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0047"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:44:17.957Z",
+    "updated_at": "2026-06-15T07:44:17.957Z"
+  },
+  "comments": {}
+}
