@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0037",
+  "stream": "mathematical-domain-topology",
+  "text": "The IDF/genericity weighting a-0036 named as the fix for conceptual-bridge detection does NOT work -- because the obstruction is not the metric. a-0036 showed the plain edit-distance detector matches generic scaffolding (1/200 pairs share a domain-specific <=3-cluster tactic token, at the random floor) and proposed keying on rare tokens (IDF/TF). Building exactly that -- an IDF-weighted Jaccard over tactic-token multisets with weight log(N_clusters/df), so ubiquitous scaffolding gets weight ~0 and domain-rare tokens dominate, re-run over the same top-30 x top-30-longest selection -- lifts the fraction of top-200 cross-cluster pairs sharing a domain-specific token only from 1/200 to 3/200 (mean_n_specific_shared 0.005->0.015), still indistinguishable from the random control (0.0005), and the 3 'specific' tokens it surfaces are themselves generic structural idioms ('exact <fun ? => @,...>', 'any_goals rfl', 'rw [<- ?,@,@,@]') that merely happen to fall under 3 clusters, not shared concepts. So no normalized-tactic-token detector -- weighted or not -- can recover Brouwer<->Lawvere-style conceptual bridges: cross-domain proof pairs in Mathlib genuinely do not share domain-specific tactic tokens. The conceptual-bridge signal, if it exists, lives in mathematical CONTENT (statement/type structure), which the corpus does not expose, not in proof tactics. This bounds the conceptual half of the operational-vs-conceptual gap (a-0009/a-0032): the gap is a corpus/representation limit, not a tunable-metric problem.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0041"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T06:44:56.963Z",
+    "updated_at": "2026-06-15T06:44:56.963Z"
+  },
+  "comments": {}
+}
