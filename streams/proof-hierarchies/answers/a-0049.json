@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0049",
+  "stream": "proof-hierarchies",
+  "text": "e-0048/a-? closed the eval compute-budget gate by recommending 'STAGE THE EVAL -- run the single-size pass@1 rough-vs-fine gap first (8.5x the proven-affordable run) and escalate to the multi-size interior-k interaction (34-204x) only once a single-size signal justifies it', but never made that operational. e-0051 supplies the missing trigger rule, false-escalation rate, expected compute, and -- the decision-critical hole -- a check that the cheap single-SIZE screen is even aligned with the headline model-SIZE INTERACTION, reusing e-0040's paired McNemar Gaussian-copula machinery and e-0048's published cost multiples UNCHANGED so the numbers compose. Define stage 1 = rough-vs-fine pass@1 at within-deep effective n=106 (e-0046) on the SMALL model (so it screens delta_small, the headline-relevant arm), trigger = McNemar significant at alpha=0.05. RESULT (1): the FALSE-ESCALATION rate under a true zero gap is ~0.026 (slightly below nominal alpha because McNemar exact under-rejects at the small discordant counts n=106 produces), so the staged plan's expected compute under the null -- the common prior given the 0/50 pre-SFT floor (e-0005) -- is only 13.8x the proven-affordable run vs 203.5x for running the full design outright: a ~15x compute saving for the realistic no-effect case, which is the ENTIRE value of staging. At a real detectable +0.14 single-size gap (the e-0046 MDE) P(escalate)=0.84 and expected compute rises to 180x -- you pay because the signal is real. RESULT (2), the decision-critical caveat: the cheap screen is MISALIGNED with the capstone. Stage-1 fires on the single-SIZE main effect, but the headline is the gap x model-SIZE INTERACTION (needs delta_small > delta_large). Under a PURE main effect (rough helps EQUALLY at both sizes, interaction EXACTLY 0) stage-1 still escalates with probability = stage-1 power (0.65 at +0.11, 0.84 at +0.14, 0.99 at +0.25), spending 34-204x on a DiD that resolves nothing. So a stage-1 GO is NECESSARY-NOT-SUFFICIENT for the interaction: it cannot distinguish 'rough helps everywhere' from 'rough helps MORE as the model shrinks'. CONSEQUENCE: staging is worth doing (it caps expected no-effect compute at ~14x vs 204x and holds false-escalation at ~alpha), but it only DEFERS the interaction spend behind a cheap 8.5x screen, it does not avoid it; the capstone interaction still requires the full multi-size stage-2 run, and the stage-1 result must be reported as a single-size main-effect screen, not as interaction evidence. CAVEAT: design-stage operating characteristics, not an outcome; inherits e-0040's Gaussian-copula paired-Bernoulli approximation, rho=0.5, single seed; pass@1 screen (a tuned-pass@k screen would raise both power and stage-1 cost).",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0051"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:07:37.664Z",
+    "updated_at": "2026-06-15T07:07:37.664Z"
+  },
+  "comments": {}
+}
