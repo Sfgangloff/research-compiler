@@ -1,0 +1,24 @@
+{
+  "type": "answer",
+  "id": "a-0046",
+  "stream": "proof-hierarchies",
+  "text": "The entire Stage-0.5 power chain (e-0040..e-0047) priced the headline's statistical RESOLVABILITY and converged on a design -- within-deep effective n~106, TUNED interior-k pass@k (e-0047: best k=16 at floor rates, k=4 once the weaker policy saturates), >=2 model sizes for the DiD, 2 policies -- but never asked the question CLAUDE.md makes a first-class constraint: can that design be AFFORDED on the free tier? e-0048 supplies the missing gate by pricing the recommended design as a MULTIPLE of the one eval run the project has PROVEN affordable (e-0006/a-0005: 50 problems @ pass@1 = 50 samples in ~56 T4-min, within free-tier limits => t1=1.12 T4-min/problem-sample). Because pass@k issues k generations AND k Lean verifications per (problem, model, policy), eval cost = n*k*sizes*policies samples, and the irreducible n*k Lean compiles dominate. RESULT at the real >=2-frontier n=106 (2 policies): the full powered interaction (k=16, 3 sizes) = 10176 samples = 204x the proven-affordable run = ~190h T4 linear / ~101h gen-batched; lean powered (k=8, 2 sizes) = 68x (63h); cheap powered (k=4, 2 sizes) = 34x (32h); the single-size pass@1 gap (q-0007 only, NOT the interaction) = 8x (7.9h). The interior-k lever e-0047 needs to make the capstone interaction resolvable is the SAME multiplier that makes it 1-2 orders of magnitude more expensive than the proven-affordable eval. CONSEQUENCE for the Modal go/no-go: STAGE the eval -- run the single-size pass@1 rough-vs-fine gap first (8x, resolves +0.11-0.16 per e-0046) and escalate to the multi-size interior-k interaction (68-204x) only once a single-size signal justifies the spend. CAVEATS: t1 is from the PRE-SFT degenerate 0.5B model whose short junk Kimina rejects fast, so every figure is a LOWER bound on the post-SFT eval (real generation+verification slower); EXCLUDES e-0007 QLoRA training (2 policies x sizes adapters); free-tier credit is finite and not auto-visible, so the gate anchors to the one run proven to fit rather than an absolute budget; effective n is the e-0028 yield PROJECTION (needs the Modal round-trip).\n",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0048"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T04:19:28.794Z",
+    "updated_at": "2026-06-15T04:19:38.195Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}

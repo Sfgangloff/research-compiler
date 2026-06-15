@@ -1,0 +1,34 @@
+{
+  "type": "experiment",
+  "id": "e-0048",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only EVAL COMPUTE-BUDGET gate: prices the e-0040..e-0047 statistically-recommended headline design (within-deep effective n=106 [>=2 frontier, e-0046], interior-k pass@k, multi-size DiD) as a MULTIPLE of the one eval run the project has PROVEN affordable -- e-0006/a-0005: 50 problems @ pass@1 = 50 samples in ~56 T4-min, reported within free-tier limits, => t1 = 1.12 T4-min/problem-sample. The whole power chain answered \"is the effect resolvable?\" and never the constraint CLAUDE.md makes first-class: \"can we afford to resolve it?\" total_samples = n*k*sizes*policies (pass@k needs k generations AND k Lean verifications per problem/model/policy); wall-clock bounded by LINEAR (verification-bound, conservative) and GEN-BATCHED (g=0.5, generation batches in k) regimes. Reads effective n + per-s_f best-k from e-0047's deep_interaction_passk_power.json. Pure stdlib; no Lean, no Modal. Prices EVAL only (excludes e-0007 QLoRA training); all figures PRE-SFT lower bounds (t1 from the degenerate 0.5B model whose junk Kimina rejects fast; SFT'd generation+verification is slower).\n",
+  "motivation": "Connect the statistical recommendation to Modal cost discipline (CLAUDE.md): the interior-k lever e-0047 needs to make the interaction resolvable is the same multiplier that drives eval compute, and no gate priced the recommended design against what the project can afford.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_eval_compute_budget.py",
+    "commit": "ae3fe86",
+    "run_cmd": "python3 -m data.analyze_deep_eval_compute_budget"
+  },
+  "formal_results": "Anchor: 50 samples / 56 T4-min => t1=1.120 min/problem-sample (PRE-SFT lower bound). Route: within-deep effective n=106, 2 policies. e-0047 powered best-k per weaker-policy rate s_f: {0.05:16, 0.10:16, 0.20:4}. Eval cost as MULTIPLES of the one proven-affordable run (=1.0x):\n- full powered interaction (k=16, 3 sizes): 10176 samples = 204x = 190.0h T4 linear / 100.9h gen-batched.\n- lean powered (k=8, 2 sizes): 3392 = 68x = 63.3h / 35.6h.\n- cheap powered (k=4, 2 sizes): 1696 = 34x = 31.7h / 19.8h.\n- single-size pass@1 fallback (k=1, 2 sizes): 424 = 8x = 7.9h.\n- k=1 x 3 sizes: 636 = 13x = 11.9h. Cost is dominated by the irreducible n*k Lean verifications, so the interior-k lever e-0047 needs to RESOLVE the interaction is the SAME multiplier that drives the spend.\n",
+  "results_description": "The statistically-recommended headline design is compute-EXPENSIVE relative to the only eval run shown to fit the free tier. Full powered interaction (k=16, 3 sizes) = 204x that run (190h T4 linear); even gen-batched it is 101h. The single-size pass@1 gap (q-0007 only, not the interaction) = 8x (7.9h), and the cheapest powered interaction (k=4, 2 sizes) = 34x.\n",
+  "conclusions": "STAGE THE EVAL. Run the single-size pass@1 rough-vs-fine gap first (8x the proven run, resolves +0.11-0.16 per e-0046) and escalate to the multi-size interior-k interaction (68-204x) only once a single-size signal justifies it. The capstone interaction is statistically resolvable (e-0047) but its enabling lever -- a large interior k -- is exactly what makes it 1-2 orders of magnitude more expensive than the proven-affordable eval, before counting SFT training (e-0007) and the post-SFT slowdown both figures omit.\n",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0006",
+    "a-0046"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T04:18:44.132Z",
+    "updated_at": "2026-06-15T04:19:28.795Z"
+  },
+  "comments": {},
+  "stories": [
+    "study"
+  ]
+}
