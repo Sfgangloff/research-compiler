@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0044",
+  "stream": "mathematical-domain-topology",
+  "text": "Structurally, operational bridge theorems are DEEP SYNTHESES, not foundational connector lemmas. Over 55,575 theorems-with-tactics-and-premises, the 280 detected operational bridges (premises spanning >=2 pure clusters) have proofs 5-6x LONGER than typical (median 10 tactics vs 2; rankfrac 0.785) and use 4-5x MORE premises (median 12 vs 3; rankfrac 0.817), and they sit DOWNSTREAM in the dependency DAG (dag_depth rankfrac 0.611; the strict depth-filtered 34 are even deeper, 0.789, median depth 6.5 vs 2). Crucially they are NOT more REUSED than a random theorem (reuse_indeg rankfrac 0.532, essentially chance; bridge mean reuse 1.04 sits BELOW the population mean 1.36, which is inflated by foundational hubs). So a bridge is a late-stage, premise-heavy result that pulls together many specialized lemmas across domains while itself rarely being used as a premise. This is the exact structural complement of the q-0007 in-degree depth filter, which strips the high-in-degree utility hubs: bridges occupy the opposite end of the reuse spectrum. It also mechanistically explains a-0043's near-disjoint-populations result -- detected bridges are big downstream syntheses, structurally unlike both the generic cross-domain retrieval test theorems and the reused utility lemmas. Caveat: features are over the premise-dependency graph only (no statement/type content); reuse in-degree is bounded by Mathlib's current downstream usage, so genuinely recent bridges would read as low-reuse regardless.",
+  "status": "supported",
+  "answers": [
+    "q-0006"
+  ],
+  "backed_by": [
+    "e-0048"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:51:39.889Z",
+    "updated_at": "2026-06-15T07:51:39.889Z"
+  },
+  "comments": {}
+}
