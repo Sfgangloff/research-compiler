@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0048",
+  "stream": "proof-hierarchies",
+  "text": "The Stage-0.5 power chain (e-0040..e-0049) priced only the POOLED within-deep effective n (~115, e-0046) and certified the headline rough-vs-fine gap resolvable; but e-0008's Stage 3 design also promises a PER-AREA ablation, and no gate asked whether the granularity effect is resolvable WITHIN an area. e-0050 applies the e-0045 DEAD-at-low-n logic per Mathlib area over the SAME e-0046 split x e-0032 construct x e-0028 yield (no pooling), with two filters: the >=6-discordant McNemar CEILING and the sharper reachable-80%-power MDE (gap<=0.50). Verdict: the per-area ablation is mostly DEAD. Of 17 fine areas, 7 clear the combinatorial ceiling but only 2 are GENUINELY POWERED -- MeasureTheory (n_eff=30, MDE~0.28) and Analysis (n_eff=27, MDE~0.31); the other 5 ceiling-clearers (RingTheory/NumberTheory/LinearAlgebra/Topology/Algebra, n_eff 6-9) need a >0.50 gap and are effectively unpowered, the e-0045 trap one notch up. Coarsening into 4 super-areas, only Analysis* (n_eff=70, MDE~0.16-0.20) and Algebra* (n_eff=34, MDE~0.25-0.30) are genuinely powered, covering 90% of granularity-bearing eval targets; Foundational* clears the count floor (n_eff=6) but its MDE is unreachable. RECOMMENDATION for e-0008: report the gap POOLED and break it down by AT MOST the 2 genuinely-powered super-areas, NOT the 17 fine areas (15 of which would print under-powered placeholders); the per-area gap x model-SIZE interaction is out of reach entirely. CAVEATS: the count floor is a NECESSARY ceiling that over-counts power; verified counts are the e-0028 per-area projection; route is leakage-clean (e-0049).",
+  "status": "supported",
+  "answers": [
+    "q-0008",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0050"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T06:56:37.872Z",
+    "updated_at": "2026-06-15T06:56:37.872Z"
+  },
+  "comments": {}
+}

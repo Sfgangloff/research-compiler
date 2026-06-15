@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0050",
+  "stream": "proof-hierarchies",
+  "description": "PER-AREA ablation power gate (CPU-only): the e-0045 DEAD-at-low-n logic applied per Mathlib area to the within-deep eval route. e-0008's Stage 3 design promises a per-area granularity breakdown, but no gate priced whether the granularity effect is resolvable WITHIN an area vs only pooled. Composes the SAME three deep-route numbers e-0046 used (e-0031 within-deep module-disjoint split x e-0032 substantive-frontier construct x e-0028 per-area round-trip yield) but does NOT pool: computes effective verified-AND-granularity-bearing n + McNemar floor + e-0040 MDE per area. Two filters per area: (i) the >=6-discordant combinatorial CEILING (necessary for McNemar to EVER reject), (ii) the sharper genuinely-powered filter = a REACHABLE 80%-power MDE (gap<=0.50). Also prices the actionable fix: coarsening 17 fine areas into 4 super-areas.",
+  "motivation": "Every prior Stage-0.5 gate priced the POOLED within-deep effective n (~115, e-0046). e-0008 explicitly plans a per-area ablation; if that sub-claim is under-powered in most areas, Stage 3 would print under-powered per-area placeholders. Enforce the e-0045 floor at the ablation granularity Stage 3 actually reports, before any Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_per_area_power.py",
+    "commit": "e1d4ac4",
+    "lines": "215",
+    "run_cmd": "python3 -m data.analyze_deep_per_area_power"
+  },
+  "formal_results": "alpha=0.05 -> need >=6 same-direction discordant pairs. Pooled n_eff~115 (clears w/ margin). FINE (17 areas): 7/17 clear the count CEILING (MeasureTheory n_eff=30, Analysis 27, RingTheory 9, LinearAlgebra/Topology/Algebra 7, NumberTheory 6); only 2/17 GENUINELY POWERED with a reachable 80%-power MDE: MeasureTheory (MDE~0.28) and Analysis (MDE~0.31). The other 5 floor-clearers need a >0.50 gap = effectively unpowered. COARSE super-areas: 3/4 clear floor, 2/4 genuinely powered: Analysis* (n_eff=70, MDE~0.16-0.20) and Algebra* (n_eff=34, MDE~0.25-0.30), covering 90% of GB eval targets; Foundational* clears the count floor (n_eff=6) but MDE unreachable; Discrete* (n_eff=5) fails the floor.",
+  "results_description": "Per-area ablation is mostly DEAD: genuinely powered in only 2/17 fine areas. Coarsening to super-areas gives 2/4 genuinely powered (Analysis*, Algebra*) covering 90% of granularity-bearing eval targets.",
+  "conclusions": "RECOMMENDATION for e-0008: report the granularity gap POOLED (the powered headline) and break it down by AT MOST the 2 genuinely-powered super-areas (Analysis*, Algebra*), NOT the 17 fine areas (15 of which would print under-powered placeholders). The per-area gap x model-SIZE interaction is out of reach entirely. CAVEAT: the count floor is a NECESSARY ceiling that over-counts; verified counts are the e-0028 projection; leakage-clean per e-0049.",
+  "addresses": [
+    "q-0008",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0048"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T06:56:15.347Z",
+    "updated_at": "2026-06-15T06:56:37.874Z"
+  },
+  "comments": {}
+}
