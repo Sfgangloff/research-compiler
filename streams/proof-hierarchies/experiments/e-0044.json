@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0044",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only RHO-SENSITIVITY gate for the Stage-0.5 power/MDE quartet (e-0040..e-0043): all four fix the paired rough/fine per-problem outcome correlation at rho=0.5 and never sweep it. Reuses e-0040's paired McNemar Gaussian-copula machinery UNCHANGED and sweeps rho in {0.0,0.3,0.5,0.7,0.9} over the single-gap pass@1 MDE for each (n,p_lo). Pure stdlib; deterministic seed; no Lean, no Modal.",
+  "motivation": "rho is not a nuisance knob for a PAIRED McNemar test -- E[b-c]=n*delta is invariant to rho but the discordant total E[b+c] shrinks as rho rises, so higher rho => smaller MDE. Rough and fine are SFT variants of the SAME base, trained from paired reconstructions of the SAME proofs, evaluated on the SAME held-out theorems, so realistic rho is plausibly 0.7-0.9 (shared problem difficulty). If so the affordable n=116 verdict could flip; if rho<0.3 even worse. The go/no-go cannot rest on a single unswept rho.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_rho_sensitivity_power_mde.py",
+    "commit": "6f644d1",
+    "lines": "230",
+    "run_cmd": "python3 data/analyze_rho_sensitivity_power_mde.py"
+  },
+  "formal_results": "McNemar exact, alpha=0.05, target power 0.80, M=1200, seed 0. MDE monotone-decreasing in rho but SECOND-ORDER. n=116: rho=0.0 MDE 0.13-0.18; rho=0.5 0.11-0.15; rho=0.9 0.08-0.10 (across p_lo 0.05/0.10/0.20). n=50: rho=0.5 0.20-0.24 -> rho=0.9 0.16-0.18. n=63: 0.16-0.21 -> 0.13-0.15. n=200: 0.08-0.11 -> 0.06-0.08. Even optimistic rho=0.9 leaves n=116 at ~8-10pt pass@1 MDE; rho moves MDE only ~3-5pt across its full 0.0-0.9 range.",
+  "results_description": "rho is a SECOND-ORDER lever (~3-5 absolute MDE points across rho 0.0->0.9) compared to pass@k (e-0042/e-0043's ~2-5x MDE cut) and n. The four power gates' 'underpowered for few-point effects at affordable n' verdict is ROBUST to the unswept rho=0.5: it holds across the entire plausible correlation range. Even at optimistic same-proof rho=0.9 the n=116 k=1 design resolves only ~8-10pt gaps -- pass@k remains the real escape hatch, not pairing correlation.",
+  "conclusions": "The Modal go/no-go is NOT fragile to rho=0.5: pessimistic rho=0.0 and optimistic rho=0.9 both land near the same 'needs pass@k or large n' conclusion. So the headline design choices (k>1 scoring tuned to keep the weaker policy near pass@k~0.3-0.5, n>=116) stand independent of the unknown correlation. RECOMMENDATION unchanged but now de-risked: still LOG realized discordant counts (b+c) at eval time to estimate rho empirically, but the decision need not wait on it. CAVEAT: design-stage power calc, not an outcome; Gaussian-copula approximation to paired Bernoulli; single seed.",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0042"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T03:00:09.088Z",
+    "updated_at": "2026-06-15T03:00:50.442Z"
+  },
+  "comments": {}
+}

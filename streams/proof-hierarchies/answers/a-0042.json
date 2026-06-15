@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0042",
+  "stream": "proof-hierarchies",
+  "text": "The Stage-0.5 power/MDE quartet (e-0040 single-gap x pass@1, e-0041 interaction x pass@1, e-0042 single-gap x pass@k, e-0043 interaction x pass@k) all close the Modal go/no-go on ONE unswept constant -- the paired rough/fine per-problem outcome correlation rho=0.5 -- yet for a PAIRED McNemar test rho is the lever the verdict turns on (E[b-c]=n*delta is invariant to rho but the discordant total E[b+c] shrinks as rho rises, so higher rho => smaller MDE). The realistic rho here is plausibly high: rough and fine are SFT variants of the SAME base, trained from paired reconstructions of the SAME proofs, scored on the SAME held-out theorems, so shared intrinsic difficulty should correlate the two arms (0.7-0.9), which COULD have flipped e-0040/e-0041's 'statistically invisible at affordable n' verdict. e-0044 sweeps rho in {0.0,0.3,0.5,0.7,0.9} over e-0040's machinery unchanged. Result: MDE is monotone-decreasing in rho but strictly SECOND-ORDER -- at the affordable supply-ample n=116 route the pass@1 MDE moves only 0.13-0.18 (rho=0.0) -> 0.11-0.15 (rho=0.5) -> 0.08-0.10 (rho=0.9), i.e. ~3-5 absolute points across the ENTIRE plausible range, vs pass@k's 2-5x cut (e-0042/e-0043) and n's first-order effect. So even an optimistic same-proof rho=0.9 leaves n=116 resolving only ~8-10pt gaps at k=1 -- still far above a plausible few-point granularity effect. CONSEQUENCE: the 'underpowered at affordable n without pass@k or large n' verdict is ROBUST -- pessimistic rho=0.0 and optimistic rho=0.9 both land at essentially the same go/no-go, so the headline design (pass@k>1 tuned to keep the weaker policy near pass@k~0.3-0.5; n>=116) stands INDEPENDENT of the unknown correlation, and the decision need not wait on a rho estimate. Still LOG the realized discordant counts (b+c) at eval time to estimate rho post hoc. CAVEAT: design-stage power calc, not an outcome; Gaussian-copula approximation to paired Bernoulli; single seed (0); rho is assumed, the realized rough/fine correlation is unknown until a pilot. (also addresses q-0001's capstone interaction, which inherits the same copula.)",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0044"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T03:00:50.398Z",
+    "updated_at": "2026-06-15T03:00:50.398Z"
+  },
+  "comments": {}
+}
