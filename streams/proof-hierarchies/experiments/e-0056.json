@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0056",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only MEAN-vs-VARIANCE identifiability/power gate for q-0010: does a rough->fine pass@k benefit move the MEAN of per-problem solve probability or REDUCE its run-to-run variance at fixed mean, and can the planned eval tell them apart? Models each held-out problem's per-sample solve probability as p=sigmoid(intercept+slope*d), d~N(0,1) latent difficulty SHARED by rough and fine (paired/comonotonic); a MEAN mechanism raises the intercept (+0.04 mean) at fixed slope, a VARIANCE mechanism compresses the slope (1.5->0.6) with the intercept re-calibrated by bisection so pass@1 mean is EXACTLY matched. Reports (A) the pass@k gap signature of each mechanism, (B) paired-McNemar-exact power to DETECT each at within-deep n=106, (C) the variance mechanism's pass@k gap by base rate (small vs large model). Pure stdlib, seed 0, M=1500, 200k-draw calibration pool; no Lean, no Modal.",
+  "motivation": "q-0010 was wholly unanswered. It asks whether fine's benefit (if any) is a uniform per-problem lift or a reliability/variance reduction, and whether that split depends on model size -- 'buildable as a per-sample-outcome reanalysis of the planned q-0007 eval logs.' Those logs don't exist (Modal-blocked), so in the design-stage spirit of the e-0040..e-0055 power chain this prices the identifiability+detectability of the two mechanisms BEFORE the spend, so the eval is instrumented (multi-k pass@k) to separate them rather than discovering post hoc it cannot. Decision-critical because pass@k is CONCAVE in p: a mean-matched variance reduction is INVISIBLE to pass@1 by construction, so the e-0051 pass@1 staged screen could be structurally blind to a whole class of granularity benefit.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_mean_vs_variance_identifiability.py",
+    "commit": "fc38a18",
+    "lines": "240",
+    "run_cmd": "python3 data/analyze_mean_vs_variance_identifiability.py"
+  },
+  "formal_results": "(A) Expected pass@k gap (fine-rough), rough baseline mean=0.10 slope=1.5: MEAN mech (+0.04 mean) = +0.040/+0.061/+0.083/+0.097/+0.097 at k=1/2/4/8/16; VARIANCE mech (mean-matched, slope 1.5->0.6) = +0.000/+0.014/+0.052/+0.120/+0.189 at k=1/2/4/8/16 -- 0 at k=1 by construction, GROWS with k, OVERTAKES the mean gap by k=8. (B) Power at n=106 (paired McNemar exact, alpha=0.05, M=1500): MEAN mech 0.120/0.193/0.292/0.361/0.413 (k=1..16); VARIANCE mech 0.029/0.037/0.124/0.456/0.892 (k=1..16) -- variance-mech pass@1 power = 0.029 ~ alpha (structurally blind), reaching 0.80+ only at k=16. (C) Variance-mech gap is SMALLER for the small (mean .05) than large (mean .10) model: small +0.000/+0.006/+0.024/+0.067/+0.139 vs large +0.000/+0.014/+0.052/+0.120/+0.189 (k=1..16).",
+  "results_description": "A mean-matched VARIANCE/reliability benefit is invisible to pass@1 (gap exactly 0, detection power 0.029~alpha at n=106) but becomes large and well-powered as k grows (gap +0.189, power 0.892 at k=16); a MEAN benefit shows already at k=1 but saturates (gap plateaus ~+0.097, power only ~0.41 at k=16 for a +0.04 lift). The two mechanisms have distinct pass@k SIGNATURES (mean: present-then-saturating; variance: zero-then-growing, crossing over by k~8), so scoring pass@k at MULTIPLE k identifies which is operating. The e-0051 pass@1 staged screen is STRUCTURALLY BLIND to a pure reliability benefit -- a stage-1 NO-GO does not rule it out. Contra naive intuition, the variance-mechanism gap GROWS with base rate (larger for the more-capable model) because pass@k is near-linear in p at floor rates, so it points OPPOSITE to 'gap grows as model shrinks'.",
+  "conclusions": "Answers q-0010 at design stage: fine's benefit, if present, can be a MEAN lift or a mean-matched VARIANCE reduction, and these are SEPARABLE only by a multi-k pass@k per-sample reanalysis -- pass@1 (and the e-0051 pass@1 screen) is structurally blind to the reliability mechanism (power ~alpha). PRESCRIPTION for the q-0007 eval: log per-(problem,policy,size) per-SAMPLE outcomes and score pass@k at several k (not just pass@1), so the eval can attribute any granularity benefit to mean vs variance and not silently miss a reliability-only effect. DIAGNOSTIC: a variance-mechanism gap shrinks toward the floor, so a pass@1-invisible-but-pass@k-visible gap that GROWS as the model shrinks is hard to explain by floor-level reliability alone -- pointing to a size-dependent mean mechanism. CAVEATS: design-stage power calc, not an outcome; logit-normal paired difficulty is assumed; mechanism magnitudes are chosen mean-matched, not estimated; k samples i.i.d. given p_i; seed 0.",
+  "addresses": [
+    "q-0010"
+  ],
+  "produces": [
+    "a-0054"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:09:51.927Z",
+    "updated_at": "2026-06-15T08:10:21.977Z"
+  },
+  "comments": {}
+}

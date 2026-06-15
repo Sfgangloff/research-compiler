@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0054",
+  "stream": "proof-hierarchies",
+  "text": "q-0010 (previously UNANSWERED) asked whether a rough->fine pass@k benefit is a uniform MEAN lift in per-problem solve probability or a VARIANCE/reliability reduction at fixed mean, and whether that split depends on model size -- 'buildable as a per-sample-outcome reanalysis of the planned q-0007 eval logs.' Those logs are Modal-blocked, so e-0056 prices the two mechanisms' IDENTIFIABILITY and DETECTABILITY at design stage, in the spirit of the e-0040..e-0055 power chain, so the eval can be instrumented to separate them. The load-bearing structural fact: pass@1=E[p] depends ONLY on the mean, while pass@k=E[1-(1-p)^k] is CONCAVE in p, so a mean-matched compression of the spread of p RAISES pass@k for k>1 and the gap GROWS with k. CPU-only Monte-Carlo (logit-normal paired per-problem difficulty shared by rough+fine, intercepts bisection-calibrated so the variance mechanism is EXACTLY mean-matched; seed 0, M=1500): a pure VARIANCE/reliability benefit has pass@k gap +0.000/+0.014/+0.052/+0.120/+0.189 at k=1/2/4/8/16 -- exactly 0 at k=1, overtaking a +0.04 MEAN-mechanism gap (+0.040/.../+0.097) by k~8. POWER at the within-deep n=106 (paired McNemar exact, alpha=0.05): the variance mechanism's pass@1 detection power is 0.029 (~alpha -- STRUCTURALLY BLIND), rising to 0.892 only at k=16; the mean mechanism shows at k=1 but its small +0.04 lift saturates to power ~0.41 by k=16. CONSEQUENCE: the e-0051 pass@1 staged screen cannot see a pure reliability benefit -- a stage-1 NO-GO does NOT rule out a granularity effect that lives entirely in variance. PRESCRIPTION for the q-0007 eval: log per-(problem,policy,size) per-SAMPLE outcomes and score pass@k at SEVERAL k, so the eval attributes any benefit to mean vs variance (distinct signatures: mean present-then-saturating, variance zero-then-growing) instead of silently missing a reliability-only effect. SIZE DIAGNOSTIC (contra naive intuition): the variance-mechanism gap GROWS with base rate (smaller for the lower-mean small model: +0.139 vs +0.189 at k=16) because pass@k is near-linear in p at floor rates -- so it points OPPOSITE to 'gap grows as model shrinks', meaning a pass@1-invisible / pass@k-visible gap that DOES grow as the model shrinks is hard to explain by floor-level reliability alone and points to a size-dependent MEAN mechanism. CAVEATS: design-stage power calc, not a measured outcome; logit-normal paired difficulty is an assumption (beta-binomial / real tails would differ); mechanism magnitudes are chosen mean-matched, not estimated; k samples i.i.d. given p_i; single seed. (also relevant to q-0007's headline interaction and q-0008's confound controls.)",
+  "status": "supported",
+  "answers": [
+    "q-0010"
+  ],
+  "backed_by": [
+    "e-0056"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:10:21.972Z",
+    "updated_at": "2026-06-15T08:10:21.972Z"
+  },
+  "comments": {}
+}
