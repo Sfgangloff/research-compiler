@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0037",
+  "stream": "mathematical-domain-topology",
+  "description": "Robustness of the operational-vs-conceptual bridge INDEPENDENCE finding (a-0032) to the structural-similarity AGGREGATION statistic. a-0032 used only the single CLOSEST proof pair (MIN normalized edit distance) per cluster pair. This recomputes the full per-cluster-pair ED distribution over the same selection (top-30 clusters x top-30 longest proofs, >=5 tactics, 80-token cap, normalized Levenshtein) and records min/mean/median, then measures operational-bridge enrichment of the K structurally-closest cluster pairs (threshold-free, robust to the degenerate within-cluster baseline=1.0 and median ties).",
+  "motivation": "a-0032's near-disjointness (overlap-vs-chance 0.76) rests on an extreme-tail sample (one closest pair per cluster pair). If independence/anti-correlation is an artifact of MIN aggregation, distribution-level statistics (mean/median = typical cross-cluster proof similarity) should restore correlation. Tests whether the central-open-problem 'complementary detectors' claim is aggregation-dependent.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_complementarity_robustness.py",
+    "commit": "88cb4a2",
+    "run_cmd": "cd src && python3 bridge_complementarity_robustness.py"
+  },
+  "formal_results": "22 jointly-evaluable clusters (231 possible pairs), 70 operational pairs (base rate 0.303). Enrichment-vs-chance of K structurally-closest pairs at K in {20,40,58,80}.",
+  "results_description": "MIN: 0.825/0.743/0.797/0.784 (below chance, reproduces a-0032). MEAN: 0.99/0.99/1.024/1.155 (at chance). MEDIAN: 1.485/1.155/1.138/1.031 (above chance, strongest at small K). Within-cluster baseline ED=1.0 (degenerate).",
+  "conclusions": "The operational/conceptual anti-correlation is SPECIFIC to the MIN extreme-closest-pair statistic. Under typical-similarity (median) aggregation the structurally-closest cluster pairs are mildly ENRICHED for operational bridges (up to 1.49x at K=20). Qualifies a-0032: anti-correlation is a property of the single-closest-pair detector, not of conceptual similarity in general; broadly method-similar domains do tend to share premises.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0034"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T04:00:10.836Z",
+    "updated_at": "2026-06-15T04:01:29.810Z"
+  },
+  "comments": {}
+}

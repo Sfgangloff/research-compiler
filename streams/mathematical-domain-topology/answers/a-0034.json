@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0034",
+  "stream": "mathematical-domain-topology",
+  "text": "The operational-vs-conceptual bridge ANTI-CORRELATION a-0032 reported is an artifact of its single-closest-pair (MIN edit-distance) aggregation, not a general property of conceptual similarity. a-0032 scored each cluster pair by the ONE most-similar cross-cluster proof pair (MIN normalized ED over top-30 x top-30 proofs) and found premise-based and structural detectors flag near-disjoint pairs (overlap-vs-chance ~0.76). e-0037 recomputes the FULL per-cluster-pair ED distribution over the identical selection and measures operational-bridge enrichment of the K structurally-closest cluster pairs (threshold-free; robust to the degenerate within-cluster baseline ED=1.0 and to median ties), over the same 22 jointly-evaluable clusters / 231 pairs / 70 operational pairs (base rate 0.303), at K in {20,40,58,80}. Result depends sharply on the aggregation statistic: MIN gives enrichment 0.74-0.83 (below chance, reproduces a-0032's anti-correlation); MEAN gives 0.99-1.16 (at chance); MEDIAN -- typical cross-cluster proof similarity -- gives 1.03-1.49, ABOVE chance and strongest at small K (1.485 at K=20). Mechanism: MIN rewards cluster pairs that happen to share ONE freakishly-similar proof (a generic-scaffolding coincidence between otherwise-unrelated domains), and THOSE are premise-orthogonal; but two domains whose proofs are TYPICALLY similar (high median structural similarity) do tend to share specialized premises too, because similar methods reuse similar lemmas. Net for q-0009: the genuinely complementary, premise-orthogonal conceptual bridges a-0009/a-0032 care about are specifically the extreme-closest-pair coincidences -- the structural-similarity signal as a WHOLE is not orthogonal to premise-sharing, it is mildly aligned. This qualifies a-0032 (its 'complementary, near-independent detectors' claim holds only for the MIN detector) and sharpens the central open problem: a conceptual-bridge detector must isolate isolated structural coincidences, since broad proof-style similarity merely re-finds operational bridges. Caveat: same top-30-cluster / top-30-proof high-similarity sample as a-0032 (not an exhaustive structural census); enrichment is over cluster pairs, not theorem pairs.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0037"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T04:00:52.207Z",
+    "updated_at": "2026-06-15T04:01:29.811Z"
+  },
+  "comments": {}
+}
