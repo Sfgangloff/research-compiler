@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0050",
+  "stream": "proof-hierarchies",
+  "text": "The Stage-0.5 cost chain priced only the EVAL: e-0048 states plainly it 'EXCLUDES e-0007 QLoRA training', and e-0051's staged-eval logic defers the expensive multi-size eval interaction behind a cheap single-size screen. But training is a FIXED cost paid BEFORE any eval, so staging cannot avoid it — both adapters must be trained up front. e-0052 prices that excluded half from the prepared corpus_v3 SFT splits: over 485 train examples the ROUGH (term-mode) policy is 1,689,603 tok vs FINE (tactic) 31,812 tok = 53.1x full-sequence (196.8x completion-only). Since QLoRA FLOPs ~ 6*N_params*tokens*epochs, at matched epochs/model size the rough adapter costs ~53x the fine adapter's training compute. Two consequences for the Modal go/no-go: (1) the asymmetric training bill is NON-DEFERRABLE — paid even if the e-0051 screen says stop, and e-0048 priced none of it; (2) the two arms are NOT compute-matched, so any pass@k gap is attributable to 'rough saw ~53x more gradient tokens' rather than to granularity — a confound DISTINCT from the e-0010 eval-time length confound and the e-0026 per-example construct confound. The same-format deep build (e-0027/a-0027) shares residual body + statement and differs only by bounded named-have headers (~29 tok median, fine the slightly longer side), collapsing the training ratio to ~1-2x. So the pivot that already fixes q-0007's construct validity (a-0026) and q-0008's length confound (a-0027) ALSO compute-matches the two training arms; corpus_v3 cannot be compute-matched without re-serializing rough in tactic mode. CAVEAT: token proxy chars/4 (exact chars, estimated tokens); FLOPs~tokens holds at matched epochs/size; no absolute T4-min because no pre-SFT training-throughput anchor exists.",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0052"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:15:02.234Z",
+    "updated_at": "2026-06-15T07:15:02.234Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0052",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only TRAINING-compute asymmetry gate: the half e-0048's eval budget explicitly excluded ('EXCLUDES e-0007 QLoRA training'). Computes per-policy SFT token volume (prompt+completion, the unit a causal-LM forward+backward processes) over the prepared corpus_v3 train split and reports the rough/fine ratio, why it is a non-deferrable cost the e-0051 staged-eval logic cannot avoid, and why it is an unmatched-compute confound on the headline comparison. Contrasts with the e-0027 same-format deep build.",
+  "motivation": "Every Stage-0.5 cost gate (e-0048, e-0051) priced the EVAL; e-0048 states plainly it excludes QLoRA training. But training is a FIXED cost paid BEFORE any eval, so e-0051's staged-eval logic (cheap single-size screen first, escalate on signal) cannot defer it — both adapters must be trained up front. And e-0010 showed rough vs fine differ ~144x in serialized length. If training cost tracks token volume (QLoRA FLOPs ~ 6*N_params*tokens*epochs), the two arms are not compute-matched: a confound AND a budget item no gate priced. Settle cheaply from the prepared corpus before any Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_train_compute_asymmetry.py",
+    "commit": "715de56",
+    "lines": "198",
+    "run_cmd": "python3 data/analyze_train_compute_asymmetry.py"
+  },
+  "formal_results": "485 corpus_v3 train examples. Per-policy SFT token volume (chars/4, prompt+completion): ROUGH total 1,689,603 tok (prompt 23,344 + completion 1,666,258) vs FINE total 31,812 tok (prompt 23,344 + completion 8,468). Full-sequence token ratio rough/fine = 53.1x; completion-only ratio = 196.8x. At matched epochs and model size QLoRA FLOPs ~ 6*N_params*tokens*epochs, so the rough adapter costs ~53x the training compute of the fine adapter. e-0027 same-format deep build: median granularity-only delta ~29 tok/decl, rough is the SHORTER side -> training token ratio ~1.0-2.0x there.",
+  "results_description": "The headline budget's excluded half (training) is 53x asymmetric on corpus_v3. (1) Non-deferrable: e-0051 defers the expensive multi-size eval interaction behind a cheap single-size screen, but both adapters must be trained up front regardless, so the asymmetric training bill is paid even if the screen says stop. (2) Unmatched-compute confound: a pass@k gap is attributable to 'rough saw ~53x more gradient tokens' rather than granularity — a confound DISTINCT from the e-0010 eval-time length confound and the e-0026 per-example construct confound. The same-format deep build (e-0027) shares residual body + statement and differs only by named-have headers (~29 tok median, fine slightly longer), collapsing the training ratio to ~1-2x.",
+  "conclusions": "Fills the gap e-0048 named but left unpriced: the training half of the Modal go/no-go is ~53x asymmetric between the two policies on corpus_v3 (rough 1.69M vs fine 31.8k tok over 485 examples). This is a fixed, non-deferrable cost that the staged-eval logic (e-0051) cannot avoid, and an unmatched-compute confound on the headline rough-vs-fine comparison. The same-format deep build (e-0027/a-0027) that already fixes construct validity (a-0026) and the length confound (a-0027) ALSO compute-matches the two training arms (ratio ~1-2x); corpus_v3 cannot be compute-matched without re-serializing rough in tactic mode. CAVEAT: token proxy chars/4 (exact char counts, estimated tokens); FLOPs~tokens holds at matched epochs/model size; no absolute T4-min figure because no pre-SFT training-throughput anchor exists.",
+  "addresses": [
+    "q-0007",
+    "q-0008"
+  ],
+  "produces": [
+    "a-0050"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:14:41.315Z",
+    "updated_at": "2026-06-15T07:15:02.236Z"
+  },
+  "comments": {}
+}
