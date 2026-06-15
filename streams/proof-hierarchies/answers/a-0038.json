@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0038",
+  "stream": "proof-hierarchies",
+  "text": "Orthogonal to every prior data-level gate (which all ask whether the TRAINING SIGNAL exists), e-0040 asks whether the planned eval can statistically RESOLVE the headline rough-vs-fine pass@k gap at the sizes the project can afford -- and the answer is a sobering NO for modest effects. Modeling the comparison correctly as PAIRED (same held-out theorems, rough-SFT vs fine-SFT, McNemar exact, alpha=0.05, outcome correlation rho=0.5), a pure-stdlib Gaussian-copula Monte-Carlo (M=1500, seed 0) gives the minimum detectable absolute pass@1 gap at 80% power: n=50 (the e-0005 pilot) needs >= +0.19..+0.25; n=63 (corpus_v3 test split) >= +0.16..+0.21; n=116 (the within-deep supply-ample route, e-0031) >= +0.11..+0.15; even n=200 >= +0.08..+0.11 (weaker-policy pass rate p_lo in {0.05,0.10,0.20}). So at affordable eval sizes the paired test only resolves LARGE gaps (11-25 percentage points); a plausible few-point granularity effect is below MDE and statistically invisible no matter how clean the corpus. Worse, the headline is not a single gap but a gap x model-SIZE INTERACTION (the gap GROWS as the model shrinks) -- a difference-in-differences that needs strictly MORE power -- so these MDEs are a LOWER bound on what the capstone claim requires. Decision consequence for the Modal go/no-go: the current single-seed pass@1 design is underpowered; to make the headline resolvable the design must grow n well past 116, use pass@k>1 / continuous-margin outcomes (which raise both pass rates and power) rather than a lone pass@1 indicator, and report effect sizes with CIs rather than a significance verdict. This is the eval-side dual of e-0029's supply-side ~126 marginal verdict: even where the on-domain training signal exists, the scored metric may not see the effect. CAVEAT: design-stage power calc assuming marginals and rho the user must still pick (reported across a grid to expose the dependence); rho=0.5 is plausible-but-assumed; projects power, not a measured pass@k outcome.",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0040"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:05:57.378Z",
+    "updated_at": "2026-06-15T02:05:57.378Z"
+  },
+  "comments": {}
+}

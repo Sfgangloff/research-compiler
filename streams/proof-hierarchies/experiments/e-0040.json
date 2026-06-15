@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0040",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only statistical power / minimum-detectable-effect (MDE) gate for the headline paired rough-vs-fine pass@k comparison (q-0007/q-0001). Models the planned eval as a PAIRED design (same held-out theorems, rough-SFT vs fine-SFT, pass/fail each) tested with McNemar's exact test on discordant pairs at alpha=0.05; a Gaussian-copula Monte-Carlo (M=1500, seed 0, outcome correlation rho=0.5) sweeps weaker-policy pass rate p_lo in {0.05,0.10,0.20} and eval size n in {50 (e-0005 pilot), 63 (corpus_v3 test split), 116 (within-deep eval e-0031), 200}, finding the smallest absolute rough-fine gap reaching 80% power. Pure stdlib (random, math via erf/bisection); no numpy/scipy, no Lean, no Modal.",
+  "motivation": "Every prior data-level gate (supply e-0014/16, construct-validity e-0026/e-0032, yield e-0028, on-domain composition e-0029, split feasibility e-0031, length confound e-0010..e-0039) asks whether the TRAINING SIGNAL exists. None asks the dual question that decides whether the paid Modal SFT+eval can answer the headline at all: at the eval sizes the project can afford, and with small-model pass@1 near the 0/50 floor (e-0005), is a plausible granularity gap statistically RESOLVABLE? If the MDE exceeds any realistic effect, the experiment is underpowered regardless of corpus cleanliness.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_eval_power_mde.py",
+    "commit": "8b0faab"
+  },
+  "formal_results": "MDE (smallest absolute rough-fine pass@1 gap at 80% power, McNemar exact, rho=0.5): n=50 -> +0.19/+0.22/+0.25 at p_lo=0.05/0.10/0.20; n=63 -> +0.16/+0.19/+0.21; n=116 -> +0.11/+0.13/+0.15; n=200 -> +0.08/+0.09/+0.11. At the e-0005 pilot n=50 the eval can only detect gaps >= ~0.19-0.25 absolute (3.8x-1.2x relative); at the within-deep supply-ample route n=116 (e-0031) >= ~0.11-0.15; even n=200 needs >= ~0.08-0.11.",
+  "results_description": "At affordable eval sizes (n=50-116) the paired comparison resolves only LARGE rough/fine pass@1 gaps (+0.11 to +0.25 absolute) at 80% power; a modest few-point granularity effect is below MDE and statistically invisible. The headline is a gap x model-SIZE INTERACTION (gap GROWS as model shrinks), a difference-in-differences that needs MORE power than a single comparison, so these MDEs are a LOWER bound on what the headline actually requires.",
+  "conclusions": "New go/no-go for q-0007/q-0001 orthogonal to all prior data-level gates: the planned single-seed paired pass@1 eval at affordable sizes is UNDERPOWERED for any modest granularity effect. To make the headline resolvable the design must (a) grow n well past 116 (and pass@k>1 raises rates and power), (b) use pass@k/continuous-margin outcomes rather than a single pass@1 indicator, and/or (c) report effect sizes with CIs rather than a significance verdict. CAVEAT: design-stage power calc assuming marginals/rho the user must still set (reported across a grid to make the dependence explicit); rho=0.5 is a plausible-but-assumed correlation; projects power, not an outcome.",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0038"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:05:31.980Z",
+    "updated_at": "2026-06-15T02:05:57.383Z"
+  },
+  "comments": {}
+}
