@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0045",
+  "stream": "mathematical-domain-topology",
+  "text": "The 'operational bridges are just big proofs' confound is REFUTED -- in the OPPOSITE direction. a-0044 showed detected bridges are premise-heavy (median 12 vs 3 premises), so spanning >=2 pure clusters could be a mechanical consequence of having many premises (more draws -> more cluster hits). e-0049 tests this with a degree-preserving (configuration-model) null: keep each theorem's premise COUNT, redraw its premises iid from the global premise distribution, and recompute the pure-cluster span analytically (1 - w0^k - sum_c[(w0+w_c)^k - w0^k]). The premise reconstruction reproduces all 280 canonical bridges exactly. Result: real proofs span FAR FEWER pure clusters than chance -- observed 280 bridges (0.504%) vs USAGE-null 4,472 (8.0%) and TYPE-null 7,583 (13.6%), an enrichment of 0.06x/0.04x = a ~16-20x DEPLETION. The depletion holds in EVERY premise-count bin (k=20+: observed 3.57% vs null 60.6%; k=6-9: 0.51% vs 10.4%), so it is not a size artifact in either direction. Mechanism: premises are strongly DOMAIN-LOCAL -- a proof's pure-cluster premises concentrate in its single home cluster instead of scattering across domains (usage-weighted P(premise in any pure cluster) is only 0.105, since popular foundational premises live in big MIXED hubs). Operational bridges are thus genuine rarities that DEFY this strong premise locality, not mechanical consequences of proof size. This validates the core detected object (q-0006/q-0007) and reinforces the q-0002 domain-coherence story: the same locality that makes domains recoverable is what makes true cross-domain bridges scarce and meaningful.",
+  "status": "supported",
+  "answers": [
+    "q-0006",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0049"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:59:18.837Z",
+    "updated_at": "2026-06-15T07:59:18.837Z"
+  },
+  "comments": {}
+}

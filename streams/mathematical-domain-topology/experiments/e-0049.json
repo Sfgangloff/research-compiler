@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0049",
+  "stream": "mathematical-domain-topology",
+  "description": "Degree-preserving (configuration-model) null test of whether operational-bridge detection is a premise-count artifact",
+  "motivation": "a-0044 showed the 280 operational bridges are premise-heavy (median 12 premises vs 3; rankfrac 0.817). A theorem with more premises has more independent CHANCES to hit a pure cluster, so spanning >=2 pure clusters could be a mechanical consequence of proof size rather than genuine cross-domain synthesis. The detection half never controlled for this.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_degree_null.py",
+    "commit": "32a05147385bf3a1a5670afb952318f50f6c94c6"
+  },
+  "formal_results": "Reconstruct premises from data/tactic_steps.jsonl (reproduces all 280 canonical bridges exactly). pure clusters = is_mixed False AND dominant_fraction>=0.50 (110/138). Null: keep each theorem's premise COUNT k, redraw k premises iid from a global premise distribution, recompute P(span>=2 distinct pure clusters) analytically as 1 - w0^k - sum_c[(w0+w_c)^k - w0^k]. Two weightings: TYPE (over distinct premises) and USAGE (over premise-edge invocations; the standard config-model null). Compare observed vs null bridge rate overall and stratified by premise-count bin.",
+  "results_description": "Population 55,575 theorems-with-premises; observed bridges 280 (0.504%). Degree-matched null predicts MANY more: TYPE-null 7,583 (13.6%), USAGE-null 4,472 (8.0%) -> observed/expected enrichment 0.04x and 0.06x respectively (a ~16-20x DEPLETION, not enrichment). Depletion holds in EVERY premise-count bin: k=2-3 obs 0.17% vs null 1.12%; k=6-9 obs 0.51% vs 10.4%; k=10-19 obs 1.51% vs 26.4%; k=20+ obs 3.57% vs 60.6% (enrichment 0.05-0.15x throughout). Usage-weighted P(a premise lands in any pure cluster) is only 0.105 (popular premises live in big MIXED hubs). Among the 280 detected bridges, observed mean #distinct-pure-clusters 2.02 vs null expectation 1.15 at their actual premise counts.",
+  "conclusions": "The 'bridges are just big proofs' confound is REFUTED, and in the opposite direction: real proofs span FAR FEWER pure clusters than a premise-count-matched random null predicts (~16-20x depletion, in every size bin). Premises are strongly DOMAIN-LOCAL -- a proof's pure-cluster premises concentrate in one home cluster rather than scattering. Operational bridges are therefore genuine rarities that defy this strong locality, not artifacts of proof size. This both validates the core detected object and reinforces the q-0002 domain-coherence story.",
+  "addresses": [
+    "q-0006",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0045"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:58:58.006Z",
+    "updated_at": "2026-06-15T07:59:18.840Z"
+  },
+  "comments": {}
+}
