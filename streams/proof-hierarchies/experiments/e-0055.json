@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0055",
+  "stream": "proof-hierarchies",
+  "description": "U-shape EVAL-POWER gate: is e-0054's structurally-available intermediate granularity pi_mid actually POWERABLE on the held-out eval split, or power-0 like corpus_v3's binary contrast was?",
+  "motivation": "e-0054 showed the deep route STRUCTURALLY reopens q-0005's U-shape (56% of the 633 targets admit a pi_mid cut), but the Stage-0.5 chain's hardest lesson (e-0045) is that the headline is priced by the HELD-OUT eval, not the whole corpus: corpus_v3 had only 5 granularity-bearing test pairs => McNemar power EXACTLY 0 (D<6). pi_mid (depth>=2) is a strictly smaller subset than binary (depth>=1), so it could collapse the same way on the eval slice. Untested.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_umid_eval_power.py",
+    "commit": "c39db91",
+    "run_cmd": "python3 data/analyze_deep_umid_eval_power.py"
+  },
+  "formal_results": "Tag each of 633 canonical wide targets with e-0054 named-nesting-depth from data/deep have-trees; apply e-0046 area-stratified module-disjoint every-5th-module holdout; per contrast (depth>=1 binary, >=2 pi_mid, >=3 four-level) count eval-side carriers, discount by e-0028 per-area round-trip yield; compare eval verified carriers to McNemar exact D>=6 power floor (e-0045). verified UPPER-bounds discordant pairs, so verified<6 => power exactly 0.",
+  "results_description": "Split: 502 train / 131 eval targets (82 eval modules), pooled advanced yield 0.894. Binary depth>=1: 131 eval carriers, ~115.8 verified (=e-0046). pi_mid depth>=2: 80 eval carriers, ~70.4 verified -> ~12x the D=6 floor, ~60% of the binary eval n. Four-level depth>=3: 17 eval carriers, ~15.3 verified, still clears the floor. Train-side pi_mid: 274 carriers / ~241 verified.",
+  "conclusions": "CONTRA corpus_v3: e-0054's structural pi_mid SURVIVES the held-out split too. A 3-level rough/mid/fine U-shape is power-RESOLVABLE on the EXISTING module-disjoint deep holdout (~70 verified intermediate-cut eval carriers, far above McNemar D=6) -- unlike corpus_v3's binary contrast which was power-EXACTLY-0 at D=5. So the deep pivot reopens q-0005 BOTH structurally AND statistically; q-0005's 'binary' verdict is overturned for the deep route on supply grounds. The remaining 3rd-arm gates are NOT eval power but (1) construct validity of pi_mid vs format (e-0036/e-0037, needs off-disk residual body) and (2) ~1.5x compute (a-0054) the 2-arm cost chain never priced. CAVEAT: verified is the e-0028 COUNT projection not a real round-trip; verified>=6 is necessary not sufficient; depth is structural, construct-validity is unmet.",
+  "addresses": [
+    "q-0005"
+  ],
+  "produces": [
+    "a-0053"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:58:06.001Z",
+    "updated_at": "2026-06-15T07:59:08.695Z"
+  },
+  "comments": {}
+}

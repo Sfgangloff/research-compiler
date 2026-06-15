@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0053",
+  "stream": "proof-hierarchies",
+  "text": "e-0054 reopened q-0005's U-shape question STRUCTURALLY for the deep route (56% of the 633 wide targets admit an intermediate cut pi_mid, named-nesting-depth>=2) but left the decision-critical follow-up: is pi_mid actually POWERABLE on the held-out eval, or power-0 the way corpus_v3's binary contrast was (e-0045: only 5 granularity-bearing test pairs => McNemar exact power EXACTLY 0 at D<6)? Because pi_mid (depth>=2) is a strictly smaller subset than binary (depth>=1), it could collapse on the eval slice. e-0055 composes e-0054's depth measurement with e-0046's area-stratified module-disjoint every-5th-module holdout and e-0045's D>=6 floor, all reused verbatim. RESULT: pi_mid SURVIVES the held-out split too. The standard holdout (502 train / 131 eval targets, 82 eval modules) lands 80 depth>=2 carriers in the eval slice = ~70.4 after the e-0028 per-area yield discount -- ~12x McNemar's D=6 floor and ~60% of the binary route's own ~115.8 eval n (e-0046). Even the 4-level contrast (depth>=3) keeps 17 eval carriers / ~15.3 verified, still clearing the floor. CONSEQUENCE: the deep pivot reopens q-0005 BOTH structurally (e-0054) AND statistically (e-0055) -- a 3-level rough/mid/fine U-shape is power-RESOLVABLE on the EXISTING deep holdout, unlike corpus_v3's binary contrast which was power-exactly-0 at D=5. q-0005's original 'binary rough-vs-fine' verdict (a-? on corpus_v3, where shallow max-depth-3 left no interior optimum) is OVERTURNED for the construct-valid deep route on supply+power grounds. The remaining gates on adding the 3rd arm are therefore NOT eval power but (1) construct validity of pi_mid vs mere FORMAT (e-0036/e-0037, needs the off-disk residual body, a paid extract) and (2) the ~1.5x compute of a 3rd adapter+eval arm (a-0054) that the 2-arm Stage-0.5 cost chain (e-0048/e-0052) never priced. CAVEAT: design-stage; eval 'verified' is the e-0028 per-area COUNT projection not a real round-trip (needs the Modal pass) and projects supply not pass@k; verified-carriers UPPER-bound the discordant total, so >=6 is NECESSARY not sufficient (the discordant subset is smaller); depth is a STRUCTURAL count -- whether each named frontier carries DISTINCT granularity signal is the unmet construct-validity gate.",
+  "status": "supported",
+  "answers": [
+    "q-0005"
+  ],
+  "backed_by": [
+    "e-0055"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:59:08.691Z",
+    "updated_at": "2026-06-15T07:59:08.691Z"
+  },
+  "comments": {}
+}
