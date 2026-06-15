@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0040",
+  "stream": "mathematical-domain-topology",
+  "text": "Seed-robustness check (e-0044): the DOMAIN-RECOVERY claim of a-0001/a-0002 is stable, but the exact partition the bridge analysis builds on is not. Re-running Leiden (ModularityVertexPartition, 10 iterations, the exact LCC cluster.py uses: 92,594 nodes/308,095 edges) under 7 seeds {0,1,7,42,123,2024,31337} gives NMI-vs-Mathlib-module = 0.2847 +/- 0.0025 — essentially constant, anchoring to a-0002's 0.307 — and tight modularity 0.618-0.627. So 'unsupervised clustering recovers named domains' is genuinely seed-robust, not a single-seed artifact. HOWEVER the fine partition is only moderately reproducible: cluster COUNT swings 93-223 (mean 140.6 +/- 37.3) and pairwise run-to-run ARI averages just 0.465 (NMI 0.588). The canonical stored partition (138 clusters) is itself only moderately matched by fresh reruns (ARI 0.42-0.62), and a fresh seed-42 Leiden run yields 223 clusters not 138, so the stored clusters.json reflects extra processing, not a bare reproducible run. Implication: aggregate module-level domain structure is robust, but cluster-IDENTITY-dependent downstream claims (the specific 34 bridge theorems, the exact 138 clusters, SetTheory-as-hub-by-cluster-id in a-0010) rest on one particular partition that would shift across seeds. Caveat: ModularityVertexPartition has no resolution parameter, so the count variation is intrinsic Leiden stochasticity.",
+  "status": "supported",
+  "answers": [
+    "q-0002"
+  ],
+  "backed_by": [
+    "e-0044"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:07:30.298Z",
+    "updated_at": "2026-06-15T07:07:30.298Z"
+  },
+  "comments": {}
+}

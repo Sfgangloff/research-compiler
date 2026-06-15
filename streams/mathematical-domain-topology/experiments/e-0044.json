@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0044",
+  "stream": "mathematical-domain-topology",
+  "description": "Seed-robustness / stability of the foundational domain recovery (a-0001/a-0002), which rests on ONE Leiden run (seed 42). Re-run Leiden (ModularityVertexPartition, 10 iterations) on the EXACT object cluster.py uses (undirected LCC, 92,594 nodes / 308,095 edges) under 7 seeds {0,1,7,42,123,2024,31337}. Measure per-seed n_clusters & modularity; ARI/NMI vs the canonical stored partition (data/clusters.json); pairwise ARI/NMI across seeds (run-to-run agreement); and NMI vs top-level Mathlib module labels (the domain-recovery metric, anchored to a-0002's 0.307).",
+  "motivation": "The whole paper rests on a single stochastic Leiden run; a-0001/a-0002 claim unsupervised clustering recovers Mathlib's named domains but no experiment checks whether that recovery — or the exact partition the bridge analysis depends on — survives a seed change. Cheap CPU-only reproducibility check over existing data.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/clustering_stability.py",
+    "commit": "a3996ef"
+  },
+  "formal_results": "7 seeds on the LCC (92,594 nodes, 308,095 edges). Per-seed NMI vs top-level module: 0.281-0.289, mean 0.2847 +/- 0.0025 (anchor a-0002=0.307). Modularity 0.618-0.627 (tight). n_clusters mean 140.6 +/- 37.3, range 93-223. ARI vs stored partition 0.416-0.624; NMI vs stored 0.583-0.667. Pairwise across seeds: ARI mean 0.465 (min 0.384), NMI mean 0.588 (min 0.546).",
+  "results_description": "Domain-recovery signal is highly stable: NMI vs Mathlib modules is 0.2847 +/- 0.0025 across all 7 seeds (essentially constant), and modularity is tight (0.618-0.627). But the EXACT partition is only moderately reproducible: cluster count swings 93-223 and pairwise run-to-run ARI averages just 0.465. The canonical stored partition (138 clusters) is itself only moderately recovered by fresh reruns (ARI 0.42-0.62), and a fresh seed-42 run yields 223 clusters, not the stored 138 — so cluster.py's stored partition reflects extra processing/selection, not a bare reproducible Leiden run.",
+  "conclusions": "Strengthens a-0001/a-0002 at the aggregate level while flagging a real caveat. The foundational domain-recovery claim (clusters agree with Mathlib modules) is seed-ROBUST: module-NMI varies by <1% across seeds. However, cluster-IDENTITY-dependent downstream claims — the specific 34 bridge theorems, the exact 138 clusters, SetTheory-as-hub by cluster id — rest on one particular partition whose membership and even cluster COUNT (93-223) shift substantially across seeds (pairwise ARI ~0.46). Aggregate module structure is stable; the fine partition is not. Caveat: ModularityVertexPartition has no resolution parameter, so count variation is intrinsic Leiden stochasticity.",
+  "addresses": [
+    "q-0002"
+  ],
+  "produces": [
+    "a-0040"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:07:11.164Z",
+    "updated_at": "2026-06-15T07:07:30.300Z"
+  },
+  "comments": {}
+}
