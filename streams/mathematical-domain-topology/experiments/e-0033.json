@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0033",
+  "stream": "mathematical-domain-topology",
+  "description": "Hybrid UNION router: are the static bridge router (home + top-K W-neighbours) and the goal name-token router (home + top-m predicted foreign clusters) COMPLEMENTARY? The fusion controls e-0031 (global demand prior) and e-0032 (home-specific bridge prior W[home][.]) both mixed the structural prior INTO the predictor SCORE for one ranked list and failed; this tests the simplest untried combination -- the SET UNION of the two routers' chosen clusters: hybrid(a,b) = home + top-a static neighbours + top-b goal-predicted clusters. Same e-0030 setup (432 held-out cross-domain TEST theorems, train-only W/IDF/predictor, exact ranking-free complete-coverage CEILING metric). Pareto efficiency frontier (mean candidate pool -> max ceiling) over the full (a,b) grid vs the pure static and goal arms; head-to-head cheapest pool each family needs to reach each target ceiling.",
+  "motivation": "e-0031/e-0032 score-fusion of structural priors into the goal predictor never helped, but score-fusion conflates the two signals. A set-union keeps them separate (static contributes the home cluster's globally heaviest bridge hubs; goal contributes the goal-specific specialized clusters), so it is the clean test of whether bridge structure adds any complete-coverage routing value beyond the goal's own name tokens.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_hybrid_router.py",
+    "commit": "95830dd4699676a52447dfeab7724af899ac9476",
+    "run_cmd": "python -m src.bridge_retrieval_hybrid_router"
+  },
+  "formal_results": "432 held-out cross-domain TEST theorems, 27,705 train cross-domain, 92,594 clustered decls. Cheapest mean candidate pool to reach a complete-coverage ceiling, hybrid vs best pure arm: >=0.674 hybrid a=5,b=1 53,823 vs goal m=5 53,877 (ratio 0.999); >=0.70 hybrid 53,877 vs goal 53,877 (1.0); >=0.80/0.85/0.90 all tie goal m=10 72,322 (1.0); >=0.50/0.60 tie static (1.0). Hybrid/best-pure pool ratio is 0.999-1.0 at EVERY target. Hybrid points appear on the discrete combined Pareto frontier only as interpolation between coarse pure-arm breadth steps: e.g. hybrid a=1,b=1 = 0.322 ceiling at 24.5k pool sits BELOW the pure-goal-arm interpolation line (0.347 at that pool), i.e. dominated by the goal curve.",
+  "results_description": "The set-union of the static bridge router and the goal name-token router reaches every complete-coverage target at essentially the same candidate pool as the better pure arm (ratio 0.999-1.0); the hybrid never beats either by a meaningful margin and its frontier points lie on or below the pure-goal curve's interpolation.",
+  "conclusions": "The two routing signals are REDUNDANT, not complementary, under the prover-relevant complete-coverage metric. The goal name-token router already captures whatever the static W[home][.] bridge router would contribute at matched pool, so adding static bridge neighbours buys no complete-coverage (<=0.1% pool saving at any ceiling). This corroborates e-0032 with a cleaner mechanism (set-union, not score-fusion): the structural bridge prior carries no routing value beyond the goal's own name tokens. The goal name-token predictor is the dominant lever; the residual gap to the leaky oracle goal-router is predictor RANKING quality, not a missing structural signal. Still a premise-availability upper bound, not a measured prover success rate.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0030"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:14:59.456Z",
+    "updated_at": "2026-06-15T02:15:23.665Z"
+  },
+  "comments": {}
+}

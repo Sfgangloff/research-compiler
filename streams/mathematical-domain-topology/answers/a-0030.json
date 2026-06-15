@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0030",
+  "stream": "mathematical-domain-topology",
+  "text": "The static bridge router and the goal name-token router are REDUNDANT, not complementary -- the clean set-union control the score-fusion attempts (a-0028, a-0029) could not isolate. e-0031/e-0032 mixed a structural prior INTO the predictor score for one ranked list and failed; this takes the SET UNION of the two routers' chosen clusters (hybrid(a,b) = home + top-a static bridge neighbours + top-b goal-predicted clusters), keeping the signals separate. Over the same 432 held-out cross-domain TEST theorems and the exact ranking-free complete-coverage CEILING metric, the hybrid reaches EVERY target ceiling at essentially the same candidate pool as the better pure arm (hybrid/best-pure pool ratio 0.999-1.0 at every target: e.g. 0.674 ceiling at 53.8k either way; 0.90 at 72.3k via goal m=10). Hybrid combos appear on the discrete combined Pareto frontier only as interpolation between the coarse pure-arm breadth steps, and even there they sit BELOW the pure-goal-arm interpolation line (hybrid a=1,b=1 gives 0.322 at 24.5k vs the goal curve's 0.347), so they are dominated, not complementary. Net: the goal name-token router already captures whatever the static W[home][.] bridge router would add at matched pool, so structural bridge neighbours buy no complete-coverage (<=0.1%). This corroborates a-0029 with a cleaner mechanism -- the structural bridge prior carries no routing value beyond the goal's own name tokens; the residual gap to the leaky oracle goal-router is predictor RANKING quality, not a missing structural signal. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0033"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:15:23.658Z",
+    "updated_at": "2026-06-15T02:15:23.658Z"
+  },
+  "comments": {}
+}
