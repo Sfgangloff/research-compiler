@@ -1,0 +1,14 @@
+{
+  "type": "question",
+  "id": "q-0011",
+  "stream": "proof-hierarchies",
+  "text": "Conditional on the SFT eval, do small models actually LEVERAGE the named sub-results when trained/prompted at fine granularity — i.e. do their generated proofs cite/reuse the have-steps rather than re-deriving inline — so that any pass@k gap is mechanistically attributable to USING the decomposition, not just to shorter/format-friendlier targets? Buildable by parsing generated proofs in the planned q-0007 eval logs for named-have reuse; tests whether 'granularity helped' means 'granularity was used'.",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:41:32.075Z",
+    "updated_at": "2026-06-15T07:41:32.075Z"
+  },
+  "comments": {}
+}
