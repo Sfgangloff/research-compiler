@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0039",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only DECL-LEVEL net-length gate refining e-0038/a-0036: lifts e-0038's per-HAVE compression-inversion rate (4/13=30.8%, where a sound pi_root that duplicates a >=2x-referenced body becomes LONGER than pi_leaf) to the DECL level — the unit q-0008's length covariate and a-0010's 'rough serialization is shorter' assumption actually see, since the SFT training example is the whole proof, not one have. Reuses e-0038's parser over the same 7 corpus_v3 full_proofs with >=2 real (non-elided) top-level haves; aggregates per-have net (refs*body_len - (header_len+body_len)) to the decl level and measures decl-level inversion rate, net distribution, and how concentrated each inverting decl's net is in its single worst have.",
+  "motivation": "a-0036 reports the inversion at the per-HAVE granularity (4/13), but q-0008's length covariate and the 'rough is shorter' premise operate on the DECL serialization (the training example). A decl with one inverting have plus several compressing ones could still be net-shorter, so the per-have rate does not directly bound the training-example-level confound. Settle cheaply, on real bodies, before e-0037's Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_realbody_decl_level.py",
+    "commit": "31ff7af",
+    "run_cmd": "PYTHONPATH=data python3 data/analyze_realbody_decl_level.py --show"
+  },
+  "formal_results": "realbody_decl_level.json: per-have inversion carries to the decl level at a similar rate but the magnitude is heavy-tailed and one inverting have does not always flip its decl.",
+  "results_description": "7 decls with >=2 real top-level haves; 6 carry inline-able named haves (the 7th is all destructuring binders). DECL-LEVEL net pi_root-minus-pi_leaf (chars), sorted: [-157, -72, -71, -6, +8, +189]; median -38.5 (pi_root shorter for the median decl). 2/6 decls (33.3%) are pi_root-LONGER at the decl level — same order as e-0038's per-have 4/13 (30.8%), so the inversion DOES carry to the training-example unit. But the magnitude is concentrated: the worst inversion (+189, Set.biUnion_compl_eq_of_pairwise_disjoint_of_iUnion_eq_univ) is 100% driven by ONE multiply-referenced 305-char body (obs, refs=2, +249); the other inverting decl (Function.surjective_comp_right_iff_injective, +8) is diffuse over two small refs=2 haves. Crucially per-have inversion does NOT always carry up: Lattice.mk' has an inverting have (partial_order_eq, refs=3, +72) yet stays NET-SHORTER (-6) because its two siblings compress. 1/2 root-longer decls has its net >=90% explained by its single worst have.",
+  "conclusions": "The decl-level (training-example) analogue of e-0038's per-have rate: ~1/3 of granularity-bearing decls (2/6) have pi_root LONGER than pi_leaf, confirming the 'rough is shorter' assumption (a-0010) fails at the unit q-0008's length covariate sees, not just at the per-have unit. But the failure is HEAVY-TAILED, not uniform: the median decl is still rough-shorter (-38.5 char) and the biggest inversion is entirely a single large multiply-referenced body, while a decl with a 3x-referenced inverting have can still be net-shorter via sibling compression. So q-0008's length covariate must model an opposite-sign, heavy-tailed decl-level tail driven by a few large multiply-referenced bodies — and the pi_root inliner's cost is dominated by those few haves, reinforcing a-0036's point (3) that it must share (let/re-derive) rather than blindly duplicate. CAVEAT: same N=7 foundational subset as e-0038 (corpus_v2 full_proofs are byte-identical, 0 incremental decls; the n is genuinely capped by the on-disk foundational modules); 6 inline-able decls is a small sample that anchors the unit/direction, not a corpus-scale rate; heuristic indentation parse, textual refs, crude duplication net model. Corpus-scale still needs e-0037's Modal extract_full_proofs re-run.",
+  "addresses": [
+    "q-0008",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0037"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T01:57:06.885Z",
+    "updated_at": "2026-06-15T01:57:49.078Z"
+  },
+  "comments": {}
+}
