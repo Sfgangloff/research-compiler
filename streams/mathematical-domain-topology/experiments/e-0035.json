@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0035",
+  "stream": "mathematical-domain-topology",
+  "description": "Operational-vs-conceptual bridge COMPLEMENTARITY. Over existing results (no new heavy compute), compare the two bridge detectors at the cluster-pair and theorem level: operational = premise-based (bridge_theorems.py, 280 bridges, cluster pairs {self}x{premise clusters}); conceptual = tactic-structure (edit_distance_bridges.py, 200 closest cross-cluster pairs by normalized Levenshtein on normalized tactic sequences). Restrict to the 22 clusters JOINTLY EVALUABLE by both methods (231 possible pairs) so neither is penalized for clusters the other never scored. Metrics: |overlap|, Jaccard, and observed-vs-chance overlap (hypergeometric independence over the 231 pairs); plus a strict structural subset (closest distance quartile) and theorem-name overlap.",
+  "motivation": "The capstone (a-0001) names the operational-vs-conceptual bridge gap as the CENTRAL OPEN PROBLEM, and a-0009 asserts conceptual bridges are a distinct class the premise detector misses - but only qualitatively (two named examples). This tests it directly and cheaply: if the two detectors flag the SAME cluster pairs, conceptual bridges are not a separate phenomenon; if they flag disjoint pairs at/below chance overlap, the two bridge types are genuinely independent signals, substantiating a-0009 with numbers.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_complementarity.py",
+    "commit": "a58941e"
+  },
+  "formal_results": "22 jointly-evaluable clusters, 231 possible pairs. ALL-structural (130 structural pairs in U): operational=70 pairs, overlap=30, structural-only=100 (77%), operational-only=40; Jaccard=0.176; expected overlap under independence=39.4 -> observed/chance ratio=0.76 (BELOW chance). STRICT closest-quartile (norm_edit_dist<=0.609, 34 structural pairs): overlap=7, expected=10.3, ratio=0.68, Jaccard=0.072. Theorem level: 280 operational bridge theorems, 151 distinct structural-bridge theorems, only 11 shared.",
+  "results_description": "The premise-based (operational) and tactic-structure (conceptual) bridge detectors flag near-disjoint cluster pairs, and their overlap is AT/BELOW what random independent selection would produce (ratio 0.68-0.76). 77% of structural-similarity cluster pairs have no operational counterpart; only 11/151 structural-bridge theorems are also operational bridges.",
+  "conclusions": "Quantitatively confirms a-0009: conceptual bridges (shared proof STRUCTURE) are a genuinely distinct class the premise-based detector structurally misses - not a re-detection of the same connections. The two signals are independent-to-mildly-anti-correlated (Jaccard 0.07-0.18, overlap below chance), so closing the operational-vs-conceptual gap requires a separate structural detector, not a tuned premise filter. This sharpens the capstone's central open problem from a qualitative claim (2 examples) to a measured one (overlap below chance, 77% structural-only pairs, 11/151 shared theorems). Caveat: structural method only scored its top-30 clusters and the 200 reported pairs are the closest representatives, so the structural side is a high-similarity sample, not an exhaustive census.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0032"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:38:07.987Z",
+    "updated_at": "2026-06-15T02:39:10.996Z"
+  },
+  "comments": {}
+}

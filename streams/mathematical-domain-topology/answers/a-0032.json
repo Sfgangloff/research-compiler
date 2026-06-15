@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0032",
+  "stream": "mathematical-domain-topology",
+  "text": "Quantified: operational (premise) and conceptual (tactic-structure) bridge detectors are near-independent, so the conceptual class a-0009 named qualitatively is real and structurally missed. Over the 22 clusters jointly scored by both methods (231 possible cluster pairs), the premise-based detector and the edit-distance detector flag near-disjoint cluster pairs: Jaccard 0.176 (all 130 structural pairs) and 0.072 (closest distance quartile). Crucially the overlap is AT/BELOW chance - observed 30 vs hypergeometric-independent 39.4 (ratio 0.76), strict 7 vs 10.3 (ratio 0.68) - so structural similarity and premise-sharing are independent-to-mildly-anti-correlated signals, not two views of the same bridges. 77% of structural-similarity cluster pairs (100/130) have no operational counterpart, and at the theorem level only 11 of 151 distinct structural-bridge theorems are also among the 280 operational bridges. This upgrades a-0009 from a 2-example qualitative claim to a measured one and substantiates the capstone's central open problem: closing the operational-vs-conceptual gap needs a separate structural detector, not a tuned premise filter. Caveat: the structural side scored only its top-30 clusters and reports the closest representative pair per cluster pair, so it is a high-similarity sample, not an exhaustive structural census.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0035"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:38:42.604Z",
+    "updated_at": "2026-06-15T02:39:11.008Z"
+  },
+  "comments": {}
+}
