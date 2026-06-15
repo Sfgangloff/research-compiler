@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0029",
+  "stream": "mathematical-domain-topology",
+  "text": "The residual oracle gap in the goal-router's target predictor (a-0027/a-0028) is NOT closable by any structural/popularity prior -- the most targeted one available fails too. a-0028 located the gap in the predictor's RANKING quality and ruled out the GLOBAL demand prior P(d); the one untried structural prior is the HOME-SPECIFIC bridge weight W[home][.] (sparse, home-conditioned). Fusing it with the name-token evidence (score_fused(d)=name_evidence(d)*(W[home][d]+0.5)^beta, beta in {0.5,1,2}; same 432 held-out cross-domain TEST theorems, exact complete-coverage ceiling) NEVER helps and mildly HURTS: predictor top-1 hit-rate falls monotonically 0.532->0.472 as beta grows, the complete-coverage ceiling drops at every breadth (m=10: 0.914->0.877), and cheapest-pool-to-ceiling is flat-to-worse (best-fused/base ratio >=0.999, up to 1.23x worse at the 0.90 target); the ~3x oracle gap (~72k vs ~21.8k to reach 0.90-0.93) is untouched. Mechanism: the predictor's hub-bias is toward globally-popular foreign clusters that ARE the home's frequent bridge neighbours, so W[home][.] reinforces rather than corrects it, while the specialized cluster a cross-domain goal actually needs is typically a RARE (low-W) home neighbour the prior downweights -- the same failure mode as the global popularity prior. Net for q-0011: neither the global demand prior (e-0031) nor the home-specific bridge weight (here) closes the gap; realizing the oracle's cheap near-exhaustive goal-specific routing requires genuine CONTENT (type/statement text) the corpus does not expose (a-0015), not any reweighting of structural/name-cooccurrence signal. This bounds how far the cheap retrieval proxy can be pushed. Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0032"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:07:42.083Z",
+    "updated_at": "2026-06-15T02:07:42.083Z"
+  },
+  "comments": {}
+}

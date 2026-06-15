@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0032",
+  "stream": "mathematical-domain-topology",
+  "description": "Fuse the goal-router's name-token target predictor with the HOME-SPECIFIC bridge prior W[home][.] (follow-on to e-0030/a-0027 and e-0031/a-0028). The pure goal router (e-0030) ranks foreign clusters only by name-token evidence score(d)=sum_t IDF(t)*P(d|t) and has a hub-bias (~3-4x oracle gap); e-0031 tried de-biasing by the GLOBAL demand prior P(d) (mild help, full lift collapses). This tests the one structural prior neither arm used: the home-conditioned, sparse bridge weight W[home][d] (how often a TRAIN proof in the goal's home cluster cites a premise in d). score_fused(d)=name_evidence(d)*(W[home][d]+s)^beta, s=0.5, beta in {0,0.5,1,2} (beta=0 reproduces e-0030). Same 432 held-out cross-domain TEST theorems, same train-only W/IDF/co-occurrence, same exact ranking-free complete-coverage CEILING metric and head-to-head cheapest-pool comparison, same leaky oracle reference.",
+  "motivation": "a-0028 closed by locating the residual oracle gap in the predictor's RANKING quality (which specific small specialized cluster) and ruling out the GLOBAL popularity weighting. The most targeted untried structural prior is the home-specific bridge weight W[home][.] -- sparse and home-conditioned, unlike the global demand prior that collapsed. Does fusing it sharpen ranking toward home-plausible foreign clusters and close part of the gap? CPU-only over existing data.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_goalrouter_bridgeprior.py",
+    "commit": "fb3f384",
+    "run_cmd": "cd src && python3 bridge_retrieval_goalrouter_bridgeprior.py"
+  },
+  "formal_results": "432 held-out cross-domain TEST theorems, 27,705 train cross-domain, 92,594 clustered decls. Predictor top-1 hits-a-foreign-cluster DECREASES monotonically with beta: 0.532 (beta=0) -> 0.523 (0.5) -> 0.509 (1.0) -> 0.472 (2.0); top-5 0.921 -> 0.917. covers-ALL-foreign top-1 0.264 -> 0.215. Complete-coverage ceiling @ breadth m=5: base(beta0) 0.729 vs fused 0.722/0.718/0.708 (beta 0.5/1/2); m=10: base 0.914 vs 0.898/0.889/0.877. Head-to-head cheapest mean pool to reach ceiling: best-fused/base ratio = 0.999 (>=0.50), 1.006 (>=0.674/0.70), 1.003 (>=0.80), 1.227 (>=0.90, fused needs m=20 88.8k vs base m=10 72.3k), 1.002 (>=0.95). Oracle unchanged: 0.928 ceiling at 21.8k (m=3).",
+  "results_description": "Fusing the home-specific bridge prior W[home][.] into the name-token target predictor NEVER helps and mildly HURTS at every beta: it lowers predictor accuracy (top-1 0.53->0.47) and the complete-coverage ceiling at every breadth, and is flat-to-worse on cheapest-pool-to-ceiling (ratio >=0.999, up to 1.23x worse at the 0.90 target). The ~3x oracle gap (base ~72k vs oracle ~21.8k to reach 0.90-0.93) is untouched.",
+  "conclusions": "The home-specific bridge prior -- the most targeted structural prior available, sparse and home-conditioned unlike the global demand prior that collapsed in e-0031 -- carries NO ranking signal beyond the name tokens and in fact degrades the predictor. Mechanism: the goal-router's hub-bias is toward globally-popular foreign clusters that ARE the home's frequent bridge neighbours, so W[home][.] reinforces rather than corrects the hub-bias, while the specialized cluster a cross-domain goal actually needs is typically a RARE (low-W) home neighbour (the specialist/hard-third case) that the prior downweights -- the same failure mode as the global popularity prior. This strengthens and bounds a-0028: the residual oracle gap is not closable by ANY structural/popularity prior (global demand OR home-specific bridge weight); it requires genuine CONTENT (type/statement text) the corpus does not expose (a-0015). Still a premise-availability upper bound, not a measured prover success rate or transfer.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0029"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:07:16.826Z",
+    "updated_at": "2026-06-15T02:07:42.095Z"
+  },
+  "comments": {}
+}
