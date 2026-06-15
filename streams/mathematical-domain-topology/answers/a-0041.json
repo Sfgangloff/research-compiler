@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0041",
+  "stream": "mathematical-domain-topology",
+  "text": "Raw proof CONTENT does not rescue conceptual-bridge detection either -- closing the LAST untested in-corpus representation. After ruling out normalized tactic tokens (a-0037), multi-token motifs (a-0038), and theorem names (a-0039), the thread concluded the conceptual signal lives in statement/type content 'the corpus does not expose'. But the RAW tactic strings DO expose the richest content field: the actual mathematical identifiers a proof manipulates (IsIntegralClosure, FractionRing, ...), which normalize_tactics deliberately strips to '@'. e-0045 mirrors e-0039/e-0043 exactly but bags those raw qualified/CamelCase identifiers. Over the detector's 200 MIN-closest cross-cluster proof pairs: conceptual-bridge pairs share ~2.6x MORE content mass than random cross-cluster pairs (22.6 vs 8.5 tokens) and share content more often (89.5% vs 79.9%) -- so the tactic-structure similarity really does co-occur with extra shared proof content -- BUT that content is GENERIC vocabulary (generic_frac 0.73, identical to random 0.72; top tokens eq/of/iff/is/mem/add/map/mul). Only 2/200 pairs share ANY domain-specific (<=3-cluster) content token, at the random floor (0.0001), and both are coincidental name fragments ('npos', 'fermat'), not shared concepts. This exactly mirrors the motif result (a-0038: ~16x more motifs, all generic): structurally-similar cross-domain proofs share more GENERIC stuff but essentially no domain-specific concepts. Net for q-0009: NO representation this corpus exposes -- normalized tactic tokens, IDF-weighted tokens, multi-token motifs, theorem names, OR raw proof-content identifiers -- recovers Brouwer<->Lawvere-style conceptual bridges. This is the strongest possible in-corpus confirmation that the conceptual-bridge gap (a-0009/a-0001) is a genuine CORPUS/REPRESENTATION limit: the signal requires statement/type structure (or an external NL embedding) absent from the LeanDojo declaration corpus, not a tunable feature/metric choice. Consistent with a-0032 (operational/premise content is orthogonal to conceptual/structure). Caveat: same top-30-cluster/top-30-longest high-similarity sample as the detector; raw identifiers remain a proxy for, not identical to, full typed-statement content, so a typed-statement or NL-embedding detector is the one remaining escape hatch -- but it is OUT of this corpus.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0045"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:26:22.123Z",
+    "updated_at": "2026-06-15T07:26:22.123Z"
+  },
+  "comments": {}
+}

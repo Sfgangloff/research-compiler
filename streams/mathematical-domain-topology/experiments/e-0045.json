@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0045",
+  "stream": "mathematical-domain-topology",
+  "description": "Raw-content conceptual-bridge probe: do the detector's 200 MIN-closest cross-cluster proof pairs (edit_distance_bridges) share domain-specific RAW mathematical-content tokens -- the identifiers manipulated INSIDE the tactic expressions, the richest content field the corpus exposes? Mirrors conceptual_genericity.py (e-0039) and conceptual_name_bridges.py (e-0043) EXACTLY but swaps the token bag for raw qualified/CamelCase identifiers extracted from each theorem's tactic strings (split on ./_/camelCase, lowercased, tactic keywords dropped). Content-token genericity = number of distinct clusters a token appears in; specific = <=3 clusters, generic = >=30. Same top-30 x top-30-longest selection and random cross-cluster control.",
+  "motivation": "a-0037/a-0038/a-0039 ruled out normalized tactic tokens (weighted or not), multi-token motifs, and theorem full_name tokens, and concluded the conceptual-bridge signal lives in statement/type CONTENT 'the corpus does not expose'. But one richer content field was never tested: the RAW (un-normalized) tactic strings contain the actual math identifiers the proof touches (IsIntegralClosure, FractionRing, ...), which normalize_tactics deliberately strips to '@'. This is the strongest in-corpus content representation; testing it either reopens conceptual detection or gives the strongest possible confirmation the gap is a corpus limit. Cheap CPU-only over existing data.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/conceptual_content_bridges.py",
+    "commit": "07be2a8",
+    "run_cmd": "python3 src/conceptual_content_bridges.py"
+  },
+  "formal_results": "15,664 proofs (>=5 tactics) over 73 clusters; 3,752 distinct RAW-CONTENT tokens, mean bag size 56.9. Conceptual-bridge pairs vs random cross-cluster control: frac sharing >=1 content token 0.895 vs 0.799; mean shared mass 22.6 vs 8.5 (~2.6x); mean generic_frac of shared tokens 0.727 vs 0.723 (equal); median generic_frac 0.757 vs 0.800. Pairs sharing >=1 domain-specific (<=3-cluster) CONTENT token: 2/200 (0.01) vs control 0.0001 (floor). The 2 'specific' tokens are coincidental name fragments ('npos' a positivity-hypothesis var; 'fermat' in Fermat42.not_minimal <-> FermatLastTheoremForThreeGen.*). Most generic content tokens: eq(46), of(43), iff(42), is(40), mem(39), add/zero(36), map/mul/lt(35).",
+  "results_description": "Conceptual-bridge pairs share ~2.6x MORE raw content mass than random cross-cluster pairs (22.6 vs 8.5 tokens) and share content more often (89.5% vs 79.9%), confirming the tactic-structure similarity co-occurs with extra shared content -- BUT that content is generic vocabulary (generic_frac 0.73, identical to random). Only 2/200 pairs share any domain-specific content token, at the random floor (0.0001), and both are coincidental name fragments, not shared concepts. This mirrors the tactic-motif result (a-0038: ~16x more motifs, all generic): bridge pairs share more GENERIC stuff, no domain-specific concepts.",
+  "conclusions": "Even the richest in-corpus content representation -- the raw mathematical identifiers a proof manipulates -- does NOT rescue conceptual-bridge detection. Structurally-similar cross-domain proofs share extra GENERIC vocabulary (eq/of/iff/is/mem/add/map/mul) but essentially no domain-specific concepts (2/200, random floor). This closes the last untested in-corpus representation (after tactic tokens a-0037, motifs a-0038, names a-0039) and gives the strongest possible confirmation that the conceptual-bridge gap (a-0009/a-0001) is a genuine CORPUS/REPRESENTATION limit: the signal requires statement/type structure (or an external embedding) absent from the LeanDojo declaration corpus, not a tunable feature choice. Consistent with a-0032 (operational/premise content orthogonal to conceptual/structure).",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0041"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:25:52.807Z",
+    "updated_at": "2026-06-15T07:26:22.124Z"
+  },
+  "comments": {}
+}
