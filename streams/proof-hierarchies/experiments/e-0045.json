@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0045",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only EFFECTIVE-n gate fusing the construct-validity bottleneck (e-0026/a-0026) with the eval power/MDE machinery (e-0040/a-0038) for q-0007/q-0001. The power quartet priced the paired rough-vs-fine eval at n=63 held-out problems; the construct gate found only ~6.9% of pairs carry a granularity (not format) signal. Multiplies them: a format-only pair (term-vs-tactic only, zero named haves) is CONCORDANT w.r.t. granularity, so only granularity-bearing test pairs set the effective n for a granularity effect. Joins the SFT split index + verified pairs + have-tree records to count granularity-bearing pairs PER SPLIT, then feeds the effective test-split n back through data.analyze_eval_power_mde's McNemar/Gaussian-copula machinery UNCHANGED. Pure stdlib; no Lean, no Modal.",
+  "motivation": "Two Stage-0.5 threads were never multiplied: the power quartet (e-0040..e-0044) assumes every held-out problem can express the granularity effect, while the construct gate (e-0026) showed only ~7% can. The decision-relevant product -- how many problems in the ACTUAL held-out test split can express a granularity (not format) effect -- bounds whether the headline is resolvable at all, independent of MDE.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_effective_n_construct_power.py",
+    "commit": "de0b1a6",
+    "lines": "232",
+    "run_cmd": "python3 -m data.analyze_effective_n_construct_power"
+  },
+  "formal_results": "Per-split granularity-bearing (>=1 named have) counts: train 35/485 (7.2%), dev 2/59 (3.4%), test 5/63 (7.9%); with a >=2 frontier: train 23, dev 1, test 3. So the n=63 test split has effective n=5 for any granularity signal (3 for a real >=2 frontier). McNemar's exact two-sided test needs >=6 same-direction discordant pairs to reach alpha=0.05 (min achievable p = 2*(0.5)^D: D=5 -> 0.0625 > 0.05, D=6 -> 0.03125). With a discordant ceiling of 5 the test CANNOT reject under ANY effect size: min p=0.0625, power EXACTLY 0. Effective-n MDE (e-0040 machinery, rho=0.5): >0.50/unreachable at all p_lo. The nominal n=63 MDE reproduces e-0040's column (+0.16/+0.18/+0.21 at p_lo=0.05/0.10/0.20) -- but that prices the term-vs-tactic FORMAT effect, not granularity.",
+  "results_description": "The held-out test split nominally has 63 problems but only 5 are granularity-bearing and 3 expose a >=2 frontier. Because McNemar exact needs >=6 same-direction discordant pairs for alpha=0.05, a test split with <=5 granularity-bearing problems has power EXACTLY 0 for the granularity effect under any effect size -- not merely underpowered. The n=63 MDE the power quartet reported (+0.16..+0.21) prices the serialization-FORMAT effect (term vs tactic), which varies on all 63; the granularity effect, which varies on only 5, is unresolvable in principle on corpus_v3's split.",
+  "conclusions": "New, sharper go/no-go subsuming the entire power quartet: on corpus_v3's held-out test split the headline GRANULARITY effect is not underpowered but UNRESOLVABLE -- McNemar exact has power exactly 0 because only 5 of 63 test pairs are granularity-bearing (discordant ceiling 5 < the 6 needed for alpha=0.05). The quartet's n=63 MDE measures the FORMAT confound, not granularity. To make the granularity claim even possible to resolve, the eval must draw its held-out set from granularity-bearing decls (the data/deep route, e-0016's 633-decl supply), not corpus_v3. CAVEAT: design-stage; the combinatorial floor (power=0 at D<6) is exact, the effective-n reduction assumes format-only pairs are exactly concordant on granularity (true by construction: nothing to inline-or-keep).",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0043"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T03:46:35.996Z",
+    "updated_at": "2026-06-15T03:47:08.024Z"
+  },
+  "comments": {}
+}

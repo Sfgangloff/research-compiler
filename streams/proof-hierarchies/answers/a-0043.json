@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0043",
+  "stream": "proof-hierarchies",
+  "text": "The Stage-0.5 power quartet (e-0040..e-0044) and the construct-validity gate (e-0026/a-0026) were never MULTIPLIED -- and their product overturns the quartet's framing. The quartet priced the paired rough-vs-fine eval at the n=63 corpus_v3 test split; e-0026 found only ~6.9% of pairs carry a granularity (not format) signal. But a format-only pair (rough=term, fine=tactic, zero named haves) is CONCORDANT w.r.t. granularity -- rough-SFT and fine-SFT have nothing to disagree about on the granularity axis -- so only granularity-bearing test pairs set the effective sample size for the headline. e-0045 joins the SFT split index + verified pairs + have-tree records: of the 63 held-out test pairs only 5 are granularity-bearing (3 expose a >=2 frontier); train 35/485, dev 2/59. McNemar's exact two-sided test needs >=6 same-direction discordant pairs to reach alpha=0.05 (min achievable p = 2*(0.5)^D; D=5 -> 0.0625 > 0.05). With a discordant ceiling of 5 the test CANNOT reject under ANY effect size: power is EXACTLY 0, not merely low -- a combinatorial floor, no Monte Carlo needed. Feeding n_eff=5 through e-0040's machinery confirms it: MDE >0.50/unreachable at every p_lo. CONSEQUENCE: the quartet's n=63 MDE (+0.16..+0.21) prices the term-vs-tactic FORMAT effect, which varies on all 63; the GRANULARITY effect the paper claims varies on only 5 and is UNRESOLVABLE IN PRINCIPLE on corpus_v3's split. The fix is not larger n or pass@k -- it is to draw the held-out eval set from granularity-bearing decls (the data/deep route, e-0016's 633-decl supply), so the test split actually contains the contrast it scores. CAVEAT: design-stage; the power=0-at-D<6 floor is exact; the reduction assumes format-only pairs are exactly concordant on granularity (true by construction). (also addresses q-0001's capstone, which inherits the same split.)",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0045"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T03:47:08.016Z",
+    "updated_at": "2026-06-15T03:47:22.844Z"
+  },
+  "comments": {}
+}
