@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0035",
+  "stream": "mathematical-domain-topology",
+  "text": "The integrative hub is LENS-DEPENDENT: SetTheory is the OPERATIONAL (shared-premise) hub (a-0010) but NOT the CONCEPTUAL (proof-structure) one. Recomputing the same Tononi-Edelman CN proxy (integration x differentiation) over the edit-distance bridge matrix W_struct[i,j]=surprise(closest cross-cluster proof pair) instead of the premise matrix, SetTheory falls from #1 to rank 13/30 (CN_op 1.037 -> CN_conc 1.106 mid-pack). The two CN orderings over the 30 shared clusters are statistically UNCORRELATED -- Spearman rho=0.082 (p=0.667), and integration alone rho=0.146 (p=0.442). Since the differentiation term is module-based and shared across both lenses, the disagreement is driven entirely by integration: structural reach != premise reach. The broadest structural reach (integration maxed, connecting to 29/30) belongs to LinearAlgebra and Analysis, directly confirming a-0009's 'lingua franca' observation; the top conceptual CN hubs are Data/RingTheory/Order clusters. This is a hub-level corollary of a-0032's operational-vs-conceptual independence: the two bridge classes disagree not just on WHICH theorems bridge but on which DOMAIN is most integrative. Caveats: the conceptual census covered only the top-30 clusters (a high-similarity sample, per a-0032), and the precise #1 conceptual hub (a small pure Data cluster with differentiation=1.0 on a tiny module set) is artifact-prone -- the robust claims are the rank uncorrelation and SetTheory's drop, not the exact top cluster.",
+  "status": "supported",
+  "answers": [
+    "q-0010"
+  ],
+  "backed_by": [
+    "e-0038"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T04:10:56.527Z",
+    "updated_at": "2026-06-15T04:10:56.527Z"
+  },
+  "comments": {}
+}

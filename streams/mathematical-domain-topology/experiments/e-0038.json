@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0038",
+  "stream": "mathematical-domain-topology",
+  "description": "Recompute the Tononi-Edelman-inspired neural-complexity CN (integration x differentiation, identical proxy to e-0010) but over the CONCEPTUAL bridge matrix W_struct[i,j]=surprise(closest cross-cluster proof pair) from edit_distance_bridges, instead of the OPERATIONAL shared-premise matrix. Restricted to the 30 clusters the structural census scored. Compare the integrative hub and rank-correlate the two CN orderings (Spearman) over the 30 shared clusters.",
+  "motivation": "a-0010 named SetTheory the operational (premise) integrative hub; a-0032 showed operational and conceptual bridges are near-independent signals. The natural follow-up: under the conceptual (proof-structure) lens, is the integrative hub still SetTheory? A cheap CPU-only recomputation reusing existing edit_distance_bridges + label data.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/conceptual_complexity.py",
+    "commit": "3ea084b",
+    "run_cmd": "python3.12 src/conceptual_complexity.py"
+  },
+  "formal_results": "Conceptual global CN=1.472 (operational 1.167). SetTheory (operational hub, CN_op=1.037) falls to rank 13/30 under the conceptual lens (CN_conc=1.106). Top conceptual CN hubs: Data cid53 (CN 3.14, diff 1.0), Data cid26 (2.55), RingTheory cid28 (2.44). Spearman CN conceptual-vs-operational rho=0.082 (p=0.667); Spearman integration rho=0.146 (p=0.442) over the 30 shared clusters. Broadest structural reach (integration max, connect to 29/30): MeasureTheory/Analysis/Topology cid1, LinearAlgebra cid5, Analysis cid9, Data cid6, Batteries cid23.",
+  "results_description": "The two bridge classes disagree on which domain is most integrative: the conceptual and operational CN rankings are statistically uncorrelated (rho=0.08). SetTheory is the premise hub but only mid-pack structurally. The clusters with broadest structural reach are LinearAlgebra and Analysis, directly confirming a-0009's lingua-franca observation. Differentiation (module-based) is shared across both lenses, so the uncorrelated CN is driven by uncorrelated integration (structural reach != premise reach).",
+  "conclusions": "The integrative hub is lens-dependent: SetTheory is the operational/premise hub (a-0010) but drops to rank 13/30 under proof-structure; conceptual integration is led by LinearAlgebra/Analysis. This is a hub-level corollary of a-0032's operational-vs-conceptual independence. Caveats: conceptual census limited to top-30 clusters (high-similarity sample); the top CN hub (small pure Data cluster, diff=1.0 on a tiny module set) is artifact-prone, so the robust claims are the rank uncorrelation and SetTheory's drop, not the precise #1.",
+  "addresses": [
+    "q-0010"
+  ],
+  "produces": [
+    "a-0035"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T04:09:09.743Z",
+    "updated_at": "2026-06-15T04:10:56.533Z"
+  },
+  "comments": {}
+}
