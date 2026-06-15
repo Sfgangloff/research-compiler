@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0047",
+  "stream": "mathematical-domain-topology",
+  "text": "Two findings refine a-0050. (1) CORRECTION -- e-0050's '79-bridge stable core' was NOT reproducible. The detection pipeline's Leiden step is seeded (seed=), but that does NOT fix the partition: the largest connected component is a Python set, so the node-insertion order into igraph is governed by PYTHONHASHSEED and changes every process. Verified directly: identical code with seed=0 gives 141 vs 143 clusters in two default runs, but 101/101 once the hash seed is fixed. So e-0050's per-seed cluster counts and its 79-theorem core were an artifact of one incidental hash ordering -- a fresh default re-run of the same code yields a core of only 9. This means cross-RUN bridge stability is even lower than e-0050's cross-SEED Jaccards (0.31 raw / 0.10 strict) implied, and the fix is to sort the LCC nodes so the Leiden seed is the only varying factor. (2) Under that deterministic node order, the honest reproducible seed-stable core (raw operational bridge in ALL 7 seeds {0,1,7,42,123,2024,31337}) is 27 theorems. It is a clean high-confidence object: 22/27 (81.5%) lie in the canonical 280 raw bridges and carry the e-0048 deep-synthesis signature on proof size (proof_len rankfrac 0.803, median 12 tactics vs population 2; n_premises 0.802, median 11 vs 3) while NOT being reused (reuse_indeg rankfrac 0.47, below chance) -- but they are NOT downstream-deep (dag_depth rankfrac 0.517, ~chance), so the seeds agree most on long, premise-heavy, DAG-SHALLOW syntheses rather than the deepest ones. They concentrate in the integrative/foundational hubs (modules: CategoryTheory 7, Data 6, Algebra 4, SetTheory 3, consistent with the a-0010 SetTheory-hub story). Crucially only 1/27 survives the strict depth filter (biSup_inf_biSup) and only 1/27 is a historical bridge (a metric-space lemma) -- so q-0006/q-0007 hold robustly at EXISTENCE and SCALE (a reproducible ~few-dozen core of premise-heavy cross-domain syntheses), while the depth-filtered strict-34 list remains the least reproducible, least seed-stable layer and should be read as illustrative, not canonical.",
+  "status": "supported",
+  "answers": [
+    "q-0006",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0051"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:30:32.497Z",
+    "updated_at": "2026-06-15T08:30:32.497Z"
+  },
+  "comments": {}
+}

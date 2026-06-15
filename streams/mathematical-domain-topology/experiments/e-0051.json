@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0051",
+  "stream": "mathematical-domain-topology",
+  "description": "Materialize and characterize the seed-stable CORE of raw operational bridges (theorems flagged in ALL 7 seeds {0,1,7,42,123,2024,31337}), and audit e-0050's reproducibility. Re-runs the canonical detection pipeline (label_clusters -> find_bridge_theorems, top_k=inf) per seed, intersects the raw bridge sets, then profiles the core: overlap with canonical 280 raw / 34 strict; e-0048 structural features (proof_len, n_premises, reuse_indeg, dag_depth) vs the full 55k-theorem population; top-level Mathlib module distribution (partition-independent, from file_path); and overlap with the 8 historical bridges (validation.json).",
+  "motivation": "a-0050/e-0050 reported a 'high-confidence' core of 79 raw bridges flagged in all 7 seeds but only COUNTED it -- never saved the list or asked what the theorems are. Turning '79 exist' into actual content is the natural cheap follow-up. While doing so, discovered e-0050 was not reproducible.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_core_profile.py",
+    "commit": "85c9fe4"
+  },
+  "formal_results": "ROOT-CAUSE: Leiden's seed= does NOT make the partition reproducible -- the LCC is a Python set, so list(set)-order (the igraph node insertion order) depends on PYTHONHASHSEED and varies per process. Verified: identical code+seed=0, two default runs -> 141 vs 143 clusters; PYTHONHASHSEED=0 -> 101/101 reproducibly. So e-0050's per-seed cluster counts (137/118/224/140/92/129/124) and its 79-core were an artifact of ONE incidental hash ordering; a fresh default run of the same code gave a core of only 9. FIX: sort the LCC nodes before building igraph, making Leiden seed= the only source of variation (hash-independent, reproducible). DETERMINISTIC RESULT (sorted nodes): per-seed raw bridges 295-1137; stable core (raw bridge in all 7 seeds) = 27 theorems. Overlap: 22/27 (81.5%) in canonical 280 raw; 1/27 in canonical 34 strict (biSup_inf_biSup). Structural profile of the 27 core vs population (median pop / median core, rankfrac): proof_len 2/12 (0.803); n_premises 3/11 (0.802); reuse_indeg 0/0 (0.47, BELOW chance); dag_depth 2/2 (0.517, ~chance). Module distribution: CategoryTheory 7, Data 6, Algebra 4, SetTheory 3, Topology 2, NumberTheory 2, MeasureTheory/Combinatorics/Order 1. Historical overlap: 1/27 (PseudoMetricSpace.le_two_mul_dist_ofPreNNDist, a metric-space lemma).",
+  "results_description": "Under deterministic node order the reproducible seed-stable core is 27 raw operational bridges (not 79). It is dominated by canonical-280 deep syntheses (81.5% overlap) but is essentially disjoint from the strict-34 (only 1 member). The core inherits the e-0048 deep-synthesis signature on the proof-size axes (long: rankfrac 0.803; premise-heavy: 0.802) and the not-reused signature (reuse_indeg 0.47, below chance), but is NOT downstream-deep (dag_depth 0.517 ~ chance) -- i.e. the seeds agree most on long, premise-heavy, shallow-in-DAG syntheses, not the deepest ones. Modules concentrate in the integrative/foundational hubs (CategoryTheory, Data, Algebra, SetTheory).",
+  "conclusions": "Two findings. (1) CORRECTION: e-0050's 79-core was not reproducible -- it depended on PYTHONHASHSEED via set-iteration node order, which Leiden seed= does not control; the honest reproducible core (sorted node order) is 27. This means cross-RUN bridge stability is even lower than e-0050's cross-SEED Jaccards suggested, sharpening a-0050: the named bridge lists are illustrative, and even the 'stable core' must be computed under fixed node order to be reproducible. (2) The reproducible 27-core is a clean high-confidence object: 81.5% are canonical-280 deep syntheses (long, premise-heavy, rarely reused), hosted in the integrative hubs (CategoryTheory/Data/Algebra/SetTheory), but only 1 survives the strict depth filter and only 1 is a historical bridge -- confirming q-0006/q-0007 at existence+scale while underscoring that the depth-filtered strict list is the least reproducible layer.",
+  "addresses": [
+    "q-0006",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0047"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:30:08.382Z",
+    "updated_at": "2026-06-15T08:30:32.499Z"
+  },
+  "comments": {}
+}
