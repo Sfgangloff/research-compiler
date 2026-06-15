@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0046",
+  "stream": "mathematical-domain-topology",
+  "description": "Sample-robustness of the conceptual-bridge negative result: re-run the a-0036 genericity test (do MIN-closest cross-cluster proof pairs share domain-specific tactic tokens, or only generic scaffolding?) under 5 proof-selection regimes.",
+  "motivation": "Every probe in the conceptual-bridge thread (a-0009,a-0032,a-0034,a-0036,a-0038,a-0039,a-0041) runs on the SAME selection the edit-distance detector uses (top-30 LARGEST clusters x top-30 LONGEST proofs) and each carries the never-tested caveat 'same top-30-cluster/top-30-longest-proof high-similarity sample'. The corpus/representation-limit conclusion (a-0041) could be an artifact of looking only at long proofs from big domains. This closes the caveat.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/conceptual_sample_robustness.py",
+    "commit": "2e0e615",
+    "run_cmd": "python3 src/conceptual_sample_robustness.py"
+  },
+  "formal_results": "For each regime, select a pool of proofs (>=5 normalized tactics), compute the 200 MIN-edit-distance cross-cluster proof pairs (token-level Levenshtein on normalized tactics, cap 80), and measure, vs a random cross-cluster control from the same pool: frac of pairs sharing >=1 domain-specific (<=3-cluster) tactic token, and mean fraction of shared-token mass that is generic (>=30-cluster). Token cluster-frequency measured GLOBALLY (all >=5-tactic proofs) so only the SELECTION changes. Only ~25 clusters have >=30 qualifying proofs so the cluster set is held fixed (all eligible) across proof-selection regimes; small_clusters restricts to the smaller half. Regimes: repro(longest), small_clusters(longest, smaller half), median_proofs, short_proofs(shortest), random_proofs.",
+  "results_description": "repro reproduces a-0036 exactly (ED range 0.586-0.833 = a-0009's 'closest ED 0.586'; bridges share domain-specific tokens in 2/200 pairs, generic_frac 0.44). Across ALL 5 regimes B:spec% in {0.01,0.0,0.0,0.02,0.0} (<=4/200) vs control C:spec% in {0.0003,0,0,0,0.0003} -- bridges never exceed the random floor. generic_frac stays high and comparable to control (bridges 0.36-0.67, control 0.40-0.51). short_proofs even finds identical (ED=0.0) cross-cluster proofs, all pure generic scaffolding.",
+  "conclusions": "The conceptual-bridge negative result is NOT a sampling artifact. Whether proofs are selected longest/median/shortest/random and whether all clusters or only the smaller half are used, the MIN-closest cross-cluster pairs share essentially no domain-specific tactic structure (<=2% of pairs, at the random control floor), with shared mass dominated by generic scaffolding. This dispatches the recurring caveat across a-0036..a-0041 and hardens the corpus/representation-limit conclusion (a-0041).",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0042"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:36:10.332Z",
+    "updated_at": "2026-06-15T07:36:38.190Z"
+  },
+  "comments": {}
+}

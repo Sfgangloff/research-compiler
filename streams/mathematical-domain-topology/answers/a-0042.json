@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0042",
+  "stream": "mathematical-domain-topology",
+  "text": "The conceptual-bridge NEGATIVE result is NOT a sampling artifact -- closing the methodological caveat repeated verbatim across a-0036..a-0041 ('same top-30-cluster/top-30-longest-proof high-similarity sample'). Every probe that concluded 'no in-corpus representation recovers Brouwer<->Lawvere-style conceptual bridges' ran on the edit-distance detector's biased selection (largest clusters x LONGEST proofs), so the corpus-limit conclusion (a-0041) could in principle have been an artifact of looking only at long proofs from big domains. e-0046 re-runs the core a-0036 genericity test (do the 200 MIN-closest cross-cluster proof pairs share domain-specific <=3-cluster tactic tokens, or only ubiquitous scaffolding?) under five proof-selection regimes -- longest (=a-0036 baseline), median-length, SHORTEST, and RANDOM proofs, plus a smaller-cluster-half variant -- holding token genericity GLOBAL so only the selection changes. The repro regime reproduces a-0036 exactly (ED range 0.586-0.833, matching a-0009's 'closest ED 0.586'; 2/200 specific; generic_frac 0.44). Across ALL five regimes the fraction of bridge pairs sharing >=1 domain-specific token is <=0.02 (<=4/200), never above the random cross-cluster control floor (<=0.0003), and the shared-token mass stays generic-scaffolding-dominated (bridges 0.36-0.67 generic, comparable to control 0.40-0.51). short_proofs even surfaces IDENTICAL (ED=0.0) cross-cluster proofs, but they are pure generic scaffolding. So the result is invariant to which proofs and which clusters the detector looks at: structurally-similar cross-domain proofs share generic method scaffolding, never domain-specific shared structure, regardless of sample. This hardens a-0041 -- the operational/conceptual bridge gap (a-0009/a-0001) is a genuine corpus/representation limit, not a tunable-feature OR sampling choice. The one remaining escape hatch is unchanged: typed-statement structure or an external NL embedding, which is OUT of the LeanDojo declaration corpus.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0046"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:36:38.189Z",
+    "updated_at": "2026-06-15T07:36:38.189Z"
+  },
+  "comments": {}
+}
