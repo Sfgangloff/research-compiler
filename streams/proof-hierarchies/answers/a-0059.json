@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0059",
+  "stream": "proof-hierarchies",
+  "text": "The q-0011 leverage construct's recurring caveat — the e-0058 detector reads citations only in term-mode bodies, so the ~48%-opaque-'by' figure makes every leverage count a LOWER BOUND — is now quantified and shown NOT to threaten the leverage power verdict. A body census over the deep have-trees (6302 non-empty bodies) splits opacity into term-mode 50% (VISIBLE), opaque-BRANCH 'by' 18% (partly recovered, since flatten()+scan already reaches their term-mode descendants), and opaque-LEAF 'by' 32% (permanently invisible), giving a detector recall of 0.50 (conservative, term-only) to 0.68 (optimistic, excl. opaque-leaf). The decisive move is monotone, not Monte-Carlo: opacity can only HIDE citations, never invent them, so true D >= observed D. Both eval-split leverage fingerprints already clear the e-0045 McNemar D>=6 floor at the observed LOWER bound (cited>=1 D=49, reused>=2 D=8), so any hidden reuse only STRENGTHENS power — the leverage mechanism test is robust to opacity by construction. The caveat survives only as a magnitude bound on the interpretable base rate: true citeable in [12.2%, ~18-24%], true reused>=2 in [2.7%, ~4-5.4%], i.e. <= ~2x the e-0058 observed rate, so the planned eval's measured named-have reuse over generated proofs should be scaled by ~1/recall for the true rate. Net: opacity bounds interpretation, not the go/no-go.",
+  "status": "supported",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0061"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T12:22:54.967Z",
+    "updated_at": "2026-06-15T12:22:54.967Z"
+  },
+  "comments": {}
+}

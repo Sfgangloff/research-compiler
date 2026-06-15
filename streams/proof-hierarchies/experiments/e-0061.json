@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0061",
+  "stream": "proof-hierarchies",
+  "description": "Stage 0.5 OPACITY-SENSITIVITY gate for the q-0011 leverage construct: quantifies the recurring 'term-mode-only citation; ~48% of bodies opaque by -> lower bound' caveat that every prior leverage gate (e-0058 base rate, leverage effective-n eval D) inherited but never bounded. Body census over the deep have-trees, then a monotone robustness argument and a recall-corrected base-rate band.",
+  "motivation": "The whole q-0011 leverage power chain rests on counts the e-0058 detector can only see in term-mode bodies; if opacity hides a large fraction of true citations, the eval-split leverage carrier count D (and the 'did the model USE the decomposition' read) could be untrustworthy. Bound the undercount before any Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_leverage_opacity_sensitivity.py",
+    "commit": "3d391582f987b215f126a0e9ea64a469f4527203",
+    "run_cmd": "python3 data/analyze_deep_leverage_opacity_sensitivity.py"
+  },
+  "formal_results": "Body census (6302 non-empty deep bodies): term-mode 3150 (50%, VISIBLE to detector), opaque-BRANCH by 1132 (18%, partly recovered via term-mode descendants), opaque-LEAF by 2020 (32%, permanently invisible). Detector recall = 0.50 conservative (term only) / 0.68 optimistic (excl. opaque-leaf). Named-have-only census: recall 0.47/0.67. Eval-split leverage carriers at the LOWER bound: cited>=1 D=49 (recall-corrected ceiling 72-98), reused>=2 D=8 (ceiling 12-16); both clear the e-0045 McNemar D>=6 floor. Recall-corrected base rate: citeable in [12.2%, ~18-24%], reused>=2 in [2.7%, ~4-5.4%].",
+  "results_description": "Detector sees ~50-68% of citing-capable body content. Both eval-split leverage fingerprints already clear the D>=6 power floor at the observed lower bound; since opacity can only hide citations (true D >= observed D), more hidden reuse only strengthens power -> the leverage power verdict is robust to opacity by monotonicity. Opacity bounds only the magnitude of the interpretable base rate (true reuse <= ~2x observed), not the go/no-go.",
+  "conclusions": "The '48% opaque -> lower bound' caveat is now bounded: it does NOT threaten the q-0011 leverage POWER conclusion (lower bound already passes D>=6 and the bound is monotone), and it bounds the true leverage base rate to <=2x the observed (recall 0.50-0.68). The eval's measured named-have reuse over generated proofs should be scaled by ~1/recall for the true rate.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0059"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T12:22:26.048Z",
+    "updated_at": "2026-06-15T12:22:54.969Z"
+  },
+  "comments": {}
+}
