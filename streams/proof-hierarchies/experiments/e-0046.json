@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0046",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only effective-n/power gate for the DATA/DEEP within-deep eval route — the e-0045 analogue on the corpus the project PIVOTED TO. Composes three established deep numbers no prior gate multiplied: the within-deep module-disjoint eval split (e-0031), the deep substantive-frontier construct validity (e-0032), and the per-area round-trip yield (e-0028), to get the number of eval problems that are BOTH granularity-bearing AND verified — the effective n for the granularity effect — then feeds it through e-0040's McNemar/Gaussian-copula MDE machinery imported UNCHANGED (exactly as e-0045 did).",
+  "motivation": "e-0045 (a-0045) found corpus_v3's granularity eval is DEAD: the held-out test split has 63 pairs but only ~5 are granularity-bearing (rest format-only, e-0026), and McNemar's exact test needs >=6 same-direction discordant pairs for alpha=0.05, so power is EXACTLY 0 under any effect size. Its terminal recommendation — 'the eval must draw its held-out set from granularity-bearing decls (the data/deep route)' — was never QUANTIFIED. Settle whether the pivoted-to deep route restores power, cheaply, before any Modal spend.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_effective_n_power.py",
+    "commit": "d25cdd3"
+  },
+  "formal_results": "Within-deep module-disjoint eval holdout (e-0031): 131 eval targets across 82 modules, ~115.8 expected verified. Granularity-bearing (>=1 substantive named have, e-0032 logic): 130/131 = 99%; >=2 frontier: 120/131 = 92% (inverse of corpus_v3's 8%, e-0045). After per-area round-trip yield discount (e-0028), effective n for the granularity effect = ~115 verified-AND-granularity-bearing eval problems (>=2 frontier: ~106), vs corpus_v3's 5. McNemar exact two-sided needs >=6 discordant pairs for alpha=0.05; deep ceiling ~115 >> 6 so power > 0 (corpus_v3 5 < 6 = power exactly 0). MDE (smallest absolute rough-fine pass@1 gap @80% power, rho=0.5, M=1500): p_lo=0.05->+0.11, 0.10->+0.13, 0.20->+0.15 — comparable to e-0040's n=116 column.",
+  "results_description": "The data/deep within-deep eval route turns the granularity effect from un-resolvable (power exactly 0 on corpus_v3) into resolvable at a single-comparison MDE of +0.11..0.15 absolute pass@1. The construct-validity bottleneck that collapsed corpus_v3's effective n to 5 does not bite on deep, where 99% of eval problems are granularity-bearing.",
+  "conclusions": "e-0045's qualitative recommendation is QUANTIFIED: the within-deep eval is the construct-VALID AND adequately-POWERED path for q-0007's headline that corpus_v3 cannot provide — ~115 granularity-bearing verified eval problems restore power > 0 at MDE +0.11..0.15. Sharpens the Modal go/no-go: the deep route's single-comparison granularity test is well-powered for modest gaps. CAVEATS: verified counts are the e-0028 per-area projection, not an actual round-trip (needs the Modal pass); module-disjoint is standard but not airtight leakage control; projects COUNTS not pass@k; the gap x model-SIZE INTERACTION (the true headline) needs the larger DiD budget (e-0041/e-0043), so this single-comparison MDE is a LOWER bound.",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0044"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T03:55:50.973Z",
+    "updated_at": "2026-06-15T03:57:51.817Z"
+  },
+  "comments": {}
+}

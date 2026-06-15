@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0044",
+  "stream": "proof-hierarchies",
+  "text": "e-0045/a-0045 found corpus_v3's headline granularity eval is DEAD — the held-out test split has 63 pairs but only ~5 are granularity-bearing (the rest format-only, e-0026), and McNemar's exact two-sided test needs >=6 same-direction discordant pairs to reach alpha=0.05, so the granularity effect has power EXACTLY 0 under ANY effect size — and recommended drawing the eval from granularity-bearing decls (the data/deep route) without quantifying it. e-0046 QUANTIFIES that recommendation by composing the three established deep numbers no prior gate multiplied: the within-deep module-disjoint eval split (e-0031: 131 eval targets, ~115.8 expected verified), the deep substantive-frontier construct validity (e-0032), and the per-area round-trip yield (e-0028), then feeding the effective n through e-0040's McNemar/Gaussian-copula MDE machinery UNCHANGED. Result: 130/131 (99%) of within-deep eval targets are granularity-bearing (>=1 substantive named have) and 120/131 (92%) carry a >=2 frontier — the inverse of corpus_v3's 8%. After yield discount the effective n for the granularity effect is ~115 verified-AND-granularity-bearing eval problems (>=2 frontier ~106), vs corpus_v3's 5 — a discordant ceiling of ~115 >> the 6 needed, so power > 0 where corpus_v3 was exactly 0. At this n the detectable absolute rough-fine pass@1 gap is +0.11 (p_lo=0.05), +0.13 (0.10), +0.15 (0.20) at 80% power, comparable to e-0040's n=116 column. So the within-deep eval is the construct-VALID AND adequately-POWERED path for q-0007's headline that corpus_v3 cannot provide: the construct-validity bottleneck that killed corpus_v3's effective n does not bite on deep. CAVEATS: verified counts are the e-0028 per-area projection, not an actual round-trip (needs the Modal pass); module-disjoint is the standard but not airtight leakage control; projects COUNTS not pass@k; the gap x model-SIZE INTERACTION (the true headline) needs the larger DiD budget (e-0041/e-0043), so this single-comparison MDE is a LOWER bound on what the full interaction claim needs.",
+  "status": "supported",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0046"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T03:57:51.790Z",
+    "updated_at": "2026-06-15T03:57:51.790Z"
+  },
+  "comments": {}
+}
