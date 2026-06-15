@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0028",
+  "stream": "mathematical-domain-topology",
+  "text": "The hub-bias a-0027 named in the goal-router's target predictor is REAL and PARTIALLY correctable, but it is not the dominant gap -- de-biasing the popularity prior narrows the oracle gap only slightly. The e-0030 predictor scores a foreign cluster d by sum_t IDF(t)*P(d|t), P(d|t)=n(t,d)/n(t), which favours globally-popular (high-demand) clusters. e-0031 tests the named lever with NO new data: divide P(d|t) by the cluster's TRAIN demand prior P(d) -- a PMI/lift normalization -- so the router targets clusters SPECIFICALLY associated with the goal's tokens. Same 432 held-out cross-domain TEST theorems, same leakage control, same exact complete-coverage ceiling. MILD lift (alpha=0.5) helps at every target: higher ceiling at matched breadth (b=5: 0.748 vs base 0.729; b=10: 0.919 vs 0.914) AND smaller pools (reach 0.674 at 48.9k vs 53.9k = 9% cheaper; 0.90 at 67.6k vs 72.3k = 6.5% cheaper). But FULL lift (alpha=1.0) and log-PMI COLLAPSE -- over-correcting toward tiny rarely-demanded clusters (alpha=1.0 ceiling 0.012 at b=1, only 0.752 at b=20; log-PMI 0.812 at b=20), worse than the hub-biased baseline at every realistic breadth. The realizable best (lift alpha=0.5) still sits ~2.3x the oracle pool at 0.674 and ~3.1x at 0.90 (vs base ~3.3x) -- a small narrowing, not a closing, of a-0027's ~4x gap. Net for q-0011: the popularity hub-bias is a genuine but minor lever; mild prior-deflation gives a free ~6-10% pool cut, but pushing it harder backfires, so the dominant residual gap to the oracle is the predictor's RANKING quality (which specific small cluster), not just the popularity weighting -- confirming a-0027/a-0015's verdict that a content/type-aware target signal is the real remaining lever. Still a premise-availability upper bound, not a measured prover success rate.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0031"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T01:58:11.242Z",
+    "updated_at": "2026-06-15T01:58:19.212Z"
+  },
+  "comments": {}
+}

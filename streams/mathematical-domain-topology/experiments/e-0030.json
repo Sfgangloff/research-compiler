@@ -16,12 +16,14 @@
   "addresses": [
     "q-0011"
   ],
-  "produces": [],
+  "produces": [
+    "a-0027"
+  ],
   "status": "done",
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-12T13:47:11.623Z",
-    "updated_at": "2026-06-12T13:47:11.623Z"
+    "updated_at": "2026-06-15T01:58:18.738Z"
   },
   "comments": {}
 }

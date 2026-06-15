@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0031",
+  "stream": "mathematical-domain-topology",
+  "description": "De-bias the goal-specific router's target predictor (follow-on to e-0030/a-0027). e-0030's name-token predictor scores a foreign cluster d by sum_t IDF(t)*P(d|t), P(d|t)=n(t,d)/n(t), which is hub-biased toward globally-popular clusters, leaving a ~4x gap to the oracle goal-router. With NO new data, divide P(d|t) by the cluster's TRAIN demand prior P(d) (a PMI/lift normalization, sum_t IDF(t)*P(d|t)/P(d)^alpha) so the router targets clusters SPECIFICALLY associated with the goal's name tokens. Arms: goal_base (alpha=0, the e-0030 predictor), goal_lift (alpha=0.5, 1.0), goal_pmi (log-PMI), oracle. Same 432 held-out cross-domain TEST theorems, same train-only weights and leakage control, same exact ranking-free complete-coverage ceiling metric and head-to-head cheapest-pool comparison.",
+  "motivation": "a-0027 (e-0030) named the lever verbatim: the goal-router's name-token predictor 'has a hub-bias toward large token-associated clusters instead of the small specialized clusters a cross-domain goal needs ... a less hub-biased target predictor is the remaining lever.' A demand-prior (PMI/lift) deflation is the canonical de-biasing and is CPU-only over existing data.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_retrieval_goalrouter_debias.py",
+    "commit": "fd6c1d70511257154052a291fbec4272c663ea85",
+    "run_cmd": "python -m src.bridge_retrieval_goalrouter_debias"
+  },
+  "formal_results": "432 held-out cross-domain TEST, 27,705 train cross-domain, 92,594 clustered decls. Complete-coverage ceiling @ breadth (mean pool): goal_base alpha=0 b5 0.729/53.9k b10 0.914/72.3k; goal_lift alpha=0.5 b5 0.748/48.9k b10 0.919/67.6k b20 0.995/86.2k; goal_lift alpha=1.0 b1 0.012 b10 0.269 b20 0.752/56.2k (COLLAPSE); goal_pmi b5 0.232 b10 0.456 b20 0.812/57.7k (COLLAPSE); oracle b1 0.595/17.7k b2 0.822/20.9k b3 0.928/21.8k. Cheapest pool to reach ceiling: 0.674 lift0.5 48.9k vs base 53.9k (0.91x); 0.90 lift0.5 67.6k vs base 72.3k (0.93x); best realizable / oracle pool ratio 1.98x@0.50, 2.34x@0.674, 3.10x@0.90.",
+  "results_description": "Mild demand-prior deflation (alpha=0.5) improves the goal-router at every target -- higher complete-coverage ceiling at matched breadth and 6-10% smaller candidate pools -- confirming the hub-bias is real and partially correctable. But full lift (alpha=1.0) and log-PMI COLLAPSE, over-correcting toward tiny rarely-demanded clusters and underperforming the hub-biased baseline at every realistic breadth. The realizable best stays ~2.3-3.1x the oracle pool, only marginally below base's ~3.3x.",
+  "conclusions": "The popularity hub-bias is a genuine but MINOR lever: mild prior-deflation buys a free ~6-10% pool cut over e-0030, but pushing it harder backfires. The dominant residual gap to the oracle goal-router is the predictor's RANKING quality (which specific small specialized cluster), not the popularity weighting -- so a content/type-aware target signal, not reweighted name-token co-occurrence, remains the real lever. Still a premise-availability upper bound, not a measured prover success rate.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0028"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T01:57:52.617Z",
+    "updated_at": "2026-06-15T01:58:19.212Z"
+  },
+  "comments": {}
+}
