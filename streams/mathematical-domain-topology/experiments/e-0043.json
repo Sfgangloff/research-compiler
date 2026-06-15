@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0043",
+  "stream": "mathematical-domain-topology",
+  "description": "Name-content conceptual-bridge probe: do the detector's 200 MIN-closest cross-cluster proof pairs (edit_distance_bridges) share domain-specific NAME tokens? Mirrors e-0039 (conceptual_genericity) EXACTLY but swaps the tactic-token bag for a full_name concept-token bag (split on ./_/camelCase, lowercased). NAME-token genericity = number of distinct clusters a token appears in; specific = <=3 clusters, generic = >=30. Same top-30 x top-30-longest selection and random cross-cluster control.",
+  "motivation": "a-0037/a-0038 ruled out tactic tokens and multi-token motifs and concluded the conceptual-bridge signal lives in statement/type CONTENT 'which the corpus does not expose'. But the corpus DOES expose one content-bearing field: full_name (descriptive Mathlib concept strings). The conceptual-DETECTION thread never tested it (only the retrieval chain used name tokens). Cheap CPU-only check over existing data.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/conceptual_name_bridges.py",
+    "commit": "d21dd99",
+    "run_cmd": "python3 src/conceptual_name_bridges.py"
+  },
+  "formal_results": "15,664 proofs (>=5 tactics) over 73 clusters; 2,534 distinct NAME tokens. Conceptual-bridge pairs vs random cross-cluster control: frac sharing >=1 NAME token 0.150 vs 0.168; mean shared mass 0.165 vs 0.198; mean generic_frac of shared tokens 0.733 vs 0.675. Pairs sharing >=1 domain-specific (<=3-cluster) NAME token: 0/200 (control rate 0.0002 = floor). Most generic name tokens: is(41), iff(41), eq(34), of(34), map(32), mul(30).",
+  "results_description": "0/200 conceptual-bridge pairs share any domain-specific NAME token, at the random floor; they share name tokens slightly LESS than random cross-cluster pairs (15.0% vs 16.8%), and the shared tokens are ubiquitous scaffolding words (is/eq/of/map/mul/le).",
+  "conclusions": "Even the theorem NAMES -- the one content-bearing field the corpus exposes -- carry no shared domain-specific conceptual signal for the tactic-similarity-selected bridge pairs (in fact slightly below random). Extends a-0037/a-0038 from tactic tokens+motifs to name content: NO field this corpus exposes (tactic tokens, motifs, or names) recovers the conceptual-bridge signal, confirming the gap is a corpus/representation limit requiring statement/type structure the corpus omits.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0039"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T06:58:16.889Z",
+    "updated_at": "2026-06-15T06:58:41.117Z"
+  },
+  "comments": {}
+}

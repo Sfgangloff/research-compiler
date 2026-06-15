@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0039",
+  "stream": "mathematical-domain-topology",
+  "text": "Theorem NAMES -- the one content-bearing field the corpus actually exposes -- do NOT rescue conceptual-bridge detection either, closing the last representation an in-corpus detector could use. a-0037/a-0038 ruled out tactic tokens (weighted or not) and multi-token motifs and concluded the conceptual signal lives in statement/type CONTENT the corpus omits. But full_name is descriptive (Cardinal.sum_lt_prod, PreGaloisCategory.has_decomp_connected_components) -- a partial content proxy the conceptual-detection thread never tested. e-0043 mirrors e-0039 exactly but swaps the tactic-token bag for a name-concept-token bag (split on ./_/camelCase). Over the detector's 200 MIN-closest cross-cluster proof pairs: 0/200 share a domain-specific (<=3-cluster) NAME token, at the random floor (control 0.0002); they share name tokens slightly LESS than random cross-cluster pairs (15.0% vs 16.8% share any; mean shared mass 0.165 vs 0.198), and the shared tokens are ubiquitous scaffolding words (is/eq/of/map/mul/le, each spanning 30-41 of 73 clusters). So the tactic-edit-distance bridge pairs are not only premise-orthogonal (a-0032) and tactic-generic (a-0036/38) but also name-content-orthogonal -- they share even less surface concept vocabulary than two random cross-domain theorems. Net for q-0009: no representation this corpus exposes -- tactic tokens, tactic motifs, OR theorem names -- recovers Brouwer<->Lawvere-style conceptual bridges. This hardens a-0037/a-0038's diagnosis from 'tactics don't expose it' to 'nothing in the corpus does': the conceptual-bridge gap is a genuine corpus/representation limit, requiring statement/type structure (or an external embedding) absent from the LeanDojo declaration corpus, not a tunable feature choice. Caveats: same top-30-cluster/top-30-longest-proof high-similarity sample as the detector; names are a proxy for, not identical to, statement-type content, so a typed-statement or NL-embedding detector remains the untested escape hatch -- but it is OUT of this corpus.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0043"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T06:58:41.115Z",
+    "updated_at": "2026-06-15T06:58:41.115Z"
+  },
+  "comments": {}
+}
