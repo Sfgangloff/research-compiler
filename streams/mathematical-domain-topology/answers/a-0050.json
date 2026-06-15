@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0050",
+  "stream": "mathematical-domain-topology",
+  "text": "The a-0010 'SetTheory is THE integrative hub' claim is robust within the modularity regime and to the depth-filtered construction it was defined with, but it is NOT algorithm-free or construction-free -- resolving the 'SetTheory-as-hub-by-cluster-id rests on one partition' caveat repeated across a-0044/a-0050/a-0051/a-0052. a-0010 rested on ONE Leiden run; e-0055 recomputes the SAME Tononi-Edelman CN proxy (integration x differentiation over the cluster-interaction matrix) on FRESH deterministically-sorted partitions from 5 community-detection algorithms (leiden_modularity, louvain, fastgreedy, label_propagation, infomap), under TWO constructions of the interaction matrix W: STRICT (the depth-filtered bridges a-0010 actually used) and RAW (all operational bridges). TWO axes of dependence. (1) ALGORITHM: under STRICT bridges SetTheory is the #1 integrative hub on BOTH modularity algorithms (Leiden CN 1.230, Louvain CN 0.955) and #2 under infomap -- reproducing a-0010's #1 on a fresh partition (NOT the stored partition-id), so the claim is genuinely not a single-partition artifact within the modularity regime -- but it FAILS under the non-modularity methods (fastgreedy ranks SetTheory 28th with GroupTheory #1; label_propagation 35th with CategoryTheory #1). SetTheory is #1 in 2/5 algos and top-3 in 3/5; rank range 1-35. (2) CONSTRUCTION: the #1 result specifically REQUIRES the depth filter -- under RAW operational bridges SetTheory never tops the ranking (rank 4 on Leiden and Louvain, 5 on infomap; raw top hubs are broad utility-heavy modules Order/Data/Topology). This is mechanistically expected: the depth filter exists to strip exactly the high-in-degree utility hubs, and without it those hubs dominate the integration term. Net for q-0010: a-0010 holds in the modularity-resolution regime where the rest of the paper's bridge object lives (a-0052) and is NOT a cluster-id artifact, but 'SetTheory is THE integrative hub' is a property of the modularity + depth-filtered construction, not an algorithm-invariant feature of Mathlib's premise structure. Echoes a-0052: the canonical bridge object is a modularity-resolution phenomenon. Caveat: the CN measure is itself an exploratory Tononi-Edelman proxy (a-0010), and the hub is reported by the top-CN cluster's dominant module.",
+  "status": "supported",
+  "answers": [
+    "q-0010"
+  ],
+  "backed_by": [
+    "e-0055"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T12:25:57.370Z",
+    "updated_at": "2026-06-15T12:25:57.370Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0055",
+  "stream": "mathematical-domain-topology",
+  "description": "Algorithm-robustness of the INTEGRATIVE-HUB claim a-0010 (SetTheory is the top integrative-yet-specialised domain by the Tononi-Edelman CN = integration x differentiation proxy, CN=1.037 #1). Over the SAME deterministically-sorted LCC the algorithm-robustness chain used (a-0052), build partitions from 5 community-detection algorithms (leiden_modularity, louvain, fastgreedy, label_propagation, infomap), re-run label_clusters + find_bridge_theorems on each, recompute the SAME CN proxy (neural_complexity.compute_neural_complexity), and report which DOMINANT-MODULE cluster is the top integrative hub plus SetTheory's hub rank. Two constructions of the cluster-interaction matrix W: RAW (all operational bridges) and STRICT (the depth-filtered bridges a-0010 actually used). Hub reported by the top-CN cluster's partition-independent dominant module (file_path-derived).",
+  "motivation": "The robustness chain (a-0044, a-0050, a-0051, a-0052) repeatedly flagged 'SetTheory-as-hub-by-cluster-id rests on one particular partition' as an UNRESOLVED caveat: nobody re-measured WHICH domain is the integrative hub under a different clustering. This closes that gap. CPU-only, no new data; reuses the canonical labelling/detection/CN code.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/hub_algorithm_robustness.py",
+    "commit": "bee9109",
+    "run_cmd": "python3.12 -m src.hub_algorithm_robustness"
+  },
+  "formal_results": "5 algorithms over the sorted LCC (92,594 nodes). STRICT (depth-filtered, the a-0010 construction): top integrative-hub dominant module = SetTheory(leiden, CN 1.230, #1), SetTheory(louvain, CN 0.955, #1), GroupTheory(fastgreedy, SetTheory rank 28), CategoryTheory(label_prop, SetTheory rank 35), Algebra(infomap, SetTheory #2 CN 4.349). SetTheory is the #1 strict hub in 2/5 algos and top-3 in 3/5; rank range 1-35. RAW (all operational bridges): SetTheory is NEVER #1 - rank 4(leiden, top hub Order CN 1.545), 4(louvain, top Order), 5(infomap), 37(fastgreedy), 84(label_prop); raw top hubs are utility-heavy modules Order/Data/Topology/CategoryTheory. n_clusters 138/189/1106/809/4201; elbow theta 2/1/2/2/2; raw bridges 295/834/98/790/22732; strict 44/63/66/65/4023.",
+  "results_description": "The a-0010 SetTheory-integrative-hub claim is robust within the MODULARITY regime and to the STRICT construction it was defined with, but is construction-dependent and not algorithm-invariant. Under the strict (depth-filtered) bridge graph - the exact object a-0010 used - SetTheory is the #1 integrative hub on BOTH modularity algorithms (Leiden CN 1.230, Louvain CN 0.955) and #2 under infomap, reproducing a-0010 on FRESH deterministically-sorted partitions (not the stored partition-id), so the claim is not a single-partition artifact within that regime. But it requires the depth filter: under RAW operational bridges SetTheory falls to rank 4-5 even on the modularity partitions, with broad utility hubs (Order, Data, Topology) on top - mechanistically expected, since the depth filter exists to strip exactly those high-in-degree utility hubs, and removing it lets them dominate the integration term. And it fails under non-modularity partitions: fastgreedy (few giant clusters) ranks SetTheory 28th, label_propagation 35th.",
+  "conclusions": "Resolves the 'SetTheory-as-hub rests on one partition' caveat (a-0044/a-0050/a-0051/a-0052) for q-0010. Two-axis robustness: (1) ALGORITHM - SetTheory is the top integrative hub under both modularity methods (Leiden #1, Louvain #1) and runner-up under infomap (#2), but not under non-modularity fastgreedy (rank 28) or label_propagation (rank 35); SetTheory is #1 in 2/5 and top-3 in 3/5 algorithms (strict). (2) CONSTRUCTION - the #1 result specifically needs the strict depth-filtered bridges; under raw operational bridges SetTheory never tops the ranking (rank 4-5 on modularity partitions), because the utility hubs the depth filter is designed to remove otherwise dominate the integration term. Net: a-0010 holds in the modularity regime where the rest of the paper's bridge object lives (a-0052) and is NOT a single-partition-id artifact, but 'SetTheory is THE integrative hub' is a property of the modularity-resolution + depth-filtered construction, not an algorithm-free or construction-free feature of Mathlib. Echoes a-0052: the canonical bridge object is a modularity-resolution phenomenon.",
+  "addresses": [
+    "q-0010"
+  ],
+  "produces": [
+    "a-0050"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T12:25:29.790Z",
+    "updated_at": "2026-06-15T12:25:57.370Z"
+  },
+  "comments": {}
+}
