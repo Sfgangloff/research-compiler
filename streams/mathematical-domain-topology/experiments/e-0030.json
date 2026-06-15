@@ -1,0 +1,27 @@
+{
+  "type": "experiment",
+  "id": "e-0030",
+  "stream": "mathematical-domain-topology",
+  "description": "Goal-specific router vs the static top-K bridge router, the lever a-0026/e-0029 named. e-0029 found cross-domain premise need is CONCENTRATED (59.5% of cross-domain goals need exactly one foreign cluster, median=1) yet the static top-K router (home + the K globally-biggest bridge neighbours of the home cluster, SAME for every goal in a home) caps complete-coverage at 0.674 (K=5). The escape-predictor chain (e-0023/24) kept that static top-5 as a fixed BASE and only predicted escapes beyond it, so it always paid the ~53.8k-decl base pool. This DROPS the static base: route home + the top-m FOREIGN clusters predicted from the goal's own NAME tokens (token x foreign-cluster co-occurrence n(t,d)/n(t) weighted by IDF, train-only), and compares head-to-head AT MATCHED COMPLETE-COVERAGE which router reaches a target ceiling at the smaller candidate pool. Same 432 held-out cross-domain TEST theorems, same train-only W, exact ranking-free complete-coverage ceiling metric (every needed cluster must be routed). Arms: static(K in 0,1,2,3,5,10,20); goal(m in 1,2,3,5,10,20); oracle(m)=home + the goal's m most-demanded ACTUAL foreign clusters (leaky upper bound).",
+  "motivation": "a-0026 isolated the structural cause of the low oracle-gate gain (static top-K cannot reach the foreign cluster many proofs need) and named the untested lever verbatim: 'the right lever is a GOAL-SPECIFIC router (route the 1-2 clusters THIS goal needs) rather than a wider static one'. The escape-predictor never replaced the static base, so this lever was never tested head-to-head against the static router on the prover-relevant complete-coverage ceiling. CPU-only over existing data.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_retrieval_goalrouter.py",
+    "commit": "a7c750b574e2a0349bdafe49c5df3dbc65131b18",
+    "run_cmd": "python -m src.bridge_retrieval_goalrouter"
+  },
+  "formal_results": "432 held-out cross-domain TEST theorems, 27,705 train cross-domain, 92,594 clustered decls. Goal name-token predictor: top-k hits a foreign cluster 0.532/0.734/0.819/0.921 (k=1/2/3/5); top-k covers ALL foreign clusters 0.264/0.435/0.537/0.729. Complete-coverage ceiling @ breadth (mean candidate pool): STATIC K=5 0.674 (53.8k), K=10 0.859 (72.8k), K=20 0.979 (87.4k); GOAL m=5 0.729 (53.9k), m=10 0.914 (72.3k), m=20 0.993 (88.6k); ORACLE m=1 0.595 (17.7k), m=2 0.822 (20.9k), m=3 0.928 (21.8k), m=10 1.0 (22.2k). Head-to-head cheapest pool to reach ceiling: 0.70 static 72.8k vs goal 53.9k (goal/static 0.74); 0.90 static 87.4k vs goal 72.3k (0.83); oracle reaches 0.90 at 21.8k.",
+  "results_description": "A goal-specific router that routes home + the top-m foreign clusters predicted from the goal's NAME tokens beats the static top-K bridge router on the complete-coverage ceiling: at matched breadth it reaches a higher ceiling (b=5: 0.729 vs 0.674; b=10: 0.914 vs 0.859) and reaches targets from 0.70-0.91 at 17-26% fewer candidate decls. But the realizable name-token predictor leaves large headroom: an ORACLE goal-specific router reaches 0.93 coverage at just ~21.8k candidates (24% of the library) vs the realizable predictor's ~72k and the static router's ~87k -- a ~4x potential cut. The realizable predictor's pool is inflated at matched breadth by a hub-bias (it routes large token-associated clusters rather than the small specialized clusters the goal actually needs).",
+  "conclusions": "Confirms a-0026's named lever WORKS within q-0011's retrieval proxy: a per-goal name-token router beats the static top-K bridge router on the prover-relevant complete-coverage ceiling (higher ceiling at matched breadth; 17-26% cheaper to reach 0.70-0.91), partially realizing the concentrated-need advantage e-0029 identified. But it is only PARTIALLY realized: an oracle goal-specific router would reach 0.93 coverage at ~4x fewer candidates (~21.8k vs ~87k), and the name-token predictor captures only part of that gap because it has a hub-bias toward large token-associated clusters instead of the small specialized clusters a cross-domain goal needs. So the cheap, near-exhaustive goal-specific router a-0026 envisioned is real but needs a less hub-biased target predictor; a content/type-aware target signal is the remaining lever. Still a premise-availability upper bound, not a measured prover success rate.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-12T13:47:11.623Z",
+    "updated_at": "2026-06-12T13:47:11.623Z"
+  },
+  "comments": {}
+}
