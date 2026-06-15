@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0056",
+  "stream": "proof-hierarchies",
+  "text": "q-0011 (previously UNANSWERED) asked whether a rough->fine pass@k gap is mechanistically attributable to the small model USING the decomposition -- citing/reusing named have-steps rather than re-deriving inline -- 'buildable by parsing generated proofs in the planned q-0007 eval logs.' Those logs are Modal-blocked, so e-0058 does the two design-stage things the eval needs: BUILDS the named-have citation detector (tokenize each term-mode have body, match identifiers against names of haves introduced earlier in pre-order) and MEASURES the base rate of citeable/reused named structure across all 1261 deep decls (4700 named haves, 6966 nodes). FINDINGS: the leverage construct is REAL but SPARSE and only PARTIALLY OBSERVABLE. Citation distribution (term-mode-visible): 575/4700=12.2% of named haves are citeable (>=1 downstream ref), 126/4700=2.7% are genuinely REUSED (>=2). Per construct-valid proof (e-0032 substantive width>=2, n=666): 39.0% expose a cited named have, only 9.9% a reused (>=2) one. CRITICAL: 48.3% of named haves are proved by OPAQUE tactic blocks ('by') whose internal references this extraction cannot see, so the rates are LOWER BOUNDS and ~half the reuse evidence is structurally hidden. CONSEQUENCES for the q-0007 eval: (1) the mechanism test is FEASIBLE -- a simple identifier-token detector recovers genuine reuse (e.g. have Npos := lt_of_lt_of_le Nat.succ_pos' aN cites earlier have aN); (2) SCOPE it to the ~10-39% construct-valid-and-citeable subset, do NOT expect a whole-corpus reuse signal -- on most fine targets the named have has a single downstream consumer; (3) INSTRUMENTATION: capture FULL generated proof TEXT, not just a have-tree, since a have-tree-only parse undercounts reuse ~2x (48.3% opaque bodies); (4) the cited>=2 'genuinely reused' subset (126 haves, 66/666 proofs) is the cleanest leverage fingerprint -- pi_root cannot inline a multiply-cited subgoal without duplicating it, so reuse there is exactly what distinguishes 'used the decomposition' from 'shorter/format-friendlier target'. CAVEATS: term-mode-only lower bound; single-letter have names risk rare false matches; pre-order is a proxy for in-scope-before; counts not pass@k. (Relevant to q-0008's length/format confound: a pass@k gap that co-occurs with cited>=2 reuse is harder to dismiss as a pure length effect.)",
+  "status": "supported",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0058"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:27:40.704Z",
+    "updated_at": "2026-06-15T08:27:40.704Z"
+  },
+  "comments": {}
+}

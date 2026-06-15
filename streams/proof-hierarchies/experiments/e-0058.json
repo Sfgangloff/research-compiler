@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0058",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only HAVE-REUSE leverage gate for q-0011: in the real deep FINE targets, are named sub-results actually CITED by other steps in the same proof (the structural prerequisite for the model LEVERAGING the decomposition rather than re-deriving inline), and can the eval detect it? Builds the citation detector the planned q-0007 eval will run over generated proof text (tokenize each term-mode have body for identifiers, match against names of haves introduced earlier in pre-order), then measures the base rate of citeable/reused named structure over all 1261 deep decls. cited>=2 ('genuinely reused') is decision-load-bearing: pi_root cannot inline a multiply-cited subgoal without duplicating it, so it is exactly where rough and fine diverge and where leverage must be learned.",
+  "motivation": "q-0011 (a mechanism question none of q-0007/q-0008/q-0009 ask) was UNANSWERED: a rough->fine pass@k gap could be a side effect of length/format rather than the model exploiting the decomposition. The planned eval's generated-proof logs are Modal-blocked, so -- in the design-stage spirit of the e-0040..e-0056 power/identifiability chain -- this BUILDS the named-have citation detector the eval needs and MEASURES whether observable leverage structure even exists in the targets, so the 'did the model use the decomposition' read is scoped and interpretable instead of discovered post hoc to be unmeasurable.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_have_reuse.py",
+    "commit": "2727db0",
+    "lines": "240",
+    "run_cmd": "python3 data/analyze_deep_have_reuse.py"
+  },
+  "formal_results": "1261 deep decls, 4700 named haves, 6966 total have-tree nodes. Body types: 45.2% term-mode (parseable refs), 45.2% tactic-mode 'by' (OPAQUE -- internal refs invisible), 9.5% empty; 48.3% of NAMED haves are proved by an opaque tactic block. Named-have citation distribution (term-mode-visible): cited 0x=4125, 1x=449, 2x=105, 3x=15, 4x=4, 5x=1, 6x=1. So 575/4700=12.2% of named haves are citeable (>=1 downstream ref) and 126/4700=2.7% are genuinely REUSED (>=2). Per-proof: 334/1261=26.5% expose a cited named have, 81/1261=6.4% a reused (>=2) one. Construct-valid subset (e-0032 substantive width>=2, n=666): 260=39.0% expose a cited named have, 66=9.9% a reused one. All figures are LOWER BOUNDS (48.3% of named haves' bodies are opaque tactic blocks).",
+  "results_description": "The leverage construct is REAL but SPARSE and only PARTIALLY OBSERVABLE. The detector finds genuine citations (e.g. have Npos := lt_of_lt_of_le Nat.succ_pos' aN cites earlier have aN). But even in the construct-valid population only ~39% of fine targets contain ANY detectable named-have citation and only ~9.9% contain a multiply-reused (cited>=2) named have -- the subset where pi_root's inlining genuinely differs from pi_leaf's naming. Critically, 48.3% of named haves are proved by opaque tactic blocks whose internal references this extraction cannot see, so ~half the reuse evidence is structurally hidden and the 12.2%/2.7% rates are lower bounds.",
+  "conclusions": "Answers q-0011 at design stage. (1) FEASIBLE: a simple identifier-token citation detector recovers real named-have reuse, so the eval CAN test 'granularity helped == granularity was used'. (2) SCOPE WARNING: observable leverage is the EXCEPTION not the rule -- restrict the mechanism test to the ~10-39% construct-valid-and-citeable subset, and do not expect a whole-corpus reuse signal; on most fine targets the named have has a single downstream consumer or its uses are hidden in tactic blocks. (3) INSTRUMENTATION PRESCRIPTION: capture FULL generated proof TEXT (not just a have-tree), because 48.3% of named-have bodies are opaque tactic blocks here and a have-tree-only parse undercounts reuse by ~2x; reuse inside tactic blocks must be parseable for the leverage read to be unbiased. (4) The cited>=2 'genuinely reused' count (126 named haves, in 66/666 construct-valid proofs) is the cleanest leverage signal: a multiply-cited subgoal cannot be cheaply inlined by pi_root, so reuse there is the mechanistic fingerprint distinguishing 'used the decomposition' from 'shorter target'. CAVEATS: term-mode-only (lower bound); single-letter have names (A,B) risk rare false matches against library identifiers; pre-order position is a proxy for in-scope-before; counts not pass@k.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0056"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:26:57.204Z",
+    "updated_at": "2026-06-15T08:27:40.705Z"
+  },
+  "comments": {}
+}
