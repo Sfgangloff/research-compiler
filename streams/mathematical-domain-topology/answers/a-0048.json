@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0048",
+  "stream": "mathematical-domain-topology",
+  "text": "Bridge DETECTION is NOT algorithm-robust -- a sharper limit than the seed-instability of a-0046/a-0047. e-0052 runs the canonical pipeline UNCHANGED on partitions from 5 community-detection algorithms over the SAME deterministically-sorted LCC (leiden_modularity, louvain, fastgreedy, label_propagation, infomap). Both the SCALE and the IDENTITY of the operational-bridge population are governed by the partition's cluster granularity, not by any algorithm-free property. Raw operational-bridge counts span 98 (fastgreedy) -> 295 (leiden) -> 356 (louvain) -> 618 (label_prop) -> 23,134 (infomap) vs the canonical 280; strict counts 17->66->4059. Pairwise Jaccard of the bridge THEOREM sets across algorithms is only 0.029 raw / 0.018 strict (vs 0.31/0.10 across SEEDS in e-0050), and the cross-ALGORITHM core -- theorems flagged a raw bridge by ALL 5 -- is EMPTY (vs the 27-theorem seed-stable core of e-0051); only 10 theorems are shared by 4 algorithms, 22,481 of 23,435 by exactly one. The reason is mechanical: the bridge DEFINITION (premises spanning >=2 PURE clusters) inherits the algorithm's resolution -- finer partitions (infomap 4193 clusters, 3065 pure) make premise-spanning ubiquitous (~25% of the graph becomes a bridge), while a few-giant-clusters partition (fastgreedy) makes it rare. The scarce ~280-raw / ~34-strict object is therefore specific to the MODULARITY-RESOLUTION regime (~140-160 clusters): the only algorithm pair that agrees at all is Leiden<->Louvain (both modularity, ~150 clusters, 295/356 raw, Jaccard 0.18 raw / 0.07 strict), and infomap -- though it explodes the count -- still recovers 82.5% of the canonical 280 because its many fine clusters subsume the Leiden pure clusters. Net for q-0006/q-0007: the operational-bridge construct is RESOLUTION-RELATIVE, not an algorithm-invariant feature of mathematics; the q-0006/q-0007 existence-and-scale claim holds only when the clustering resolution is pinned to the modularity regime the project used. This does NOT contradict e-0049's RELATIVE depletion-vs-config-null result (a per-partition comparison, not re-measured per algorithm here) -- the present limit is about absolute scale and named identity, which a-0046/a-0047 already flagged as the least reproducible layer and which this shows is even less stable across algorithm than across seed. Caveat: counts here are raw, not null-normalized; whether the ~16-20x depletion-vs-null itself is algorithm-stable is untested and a natural follow-up.",
+  "status": "supported",
+  "answers": [
+    "q-0006",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0052"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:41:54.556Z",
+    "updated_at": "2026-06-15T08:41:54.556Z"
+  },
+  "comments": {}
+}

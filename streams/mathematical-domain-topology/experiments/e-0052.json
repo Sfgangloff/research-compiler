@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0052",
+  "stream": "mathematical-domain-topology",
+  "description": "Algorithm-robustness of operational-bridge DETECTION: run the canonical detection pipeline (label_clusters -> find_bridge_theorems -> indegree elbow/filter) UNCHANGED on partitions from 5 different community-detection algorithms (leiden_modularity baseline, louvain, fastgreedy, label_propagation, infomap) over the SAME deterministically-sorted LCC. Tests whether the scarce operational-bridge phenomenon (q-0006/q-0007) is algorithm-agnostic or a Leiden artifact -- a new robustness axis beyond seed (e-0050/e-0051) and config-null (e-0049).",
+  "motivation": "Every prior robustness check varied only the Leiden random SEED or used a degree-preserving null; none tested a genuinely DIFFERENT clustering objective/optimizer. The bridge DEFINITION (premises spanning >=2 PURE clusters) inherits the partition's granularity, so algorithm choice could change scale and identity.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_algorithm_robustness.py",
+    "commit": "e2f7ab1",
+    "run_cmd": "python3.12 -m src.bridge_algorithm_robustness"
+  },
+  "formal_results": "For each algo A: partition P_A over the sorted LCC (n=92,594-ish, simplified igraph); pure clusters (dom module >=50%); raw operational bridges B_A = theorems with premises in >=2 distinct pure clusters; strict via in-degree elbow theta. Report n_clusters, n_pure, |B_A| raw/strict, pairwise Jaccard of bridge THEOREM sets, cross-algo core = intersection over all 5, recovery of canonical stored 280 raw / 34 strict.",
+  "results_description": "n_clusters varies 138(leiden)/160(louvain)/1106(fastgreedy)/809(labelprop)/4193(infomap); n_pure 112/134/1032/774/3065. RAW bridge count: leiden 295, louvain 356, fastgreedy 98, label_prop 618, infomap 23134 (mean 4900, range 98-23134 vs canonical 280). STRICT: 44/17/66/58/4059. Pairwise Jaccard raw mean 0.029 (range 0.004-0.184), strict mean 0.018. vs-Leiden-baseline Jaccard raw: louvain 0.184 (closest), fastgreedy 0.010, label_prop 0.014, infomap 0.010. Cross-algo core (raw bridge in ALL 5): 0 theorems; only 10 in 4 algos, 92 in 3, 852 in 2, 22481 in exactly 1 (union 23435). Canonical-raw recovery: infomap 0.825, leiden 0.50, louvain 0.257, others <0.08.",
+  "conclusions": "The operational-bridge population is NOT algorithm-invariant in scale or identity -- both are governed by the partition's cluster granularity/shape. The scarce ~280-raw object is specific to the modularity-resolution regime (~140-160 clusters): only Leiden and Louvain (the two modularity methods) agree at all (Jaccard 0.18, both ~300-356 raw). Finer-resolution methods reframe up to ~25% of the graph as bridges (infomap, 23k). The all-algorithm core is empty -- weaker than the seed-stable 27-core (e-0051). q-0006/q-0007 hold only RELATIVE to a fixed modularity resolution; there is no algorithm-free operational bridge. Does NOT contradict e-0049's RELATIVE depletion-vs-null claim (not re-measured per algo).",
+  "addresses": [
+    "q-0006",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0048"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:41:16.936Z",
+    "updated_at": "2026-06-15T08:41:54.558Z"
+  },
+  "comments": {}
+}
