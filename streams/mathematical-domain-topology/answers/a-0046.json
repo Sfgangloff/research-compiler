@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0046",
+  "stream": "mathematical-domain-topology",
+  "text": "Bridge DETECTION is seed-robust in SCALE and depth structure but NOT in bridge IDENTITY -- the caveat a-0044 raised about 'the specific 34 bridge theorems' is now measured. e-0044 re-clustered under 7 seeds but never re-ran detection; e-0050 does, running the CANONICAL pipeline UNCHANGED (label_clusters -> find_bridge_theorems -> indegree_sweep/elbow/filter) on each fresh partition for the same seeds {0,1,7,42,123,2024,31337}. The PHENOMENON reproduces: every seed finds a few hundred raw operational bridges (285-525, mean 383, same order as the canonical 280) that a low-indegree elbow (theta=1 in 5 seeds, theta=2 in 2) cuts to a few dozen strict bridges (7-60, mean 25, bracketing canonical 34). But the IDENTITY does not: pairwise Jaccard of the raw bridge theorem sets is only 0.31 (0.22-0.44) and of the strict sets only 0.10 (0.013-0.28); a fresh partition recovers on average just 52% of the canonical 280 raw bridges (fresh seed-42 itself only 48%, confirming a-0044's note that stored clusters.json reflects extra processing beyond a bare rerun) and only 17% of the canonical 34 strict (fresh seed-42 = 3/34). Of 1203 theorems ever flagged as a raw bridge, 706 appear in just ONE seed and only 79 in ALL seven; only 1 theorem is a strict bridge in all seven. The auto-selected elbow theta flips between 1 and 2 across seeds, driving most of the strict-count volatility. Net: q-0006/q-0007 hold at the level of EXISTENCE and SCALE -- a scarce, depth-filterable operational-bridge population, consistent with e-0049's partition-AGNOSTIC ~16-20x depletion result -- but the specific NAMED lists (the 280 raw and especially the strict 34) are one representative sample of one partition, not a seed-invariant object. There is a small reproducible CORE (79 raw bridges flagged in every seed) worth treating as high-confidence; the rest is a seed-dependent halo. This sharpens how the paper's cluster-identity claims (the exact 34, SetTheory-as-hub-by-cluster-id in a-0010) should be read: illustrative, not canonical.",
+  "status": "supported",
+  "answers": [
+    "q-0006",
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0050"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:13:21.945Z",
+    "updated_at": "2026-06-15T08:13:21.945Z"
+  },
+  "comments": {}
+}

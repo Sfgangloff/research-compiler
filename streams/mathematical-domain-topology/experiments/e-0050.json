@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0050",
+  "stream": "mathematical-domain-topology",
+  "description": "Seed-robustness of bridge DETECTION (not just domain recovery, which e-0044 already covered). For the SAME 7 seeds {0,1,7,42,123,2024,31337} e-0044 used, re-run Leiden (ModularityVertexPartition, 10 iterations) on the exact undirected LCC cluster.py uses, then re-run the CANONICAL detection pipeline UNCHANGED on each partition: label_clusters.label_clusters -> pure clusters (dom module>=50%); bridge_theorems.find_bridge_theorems -> RAW operational bridges; depth_filter.indegree_sweep+find_elbow+filter_bridges -> STRICT bridges (auto elbow theta). Measure stability of the DETECTED THEOREM SETS: per-seed raw/strict counts and elbow theta; pairwise Jaccard of raw and strict bridge theorem sets; recovery of the canonical stored sets (280 raw / 34 strict); and the stable core flagged in ALL 7 seeds.",
+  "motivation": "a-0044 showed aggregate domain recovery is seed-robust but flagged that cluster-IDENTITY-dependent downstream claims -- 'the specific 34 bridge theorems, the exact 138 clusters, SetTheory-as-hub by cluster id' -- rest on one particular partition that would shift across seeds. e-0044 measured partition stability but never re-ran bridge detection. This directly tests whether the q-0006/q-0007 detected object survives a seed change. Cheap CPU-only check reusing the canonical detection code over existing data.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/bridge_detection_stability.py",
+    "commit": "af6740b",
+    "run_cmd": "python3.12 -m src.bridge_detection_stability"
+  },
+  "formal_results": "7 seeds on the LCC (92,594 nodes). Per-seed raw bridges 285-525 (mean 383.4); strict bridges 7-60 (mean 25.1); elbow theta=1 for 5 seeds, theta=2 for 2 seeds (the seeds with theta=2 give the high strict counts 36/60). Pairwise Jaccard of RAW bridge theorem sets: mean 0.312 (range 0.221-0.440). Pairwise Jaccard of STRICT sets: mean 0.100 (range 0.013-0.278). Recovery of canonical stored 280 raw: mean 0.516 (fresh seed-42 only 0.482); recovery of canonical 34 strict: mean 0.168 (fresh seed-42 only 3/34=0.088). Stable core flagged in ALL 7 seeds: 79 raw (of union 1203; 706 are singletons appearing in 1 seed) and just 1 strict (of union 127).",
+  "results_description": "The bridge PHENOMENON is seed-robust in SCALE and depth structure -- every seed finds a few hundred raw operational bridges (same order as canonical 280) that a low-indegree elbow (theta=1 or 2) cuts to a few dozen -- but the IDENTITY of the bridges is NOT seed-stable: any two seeds agree on only ~31% of raw bridges (Jaccard) and ~10% of strict bridges, the canonical stored 34 strict are only ~17% recovered by fresh partitions, and only 79 raw / 1 strict theorems are flagged in every seed. The elbow theta itself flips between 1 and 2 across seeds, which drives most of the strict-count volatility (7-60).",
+  "conclusions": "Confirms and quantifies a-0044's caveat for the detected object specifically. q-0006/q-0007 are robust at the level of EXISTENCE and SCALE (a scarce few-hundred->few-dozen operational-bridge population, consistent with e-0049's partition-agnostic depletion result), but the specific NAMED lists -- the 280 raw and especially the strict 34 -- are one representative sample of one partition, not a seed-invariant set (Jaccard 0.31/0.10; canonical-strict recovery 17%). There is a small reproducible CORE (79 raw bridges flagged in all 7 seeds) that deserves high-confidence status; the rest is a seed-dependent halo. Cluster-identity claims (the exact 34, SetTheory-as-hub-by-cluster-id in a-0010) should be read as illustrative, not canonical.",
+  "addresses": [
+    "q-0006",
+    "q-0007"
+  ],
+  "produces": [
+    "a-0046"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T08:12:47.134Z",
+    "updated_at": "2026-06-15T08:13:21.948Z"
+  },
+  "comments": {}
+}
