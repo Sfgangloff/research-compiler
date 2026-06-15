@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0052",
+  "stream": "proof-hierarchies",
+  "text": "q-0005 ('multi-level intermediate-optimum/U-shape, or just binary rough vs fine?') was answered BINARY — but on corpus_v3, before the Stage-0.5 chain (a-0044..a-0051) pivoted the construct-valid + compute-matched headline to the DEEP route and never re-asked q-0005 there. e-0054 re-asks it from the raw have-trees. The canonical study file deep_wide_targets.json stores only each proof's flat top frontier (frontier_width, frontier_chars) and DISCARDS the nested have-tree, so the answer was structurally hidden. Measuring named-have NESTING depth (longest root->leaf chain over named have nodes = number of stacked antichains a policy can cut at) on the 633 canonical wide-frontier targets: depth dist {1:279, 2:313, 3:37, 4:3, 5:1}. 354/633 = 55.9% carry >=2 nested named frontiers, so a genuine INTERMEDIATE cut pi_mid (an antichain strictly between pi_root and pi_leaf) is structurally available for a MAJORITY of the study set; 41/633 = 6.5% even support a 4-level contrast (depth>=3). (Over all 1253 name-deduped raw deep targets the figure is 48.0% depth>=2.) CONSEQUENCE: contra q-0005's binary verdict, the deep pivot REOPENS the U-shape/intermediate-optimum question — the headline could run a 3-level rough/mid/fine contrast for ~354 targets, not just binary. But this costs a 3rd adapter + 3rd eval arm the 2-arm Stage-0.5 cost chain (e-0048 eval, e-0052 training) never priced, so a U-shape design is ~1.5x the already-gated 2-arm compute. CAVEAT: e-0054 measures STRUCTURAL availability only; whether the intermediate cut is CONSTRUCT-VALID (carries distinct granularity, not just format, signal vs both rough and fine) depends on the off-disk residual body (e-0036) and needs the paid extract (e-0037) — so this re-opens the question but cannot yet answer whether pi_mid is worth the third arm.",
+  "status": "supported",
+  "answers": [
+    "q-0005"
+  ],
+  "backed_by": [
+    "e-0054"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:50:01.052Z",
+    "updated_at": "2026-06-15T07:50:01.052Z"
+  },
+  "comments": {}
+}

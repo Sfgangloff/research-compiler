@@ -3,12 +3,12 @@
   "id": "q-0005",
   "stream": "proof-hierarchies",
   "text": "Given the observed structure, is the right contrast a multi-level 'intermediate-optimum / U-shape', or just a binary rough vs fine?",
-  "status": "answered",
+  "status": "open",
   "tags": [],
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T12:02:24.996Z",
-    "updated_at": "2026-06-11T12:03:03.965Z"
+    "updated_at": "2026-06-15T07:50:10.953Z"
   },
   "comments": {},
   "stories": [

@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0054",
+  "stream": "proof-hierarchies",
+  "description": "DEEP nesting-depth gate: does the construct-valid deep study route structurally support an intermediate granularity pi_mid (re-opening q-0005's U-shape contrast), measured from the raw have-trees in data/deep/*.json.",
+  "motivation": "The Stage-0.5 chain pivoted the headline to the deep route for construct validity (a-0026) and compute-matching (a-0051), but priced only a BINARY 2-arm rough/fine design and inherited q-0005's 'binary' verdict — which was decided on corpus_v3, not re-asked on the deep targets. The canonical target file deep_wide_targets.json stores only the flat top frontier (frontier_width, frontier_chars) and discards the nested have-tree, hiding whether a third antichain BETWEEN pi_root and pi_leaf exists.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_nesting_depth.py",
+    "commit": "4797d67",
+    "run_cmd": "python3 data/analyze_deep_nesting_depth.py"
+  },
+  "formal_results": "named-nesting-depth(target)=longest root->leaf chain counting only NAMED have nodes (name!='_') = number of stacked named antichains a policy can cut at. depth0=rough==fine; depth1=binary only; depth>=2=pi_mid available (3-level U-shape); depth>=3=4-level. Computed over raw data/deep have-trees, deduped by decl name, then matched by name to the 633 canonical deep_wide_targets.json study targets.",
+  "results_description": "Canonical 633 wide-frontier study targets (all matched, 0 missing): depth dist {1:279, 2:313, 3:37, 4:3, 5:1}. 354/633 = 55.9% have >=2 nested named levels (pi_mid structurally available); 279/633 = 44.1% binary-only; 41/633 = 6.5% support a 4-level contrast (depth>=3). Over all 1253 name-deduped raw deep targets: 602 (48.0%) depth>=2, 575 binary-only, 76 with no named have. (8 of 1261 raw targets share a decl name and collapse under name-dedup.)",
+  "conclusions": "The deep pivot, chosen for construct validity and compute-matching, STRUCTURALLY REOPENS q-0005's multi-level / U-shape contrast that corpus_v3 closed as binary: a majority (56%) of the canonical study targets admit a genuine intermediate cut pi_mid, and the flat target representation hid this. CONSEQUENCE: the headline could run a 3-level (rough/mid/fine) contrast for ~354 targets instead of binary — but a pi_mid arm adds a 3rd adapter + 3rd eval arm that the 2-arm cost chain (e-0048/e-0052) never priced. CAVEAT: this measures STRUCTURAL availability only; whether the intermediate cut is CONSTRUCT-VALID (carries distinct granularity vs format signal vs rough/fine) needs the off-disk residual body (e-0036), i.e. the paid extract (e-0037).",
+  "addresses": [
+    "q-0005",
+    "q-0008"
+  ],
+  "produces": [
+    "a-0052"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:49:37.900Z",
+    "updated_at": "2026-06-15T07:50:01.057Z"
+  },
+  "comments": {}
+}
