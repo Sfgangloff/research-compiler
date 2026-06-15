@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0033",
+  "stream": "mathematical-domain-topology",
+  "text": "Module path -- the LAST leakage-free corpus signal -- does not help cross-domain retrieval at the intra-cluster RANKING level, just as it failed at the cluster ROUTING level, confirming the name-token content ranker already saturates the corpus's usable content. The e-0012..e-0017 chain established that the strongest intra-cluster ranker (e-0016/a-0015) orders the bridge-routed pool by IDF-weighted overlap of the goal's NAME tokens with candidate NAME tokens; the symmetric question -- whether the goal's and candidates' MODULE PATH (file_path) helps at the ranking stage -- was open (the path goal-router only tested it for cluster selection, where it failed: a-0031). e-0036 supplies it: holding e-0016 fixed (bridge router home+top-5, 432 held-out cross-domain TEST theorems, same accounting and leakage control) and changing ONLY the token bag to NAME UNION PATH tokens RAISES the cost to reach every cross-domain premise-recall target -- 0.70 at 10.0k vs 7.2k (+39%), 0.80 at 15.6k vs 11.7k (+33%), 0.90 at 28.4k vs 19.5k (+46%). Path augmentation helps only at the extreme top of the ranking (B<=200; e.g. 0.248 vs 0.230 at B=50) then loses across the operating mid-band (0.699 vs 0.778 at B=10k); both arms cap at the same routing-determined 0.9341 ceiling. The mechanism: cross-domain premises live in FOREIGN modules by construction, so path-token overlap rewards same-module (home) declarations and demotes exactly the foreign specialized lemmas bridge retrieval targets (it surfaces 131 extra premises at B=2000 but loses more than it gains). Net for q-0011: module path is counterproductive as an intra-cluster ranking signal; combined with the path goal-router null (a-0031), the corpus's only non-name content signal fails at BOTH the routing and ranking stages, sharpening a-0015 -- the name-token ranker has exhausted the corpus's leakage-free content, and the cross-domain tail genuinely needs type/statement content the corpus does not expose. Still a premise-recall proxy, not a measured prover success rate or transfer.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0036"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T03:48:54.677Z",
+    "updated_at": "2026-06-15T03:48:54.677Z"
+  },
+  "comments": {}
+}

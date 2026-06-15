@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0036",
+  "stream": "mathematical-domain-topology",
+  "description": "Hold e-0016 fixed (bridge router home+top-5, same 432 held-out cross-domain TEST theorems, same candidate accounting, same leakage control) and change ONLY the intra-cluster token bag: content_name = query & candidate NAME subtokens (reproduces e-0016); content_both = NAME UNION module-PATH (file_path) subtokens; popularity and exact-hypergeometric random as references. IDF/stop rebuilt per arm over all clustered decls; W/popularity from TRAIN only; recall on TEST. Query signals are the test theorem's own NAME and FILE_PATH, both available before proving.",
+  "motivation": "e-0016 (a-0015) gave the strongest intra-cluster premise ranker using ONLY query/candidate NAME tokens. The module-PATH goal-router (pathtokens) showed file_path is leakage-safe and prover-available but did NOT close the oracle gap at the cluster-ROUTING level; the symmetric question -- does module path help at the intra-cluster RANKING level -- was never asked. Cheap CPU-only test of the last leakage-free corpus signal at the ranking stage.",
+  "code_pointer": {
+    "repo": "topology-mathematical-knowledge",
+    "path": "src/bridge_retrieval_content_path.py",
+    "commit": "36ce266"
+  },
+  "formal_results": "432 cross-domain test theorems (all 432 have a file_path), whole-pool ceiling 0.9341 at mean 53.8k candidates (identical to e-0016). Budget-to-reach cross-domain premise recall: content_name 7.2k(>=0.70)/11.7k(>=0.80)/19.5k(>=0.90) [reproduces e-0016 exactly]; content_both 10.0k/15.6k/28.4k -- WORSE by +39%/+33%/+46%. content_both edges content_name only at the very top of the ranking (B=50 0.248 vs 0.230; B=100 0.290 vs 0.276; B=200 0.334 vs 0.329) then loses across the mid-band (B=10k 0.699 vs 0.778). Both arms cap at the same 0.9341 ceiling (routing-determined). Diagnostic at B=2000: path augmentation surfaces 131 premises name-only misses (median 6 train citations) but loses more than it gains overall.",
+  "results_description": "Adding module-path tokens to the strongest intra-cluster content ranker HURTS cross-domain premise retrieval at every useful budget, raising the cost to reach 0.70/0.80/0.90 recall by 33-46%; it helps only marginally at the extreme top of the ranking (B<=200).",
+  "conclusions": "Module path is NOT a free intra-cluster lever -- it is counterproductive at operating budgets. Because cross-domain premises live in FOREIGN modules by construction, path-token overlap rewards same-module (home) declarations and demotes exactly the foreign specialized lemmas bridge retrieval targets. This mirrors the path goal-router null at the routing level (pathtokens): the last leakage-free corpus signal (module path) does not help cross-domain retrieval at the ranking stage either, sharpening a-0015 -- the name-token content ranker already saturates the corpus's usable content signal, and exhausting it cannot crack the cross-domain tail. Still a premise-recall proxy, not a measured prover success rate.",
+  "addresses": [
+    "q-0011"
+  ],
+  "produces": [
+    "a-0033"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T03:48:18.499Z",
+    "updated_at": "2026-06-15T03:48:54.685Z"
+  },
+  "comments": {}
+}
