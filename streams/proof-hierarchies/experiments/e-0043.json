@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0043",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only INTERACTION (DiD) x pass@k power/MDE gate — the missing 4th cell of the Stage-0.5 go/no-go matrix, synthesizing e-0041 (interaction, pass@1) with e-0042 (single gap, pass@k). Combines e-0041's four-arm one-factor Gaussian copula + DiD z-test on D=(rough_small-fine_small)-(rough_large-fine_large) with e-0042's pass@k marginal transform P(k)=1-(1-p)^k applied to each arm. Per-sample small-fine rate s_f in {0.05,0.10,0.20} near the e-0005 floor, large arm at s_f+LIFT (LIFT=0.10), delta_large=0 (null sub-case), rho=0.5 exchangeable; sweeps k in {1,2,4,8,16}, n in {50,63,116,200} for the smallest per-sample small-model gap reaching 80% power. Pure stdlib (random, math via erf/bisection); seed 0; M=1200.",
+  "motivation": "e-0042's pass@k rescue was only ever shown for the SINGLE gap and e-0041's interaction surcharge only ever under pass@1, leaving the 4th cell — the one the capstone actually needs — uncomputed: does pass@k also rescue the harder gap-GROWS-as-model-shrinks DiD, or does saturation bite EARLIER for the interaction because the large model (at s_f+LIFT) hits the pass@k ceiling first? Decision-relevant for the Modal go/no-go and cheap to settle by reusing both machineries unchanged.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_interaction_passk_power_mde.py",
+    "commit": "27f4a1a",
+    "lines": "252",
+    "run_cmd": "python3 data/analyze_interaction_passk_power_mde.py"
+  },
+  "formal_results": "Type-I error at the null DiD=0 well-calibrated (0.040-0.067 across cells; lone conservative dip 0.022 at n=50,s_f=0.20,k=16, an unreachable cell). k=1 column REPRODUCES e-0041's DiD MDE (n=116 +0.16/0.18/0.20; n=200 +0.12/0.14/0.15; n=50 +0.25/0.28/0.30; n=63 +0.22/0.24/0.27), validating the harness. pass@k interaction MDE (per-sample small-model gap @80% power, delta_large=0): at FLOOR rates s_f=0.05-0.10 it drops sharply — n=116 +0.16-0.18(k=1) -> +0.03-0.06(best k=16); n=200 +0.12-0.14 -> +0.03-0.04; n=50 +0.25-0.28 -> +0.05-0.11; n=63 +0.22-0.24 -> +0.05-0.09. At s_f=0.20 the rescue is NARROW: best k=4 for all n (n=116 +0.20->+0.12), and k=8 already worse, k=16 UNREACHABLE (>0.50) at EVERY n. Best k is boundary k=16 at low rates, interior k=4-8 at s_f=0.20.",
+  "results_description": "pass@k rescues the capstone INTERACTION even MORE than the single gap (e-0042) when rates sit near the e-0005 0/50 floor: a ~3-5x MDE cut vs e-0042's ~2-3x for the single gap, because with delta_large=0 the saturating large arm's difference collapses to ~0 with LOW variance, removing noise the DiD pays for its second difference. So the n=116 supply-ample route's interaction MDE falls from +0.16-0.18 per-sample (k=1, statistically invisible) to +0.03-0.06 (best k), finally within reach of a plausible few-point granularity effect. BUT the rescue is FRAGILE and rate-dependent: at s_f=0.20 the large model (at 0.30 per-sample) saturates first, collapsing the gap, so k=16 is unreachable everywhere and the usable window (best k=4) is NARROWER than e-0042's single-gap window — the interaction's pass@k escape hatch is real only while the weaker arms stay below ~0.2 per-sample.",
+  "conclusions": "Completes the {single,interaction} x {pass@1,pass@k} design-power matrix and gives the most optimistic — but conditional — go/no-go read so far: the capstone 'gap grows as the model shrinks' interaction IS resolvable at the affordable n=116 route (MDE ~+0.03-0.06 per-sample) PROVIDED (a) scoring is pass@k with k tuned high (~8-16) AND (b) the small-model floor rate stays low (s_f<=0.10) — exactly the regime e-0005's 0/50 floor predicts. The rescue evaporates if rates climb to ~0.20 (k=16 unreachable; best k=4). Decision: the Modal design should adopt pass@k with k~8-16 and confirm the eval subset keeps the weaker policy near the floor; report effect-sizes-with-CIs (per e-0040/e-0041) since the favorable cell is narrow. CAVEAT: design-stage power calc; inherits e-0041/e-0042 assumptions — exchangeable rho=0.5 in pass@k space (real pass@k correlation likely higher -> conservative), k samples i.i.d. (no shared-difficulty random effect collapsing them), delta_large=0 optimistic (a real positive large gap shrinks the DiD); projects power, not a measured pass@k outcome.",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0041"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:47:22.845Z",
+    "updated_at": "2026-06-15T02:48:02.051Z"
+  },
+  "comments": {}
+}

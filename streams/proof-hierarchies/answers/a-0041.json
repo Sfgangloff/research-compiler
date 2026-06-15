@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0041",
+  "stream": "proof-hierarchies",
+  "text": "The Stage-0.5 power trilogy filled three cells of a 2x2 — single gap x pass@1 (e-0040), interaction/DiD x pass@1 (e-0041), single gap x pass@k (e-0042) — but left the one the CAPSTONE actually needs uncomputed: the gap-GROWS-as-model-shrinks INTERACTION under pass@k scoring. e-0043 supplies it, reusing e-0041's four-arm Gaussian-copula DiD z-test with e-0042's pass@k marginal transform P(k)=1-(1-p)^k on each arm (rho=0.5 exchangeable, LIFT=0.10, delta_large=0, M=1200, seed 0). Type-I error at the null is well-calibrated (0.040-0.067) and the k=1 column REPRODUCES e-0041's DiD MDE (n=116 +0.16-0.20; n=200 +0.12-0.15), validating the harness. Headline: pass@k rescues the harder INTERACTION target EVEN MORE than the single gap when rates sit near the e-0005 0/50 floor — a ~3-5x MDE cut (vs e-0042's ~2-3x for the single gap), because with delta_large=0 the saturating large arm's difference collapses to ~0 with LOW variance, removing the very noise the DiD pays for its second difference. So the affordable supply-ample n=116 route's interaction MDE falls from +0.16-0.18 per-sample at k=1 (statistically invisible, e-0041) to +0.03-0.06 at the best k (~16), finally within reach of a plausible few-point granularity effect; n=200 reaches +0.03-0.04. BUT the rescue is FRAGILE and rate-dependent: at s_f=0.20 the large model (per-sample 0.30) saturates first, collapsing the gap, so k=16 is UNREACHABLE at every n and the usable window (best k=4) is NARROWER than e-0042's single-gap window. DECISION (most optimistic but conditional go/no-go read so far): the capstone interaction IS resolvable at the affordable n=116 route PROVIDED (a) scoring is pass@k with k tuned high (~8-16) AND (b) the weaker policy stays near the floor (s_f<=0.10) — exactly the regime e-0005 predicts; the Modal design should adopt pass@k k~8-16, confirm the eval subset keeps the weaker policy below ~0.2, and still report effect-sizes-with-CIs (per e-0040/e-0041) because the favorable cell is narrow. CAVEAT: design-stage power calc inheriting e-0041/e-0042 assumptions — exchangeable rho=0.5 in pass@k space (real pass@k correlation likely higher -> conservative), k samples i.i.d. (no shared-difficulty random effect), delta_large=0 optimistic (a real positive large gap shrinks the DiD); projects power, not a measured pass@k outcome.",
+  "status": "supported",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0043"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T02:48:02.005Z",
+    "updated_at": "2026-06-15T02:48:02.005Z"
+  },
+  "comments": {}
+}
