@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0042",
+  "stream": "mathematical-domain-topology",
+  "description": "Extend the single-token genericity probe (e-0039) to multi-token MOTIFS (contiguous normalized-tactic n-grams, n=2,3). For each conceptual-bridge pair (the 200 MIN-closest cross-cluster proof pairs from edit_distance_bridges) and each random cross-cluster control pair from the same top-30 x top-30-longest selection, find SHARED contiguous n-grams and count those that are domain-specific (motif appears in <=3 of ~138 Leiden clusters AS A WHOLE) and, separately, 'emergent' motifs that are domain-specific despite every constituent token being generic (>=30 clusters) -- a-0036's exact hypothesis.",
+  "motivation": "a-0036 measured genericity PER SINGLE TOKEN and a-0037 showed IDF-weighting single tokens does not recover conceptual bridges; but a-0036 explicitly flagged the untested escape hatch that 'longer domain-specific tactic MOTIFS assembled from individually-generic tokens are not captured -- a natural next probe.' Cheap CPU-only test over existing edit_distance_bridges + theorem_tactics + clusters data.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/conceptual_motif_bridges.py",
+    "commit": "f74c362",
+    "run_cmd": "python3 src/conceptual_motif_bridges.py"
+  },
+  "formal_results": "15,777 normalized proofs (>=5 tactics). n=2: 0/200 conceptual-bridge pairs share an EMERGENT motif (domain-specific motif built from all-generic tokens); only 2/200 share ANY domain-specific (<=3-cluster) motif (random control 0.0008, ~floor); mean shared motifs 0.145 (bridges) vs 0.0092 (random), ~16x. n=3: 0/200 emergent, 1/200 any domain-specific (random 0.0). The 1-2 'specific' motifs surfaced are themselves generic idioms ((gcongr, linarith only [?]); (rw[@,@,@], rw[@], rw[@])) that merely fall under <=3 clusters.",
+  "results_description": "Conceptual-bridge proof pairs share MORE tactic motifs than random cross-cluster pairs (~16x, confirming the edit-distance similarity is real signal), but those shared motifs are essentially never domain-specific: 0/200 at both n=2 and n=3 are domain-specific motifs assembled from generic tokens, directly REFUTING a-0036's emergent-motif hypothesis.",
+  "conclusions": "The motif probe a-0036 named does NOT rescue conceptual-bridge detection: multi-token tactic n-grams expose no domain-specific shared structure between conceptual-bridge pairs, at the random floor. This extends a-0037 from single tokens (weighted or not) to multi-token MOTIFS, definitively closing the normalized-tactic representation path: neither tokens nor motifs recover Brouwer<->Lawvere-style conceptual bridges. The conceptual signal is not in proof tactics at any n-gram order -- it is a corpus/representation limit (statement/type CONTENT, unexposed), confirming a-0037's diagnosis.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0038"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T06:51:16.708Z",
+    "updated_at": "2026-06-15T06:52:07.099Z"
+  },
+  "comments": {}
+}

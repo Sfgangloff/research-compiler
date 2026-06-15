@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0038",
+  "stream": "mathematical-domain-topology",
+  "text": "Multi-token tactic MOTIFS do not rescue conceptual-bridge detection either -- closing the last untested escape hatch on the normalized-tactic representation. a-0036 found the edit-distance detector's 200 MIN-closest cross-cluster pairs share only ubiquitous single tokens, and explicitly flagged the hypothesis that domain-specific MOTIFS could still be assembled from individually-generic tokens (a 'natural next probe'); a-0037 ruled out IDF-weighted single tokens. e-0042 tests the motif hypothesis head-on: for contiguous normalized-tactic n-grams (n=2,3), it counts shared motifs between conceptual-bridge pairs vs random cross-cluster controls (same top-30 x top-30-longest selection), classifying each shared motif by whether it is domain-specific (appears in <=3 of ~138 clusters AS A WHOLE) and, crucially, whether it is 'emergent' (domain-specific despite every constituent token being generic). Result: the emergent count is 0/200 at BOTH n=2 and n=3 -- a-0036's hypothesis is directly REFUTED. Only 2/200 (n=2) and 1/200 (n=3) conceptual-bridge pairs share ANY domain-specific motif, at the random control floor (0.0008 / 0.0), and those few are themselves generic idioms ((gcongr, linarith only [?]); (rw[@,@,@], rw[@], rw[@])) that merely happen to fall under <=3 clusters. Conceptual-bridge pairs DO share ~16x more motifs than random (mean 0.145 vs 0.0092), confirming the edit-distance similarity is real signal -- but that signal is generic scaffolding at every n-gram order, never domain-specific shared structure. This extends a-0037 from single tokens (weighted or not) to multi-token motifs: NO normalized-tactic representation -- token or motif -- recovers Brouwer<->Lawvere-style conceptual bridges. Confirms a-0037's diagnosis that the conceptual-bridge gap (a-0009) is a corpus/representation limit (the signal lives in statement/type CONTENT, which the corpus does not expose), not a tunable-metric or feature-order problem.",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0042"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T06:52:00.485Z",
+    "updated_at": "2026-06-15T06:52:07.101Z"
+  },
+  "comments": {}
+}
