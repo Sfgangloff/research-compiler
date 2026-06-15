@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0058",
+  "stream": "proof-hierarchies",
+  "text": "e-0059's JOINT feasibility frontier rescued the headline gap-grows-as-model-shrinks INTERACTION but conditioned the entire verdict on ONE Modal-blocked parameter — the post-SFT small-model per-sample pass rate p_lo — swept on a coarse 3-point grid {0.05,0.10,0.20} that read as a binary cliff (feasible@0.10, DEAD@0.20). e-0060 sharpens that hole into a continuous break-even frontier, reusing e-0040/e-0042/e-0059's McNemar Gaussian-copula machinery VERBATIM (M=1000, rho=0.5, seed 0, interior k in {1,2,4,8}, interaction MDE = single-gap x e-0041's 1.35), sweeping p_lo on a fine 0.02..0.30 grid over the two committed supply-ample construct-valid routes (within-deep-binary n=116, on-domain-deep n=126) and solving for the break-even base rate p* at which the interaction MDE crosses each effect band. RESULT: feasibility degrades GRADUALLY, not as a cliff. At the loosest committed +0.10 band the interaction stays resolvable (interior k=8, ~34x baseline) while the small-model per-sample rate stays below p* ~ 0.14-0.16 on BOTH routes — so the design has ~0.15 ABSOLUTE HEADROOM above the e-0005 0/50 pre-SFT floor and survives a modest SFT lift, failing only if SFT pushes the small model past ~0.16 pass@1 with a still-small (<+0.10) granularity gap. The band sets the margin: the tight +0.05 target breaks at p*~0.05-0.06 (a razor's edge requiring the model essentially at the floor), while the loose +0.15 target tolerates up to ~0.28. CONSEQUENCE: e-0059's floor assumption is genuinely load-bearing but LESS BRITTLE than its 3-point sweep implied — the operational GO rule becomes 'commit the multi-size interaction run iff a cheap pilot shows small-model pass@1 <~0.15 on the deep route', and the e-0051 stage-1 single-size screen should also report the realized small-model base rate so this break-even can be checked before the 34x interaction spend. CAVEATS: design-stage synthesis inheriting e-0059's exact assumptions (COUNT-projection supply n, 1.35x DiD multiplier not a four-arm re-simulation, rho=0.5, k samples i.i.d. given p, single seed); the true post-SFT rate is Modal-blocked — this prices WHERE it must land, not where it does; p* read on a 0.02 grid.",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0060"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T12:12:07.912Z",
+    "updated_at": "2026-06-15T12:12:07.912Z"
+  },
+  "comments": {}
+}

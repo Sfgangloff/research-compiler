@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0060",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only BASE-RATE BREAK-EVEN gate for q-0007/q-0001, sharpening e-0059's coarse 3-point base-rate sweep {0.05,0.10,0.20}. e-0059 rescued the headline gap-grows-as-model-shrinks INTERACTION but conditioned the whole verdict on the unmeasured post-SFT small-model per-sample pass rate p_lo, sweeping it on a 3-point grid that hides a sharp feasible@0.10/dead@0.20 cliff. This reuses e-0040/e-0042/e-0059's McNemar Gaussian-copula machinery VERBATIM (phi, inv_phi, mcnemar_exact_two_sided, passk, simulate_power, best_k_mde; M=1000, rho=0.5, seed 0, interior k in {1,2,4,8}, interaction MDE = single-gap x 1.35 from e-0041) but sweeps p_lo on a FINE grid (0.02..0.30 step 0.02) over the two committed supply-ample construct-valid routes (within-deep-binary n=116, on-domain-deep n=126), then solves for the break-even base rate p* at which the interaction MDE crosses each plausible effect band {+0.05,+0.10,+0.15}.",
+  "motivation": "e-0059's headline-rescue verdict turns entirely on one Modal-blocked parameter — the post-SFT small-model per-sample pass rate — yet it was swept on only 3 points with a binary cliff (feasible at 0.10, dead at 0.20). The operational go/no-go needs the CONTINUOUS break-even p* and the headroom it leaves above the e-0005 0/50 pre-SFT floor, not a 3-point hint. Cheap to compute by reusing the existing copula machinery on a fine base-rate grid.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_base_rate_breakeven.py",
+    "commit": "6b83032bb377c48ba4df8bdf24194cb0c9f359d2",
+    "lines": "240",
+    "run_cmd": "python3 data/analyze_base_rate_breakeven.py"
+  },
+  "formal_results": "Paired McNemar exact, alpha=0.05, power=0.80, rho=0.5, M=1000/cell, seed 0; interior best-k in {1,2,4,8}; interaction MDE = single-gap MDE x 1.35 (e-0041). within-deep-binary n=116 single-gap best-k per-sample MDE rises smoothly with p_lo: +0.025[k8] at 0.02, +0.050[k8] at 0.10, +0.075[k8] at 0.16, +0.090[k4] at 0.20, +0.125[k4] at 0.30; interaction MDE (x1.35) = +0.034/+0.068/+0.101/+0.121/+0.169 at those rates. BREAK-EVEN p* (interaction resolvable iff p_lo<=p*): within-deep-binary band +0.05 -> p* in (0.04,0.06]; band +0.10 -> p* in (0.14,0.16]; band +0.15 -> p* in (0.26,0.28]. on-domain-deep n=126 nearly identical: +0.05 -> (0.06,0.08]; +0.10 -> (0.14,0.16]; +0.15 -> (0.28,0.30]. Best k drops 8->4 as p_lo crosses ~0.16 (pass@8 starts saturating the weaker policy).",
+  "results_description": "Continuous base-rate frontier + break-even p* per route x effect band; corrects e-0059's binary 0.10/0.20 cliff.",
+  "conclusions": "The headline interaction's feasibility degrades GRADUALLY with base rate, not as the sharp 0.10/0.20 cliff e-0059's coarse grid implied. At the loosest committed +0.10 effect band the interaction stays resolvable (interior k=8, ~34x baseline) while the post-SFT small-model per-sample pass rate stays below break-even p* ~ 0.14-0.16 on BOTH supply-ample routes — i.e. the design has ~0.15 absolute headroom above the e-0005 0/50 pre-SFT floor and survives a modest SFT lift, failing only if SFT pushes the small model past ~0.16 pass@1 with a still-small (<+0.10) granularity gap. Tighter targets cost margin (+0.05 band breaks at p*~0.05-0.06, a razor's edge needing the model essentially at the floor); looser targets buy it (+0.15 band tolerates up to ~0.28). So e-0059's floor assumption is genuinely load-bearing but less brittle than its 3-point sweep suggested: the operational GO rule is 'commit iff a pilot shows small-model pass@1 <~0.15 on the deep route'. CAVEATS: design-stage synthesis with e-0059's exact assumptions (COUNT-projection supply n, e-0041 1.35x DiD multiplier not a four-arm re-sim, rho=0.5, k samples i.i.d. given p, single seed); the true post-SFT rate is Modal-blocked — this prices WHERE it must land, not where it does; p* read on a 0.02 grid.",
+  "addresses": [
+    "q-0007",
+    "q-0001"
+  ],
+  "produces": [
+    "a-0058"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T12:11:37.804Z",
+    "updated_at": "2026-06-15T12:12:07.913Z"
+  },
+  "comments": {}
+}
