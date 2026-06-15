@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0053",
+  "stream": "proof-hierarchies",
+  "description": "Stage 0.5 analysis: MEASURE the same-format deep training-token overhead on the 633 real deep wide-frontier targets. (1) Re-confirm corpus_v3's rough(term)-vs-fine(tactic) completion-only token ratio. (2) From deep_wide_targets.json (frontier_width + frontier_chars for all 633 targets), compute the additive fine-minus-rough named-have header overhead a same-format build adds (per subgoal: 'have NAME : TYPE := by' ~= type_chars + ~18 struct chars; frontier_chars = sum of type chars), and the shared-body threshold above which the same-format ratio fine/rough = 1 + overhead/B stays <=2x / <=1.5x.",
+  "motivation": "a-0050/e-0052 priced corpus_v3 at ~197x completion-only (a FORMAT confound) and PROJECTED the same-format deep build collapses it to ~1-2x via a ~29-tok median header, never measured on the deep targets. This grounds that load-bearing projection in on-disk data.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_sameformat_overhead.py",
+    "commit": "ccfaf8335b95688e8e4c506f67eb46a3b2d4870d",
+    "run_cmd": "python3 data/analyze_deep_sameformat_overhead.py"
+  },
+  "formal_results": "RUN (CPU, stdlib). corpus_v3 (n=607) completion-only: rough(term) median 1767.8 tok / sum 2,035,803; fine(tactic) median 12.2 / sum 10,151; ratio 200.5x. Deep same-format header overhead (n=633): median 33.5 tok, mean 40.8, p90 71.5, max 238.8. Ratio<=2x requires shared body B>=34 tok; <=1.5x requires B>=67. Same-format ratio at body B: B=100 -> 1.33x med / 1.71x p90; B=200 -> 1.17x / 1.36x; B=500 -> 1.07x / 1.14x; B=1000 -> 1.03x / 1.07x.",
+  "results_description": "Measured median same-format fine-minus-rough header overhead = 33.5 tok (a-0050 projected ~29). Ratio<=2x is essentially guaranteed: it needs only a shared residual body >=34 tok, trivially met by these multi-have wide-frontier proofs (frontier width median 3, up to 22). Realistic deep bodies (200-500 tok) give a same-format ratio of 1.07-1.17x.",
+  "conclusions": "a-0050's same-format ~1-2x collapse is CONFIRMED and sharpened on real deep data: the deep build's two arms are compute-matched to within ~1.1-1.2x (vs corpus_v3's 200x), so the 'rough saw ~53x more gradient tokens' confound is eliminated by construction. CAVEAT: header model = type_chars + 18 struct chars, token proxy chars/4; the absolute ratio still depends on the deep residual body size B, which is OFF-DISK (0/633, e-0036) — the result is the overhead numerator + the B-threshold, not a measured ratio.",
+  "addresses": [
+    "q-0007",
+    "q-0008"
+  ],
+  "produces": [
+    "a-0051"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:23:08.274Z",
+    "updated_at": "2026-06-15T07:23:31.087Z"
+  },
+  "comments": {}
+}

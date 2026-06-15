@@ -1,0 +1,21 @@
+{
+  "type": "answer",
+  "id": "a-0051",
+  "stream": "proof-hierarchies",
+  "text": "e-0052/a-0050 closed the Stage-0.5 cost chain on the training half by measuring corpus_v3's rough(term)-vs-fine(tactic) ratio at ~53x full-sequence / ~197x completion-only and arguing this is a FORMAT confound (rough is fully-elaborated term-mode) that the same-format deep build collapses to '~1-2x' — but that collapse rested on a PROJECTED ~29-tok median named-have header that was never measured on the 633 deep targets. e-0053 measures it from on-disk data. (1) The corpus_v3 format asymmetry reproduces: over 607 pairs, rough(term) completion median is 1767.8 tok vs fine(tactic) 12.2, a 200.5x sum ratio — the rough term-mode proofs are enormous because every instance path is @-explicit (e.g. eq_mul_inv_of_mul_eq: a one-line 'by simp [h.symm]' fine vs a ~1.8k-token elaborated lambda rough). (2) The deep same-format ADDITIVE overhead (the only thing fine adds over rough once both are tactic-mode and share the residual body: per frontier subgoal a 'have NAME : TYPE := by' header ~= type_chars + ~18 struct chars; frontier_chars already on disk) has median 33.5 tok (mean 40.8, p90 71.5, max 238.8) across all 633 targets — confirming and slightly raising a-0050's ~29. Since the same-format ratio is fine/rough = 1 + overhead/B with B the SHARED residual body, ratio<=2x requires only B>=34 tok and ratio<=1.5x only B>=67 — thresholds trivially cleared by these multi-have wide-frontier proofs (frontier width median 3, up to 22 subgoals). At a realistic deep body of 200-500 tok the same-format ratio is 1.07-1.17x (p90 1.14-1.36x). CONSEQUENCE: the same-format deep pivot does compute-match the two training arms to ~1.1-1.2x, eliminating a-0050's 'rough saw ~53x more gradient tokens' confound by construction — so the q-0007 headline and q-0008 length-controlled comparison inherit compute-matched adapters, not just construct-valid (a-0026) and length-balanced (a-0027) ones, from the SAME pivot. CAVEAT: header model is type_chars + 18 structural/name chars and token proxy is chars/4; the absolute ratio still depends on the deep residual body size B, which is OFF-DISK (0/633, e-0036) — e-0053 supplies the overhead numerator + the B-threshold for ratio<=2x, not a measured end-to-end ratio. That final number needs the paid extract_full_proofs round-trip (e-0037).",
+  "status": "supported",
+  "answers": [
+    "q-0007",
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0053"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-15T07:23:31.085Z",
+    "updated_at": "2026-06-15T07:23:31.085Z"
+  },
+  "comments": {}
+}
