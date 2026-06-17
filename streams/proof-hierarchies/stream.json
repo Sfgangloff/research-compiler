@@ -5,10 +5,10 @@
   "description": "Does the granularity (rough vs fine) at which a Lean/Mathlib proof is decomposed into sub-results change what a small prover learns? A formalism (sections of the proof DAG) + a machine-verified reconstruction pipeline + a planned SFT study. Reasoning reconstructed from the proof-hierarchies repo (branch iclr-foundation).",
   "root_qid": "q-0001",
   "counters": {
-    "q": 11,
-    "a": 59,
-    "h": 10,
-    "e": 61
+    "q": 12,
+    "a": 60,
+    "h": 11,
+    "e": 62
   },
   "provenance": {
     "created_by": "claude",

@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0011",
+  "stream": "proof-hierarchies",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0060"
+    }
+  ],
+  "target": "q-0012",
+  "rationale": "e-0062/a-0060 found the granularity signal is concentrated on the hard tail (rho=0.52 with difficulty; 321/633 wide targets in the top difficulty tertile, largest delta). A difficulty-pooled paired McNemar test then under-weights its strongest stratum. Whether a difficulty-stratified design is strictly more powered -- and whether the top-tertile cell alone clears the e-0045 D>=6 / e-0060 break-even -- is a separable, CPU-answerable power question that operationalizes the prescription.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:02:06.904Z",
+    "updated_at": "2026-06-17T04:02:06.904Z"
+  },
+  "comments": {}
+}

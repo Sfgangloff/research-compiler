@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0060",
+  "stream": "proof-hierarchies",
+  "text": "q-0008's difficulty half (the length half was already settled by a-0027) splits into three threats with distinct verdicts. (1) PAIRED-CONTRAST: dissolved by design -- Stage 3 is within-theorem paired (build_sft.py: identical theorem indices across rough/fine), so per-theorem difficulty is constant by construction and cannot confound the (rough-fine) McNemar test. (2) SELECTION: REAL and large -- the granularity contrast exists only on the >=2-wide named-frontier targets (633/1261), which are systematically HARDER than non-wide (composite structural-difficulty AUC=0.76, Cliff delta=0.52; driven by ~2x proof size, tree_nodes AUC 0.82 / delta 0.64, and statement length AUC 0.59; depth ~equal). So the study runs on a hard-skewed slice of Mathlib. This BIASES the Modal-blocked post-SFT small-model base rate p_lo (the single parameter the e-0059/e-0060 frontier turns on) DOWNWARD toward the 0/50 floor -- the favorable side of the p*~0.14-0.16 break-even, so selection difficulty TIGHTENS the GO case rather than breaking it. (3) EFFECT-MODIFICATION: present -- the granularity length-delta (the only inter-arm difference) rank-correlates with difficulty (Spearman rho=0.52); the signal concentrates on the hard tail (median delta 118->153->244 chars across difficulty tertiles; 321/633 wide targets in the top tertile). PRESCRIPTION: pre-register a difficulty-stratified (tertile) paired pass@k analysis; the top tertile is the highest-powered cell. VERDICT: an effect CAN survive a difficulty control because the paired design already supplies it; the residual difficulty concern is selection/generalizability, not paired-confound, and it pushes the feasibility verdict favorably. CAVEAT: structural-size difficulty proxy (no Modal pass rate); selection effect is partly mechanical (larger proofs admit more named haves).",
+  "status": "supported",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0062"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:01:52.154Z",
+    "updated_at": "2026-06-17T04:01:52.154Z"
+  },
+  "comments": {}
+}

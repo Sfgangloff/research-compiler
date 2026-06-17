@@ -1,0 +1,14 @@
+{
+  "type": "question",
+  "id": "q-0012",
+  "stream": "proof-hierarchies",
+  "text": "Does difficulty-stratifying the within-theorem paired pass@k test (vs pooling) raise detection power for the granularity effect, and does the hard-tail tertile (321 wide targets, largest granularity delta) clear the McNemar D>=6 floor and the e-0060 break-even on its own?",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:02:06.903Z",
+    "updated_at": "2026-06-17T04:02:06.903Z"
+  },
+  "comments": {}
+}

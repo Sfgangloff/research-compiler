@@ -3,12 +3,12 @@
   "id": "q-0008",
   "stream": "proof-hierarchies",
   "text": "Does any rough/fine pass@k effect survive controlling for sequence length and problem difficulty?",
-  "status": "open",
+  "status": "answered",
   "tags": [],
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T12:02:31.276Z",
-    "updated_at": "2026-06-11T12:02:55.785Z"
+    "updated_at": "2026-06-17T04:02:08.202Z"
   },
   "comments": {},
   "stories": [

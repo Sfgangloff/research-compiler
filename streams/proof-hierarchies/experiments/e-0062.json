@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0062",
+  "stream": "proof-hierarchies",
+  "description": "CPU-only DIFFICULTY-CONFOUND gate for q-0008, closing the half the chain never analyzed. q-0008's length confound is settled (a-0027: 144x gap is a corpus_v3 term-vs-tactic serialization artifact dissolved by the same-format deep route to ~29 tok). q-0008 also names PROBLEM DIFFICULTY. This gate decomposes the difficulty confound into three threats over data/deep (1261 decls) and quantifies each with rank statistics: (1) PAIRED-CONTRAST threat -- killed by design (Stage 3 is within-theorem paired, build_sft.py uses identical theorem indices across rough/fine, so per-theorem difficulty is constant by construction); (2) SELECTION threat -- the granularity contrast exists only on >=2-wide named-frontier targets (the canonical 633), so if those differ in difficulty the result generalizes only to a skewed subpop AND the Modal-blocked base rate p_lo driving the e-0059/e-0060 frontier is that subpop's rate; (3) EFFECT-MODIFICATION threat -- whether the granularity length-delta (the only inter-arm difference) correlates with difficulty. Difficulty proxies = corpus-structural CPU-only: stmt_chars, tree_nodes (proof size), tree_depth; composite = mean percentile-rank of the three (named_width excluded as it defines selection).",
+  "motivation": "Every prior q-0008 node addressed only the LENGTH confound; the difficulty word in q-0008 was never analyzed. The selection-difficulty result directly informs the e-0060 GO rule: that rule reads against an unmeasured post-SFT small-model base rate p_lo, and whether the granularity-bearing set is harder/easier than Mathlib average shifts where p_lo lands relative to the p*~0.14-0.16 break-even.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_difficulty_confound.py",
+    "commit": "a5d782e",
+    "run_cmd": "python3 data/analyze_deep_difficulty_confound.py"
+  },
+  "formal_results": "Per decl over data/deep (n=1261): named_width=top-level named-with-type have count; WIDE iff named_width>=2 (n=633), else NON-WIDE (n=628). Difficulty proxies stmt_chars, tree_nodes (recursive), tree_depth (max nesting); composite difficulty = mean of per-decl percentile ranks of the three. Mann-Whitney U with tie-corrected normal approx -> AUC=P(wide>nonwide), Cliff's delta. Spearman rho (granularity header delta [e-0027 def: sum over named nodes of 13+len(name)+len(type)] vs composite difficulty) over the 633 wide targets. Population-anchored difficulty tertiles for stratified wide counts. Pure stdlib, deterministic, no Lean/Modal, no ground-truth pass rate.",
+  "results_description": "SELECTION: wide targets systematically HARDER on every structural proxy. Composite difficulty AUC=0.760, Cliff delta=0.521 (large), z=16.0 p~1e-57; driven by proof SIZE tree_nodes AUC=0.821 delta=0.641 p~3e-88 (median 6 vs 3 nodes) and statement length stmt_chars AUC=0.593 delta=0.185 p~1e-8 (median 123 vs 99 chars); tree_depth nearly equal (AUC=0.528 delta=0.056, median 2 both). EFFECT-MODIFICATION: within wide targets the granularity header delta is strongly rank-correlated with difficulty (Spearman rho=0.524 p~8e-54), width-vs-difficulty rho=0.400 p~6e-28; median delta rises 118.5->153.5->244 chars across population difficulty tertiles, with 321/633 wide targets in the TOP tertile vs 106 in the bottom. PAIRED: confirmed build_sft.py same-index paired design -> per-theorem difficulty constant in the contrast.",
+  "conclusions": "q-0008's difficulty half resolves into: (1) the paired within-theorem design ALREADY neutralizes per-theorem difficulty for the (rough-fine) contrast -- difficulty cannot confound the paired McNemar test; (2) but SELECTION difficulty is real and large (wide/granularity-bearing targets are ~harder, AUC 0.76 composite, driven by 2x proof size) -- the study population is a hard-skewed slice of Mathlib, so external validity is restricted AND, crucially, the post-SFT small-model base rate p_lo that the e-0059/e-0060 feasibility frontier turns on is the rate OF A HARDER SET, biasing it DOWNWARD toward the e-0005 0/50 floor -- the FAVORABLE side of the p*~0.14-0.16 break-even where pass@k amplification is strongest, so selection difficulty tightens rather than breaks the GO case; (3) EFFECT-MODIFICATION is present (granularity delta rho=0.52 with difficulty): the granularity signal is concentrated on the hard tail, so a difficulty-pooled paired test under-weights its strongest stratum -- PRESCRIPTION: pre-register a difficulty-stratified (tertile) paired analysis, where the top tertile (321 wide targets, largest granularity delta) is the highest-powered cell. CAVEATS: structural difficulty proxies, NOT measured pass rate (Modal-blocked); proxies correlate with proof size which itself correlates with granularity-supply by construction (the selection effect is partly mechanical -- bigger proofs admit more named haves), so 'harder' here means structurally-larger, a known-imperfect difficulty surrogate; single corpus (data/deep).",
+  "addresses": [
+    "q-0008"
+  ],
+  "produces": [
+    "a-0060"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:01:27.659Z",
+    "updated_at": "2026-06-17T04:01:52.156Z"
+  },
+  "comments": {}
+}
