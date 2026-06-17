@@ -14,7 +14,12 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-17T04:02:40.938Z",
-    "updated_at": "2026-06-17T04:02:40.938Z"
+    "updated_at": "2026-06-17T08:10:08.434Z"
   },
-  "comments": {}
+  "comments": {
+    "supersedes": "Both answer q-0012 and were both 'supported', but give CONTRADICTING mechanisms for the hard-rung (tier-3) Goldilocks collapse: a-0015 attributes it to the context tax exploding; a-0020 shows (e-0016, corr 0.998) the tax is difficulty-flat and the collapse is the externalization SAVING evaporating (none in-head output 172k->70k tok). a-0020 is the later, instrumented correction and explicitly 'Corrects a-0015's emphasis'."
+  },
+  "supersedes": [
+    "a-0015"
+  ]
 }
