@@ -15,9 +15,11 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T04:13:03.712Z",
-    "updated_at": "2026-06-11T04:14:06.177Z"
+    "updated_at": "2026-06-17T09:13:31.185Z"
   },
-  "comments": {},
+  "comments": {
+    "caveat": "TENSION (e-0062/a-0060, q-0022): node-level Leiden-vs-module agreement is only NMI 0.30 / ARI 0.14, with modules spread across ~22 clusters each (median 44% in largest). 'Recovers named domains' should be read as 'clusters are NAMEABLE by a plurality module (~30% dominance)', not as faithful reproduction of the module partition."
+  },
   "stories": [
     "domains"
   ]

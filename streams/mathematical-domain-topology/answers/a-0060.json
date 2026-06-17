@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0060",
+  "stream": "mathematical-domain-topology",
+  "text": "Unsupervised clustering adds a DIFFERENT, dependency-driven partition -- it does not merely confirm the module labels. Over 84465 labelled nodes, Leiden (137 clusters) vs the 30 top-level modules share only NMI=0.30 / AMI=0.30 / V-measure=0.30 / ARI=0.14 -- far from re-derivation (which would be NMI~1). The divergence is symmetric (homogeneity 0.31 ~ completeness 0.30): clustering both FRAGMENTS modules (each module spans ~22 Leiden clusters; the median module keeps only 44% of its nodes in its largest cluster) and MERGES them (the 24 big clusters each draw from 24-27 modules; 18/24 have <50% dominant module). So the methodological contribution beyond 'running a known algorithm on labelled data' is genuine: the dependency graph induces a re-carving that the directory labels do not encode. IMPORTANT TENSION it exposes: this same modest NMI means the project's 'clustering recovers named domains' framing (a-0001) is overstated at the node level -- clusters are merely NAMEABLE by their plurality module (often ~30% dominance), not faithful reproductions of the module partition. SCOPE: top-level module labels only; NMI is partition-comparison, agnostic to which carving is 'more correct'.",
+  "status": "supported",
+  "answers": [
+    "q-0022"
+  ],
+  "backed_by": [
+    "e-0062"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T09:12:43.496Z",
+    "updated_at": "2026-06-17T09:12:43.496Z"
+  },
+  "comments": {}
+}

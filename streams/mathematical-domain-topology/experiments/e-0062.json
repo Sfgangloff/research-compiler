@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0062",
+  "stream": "mathematical-domain-topology",
+  "description": "Quantifies the agreement between the unsupervised Leiden partition and the Mathlib top-level MODULE labels over all 84465 module-labelled nodes: NMI, AMI, homogeneity, completeness, V-measure, ARI (sklearn). Plus structural diagnostics of what clustering ADDS: per-module fragmentation (# Leiden clusters a module spans, fraction of module in its largest cluster) and per-cluster mixing (# modules a big cluster merges, dominant-module fraction).",
+  "motivation": "q-0022 (reviewer EvB8 / meta-review): if domains are already recoverable from module labels, does unsupervised clustering merely confirm the labels (no contribution) or carve the space differently?",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/clustering_vs_labels_nmi.py",
+    "commit": "b9fc544"
+  },
+  "formal_results": "true",
+  "results_description": "84465 labelled nodes, 137 Leiden clusters vs 30 modules. NMI=0.303, AMI=0.300, V-measure=0.303, ARI=0.139 -- only ~30% shared information, far from re-derivation (NMI~1). Homogeneity (cluster=one module)=0.310 ~ Completeness (module=one cluster)=0.297: roughly symmetric divergence. Fragmentation: each module spans on average 22.4 Leiden clusters; MEDIAN module has only 44.1% of its nodes in its single largest cluster (Data spans 70 clusters / 22% in largest, Algebra 54 / 22%, Analysis 47 / 32%). Mixing: the 24 big clusters (>=200 nodes) merge 24-27 modules each; 18/24 have dominant-module fraction <0.50.",
+  "conclusions": "Unsupervised Leiden clustering does NOT merely re-derive the module labels: node-level agreement is MODEST (NMI 0.30, ARI 0.14), and the partitions diverge symmetrically (homogeneity ~ completeness ~ 0.30). Clustering carves a substantially DIFFERENT, dependency-driven partition -- it both fragments modules (avg 22 clusters/module, median 44% in largest) and merges them (big clusters span 24-27 modules). So the methodological contribution is real (it yields structure not present in the labels), BUT this cuts against the project's own 'clustering recovers named domains' headline (a-0001): recovery is partial -- clusters are NAMED by their plurality module (often ~30% dominance), which is weaker than node-level domain recovery. Net: the value of clustering is the dependency-driven re-carving, not label confirmation; and the 'recovers domains' claim should be read as 'clusters are nameable by a plurality module', not 'reproduces the module partition'.",
+  "addresses": [
+    "q-0022"
+  ],
+  "produces": [
+    "a-0060"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T09:12:08.017Z",
+    "updated_at": "2026-06-17T09:12:43.499Z"
+  },
+  "comments": {}
+}
