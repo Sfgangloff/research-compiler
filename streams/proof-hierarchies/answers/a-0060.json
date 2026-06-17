@@ -14,7 +14,9 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-17T04:01:52.154Z",
-    "updated_at": "2026-06-17T04:01:52.154Z"
+    "updated_at": "2026-06-17T08:15:42.730Z"
   },
-  "comments": {}
+  "comments": {
+    "_self": "CAVEAT (audit): direction-of-rescue. The claim that selection difficulty 'TIGHTENS the GO case' is a FAVORABLE REINTERPRETATION, not an independent confirmation: it holds only because hard-skew biases the unmeasured post-SFT small-model base rate p_lo DOWNWARD, onto the favorable side of the p*~0.14-0.16 break-even. p_lo is Modal-blocked (see a-0058: the frontier 'prices WHERE it must land, not where it does'). So the GO verdict is CONDITIONAL on p_lo actually landing below p*~0.14-0.16; if a pilot shows the post-SFT small model exceeds ~0.16 pass@1 with a still-small (<+0.10) gap, the same selection effect would instead break the case. The math (favorable direction) is sound; the rescue is contingent on the unmeasured parameter."
+  }
 }

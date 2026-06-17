@@ -15,7 +15,9 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-15T12:12:07.912Z",
-    "updated_at": "2026-06-15T12:12:07.912Z"
+    "updated_at": "2026-06-17T08:15:54.724Z"
   },
-  "comments": {}
+  "comments": {
+    "_self": "CAVEAT (audit): the entire GO bet rests on the UNMEASURED post-SFT small-model pass rate p_lo. The break-even frontier prices where p_lo must land (below p*~0.14-0.16 for the +0.10 band) but does not measure it -- p_lo is Modal-blocked. The downstream a-0060 'selection tightens the GO case' reinterpretation inherits this same conditionality. GO is contingent on a cheap pilot confirming small-model pass@1 <~0.15 on the deep route before the ~34x interaction spend."
+  }
 }
