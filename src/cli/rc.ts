@@ -60,8 +60,10 @@ Questions
 
 Answers
   rc a add --stream <s> --answers q-1,q-2 --text <t> [--status <st>] [--backed-by e-1]
+  rc a add ... [--supersedes a-1,a-2]   (mark earlier answers this one corrects/refines)
   rc a status --stream <s> <aid> <proposed|supported|refuted|inconclusive>
   rc a link --stream <s> <aid> <qid>
+  rc a supersede --stream <s> <aid> --supersedes a-1,a-2 [--note <t>]
 
 Hyperedges
   rc edge add --stream <s> --sources Q:q-1,A:a-1 --target q-3 --rationale <r>
@@ -243,6 +245,7 @@ function run(argv: string[]): number | Promise<number> {
             answers: a.list("answers"),
             status: a.get("status") as never,
             backed_by: a.list("backed-by"),
+            ...(a.has("supersedes") ? { supersedes: a.list("supersedes") } : {}),
           }),
         );
         return 0;
@@ -255,6 +258,15 @@ function run(argv: string[]): number | Promise<number> {
       if (sub === "link") {
         const [, , aid, qid] = a.positionals;
         out(eng.linkAnswerToQuestion(stream(), aid!, qid!));
+        return 0;
+      }
+      if (sub === "supersede") {
+        const [, , aid] = a.positionals;
+        out(
+          eng.setAnswerSupersedes(stream(), aid!, a.list("supersedes"), {
+            ...(a.has("note") ? { note: a.get("note")! } : {}),
+          }),
+        );
         return 0;
       }
       break;

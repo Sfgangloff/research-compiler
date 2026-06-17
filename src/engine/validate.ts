@@ -95,7 +95,15 @@ export function validateGraph(g: StreamGraph): void {
     for (const qid of Object.keys(a.edge_comments))
       if (!a.answers.includes(qid))
         problems.push(`${a.id} edge_comment for ${qid} but it does not answer it`);
+    for (const sup of a.supersedes ?? []) {
+      if (sup === a.id) problems.push(`${a.id} cannot supersede itself`);
+      else if (!hasA(sup)) problems.push(`${a.id} supersedes missing ${sup}`);
+    }
   }
+
+  // 3b. The supersedes relation must be acyclic (a refines b refines a is incoherent).
+  const supCycle = findSupersedesCycle(g);
+  if (supCycle) problems.push(`supersedes relation has a cycle: ${supCycle.join(" -> ")}`);
   for (const h of g.hyperedges.values()) {
     for (const s of h.sources) {
       const ok = s.kind === "Q" ? hasQ(s.id) : hasA(s.id);
@@ -139,6 +147,41 @@ export function validateGraph(g: StreamGraph): void {
   if (cycle) problems.push(`reasoning graph has a cycle: ${cycle.join(" -> ")}`);
 
   if (problems.length) throw new ValidationError("stream invariants violated", problems);
+}
+
+/** Returns a cyclic path through the supersedes relation, or null if acyclic. */
+function findSupersedesCycle(g: StreamGraph): string[] | null {
+  const adj = new Map<string, string[]>();
+  for (const a of g.answers.values())
+    for (const sup of a.supersedes ?? [])
+      if (g.answers.has(sup)) adj.set(a.id, [...(adj.get(a.id) ?? []), sup]);
+
+  const WHITE = 0, GRAY = 1, BLACK = 2;
+  const color = new Map<string, number>();
+  const stack: string[] = [];
+
+  function dfs(u: string): string[] | null {
+    color.set(u, GRAY);
+    stack.push(u);
+    for (const v of adj.get(u) ?? []) {
+      const c = color.get(v) ?? WHITE;
+      if (c === GRAY) return [...stack.slice(stack.indexOf(v)), v];
+      if (c === WHITE) {
+        const found = dfs(v);
+        if (found) return found;
+      }
+    }
+    stack.pop();
+    color.set(u, BLACK);
+    return null;
+  }
+
+  for (const a of g.answers.keys())
+    if ((color.get(a) ?? WHITE) === WHITE) {
+      const found = dfs(a);
+      if (found) return found;
+    }
+  return null;
 }
 
 /** Returns a cyclic path through the reasoning relation, or null if acyclic. */

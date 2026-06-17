@@ -29,6 +29,7 @@
     "report": { "type": "string" },
     "stories": { "type": "array", "items": { "type": "string" } },
     "objects": { "type": "array", "items": { "type": "string", "pattern": "^o-[0-9]{4,}$" } },
+    "supersedes": { "type": "array", "items": { "type": "string", "pattern": "^a-[0-9]{4,}$" } },
     "bibliography": {
       "type": "array",
       "items": {

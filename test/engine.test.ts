@@ -133,6 +133,49 @@ describe("invariants", () => {
   });
 });
 
+describe("supersedes (machine-visible corrections)", () => {
+  function twoAnswers() {
+    const { eng } = fresh();
+    eng.createStream("s", "s");
+    const q = eng.addQuestion("s", { root: true, text: "q" }).question;
+    const a1 = eng.addAnswer("s", { text: "old mechanism", answers: [q.id], status: "supported" });
+    const a2 = eng.addAnswer("s", { text: "corrected mechanism", answers: [q.id], status: "supported" });
+    return { eng, q, a1, a2 };
+  }
+
+  it("records that a2 supersedes a1, with a note", () => {
+    const { eng, a1, a2 } = twoAnswers();
+    const updated = eng.setAnswerSupersedes("s", a2.id, [a1.id], { note: "tax-driven story was wrong" });
+    expect(updated.supersedes).toEqual([a1.id]);
+    expect(updated.comments["supersedes"]).toBe("tax-driven story was wrong");
+    expect(eng.getStream("s").answers.get(a1.id)!.text).toBe("old mechanism"); // content preserved
+  });
+
+  it("accepts --supersedes at answer-creation time", () => {
+    const { eng } = fresh();
+    eng.createStream("s", "s");
+    const q = eng.addQuestion("s", { root: true, text: "q" }).question;
+    const a1 = eng.addAnswer("s", { text: "v1", answers: [q.id] });
+    const a2 = eng.addAnswer("s", { text: "v2", answers: [q.id], supersedes: [a1.id] });
+    expect(a2.supersedes).toEqual([a1.id]);
+  });
+
+  it("rejects self-supersede, a missing target, and a cycle", () => {
+    const { eng, a1, a2 } = twoAnswers();
+    expect(() => eng.setAnswerSupersedes("s", a2.id, [a2.id])).toThrow(ValidationError);
+    expect(() => eng.setAnswerSupersedes("s", a2.id, ["a-0099"])).toThrow(ValidationError);
+    eng.setAnswerSupersedes("s", a2.id, [a1.id]);
+    expect(() => eng.setAnswerSupersedes("s", a1.id, [a2.id])).toThrow(ValidationError); // a1->a2->a1
+  });
+
+  it("scrubs supersedes refs when the superseded answer is deleted (cascade)", () => {
+    const { eng, a1, a2 } = twoAnswers();
+    eng.setAnswerSupersedes("s", a2.id, [a1.id]);
+    eng.deleteEntity("s", a1.id, { confirm: true, cascade: true });
+    expect(eng.getStream("s").answers.get(a2.id)!.supersedes).toBeUndefined();
+  });
+});
+
 describe("comments", () => {
   it("sets comments on an experiment field and on the stream", () => {
     const { eng } = fresh();

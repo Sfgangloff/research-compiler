@@ -313,6 +313,7 @@ export class Engine {
       status?: AnswerStatus;
       backed_by?: string[];
       bibliography?: BibEntry[];
+      supersedes?: string[];
       source_ref?: SourceRef;
     },
   ): Answer {
@@ -331,6 +332,7 @@ export class Engine {
       provenance: this.newProv(opts.source_ref),
       comments: {},
       ...(opts.bibliography !== undefined ? { bibliography: opts.bibliography } : {}),
+      ...(opts.supersedes?.length ? { supersedes: [...new Set(opts.supersedes)] } : {}),
     };
     g.answers.set(aid, answer);
     const touched: Entity[] = [answer];
@@ -368,6 +370,23 @@ export class Engine {
     }
     a.provenance = this.touchProv(a.provenance);
     this.commit(g, [a], [], "editAnswer", [aid]);
+    return a;
+  }
+
+  /**
+   * Record that `aid` supersedes/refines earlier answers (replaces the list).
+   * Pass an empty array to clear. Validation rejects unknown ids, self-reference
+   * and supersede cycles. An optional note is stored as an entity-level comment.
+   */
+  setAnswerSupersedes(slug: string, aid: string, supersededIds: string[], opts?: { note?: string }): Answer {
+    const g = this.getStream(slug);
+    const a = this.requireAnswer(g, aid);
+    const ids = [...new Set(supersededIds)];
+    if (ids.length) a.supersedes = ids;
+    else delete a.supersedes;
+    if (opts?.note) a.comments["supersedes"] = opts.note;
+    a.provenance = this.touchProv(a.provenance);
+    this.commit(g, [a], [], "setAnswerSupersedes", [aid], ids.join(","));
     return a;
   }
 
@@ -763,7 +782,8 @@ export class Engine {
       if (q.objects?.includes(id)) refs.push(q.id);
     }
     for (const a of g.answers.values()) {
-      if (a.answers.includes(id) || a.backed_by.includes(id) || a.objects?.includes(id)) refs.push(a.id);
+      if (a.answers.includes(id) || a.backed_by.includes(id) || a.objects?.includes(id) || a.supersedes?.includes(id))
+        refs.push(a.id);
     }
     for (const h of g.hyperedges.values()) {
       if (h.target === id || h.sources.some((s) => s.id === id)) refs.push(h.id);
@@ -790,6 +810,11 @@ export class Engine {
       if (a.backed_by.includes(id)) { a.backed_by = a.backed_by.filter((x) => x !== id); changed = true; }
       if (a.edge_comments[id]) { delete a.edge_comments[id]; changed = true; }
       if (a.objects?.includes(id)) { a.objects = a.objects.filter((x) => x !== id); changed = true; }
+      if (a.supersedes?.includes(id)) {
+        a.supersedes = a.supersedes.filter((x) => x !== id);
+        if (!a.supersedes.length) delete a.supersedes;
+        changed = true;
+      }
       if (changed) { a.provenance = this.touchProv(a.provenance); touched.push(a); }
     }
     for (const h of [...g.hyperedges.values()]) {

@@ -13,6 +13,9 @@ PROJECT
       rc export paper --stream {{SLUG}}     (read the reasoning, prose)
       rc stream show --stream {{SLUG}}      (full graph: ids + statuses)
       rc exp add / rc exp status / rc a add / rc a status / rc q add / rc q status
+      rc a supersede --stream {{SLUG}} <new-aid> --supersedes <old-aid> [--note ...]
+        (when a result CORRECTS an earlier answer — makes the correction machine-visible
+         instead of leaving two contradictory answers both "supported")
       rc ideate --stream {{SLUG}} --question <qid> --insert   (generate new questions)
 
 THIS ITERATION — pick the single highest-value step:
@@ -38,6 +41,25 @@ THIS ITERATION — pick the single highest-value step:
    STOP without running it.
 4. Honor this repo's CLAUDE.md and guardrails. Pin any new experiment's code_pointer
    to the commit you make. Be honest: only record results you actually computed.
+
+RIGOR RULES — a 6-stream audit found these recurring failure modes; do not repeat them:
+   (R1) SCOPE = EVIDENCE. A `supported` answer may claim ONLY what the cited experiment
+        actually shows. No "at scale" from toy data, no "the structure of X" from one
+        dataset, no cross-model/general claim from n=1–3. Down-scope or hedge instead.
+   (R2) KEEP CAPSTONES LIVE. If this iteration weakens a premise of an earlier summary/
+        capstone answer, EDIT that answer (rc a status / rc a add a corrected one +
+        rc a supersede) so the most-read node stays calibrated. A summary must carry the
+        strongest caveat of every node it rests on.
+   (R3) DON'T DEFER THE DECISIVE TEST. If the experiment that would actually settle the
+        headline is blocked (GPU/paid), say so and register it planned — do NOT spin out
+        another CPU "gate" that re-answers the same question. Re-answering one question
+        many times is a looping signal, not progress. Prefer a step that could FALSIFY the
+        headline over one that extends an already-bounded sub-thread.
+   (R4) NO CURVE-FITTING / FLAG DIRECTION-OF-RESCUE. A model revised to fit the point that
+        broke it stays `proposed`/`inconclusive` until an OUT-OF-SAMPLE test. If a new
+        result favorably reverses an earlier negative one, state in the answer headline
+        "this improves the verdict and rests on assumption X." Tag small-n / re-mined-from-
+        one-dataset results with that caveat; don't present them as independent confirmation.
 5. COMMIT + PUSH both repos:
    - This experiment repo: git add -A, commit with a clear message, push to main
      (or this repo's designated work branch if its CLAUDE.md forbids committing to main).

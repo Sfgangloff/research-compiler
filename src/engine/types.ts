@@ -69,6 +69,12 @@ export interface Answer {
   objects?: string[];
   /** Structured entries for answers to bibliography-type questions. */
   bibliography?: BibEntry[];
+  /**
+   * Ids of earlier answers (a-NNNN) this answer supersedes or refines, making a
+   * correction machine-visible instead of leaving two contradictory answers both
+   * `supported`. A superseded answer keeps its content but is no longer current.
+   */
+  supersedes?: string[];
 }
 
 export interface NodeRef {
