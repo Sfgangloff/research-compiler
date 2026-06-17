@@ -111,6 +111,14 @@ function sameEdges(a: EdgePath[], b: EdgePath[]): boolean {
 
 const STATUS_RANK: Record<string, number> = { supported: 3, inconclusive: 2, proposed: 1, refuted: 0 };
 
+// In Summary view each card is a one-glance overview, so its prose is clamped to
+// this many words (full text is always on the detail pane). Other levels show all.
+const SUMMARY_WORD_CAP = 20;
+function clampWords(t: string, n: number): string {
+  const w = t.trim().split(/\s+/);
+  return w.length <= n ? t : w.slice(0, n).join(" ") + "…";
+}
+
 export function ColumnView({
   graph,
   selectedId,
@@ -341,12 +349,12 @@ export function ColumnView({
         <div className="lanes">
           <Lane title="Questions">
             {questions.map((q) => (
-              <QCard key={q.id} q={q} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} render={render} dim={!!members && !members.has(q.id)} dots={dotsFor(q.stories, storyColors)} read={readSet.has(q.id)} onToggleRead={onToggleRead} />
+              <QCard key={q.id} q={q} clamp={isSummary ? SUMMARY_WORD_CAP : undefined} root={q.id === graph.stream.root_qid} sel={selectedId === q.id} onSelect={onSelect} setRef={setRef(q.id)} render={render} dim={!!members && !members.has(q.id)} dots={dotsFor(q.stories, storyColors)} read={readSet.has(q.id)} onToggleRead={onToggleRead} />
             ))}
           </Lane>
           <Lane title="Answers">
             {answers.map((a) => (
-              <ACard key={a.id} a={a} superseded={supersededSet.has(a.id)} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} dim={!!members && !members.has(a.id)} dots={dotsFor(a.stories, storyColors)} read={readSet.has(a.id)} onToggleRead={onToggleRead} />
+              <ACard key={a.id} a={a} clamp={isSummary ? SUMMARY_WORD_CAP : undefined} hideMeta={isSummary} superseded={supersededSet.has(a.id)} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} dim={!!members && !members.has(a.id)} dots={dotsFor(a.stories, storyColors)} read={readSet.has(a.id)} onToggleRead={onToggleRead} />
             ))}
           </Lane>
           {showExperiments && (
@@ -437,22 +445,22 @@ function Dots({ dots }: { dots: { color: string; name: string }[] }) {
   );
 }
 
-function QCard({ q, root, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { q: Question; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
+function QCard({ q, clamp, root, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { q: Question; clamp?: number; root: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
   return (
     <div ref={setRef} className={"card q" + (sel ? " sel" : "") + (root ? " root" : "") + (dim ? " dim" : "") + (read ? " read" : "")} onClick={() => onSelect(q.id)}>
       <Head id={q.id} color={Q_COLOR[q.status] ?? "#3b82f6"} status={q.status} root={root} dots={dots} pill={q.qtype && q.qtype !== "empirical" ? q.qtype : null} read={read} onToggleRead={onToggleRead} />
-      <div className="ctext">{render(q.text)}</div>
+      <div className="ctext">{render(clamp ? clampWords(q.text, clamp) : q.text)}</div>
     </div>
   );
 }
 
-function ACard({ a, superseded, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { a: Answer; superseded: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
+function ACard({ a, clamp, hideMeta, superseded, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { a: Answer; clamp?: number; hideMeta?: boolean; superseded: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
   return (
     <div ref={setRef} className={"card a" + (sel ? " sel" : "") + (dim ? " dim" : "") + (read ? " read" : "") + (superseded ? " superseded" : "")} onClick={() => onSelect(a.id)}>
       <Head id={a.id} color={A_COLOR[a.status] ?? "#f59e0b"} status={a.status} dots={dots} read={read} onToggleRead={onToggleRead} />
       {superseded && <span className="superpill" title="A later answer corrects/refines this one">superseded</span>}
-      <div className="ctext">{render(a.text)}</div>
-      <div className="cmeta">answers {a.answers.join(", ")}{a.backed_by.length ? ` · ⟵ ${a.backed_by.join(", ")}` : ""}</div>
+      <div className="ctext">{render(clamp ? clampWords(a.text, clamp) : a.text)}</div>
+      {!hideMeta && <div className="cmeta">answers {a.answers.join(", ")}{a.backed_by.length ? ` · ⟵ ${a.backed_by.join(", ")}` : ""}</div>}
     </div>
   );
 }
