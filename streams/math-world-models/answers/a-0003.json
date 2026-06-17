@@ -14,9 +14,11 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T11:01:25.403Z",
-    "updated_at": "2026-06-11T11:01:47.460Z"
+    "updated_at": "2026-06-17T08:14:31.491Z"
   },
-  "comments": {},
+  "comments": {
+    "_self": "CAVEAT (audit): scope. The 'realistic mix' is demonstrated only at TOY/FIXTURE scale (e-0001: ~66 records; Mathlib scale-up explicitly blocked on disk, model/baseline/eval not built), so 'manufactures failure dynamics cheaply' is established as a pipeline-feasibility claim, not a scale claim. Separately, the headline-novelty assertion 'no existing Lean corpus models dynamics including failure' is UNCITED -- treat as an unverified literature claim pending a survey of existing Lean/ITP corpora."
+  },
   "stories": [
     "dataset"
   ]
