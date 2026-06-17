@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0017",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Cost-model validation & trial-level hardening of the e-0016 two-term G-CD estimator. No new compute: 42 solved meta-off Opus-4.7 ladder trials. Validates the list-price reconstruction against the harness-billed total_cost_usd, refits the two-term estimator at trial level (n=42 vs e-0016's 3 cell-means), and bootstraps the Goldilocks peak.",
+  "motivation": "e-0016/a-0020 reported corr(net_mech, gap)=0.998 over only THREE cell-means and admitted the list-price split 'over-predicts the absolute gap'. Quantify that over-prediction, test whether the two-term split is faithful at the trial level, and put a CI on the single-peaked 'peak at tier-2' headline so the Goldilocks shape is not a 3-point coincidence.",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/analyze_cost_model_validation.py",
+    "commit": "8991395",
+    "lines": "240",
+    "run_cmd": "python -m harness.analyze_cost_model_validation"
+  },
+  "formal_results": "V1: four-term list-price reconstruction cost_hat=OUT*75+CR*1.5+CC*18.75+IN*15 ($/Mtok) vs billed total_cost_usd, n=42. V2: per-trial OLS-through-origin of billed (none_bar_cost - cost_i) ~ b1*OUT_saved + b2*CR_added vs each rung's none baseline. V3: 10k-bootstrap 95% CI on the none-coarse billed gap and the net_mech term per rung, plus P(net_mech peak rung).",
+  "results_description": "V1: corr(cost_hat,billed)=+0.9982 BUT mean|rel err|=199%, mean signed residual +$4.83 (list over-predicts ~3x). The ratio billed/list-hat = 0.335 (median 0.333, sd 0.009, range 0.333-0.394) and is INVARIANT across toolsets (none/fine/medium/coarse/scratchpad all 0.333-0.340) and rungs (t1/t2/t3 all 0.333-0.338): a single global ~1/3 scale, not a structured pricing error. Cost share by term: OUT 65.7%, CC 21.7%, CR 12.5%, IN ~0%. V2: trial-level corr(list net_mech, billed gap)=+0.923 (vs e-0016's 0.998 over 3 means); through-origin R^2=0.84; fitted b1=2.46e-5 (~0.33x list P_OUT=7.5e-5, matching the 0.335 discount), b2=-6.9e-7 (tax term weak/non-significant at trial level). V3: billed gap 95% CI t1 [0.00,0.60], t2 [1.07,3.00] (excludes 0), t3 [-0.78,0.79]; net_mech CI t2 [3.48,8.97] excludes 0 while t1/t3 include 0; P(net_mech peak at tier-2)=100.0% over 10k bootstraps.",
+  "conclusions": "Resolves the e-0016 absolute-cost caveat and hardens its shape claims. (1) The list-price over-prediction is a single global 0.335x scalar (≈prompt-cache/discount regime) that is toolset- and rung-INVARIANT, so it cancels in every ratio/shape statistic — the 0.998 rank correlation and the Goldilocks shape are price-discount-invariant. (2) At the trial level the two-term estimator still tracks the billed gap strongly (corr 0.923, R^2 0.84); the externalization-saving term carries the signal (b1≈0.33x list, matching the discount) while the context-tax term is weak at trial resolution. (3) The single-peaked 'peak at tier-2' headline is statistically real, not a 3-point coincidence: the mid-rung net_mech CI excludes 0, the easy/hard CIs include 0, and the peak is at tier-2 in 100% of 10k bootstraps. Caveat: 3 puzzles (one per tier), single Opus-4.7 model; per-trial OUT_saved/CR_added are taken against the cell-mean none baseline.",
+  "addresses": [
+    "q-0012",
+    "q-0011"
+  ],
+  "produces": [
+    "a-0022"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:18:13.111Z",
+    "updated_at": "2026-06-17T05:27:46.605Z"
+  },
+  "comments": {}
+}
