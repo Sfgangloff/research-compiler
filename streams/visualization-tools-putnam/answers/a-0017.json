@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0017",
+  "stream": "visualization-tools-putnam",
+  "text": "ROBUSTNESS of the construction: the picture-decisiveness verdict holds across a 9-setting grid (figure width 256/512/800 px x MIN_PX 2/3/5). 7/8 problems are decisive in ALL 9 settings; only geom_06 drops out, at the two smallest-figure cells (256px@MIN3, 256px@MIN5), because its narrow off-grid dip falls below the pixel threshold on a thumbnail plot. geom_06 is the corpus's single marginal problem on BOTH criteria (highest sampling-fragility N_all=86 AND the only decisiveness dropout); it must be rendered at >= default 512 px to stay decisive. Net: the corpus's picture-decisive+sampling-fragile design is robust, with one documented constraint on geom_06's plot size. q-0008's headline A/B (forced_visual vs forced_textual catch rate on this corpus) still requires a paid agent run.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0015"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:33:18.886Z",
+    "updated_at": "2026-06-17T05:33:18.886Z"
+  },
+  "comments": {}
+}

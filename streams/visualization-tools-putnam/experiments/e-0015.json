@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0015",
+  "stream": "visualization-tools-putnam",
+  "description": "Robustness of the Study-8 picture-decisiveness verdict across plot resolution (figure 256/512/800 px wide) and the visibility threshold (MIN_PX 2/3/5) -- a 9-setting grid per problem.",
+  "motivation": "e-0014 established 8/8 picture-decisive at one default plot size + MIN_PX=3. A skeptic can object the verdict is an artifact of those two free parameters. Stress-test it. CPU-only, no agent.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/geometric_corpus/decisiveness_sweep.py",
+    "commit": "b0b536c",
+    "lines": "350",
+    "run_cmd": ".venv-corpus/bin/python experiments/geometric_corpus/decisiveness_sweep.py"
+  },
+  "formal_results": "For each problem, recompute the picture-decisive predicate over the 3x3 grid of {fig width 3.2,6.4,10.0 in @100dpi -> 256/512/800 px usable} x {MIN_PX 2,3,5}. Report decisive_all_settings and the failing cells.",
+  "results_description": "7/8 problems decisive in ALL 9 settings (geom_01/02/03/04/05/09/10). Only geom_06 fails, at the two small-figure cells 256px@MIN3 and 256px@MIN5 (the narrow dip drops below the px threshold on a small plot); decisive at 512/800 px. geom_06 is the corpus's marginal problem on BOTH axes: highest fragility N_all=86 and the sole decisiveness dropout.",
+  "conclusions": "The picture-decisiveness construction is robust to the two free plot parameters: 7/8 problems are unconditionally decisive across a 4x range of plot widths and 2.5x range of visibility thresholds. geom_06 is the single sensitivity point -- it must be rendered at >= default (512 px) size to stay decisive; a thumbnail plot would miss it. Documented design constraint, not a corpus defect.",
+  "addresses": [
+    "q-0008"
+  ],
+  "produces": [
+    "a-0017"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:32:47.705Z",
+    "updated_at": "2026-06-17T05:33:18.888Z"
+  },
+  "comments": {}
+}
