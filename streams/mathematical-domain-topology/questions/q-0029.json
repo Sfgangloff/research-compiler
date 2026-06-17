@@ -1,0 +1,14 @@
+{
+  "type": "question",
+  "id": "q-0029",
+  "stream": "mathematical-domain-topology",
+  "text": "Should the strict detector's operating point be chosen by the historical-recovery plateau (recall-calibrated) rather than the bridge-count elbow? Across theta>=2 strict recovery is flat at 2/8 while the count roughly doubles by theta=3 -- is there any theta (e.g. 3-5) that recovers a 3rd celebrated bridge without exploding false positives, or does recall genuinely cap at 2/8 for the premise-based method regardless of theta?",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:59:59.555Z",
+    "updated_at": "2026-06-17T03:59:59.555Z"
+  },
+  "comments": {}
+}

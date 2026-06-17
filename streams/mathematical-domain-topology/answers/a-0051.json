@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0051",
+  "stream": "mathematical-domain-topology",
+  "text": "Robustness is SPLIT. The 34-bridge COUNT is theta-fragile: surviving bridges go 15/34/60/72 at theta=1/2/3/5 (monotone-nested; Jaccard to the theta=2 set 0.44/1.0/0.57/0.47), so the headline 34 is resolution-relative and should not be reported as a load-bearing number. The HISTORICAL recovery is robust on the high side of theta=2: strict = 2/8 for theta in {2,3,5} (same two bridges: Gromov-Hausdorff and Spectral<->Representation), and only 1/8 at theta=1 (Gromov-Hausdorff drops). Loose stays 6/8 (theta-independent). Verdict: theta=2 understates nothing about the qualitative claim -- premise-based strict detection recovers ~2/8 celebrated bridges across theta>=2 -- but the precise count is an elbow artifact; theta=1 is over-aggressive.",
+  "status": "supported",
+  "answers": [
+    "q-0012"
+  ],
+  "backed_by": [
+    "e-0056"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:59:28.643Z",
+    "updated_at": "2026-06-17T03:59:28.643Z"
+  },
+  "comments": {}
+}

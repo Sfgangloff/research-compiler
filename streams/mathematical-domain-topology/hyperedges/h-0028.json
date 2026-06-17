@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0028",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0051"
+    }
+  ],
+  "target": "q-0029",
+  "rationale": "theta-sweep shows the 34-bridge count nearly doubles from theta=2 to theta=3 while strict historical recovery is flat at 2/8 -- the count and the validated-recall are decoupled. If the count is an elbow artifact but recovery plateaus, the right strict operating point should be chosen by historical recall, not the count elbow.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:59:59.557Z",
+    "updated_at": "2026-06-17T03:59:59.557Z"
+  },
+  "comments": {}
+}
