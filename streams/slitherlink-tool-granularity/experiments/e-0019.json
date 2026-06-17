@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0019",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Pre-registered power & feasibility design for the e-0010 cross-model (Haiku/Sonnet/Opus) sweep that would test MG1' (a-0021, refined a-0024). No new compute: uses the observed within-cell variability of the Opus-4.7 trials as the variance prior to size and cost the paid sweep.",
+  "motivation": "MG1'/q-0017 can only be TESTED with a paid cross-model run; before committing budget, derive from existing data how many trials/cell are needed to (a) call the per-model net_mech peak and (b) detect the predicted peak-shift, and what the run costs. Turns the open prediction into a fundable, pre-registered protocol.",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/design_cross_model_power.py",
+    "commit": "2c6ff59",
+    "lines": "175",
+    "run_cmd": "python -m harness.design_cross_model_power"
+  },
+  "formal_results": "D1: observed within-cell CV of output_tokens and cache_read from Opus-4.7 solved cells (none/coarse x 3 rungs), worst-case CV_out=0.37, CV_cr=0.81, used as a lognormal multiplicative-noise prior. D2: Monte-Carlo (2000 reps) of n trials/cell at 3 rungs x {none,coarse}; power = P(tier-2 is the net_mech peak AND exceeds both neighbours). D3: token-budget cost = per-model list price (output/cache-read: haiku 4/0.08, sonnet 15/0.30, opus 75/1.50 $/Mtok) x observed mean tokens/solved trial (out 72.5k, cache_read 930k), over a 3-rung x 4-toolset x n-trial x 3-model design.",
+  "results_description": "D1 CVs: out 0.10-0.37, cache_read 0.05-0.81 (worst at tier-3). D2 power to call the tier-2 peak: n=3 -> 0.96, n=5 -> 0.99, n=8 -> 1.00. So the per-model peak is already callable at the existing n=3; the binding constraint for MG1' is detecting the cross-model SHIFT, not the within-model peak. D3 cost (full 3x4x3 sweep): n=5/cell ~= $514 total (haiku $22, sonnet $82, opus $410); n=8/cell ~= $823 (opus $656). Opus dominates the budget; a Haiku+Sonnet-only capability-contrast half (Opus data already exists) costs only ~$104 at n=5 / ~$166 at n=8.",
+  "conclusions": "Confirms MG1'/q-0017 needs a paid run (the stop condition) but bounds it tightly: the tier-2 peak is callable per model at n=3 (power 0.96) and n=5 (0.99), so the sweep can be sized small. Because Opus dominates cost (~$410-656) and Opus is already collected, the cheapest decisive experiment is a Haiku+Sonnet-only contrast at n=5 (~$104): it directly tests the capability-ordering half of MG1' (does the realized-in-head-output-indexed peak move Haiku<=Sonnet?) without re-paying for Opus. Caveats: variance prior is Opus-only (weaker models will have more turns/fewer solves -> treat costs as a lower bound); the design indexes the peak by realized none-output per a-0024, so several puzzles per tier are advisable (e-0018: grade is a 3.66x-noisy proxy).",
+  "addresses": [
+    "q-0011",
+    "q-0017"
+  ],
+  "produces": [
+    "a-0025"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:36:13.334Z",
+    "updated_at": "2026-06-17T05:36:28.393Z"
+  },
+  "comments": {}
+}

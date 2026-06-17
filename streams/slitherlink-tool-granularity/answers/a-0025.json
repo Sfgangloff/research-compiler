@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0025",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Cannot resolve q-0017 without the paid sweep, but makes its test fundable and pre-registered. Using the observed Opus-4.7 within-cell variance (CV_out<=0.37, CV_cr<=0.81) as a lognormal prior, the per-model net_mech peak (tier-2) is callable at n=3/cell (power 0.96) and n=5 (0.99) — the existing n=3 already suffices to locate each model's peak, so the binding requirement for MG1' is detecting the cross-model SHIFT, not the within-model peak. Cost: a full 3-rung x 4-toolset x 3-model sweep is ~$514 @n=5 (~$823 @n=8), dominated by Opus ($410-656). Since Opus data already exists, the cheapest decisive experiment is a Haiku+Sonnet-only contrast (~$104 @n=5) testing the capability-ordering half of MG1' directly. This is the recommended next paid step; until then q-0017 stays open. Caveat: variance prior is Opus-only and grade is a 3.66x-noisy proxy for in-head load (e-0018), so plot the peak vs realized none-output and use several puzzles per tier.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0017"
+  ],
+  "backed_by": [
+    "e-0019"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:36:28.390Z",
+    "updated_at": "2026-06-17T05:36:28.390Z"
+  },
+  "comments": {}
+}
