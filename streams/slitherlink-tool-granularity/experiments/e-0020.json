@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0020",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Granularity-gradient generalization of the two-term G-CD model. No new compute. e-0016/17/18 validated the estimator on none-vs-coarse only; this tests the intermediate toolsets (fine, medium) — i.e. the full none->fine->medium->coarse axis — for (G1) monotonicity of the cost benefit in granularity and (G2) whether the discount-scaled two-term net predicts the actual gap vs none across all 9 (rung x toolset) cells.",
+  "motivation": "The headline claim (q-0001/q-0002) is about a granularity AXIS, but the cost-model evidence so far is the none-vs-coarse endpoints. Test whether coarse is special or just the endpoint of a monotone gradient the same two-term mechanism explains throughout.",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/analyze_granularity_gradient.py",
+    "commit": "b9415d3",
+    "lines": "135",
+    "run_cmd": "python -m harness.analyze_granularity_gradient"
+  },
+  "formal_results": "3 rungs (puzzle_001/002/gen_7x7_s1_00) x 3 tooled sets (fine/medium/coarse), gap vs each rung's none baseline. Predicted = 0.335*(OUT_saved*P_OUT - CR_added*P_CR) with the e-0017 discount; actual = billed cost gap vs none. G1: monotonicity of actual gap across fine<=medium<=coarse per rung. G2: corr(pred,actual), through-origin slope, mean abs error over the 9 cells.",
+  "results_description": "G1: the cost benefit vs none is MONOTONE in granularity at every rung — tier-1 [-0.56,-0.04,+0.33], tier-2 [+0.30,+1.46,+2.16], tier-3 [-1.14,-0.61,+0.01] (fine<=medium<=coarse, all 3 rungs). G2: corr(pred,actual)=0.921 over all 9 cells, through-origin slope 0.831, mean abs error $0.33. Per-cell pred vs actual tracks well at medium/coarse; the fine toolset carries the largest residual (e.g. tier-2 pred +1.45 vs actual +0.30; tier-3 pred -0.36 vs actual -1.14).",
+  "conclusions": "Coarse is NOT a special case: the cost benefit is monotone along the full none->fine->medium->coarse granularity axis at every difficulty rung, and the same two-term token model (externalization saving - context tax) predicts the actual billed gap across all 9 (rung x toolset) cells (corr 0.921, slope 0.83, MAE $0.33). This generalizes a-0013/a-0020 from the none-vs-coarse contrast to the whole granularity gradient and substantiates the q-0002 claim that granularity is a genuine controllable cost axis. Open refinement: the FINE toolset is the worst-fit cell (model over-predicts its benefit) — its tool-orchestration output is not fully captured by the in-head-saving proxy, a target for a three-term refinement. Caveat: single Opus-4.7 model, 1 puzzle/tier, cell means n=3-4.",
+  "addresses": [
+    "q-0012",
+    "q-0002"
+  ],
+  "produces": [
+    "a-0026"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:38:49.052Z",
+    "updated_at": "2026-06-17T05:39:02.233Z"
+  },
+  "comments": {}
+}
