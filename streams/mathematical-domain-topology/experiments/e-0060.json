@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0060",
+  "stream": "mathematical-domain-topology",
+  "description": "Tests whether a CLUSTERING-INDEPENDENT bridge definition (depth-filtered detector using HUMAN Mathlib directory labels, no community detection) yields a set that is (A) stable across independent partitions and (B) beats a label-permutation null. TEST A: detect bridges under three independent file-path partitions P1=top-level module, P2=depth-2 submodule, P3=depth-3 submodule; pairwise Jaccard of the resulting bridge SETS. TEST B: shuffle top-level module labels across nodes preserving cell-size multiset (n=20), re-detect; report observed-vs-null count (z) AND set-level recall of observed bridges by the null. theta=2, min cell size 50.",
+  "motivation": "q-0030: the natural successor to the confirmed Leiden circularity (a-0053). Is there ANY clustering-independent operational bridge definition whose detected SET is partition-stable AND beats a permutation null -- or must detection move to proof-structure conceptual bridges (q-0009)?",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/clustering_independent_bridge.py",
+    "commit": "4c9c3fe"
+  },
+  "formal_results": "true",
+  "results_description": "TEST A (stability): bridge-set sizes 4773 (P1, 32 cells) / 7535 (P2, 444) / 8442 (P3, 864). Pairwise Jaccard P1-P2=0.595, P1-P3=0.449, P2-P3=0.684; coarser-recovered-by-finer 0.857-0.962. This vastly exceeds the Leiden-vs-module reference Jaccard 0.005 (a-0053). TEST B (permutation null on P1): observed=4773 bridges, null mean=23270 (std 61), count z=-301 -- observed is FAR BELOW random (strong depletion, consistent with domain-local premises a-0049). But null set-recall of observed = 0.967 (min 0.964 / max 0.975): a random relabelling still flags 97% of the actual bridge theorems.",
+  "conclusions": "MIXED: a clustering-independent (human directory) bridge definition PASSES the stability test (set Jaccard 0.45-0.68 across independent partitions, ~100x more stable than the Leiden set's 0.005) but FAILS the permutation null. Failure mode is the same circularity flavor as Leiden: although the observed cross-module bridge COUNT is far below random (z=-301, premises are domain-local so real theorems cross fewer boundaries than chance), the IDENTITY of bridge theorems is not distinguished from random -- a label permutation reproduces 97% of the observed bridge SET. Being flagged a 'bridge' reduces to 'theorem with >=2 specialized (low in-degree) premises', a property of premise structure recovered under random labels, not real cross-domain semantics. So no premise-graph definition (clustered or human-labelled) yields a bridge SET that beats a permutation null; the cross-domain signal lives in COUNTS/rates (depletion), not in any specific theorem set. Detection of genuine bridges must move to proof-structure / conceptual signals (q-0009).",
+  "addresses": [
+    "q-0030"
+  ],
+  "produces": [
+    "a-0057"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T08:57:24.090Z",
+    "updated_at": "2026-06-17T08:57:58.766Z"
+  },
+  "comments": {}
+}

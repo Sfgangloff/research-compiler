@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0030",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0057"
+    }
+  ],
+  "target": "q-0031",
+  "rationale": "a-0057 shows the only cross-domain signal that beats a null is the DEPLETION of cross-module bridges (premises domain-local), not any bridge SET. If depletion is the real signal, it could itself be the cross-domain structural measure.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T08:58:52.134Z",
+    "updated_at": "2026-06-17T08:58:52.134Z"
+  },
+  "comments": {}
+}

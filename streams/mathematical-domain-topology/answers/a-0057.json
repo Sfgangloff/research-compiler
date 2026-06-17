@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0057",
+  "stream": "mathematical-domain-topology",
+  "text": "No premise-graph bridge definition -- clustered OR clustering-independent -- yields a bridge SET that beats a permutation null. A clustering-INDEPENDENT definition (depth-filtered detector on human Mathlib directory labels, no community detection) does fix the STABILITY problem: its bridge set has Jaccard 0.45-0.68 across three independent file-path partitions (top-level / depth-2 / depth-3 submodules), ~100x more reproducible than the Leiden set's 0.005 vs the same module partition (a-0053). But it FAILS the permutation null exactly as Leiden did: shuffling module labels (size-preserving) reproduces 97% of the observed bridge theorems (null set-recall 0.967), so a theorem's bridge-status is not tied to its TRUE labels. Notably the observed cross-module bridge COUNT is far below random (4773 vs null 23270, z=-301): the genuine cross-domain signal is DEPLETION (premises are domain-local, a-0049), a property of rates/counts, not of any specific theorem set. Conclusion: the operational premise-based bridge cannot be rescued -- 'bridge' reduces to 'theorem with >=2 specialized premises', recovered under random labels. Genuine bridge detection must move to proof-STRUCTURE / conceptual signals (q-0009). SCOPE: tested at theta=2, min cell size 50, on the Mathlib dependency graph; null is label-permutation (size-preserving), not a full config model.",
+  "status": "supported",
+  "answers": [
+    "q-0030"
+  ],
+  "backed_by": [
+    "e-0060"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T08:57:58.763Z",
+    "updated_at": "2026-06-17T08:57:58.763Z"
+  },
+  "comments": {}
+}
