@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0063",
+  "stream": "proof-hierarchies",
+  "description": "Difficulty-stratified paired-power gate for q-0012: partition the committed e-0031 within-deep eval carriers by e-0008 composite difficulty tertile, yield-weight (e-0028) to per-stratum effective n, apply a-0060 effect-modification (per-tertile header-delta ratio -> per-problem effect multiplier), and simulate paired McNemar power POOLED vs Fisher-STRATIFIED vs HARD-TILE-only via the e-0040 Gaussian-copula sim (imported unchanged).",
+  "motivation": "q-0008 (a-0060) showed the granularity signal is effect-modified by difficulty (Spearman 0.52; median header delta low 118 -> high 244). q-0012 asks the operational consequence: does difficulty-stratifying the paired test raise detection power vs pooling, and does the 321-wide hard tertile clear the McNemar D>=6 floor and the e-0060 break-even on its own?",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_difficulty_stratified_power.py",
+    "commit": "251e4e335e7c17a974aaee587ab2898b5120c9a0",
+    "lines": "439",
+    "run_cmd": "python3 -m data.analyze_deep_difficulty_stratified_power"
+  },
+  "formal_results": "131 committed within-deep eval carriers; partition by population difficulty tertile (cuts 0.419/0.560); yield-weighted effective n low/mid/high = 19/36/60; median header delta 116/134/279 chars -> effect mult 1.16/1.34/2.79x. McNemar exact floor = 6 discordant pairs at alpha=0.05; Gaussian-copula paired sim rho=0.5, M=1500. Fisher combination = chi2 with 2k df. Break-even on the +0.10 band, p_lo grid 0..0.30.",
+  "results_description": "Each tertile clears the McNemar >=6 floor (n_eff 19/36/60). Fisher-COMBINED stratified power is BELOW pooled at every gap (e.g. gap 0.06: 0.47 stratified vs 0.79 pooled; 0.08: 0.79 vs 0.96) -- the 2k-df penalty of splitting a concentrated effect costs more than it buys. Hard-tertile-only power tracks pooled closely on ~half the carriers (0.71 vs 0.79 @ 0.06; 0.92 vs 0.96 @ 0.08) because its gap is amplified 2.79x. Break-even: at the +0.10 band the hard tertile amplifies the corpus gap to 0.279, clearing its MDE for EVERY base rate on the 0-0.30 grid (p* >= 0.30), far above e-0060's pooled p* ~0.14-0.16.",
+  "conclusions": "q-0012 answered: naive difficulty-STRATIFICATION (Fisher-combining tertile McNemar p-values) does NOT raise power -- it LOWERS it (the df penalty dominates a concentrated effect). The correct stratified move is a FOCUSED hard-tertile test: the 321-wide hard tail (~60 verified eval carriers, gap amplified 2.79x by a-0060 coupling) independently clears both the McNemar >=6 floor and the e-0060 break-even across the ENTIRE plausible base-rate range -- so the headline can be carried by the hard tail alone at a small-model base rate where the pooled test is dead. Structural caveat: effect multipliers are an a-0060 monotone-coupling proxy, not measured pass@k (Modal-blocked); single-size main-effect power, a lower bound for the gap x size interaction.",
+  "addresses": [
+    "q-0012"
+  ],
+  "produces": [
+    "a-0061"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:26:45.964Z",
+    "updated_at": "2026-06-17T05:27:46.605Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0061",
+  "stream": "proof-hierarchies",
+  "text": "Difficulty-stratifying the within-theorem paired pass@k test does NOT raise detection power when done naively: Fisher-combining the three difficulty-tertile McNemar p-values gives LOWER power than the pooled single test at every gap (0.47 vs 0.79 @ corpus gap 0.06; 0.79 vs 0.96 @ 0.08), because the 2k-df combination penalty outweighs the benefit of letting each stratum contribute at its own effect size when the effect is concentrated in one tail. The right stratified move is instead a FOCUSED hard-tertile test. The 321-wide hard tail yields ~60 verified granularity-bearing eval carriers (yield-weighted from the e-0031 split), which (a) clears the McNemar >=6-discordant floor with room to spare, and (b) clears the e-0060 +0.10-band break-even for EVERY small-model base rate on the 0-0.30 grid (hard-tile p* >= 0.30 vs pooled p* ~0.14-0.16), because a-0060's monotone difficulty-delta coupling amplifies the corpus +0.10 gap to +0.279 in the hard tile. Net: the hard tail alone can carry the granularity headline at a base rate where the pooled test is underpowered. Caveat: effect multipliers are the a-0060 structural proxy, not measured pass@k; single-size main-effect power (lower bound for the gap x size interaction).",
+  "status": "supported",
+  "answers": [
+    "q-0012"
+  ],
+  "backed_by": [
+    "e-0063"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:27:46.602Z",
+    "updated_at": "2026-06-17T05:27:46.602Z"
+  },
+  "comments": {}
+}
