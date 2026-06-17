@@ -3,12 +3,12 @@
   "id": "q-0010",
   "stream": "proof-hierarchies",
   "text": "Does the rough->fine granularity shift move the MEAN of held-out pass@k or its VARIANCE/reliability — is fine's benefit (if any) a uniform lift in per-problem solve probability, or a reduction in run-to-run variance (fewer wasted samples at fixed mean) — and does that mean-vs-variance split itself depend on model size? Buildable as a per-sample-outcome reanalysis of the planned q-0007 eval logs, no extra generations.",
-  "status": "open",
+  "status": "answered",
   "tags": [],
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-15T07:41:21.485Z",
-    "updated_at": "2026-06-15T07:41:21.485Z"
+    "updated_at": "2026-06-17T05:39:23.583Z"
   },
   "comments": {}
 }
