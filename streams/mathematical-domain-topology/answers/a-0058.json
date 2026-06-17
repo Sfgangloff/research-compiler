@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0058",
+  "stream": "mathematical-domain-topology",
+  "text": "YES. A clustering-free per-domain-pair enrichment matrix (observed inter-module premise links vs degree-preserving config-null) is a stable structural map that recovers meaningful mathematical adjacencies. It cleanly separates hand-labelled expected-adjacent from expected-distant domain pairs (AUC 0.98), with top-enriched pairs being genuine co-development relations: CategoryTheory-Condensed (+2.36), AlgebraicTopology-CategoryTheory (+1.83, obs 210 vs exp 58), MeasureTheory-Probability (+1.65), ModelTheory-SetTheory (+1.54), Logic-ModelTheory, Computability-Logic; top-depleted are correctly distant (NumberTheory-Probability, Analysis-CategoryTheory, Computability-MeasureTheory all ~0 observed). Only 56/496 pairs are enriched and 378 depleted, confirming a-0049 (premises domain-local) at pair resolution: the domain graph is a sparse enriched backbone over a depleted background. This is the constructive complement to the negative bridge-SET findings (a-0053/a-0057) -- the genuine, null-beating cross-domain signal is per-pair RATE enrichment, not any theorem set. SCOPE CAVEAT: the matrix measures DIRECT premise co-citation; pairs that co-develop through shared foundations rather than direct citation can read as depleted (Analysis-MeasureTheory -1.06, CategoryTheory-Algebra -1.53), so it is a direct-dependency adjacency map, not a full conceptual-proximity map. Null is the module-aggregate degree expectation.",
+  "status": "supported",
+  "answers": [
+    "q-0031"
+  ],
+  "backed_by": [
+    "e-0061"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T09:03:12.818Z",
+    "updated_at": "2026-06-17T09:03:12.818Z"
+  },
+  "comments": {}
+}

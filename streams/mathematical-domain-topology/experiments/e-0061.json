@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0061",
+  "stream": "mathematical-domain-topology",
+  "description": "Constructs a clustering-free per-domain-PAIR enrichment matrix: for every directed premise edge A->B bin by (top-level module of A, top-level module of B); observed inter-module count O[i][j] vs degree-preserving config-null expectation E[i][j]=s_out[i]*s_in[j]/M; symmetrised log2((O+1)/(E+1)) enrichment per unordered pair. Reports top enriched / depleted pairs and a face-validity AUC: does the matrix rank 10 hand-labelled expected-ADJACENT domain pairs above 10 expected-DISTANT pairs? 32 modules (size>=50), M=234553 inter+intra edges.",
+  "motivation": "q-0031 (derived from a-0057): if the only null-beating cross-domain signal is DEPLETION of cross-module premise links (not any bridge set), can a per-pair observed-vs-null enrichment matrix serve as a stable structural map and recover meaningful domain adjacencies?",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/domain_adjacency_matrix.py",
+    "commit": "5f8f9e2"
+  },
+  "formal_results": "true",
+  "results_description": "32 modules, 496 pairs: only 56 enriched (log2>0), 378 depleted (log2<0) -- domain graph is mostly depleted (confirms domain-local premises a-0049 at pair resolution). Top enriched: CategoryTheory-Condensed +2.36, Condensed-Topology +1.87, AlgebraicTopology-CategoryTheory +1.83 (obs 210 vs exp 58), MeasureTheory-Probability +1.65 (1817 vs 580), ModelTheory-SetTheory +1.54, Logic-ModelTheory +1.29, Computability-Logic +1.12 -- all genuine co-development relationships. Top depleted (obs~0, exp hundreds): NumberTheory-Probability, Analysis-CategoryTheory, Computability-MeasureTheory, AlgebraicGeometry-MeasureTheory. Face-validity separation AUC=0.98 (expected-adjacent mean -0.01 vs expected-distant mean -5.44). Caveat: some textbook-adjacent pairs are NOT enriched in DIRECT premise sharing (Analysis-MeasureTheory -1.06, CategoryTheory-Algebra -1.53) -- they co-develop via shared foundations rather than direct citation.",
+  "conclusions": "YES -- a clustering-free per-domain-pair config-null enrichment matrix IS a usable, stable structural map and recovers mathematically sensible adjacencies (AUC 0.98 separating expected-adjacent from expected-distant pairs; top-enriched pairs like AlgTop-CategoryTheory, MeasureTheory-Probability, ModelTheory-SetTheory are real). This is the constructive complement to the negative bridge-SET results (a-0053/a-0057): the cross-domain signal lives in COUNTS/RATES (per-pair enrichment), not in any specific theorem set, and at the pair level it is both null-beating and interpretable. SCOPE/caveat: it measures DIRECT premise co-citation, which is sparser than conceptual adjacency -- pairs that co-develop through shared foundations (Analysis-MeasureTheory) can read as depleted, so the matrix is a direct-dependency map, not a full conceptual-proximity map. Config-null is the module-aggregate degree expectation, not a full rewired ensemble.",
+  "addresses": [
+    "q-0031"
+  ],
+  "produces": [
+    "a-0058"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T09:02:37.315Z",
+    "updated_at": "2026-06-17T09:03:12.822Z"
+  },
+  "comments": {}
+}
