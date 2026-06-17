@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0056",
+  "stream": "mathematical-domain-topology",
+  "text": "No -- simpler graph baselines do NOT recover the 34 depth-filtered bridges, and the cluster-premise+depth-filter method adds a non-trivial reordering. Betweenness centrality is useless here: all 34 bridges have betweenness exactly 0 (they are specialized low-traffic theorems, not shortest-path hubs), median rank 129k/186k, 0/34 in the top-34. The cross-module out-degree baseline (the directory/import proxy) gets only 2/34 in its top-34 (precision 0.059). The loose cross-cluster signal (pre-depth-filter) recovers 0/34 in its top-34 because the depth filter reorders away the utility-premise spanners that dominate it. The bridges DO sit in the top ~2% of each baseline (percentiles 0.977/0.995/1.0), so the signal is correlated -- but each baseline's top-K is swamped by ubiquitous-premise nodes, so naive thresholding on any single simple baseline fails. The discriminating ingredient is the low cross-premise in-degree (specificity) filter. SCOPE caveat: this establishes the method's reordering is not reducible to a simple centrality/directory count; it does NOT rescue the bridge SET from the partition-artifact finding (a-0053/q-0020).",
+  "status": "supported",
+  "answers": [
+    "q-0014"
+  ],
+  "backed_by": [
+    "e-0059"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T08:53:22.643Z",
+    "updated_at": "2026-06-17T08:53:22.643Z"
+  },
+  "comments": {}
+}

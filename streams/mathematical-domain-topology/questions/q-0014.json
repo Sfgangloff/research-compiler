@@ -3,7 +3,7 @@
   "id": "q-0014",
   "stream": "mathematical-domain-topology",
   "text": "Would simpler graph baselines - betweenness or edge-betweenness centrality, or cross-directory and cross-import counts - recover the same bridge theorems? Does the cluster-premise method add anything over these baselines? (Reviewer JAGf open question.)",
-  "status": "open",
+  "status": "answered",
   "tags": [
     "review",
     "icml2026"
@@ -11,7 +11,7 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-17T03:51:39.537Z",
-    "updated_at": "2026-06-17T03:51:39.537Z"
+    "updated_at": "2026-06-17T08:53:28.434Z"
   },
   "comments": {}
 }

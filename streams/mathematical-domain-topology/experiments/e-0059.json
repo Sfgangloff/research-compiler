@@ -1,0 +1,28 @@
+{
+  "type": "experiment",
+  "id": "e-0059",
+  "stream": "mathematical-domain-topology",
+  "description": "Simple graph baselines vs the 34 depth-filtered cross-cluster bridges: (1) sampled betweenness centrality k=2000 seed42, (2) cross-module out-degree (# distinct top-level Mathlib modules a node's premises span = the directory/import baseline), (3) cross-cluster out-degree LOOSE (# distinct pure clusters reached, no depth filter). Overlap @K=34 and rank statistics of the 34 bridges within each baseline ordering.",
+  "motivation": "q-0014 (reviewer JAGf): would betweenness / cross-directory / cross-import baselines recover the same bridges? Does the cluster-premise+depth-filter method add anything over them?",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/baseline_centrality_bridges.py",
+    "commit": "feb4ab9"
+  },
+  "formal_results": "true",
+  "results_description": "N=185963 nodes, 110 pure clusters, K=34 bridges. Betweenness: precision@K=recall@K=0.0, 0/34 in top-34, ALL 34 bridges have betweenness=0.0 (leaf-like, not path hubs), median bridge rank 129296/185963. Cross-module out-degree: precision@K=0.059 (2/34), best rank 4 / worst 32618 / median 2437, bridge score range 2-11 modules. Cross-cluster LOOSE: precision@K=0.0 (0/34 in top-34), median rank 136245. BUT median-bridge percentile is high on every baseline: betweenness 0.977, cross-module 0.995, cross-cluster-loose 1.0.",
+  "conclusions": "Simple baselines do NOT recover the depth-filtered bridge set as a top-K (precision 0-0.06). Betweenness is actively useless (all bridges score exactly 0 -- bridges are low-traffic specialized theorems, not central path hubs). The bridges DO sit in the top ~2-2.3% of each baseline, but each baseline's top-K is swamped by ubiquitous utility nodes, so naive thresholding fails. The depth-filter (low cross-premise in-degree) is the discriminating step no single baseline reproduces -- it down-weights utility-premise spanners that dominate the loose/cross-module rankings. Caveat: this shows the METHOD's reordering is non-trivial, not that the resulting set is partition-robust (it is not -- a-0053/q-0020 circularity).",
+  "addresses": [
+    "q-0014"
+  ],
+  "produces": [
+    "a-0056"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T08:52:49.895Z",
+    "updated_at": "2026-06-17T08:53:22.645Z"
+  },
+  "comments": {}
+}
