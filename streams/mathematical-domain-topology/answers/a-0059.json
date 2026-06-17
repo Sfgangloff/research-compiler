@@ -1,0 +1,28 @@
+{
+  "type": "answer",
+  "id": "a-0059",
+  "stream": "mathematical-domain-topology",
+  "text": "RE-SCOPED CAPSTONE (supersedes a-0012; scope corrected under q-0019/q-0020/q-0021 and q-0030/q-0031). What is robustly supported: unsupervised Leiden community detection on Mathlib's theorem-DEPENDENCY graph recovers the named top-level Mathlib MODULES without labels (a-0001) -- i.e. it recovers the FORMALIZATION structure of Mathlib (a function of proof/import choices), NOT a label-free 'topology of mathematical knowledge' (q-0019). Two strong corrections to the original thesis: (1) the operational bridge SET is a partition artifact, not a clustering-independent object -- a permutation null with no domain structure recovers ~98% of the 34 bridges, an external module partition gives Jaccard ~0.005, held-out-half clustering recovers ~1/15 (a-0055/e-0058); and dropping clustering for a human directory partition does NOT rescue it -- the set is partition-STABLE (Jaccard 0.45-0.68) but a label-permutation null still reproduces 97% of it (a-0057/e-0060). 'Bridge' reduces to 'theorem with >=2 specialized premises'. (2) SetTheory is NOT THE integrative hub: after filtering non-math nodes it drops to top-3 (displaced by Data), and the hub ranking is detector- and algorithm-dependent (a-0053/e-0057). What survives as the genuine, null-beating cross-domain signal is NOT any theorem set but a RATE: per-domain-pair config-null premise-link enrichment, which is partition-free, beats the null, and recovers sensible adjacencies (AUC 0.98; a-0058/e-0061) over a mostly-DEPLETED background (premises are domain-local, a-0049). The central open problem is unchanged and now sharper: genuine cross-domain bridges are conceptual (shared proof STRUCTURE, no shared premises) and are undetectable by ANY premise-graph criterion (q-0009/q-0028). Bridge-aware proving (a-0011) remains proposed/untested. STRONGEST CAVEAT CARRIED: every 'bridge' claim is scoped to Mathlib's current formalization structure and to RATES, not to a reproducible set of specific theorems.",
+  "status": "supported",
+  "answers": [
+    "q-0001"
+  ],
+  "backed_by": [
+    "e-0058",
+    "e-0060",
+    "e-0061",
+    "e-0057"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T09:05:47.545Z",
+    "updated_at": "2026-06-17T09:06:16.109Z"
+  },
+  "comments": {
+    "supersedes": "Re-scoped capstone: recovers Mathlib FORMALIZATION structure not 'topology of mathematical knowledge' (q-0019); bridge SET is a partition/permutation artifact even clustering-independently (q-0020/q-0030); SetTheory top-3 not #1 hub (q-0021); genuine null-beating signal is per-pair RATE enrichment not a theorem set (q-0031); conceptual bridges remain undetectable (q-0009)."
+  },
+  "supersedes": [
+    "a-0012"
+  ]
+}

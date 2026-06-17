@@ -16,13 +16,14 @@
     "q-0030"
   ],
   "produces": [
-    "a-0057"
+    "a-0057",
+    "a-0059"
   ],
   "status": "done",
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-17T08:57:24.090Z",
-    "updated_at": "2026-06-17T08:57:58.766Z"
+    "updated_at": "2026-06-17T09:05:47.547Z"
   },
   "comments": {}
 }
