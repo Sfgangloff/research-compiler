@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0063",
+  "stream": "proof-hierarchies",
+  "text": "The last CPU-side gate on q-0005's reopened 3-level rough/mid/fine U-shape -- the unpriced ~1.5x cost of a 3rd (pi_mid) adapter+eval arm that a-0052/a-0053/a-0054/a-0055 all flagged -- is now priced and CLEARED, and the result is more favorable than a-0054 feared. Apples-to-apples at fixed n the 3rd policy is exactly +50% eval (k16/3sz 204x->305x; k4/2sz 34x->51x), confirming the 1.5x quote. But the U-shape actually RUNS only on the pi_mid carrier set (n_umid=63, e-0057, ~60% of the binary route's n=106), so answering the 3-level question costs ~0.89x the binary headline eval (181x vs 204x at k16/3sz) -- roughly compute-NEUTRAL, NOT +50%, because the smaller carrier set offsets the extra arm; the stage-1 single-size 3-level screen is just 8x. The cost also lands in STAGE 2, gated behind the cheap 2-arm single-size signal (e-0048), not paid up front. CONSEQUENCE: q-0005's 3-level U-shape is now cleared on supply (a-0052), eval power (a-0053), substantive depth (a-0055), distinct on-disk content (a-0062), AND cost (this gate). The SOLE remaining open gate is the off-disk term-vs-tactic FORMAT confound (e-0036/e-0037), genuinely Modal-blocked (e-0036: 0/633 residual bodies on disk) -- so binary-vs-3-level becomes decidable the moment the paid format extract runs, with every CPU-side prerequisite met. Caveat: PRE-SFT lower bounds; training wall relative (1.5x adapter count) only.",
+  "status": "supported",
+  "answers": [
+    "q-0005"
+  ],
+  "backed_by": [
+    "e-0065"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:38:19.131Z",
+    "updated_at": "2026-06-17T05:38:19.131Z"
+  },
+  "comments": {}
+}
