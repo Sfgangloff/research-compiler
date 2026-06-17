@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0016",
+  "stream": "visualization-tools-putnam",
+  "text": "CONSTRUCTION side resolved (CPU): the Study-8 geometric corpus now satisfies BOTH q-0008 design criteria quantitatively, not just by eye. Picture-decisive: 8/8 problems, the standard plot's effective resolution N_eff~=512 px-cols beats the naive grid that catches the falsifier (N_all) by 4x-30x (median 23x). Sampling-fragile: continuous N_all = 17-86 (geom_02 odd-N 141); geom_05/09 heuristic-fragile. The asymmetry is mechanistic: a plot is a uniform sampler run ~2 orders of magnitude finer for free, so the same logic that misses numerically catches visually. Latent flaw caught: geom_05's raw (n,a_n) plot is sub-pixel (0.6px) and would have been a non-decisive cell; it is decisive only on the residual a_n-1/n plot (151px) -- corpus must use the residual plot there. REMAINING (needs paid run, NOT done): the actual A/B -- whether forced_visual catches false claims at a strictly higher rate than forced_textual ON this corpus. So q-0008 stays OPEN on its headline outcome.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0008"
+  ],
+  "backed_by": [
+    "e-0014"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:29:34.777Z",
+    "updated_at": "2026-06-17T05:29:34.777Z"
+  },
+  "comments": {}
+}

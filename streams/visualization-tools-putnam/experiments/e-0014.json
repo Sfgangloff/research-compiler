@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0014",
+  "stream": "visualization-tools-putnam",
+  "description": "Quantify the picture-decisiveness criterion of the Study-8 geometric adversarial corpus (8 problems). Renders each problem's recommended math-viz plot at standard resolution and measures the pixel footprint of the falsifier feature, pairing it symmetrically with the existing sampling-fragility sweep.",
+  "motivation": "q-0008 requires a corpus that is BOTH picture-decisive (one plot makes the truth obvious) AND sampling-fragile (a naive uniform grid misses the falsifier). Sampling-fragility was already quantified (fragility_sweep). Picture-decisiveness had only been verified 'by eye' -- a skeptic-vulnerable gap in the construction. This is pure CPU work (render + count pixels), no agent/LLM.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/geometric_corpus/decisiveness_sweep.py",
+    "commit": "77d7429",
+    "lines": "300",
+    "run_cmd": ".venv-corpus/bin/python experiments/geometric_corpus/decisiveness_sweep.py"
+  },
+  "formal_results": "Model a standard matplotlib plot (640x480 @100dpi -> ~512x384 px usable axes) as a uniform sampler at N_eff~=512 px-cols. A falsifier is picture-decisive iff its feature spans >= MIN_PX=3 px both axes (RESOLVED) and N_eff >> N_all (the grid resolution that catches it, from fragility_sweep.json). Measure per problem: curve-gap px (tangency), spike depth/width px, hole diameter px, wiggle period px, crossing angle, bump height px.",
+  "results_description": "8/8 picture-decisive. Resolution edge N_eff/N_all over continuous problems: min 4x (geom_02), median 23x, max 30x (geom_10). Per-problem px: geom_01 max-gap 349/min-gap 0; geom_03 spike depth 212 width 14; geom_04 hole 26x19; geom_06 dip 9x6; geom_10 period 13px x ~40 periods; geom_02 crossing 53deg. CAVEAT SURFACED: geom_05 RAW (n,a_n) plot is sub-pixel (bump 0.59px, dominated by 1/n range) -> NOT decisive; decisive ONLY on the residual a_n-1/n plot (151px), matching canonical.json's prescribed viz_check.",
+  "conclusions": "Both Study-8 construction criteria are now quantitatively verified, not just by-eye: the corpus is 8/8 picture-decisive AND sampling-fragile, with the plot beating the catching grid by 4x-30x in effective resolution -- the SAME uniform-sampling logic run ~2 orders finer for free, which is the mechanistic reason a picture can beat numeric sampling. One latent flaw was caught: geom_05 requires the residual plot (its raw plot would have been a non-decisive cell). The corpus construction (CPU side of q-0008) is COMPLETE; the remaining piece -- whether forced_visual actually beats forced_textual ON this corpus -- requires a paid agent A/B run and is NOT done here.",
+  "addresses": [
+    "q-0008"
+  ],
+  "produces": [
+    "a-0016"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:29:05.645Z",
+    "updated_at": "2026-06-17T05:29:34.779Z"
+  },
+  "comments": {}
+}
