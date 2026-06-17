@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0063",
+  "stream": "mathematical-domain-topology",
+  "description": "Builds the precision-recall operating-point curve for the premise-based bridge detector by sweeping theta in {1,2,3,4,5,7,10,15,20,inf=loose}. At each theta: strict bridge-set size, historical RECALL (how many of the 8 celebrated bridges are strict-detected), and a NULL-BASED PRECISION PROXY = 1 - (fraction of the strict set that a size-preserving Leiden-label permutation null also flags; n=10 shuffles, indegree_sweep re-run each). Loose row uses the full 280-bridge unfiltered set.",
+  "motivation": "q-0025 (operating point: 2/8 strict vs 6/8 loose -- which detector should be headline?) and q-0029 (does recall cap at 2/8, or does some theter 3-20 recover a 3rd celebrated bridge without exploding false positives?).",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/operating_point_curve.py",
+    "commit": "74c96e9"
+  },
+  "formal_results": "true",
+  "results_description": "Strict recall by theta: 1/8 (th=1,n=15), 2/8 (th=2,n=34 .. th=7,n=78), then 3/8 at th=10 (n=88) recovering Pontryagin duality as a 3rd bridge, flat 3/8 through th=20 (n=109). Loose: 6/8 (n=280). Precision proxy (1-null-recall) decreases monotonically with theta: 0.713 (th=1) -> 0.632 (th=2) -> 0.510 (th=5) -> 0.504 (th=7) -> 0.465 (th=10) -> 0.454 (th=20); null reproduces ~37% of the set at th=2 but ~55% by th=20. The 3 historical bridges Zorn/Choice/Well-Ordering, Galois<->Covering spaces, Stone duality are NEVER strict-detected at any theta (loose-only). Spectral<->Representation is strict at every theta; Gromov-Hausdorff from th=2; Pontryagin only from th=10.",
+  "conclusions": "There is no operating point that is both high-recall and high-precision for the premise-based detector. Recall does NOT cap at 2/8 (answering q-0029): theta>=10 recovers a 3rd celebrated bridge (Pontryagin), but recall then plateaus at 3/8 through theta=20 and the premise method recovers no 4th -- 3 of the 8 historical bridges are loose-only and undetectable strict at ANY theta. The cost of raising theta is precision: the null-precision-proxy falls monotonically below 0.5 by theta=10, i.e. a structureless label permutation reproduces over half the detected set. So (q-0025) neither variant is a clean headline: strict theta=2 is high-precision/low-recall (0.63/0.25) but under-recalls; pushing recall to 0.375 costs precision (0.47); the loose detector reaches recall 0.75 but is the unfiltered utility-dominated set with no defensible precision. The premise-based method is fundamentally recall-limited (caps ~3/8) -- consistent with the conceptual-bridge gap (q-0009): the missing historical bridges share STRUCTURE not premises. SCOPE: precision is a null-based proxy (no full ground-truth bridge set); recall benchmark is the 8 historical examples (small, q-0024).",
+  "addresses": [
+    "q-0025",
+    "q-0029"
+  ],
+  "produces": [
+    "a-0061",
+    "a-0062"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T09:21:12.540Z",
+    "updated_at": "2026-06-17T09:21:53.598Z"
+  },
+  "comments": {}
+}

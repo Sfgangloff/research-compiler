@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0061",
+  "stream": "mathematical-domain-topology",
+  "text": "The premise-based detector has no operating point that is simultaneously high-recall and high-precision, so NEITHER loose nor strict is a clean headline. Sweeping theta: strict recall is 1/8 (th=1) -> 2/8 (th=2-7) -> 3/8 (th>=10), while the null-based precision proxy (1 - fraction of the set a structureless label-permutation also flags) falls monotonically 0.71 -> 0.63 (th=2) -> 0.47 (th=10) -> 0.45 (th=20). The loose detector reaches recall 6/8=0.75 but it is the unfiltered, utility-premise-dominated 280-set with no defensible precision (a-0055: ~98% null-recoverable). So the filter is a genuine precision/recall dial, but a poor one: at the theta=2 headline you get precision-proxy 0.63 at recall only 0.25; buying recall costs precision below 0.5. Recommendation supported by the data: report the CURVE, not a single variant -- strict theta=2 as the high-precision operating point and loose as the recall ceiling, with the caveat that precision here is null-proxied and recall rests on only 8 historical examples (q-0024). The detector is fundamentally recall-limited (see a-on-q-0029).",
+  "status": "supported",
+  "answers": [
+    "q-0025"
+  ],
+  "backed_by": [
+    "e-0063"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T09:21:41.927Z",
+    "updated_at": "2026-06-17T09:21:41.927Z"
+  },
+  "comments": {}
+}

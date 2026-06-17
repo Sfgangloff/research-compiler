@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0062",
+  "stream": "mathematical-domain-topology",
+  "text": "Recall does NOT genuinely cap at 2/8, but it caps at 3/8. Across theta=2-7 strict recovery is flat at 2/8 (Gromov-Hausdorff + Spectral<->Representation) while the count grows 34->78; at theta>=10 a 3rd celebrated bridge appears (Pontryagin duality, n=88) and recall then plateaus at 3/8 all the way to theta=20 (n=109) with no 4th recovered. Crucially, gaining that 3rd bridge is NOT free: the null-based precision proxy falls from 0.63 (theta=2) to 0.47 (theta=10), i.e. by theta=10 a structureless label permutation reproduces ~54% of the detected set -- so the recall gain comes with substantial false-positive inflation, exactly the trade the count-elbow at theta=2 was avoiding. So the count-elbow (theta=2) and a recall-plateau choice diverge: there is no theta that recovers a 3rd bridge without notable precision loss. Three historical bridges (Zorn/Choice/Well-Ordering, Galois<->Covering spaces, Stone duality) are loose-only and never strict-detected at ANY theta -- the premise-based ceiling is ~3/8 regardless of operating point, consistent with the conceptual-bridge gap (q-0009: they share proof STRUCTURE, not premises). SCOPE: theta<=20, null-proxied precision, 8-bridge recall benchmark.",
+  "status": "supported",
+  "answers": [
+    "q-0029"
+  ],
+  "backed_by": [
+    "e-0063"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T09:21:53.595Z",
+    "updated_at": "2026-06-17T09:21:53.595Z"
+  },
+  "comments": {}
+}
