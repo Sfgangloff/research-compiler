@@ -1,0 +1,14 @@
+{
+  "type": "question",
+  "id": "q-0017",
+  "stream": "slitherlink-tool-granularity",
+  "text": "When the e-0010 Haiku/Sonnet/Opus sweep is run, does the peak of the per-trial estimator [out_saved*P_OUT - cr_added*P_CR] over the difficulty ladder move monotonically to LOWER search_nodes for weaker models (MG1'), and does the cache-read-per-turn context tax differ across models?",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:03:02.470Z",
+    "updated_at": "2026-06-17T04:03:02.470Z"
+  },
+  "comments": {}
+}

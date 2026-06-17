@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0016",
+  "stream": "slitherlink-tool-granularity",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0021"
+    }
+  ],
+  "target": "q-0017",
+  "rationale": "e-0016 turned the Goldilocks benefit into a per-trial usage estimator [out_saved*P_OUT - cr_added*P_CR] whose peak should track each model's in-head reasoning frontier; this makes MG1' scorable directly on cross-model usage records.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:03:02.472Z",
+    "updated_at": "2026-06-17T04:03:02.472Z"
+  },
+  "comments": {}
+}

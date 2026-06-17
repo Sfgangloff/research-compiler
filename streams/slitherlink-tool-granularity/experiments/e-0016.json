@@ -1,0 +1,31 @@
+{
+  "type": "experiment",
+  "id": "e-0016",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Context-tax decomposition (no new compute): split each solved Opus-4.7 trial's cost into an externalization saving (output-token volume the no-tools agent emits that coarse avoids) and a context tax (extra cache-read tokens from coarse's many transcript-re-reading turns), using per-trial usage and Opus-4.7 list prices, across the 3-rung ladder x none/fine/medium/coarse.",
+  "motivation": "a-0015's externalization mechanism ATTRIBUTES the hard-rung Goldilocks collapse to a per-turn context re-read tax, but that was never measured. Verify it directly from usage tokens and turn it into a quantitative, falsifiable estimator for q-0011 (capability-relative Goldilocks).",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/analyze_context_tax.py",
+    "commit": "e244d215e45d32f6e068a54cbb706818b773e45a",
+    "run_cmd": "python -m harness.analyze_context_tax"
+  },
+  "formal_results": "Per-trial usage decomposition over 44 solved meta-off Opus-4.7 trials, 3-rung ladder (puzzle_001 t1 / puzzle_002 t2 / gen_7x7_s1_00 t3) x none/fine/medium/coarse. Cost split via Opus-4.7 list prices (output $75/Mtok, cache-read $1.50/Mtok). Context tax := cache_read_input_tokens. T1 (tax is turn-driven): over 33 tooled trials corr(turns,cache_read)=+0.51, cache-read per turn = ~19,510 tok (each turn re-reads ~the whole transcript). T2 (CR/OUT ratio): none stays low (1.59/0.45/0.42), tooled sets are 5x-20x (coarse 14.9/19.1/13.6). T3 (two-term mechanism, coarse vs none): saving=(out_none-out_coarse)*P_OUT, tax=(cr_coarse-cr_none)*P_CR; net = saving - tax = +$0.80 / +$6.66 / +$0.27 across t1/t2/t3. Actual none-coarse cost gap = +$0.33 / +$2.16 / +$0.01. corr(net_mech, actual_gap) over the 3 rungs = 0.998 (same single-peaked shape, peak at t2). Hard-rung driver: saving collapses $8.30->$1.30 (none in-head output 172k->70k tok at the sparse t3 puzzle) while tax stays $1.64->$1.03.\n",
+  "results_description": "The Goldilocks cost gap is mechanistically reproduced by a two-term token model computed entirely from per-trial usage: an externalization SAVING (output tokens the no-tools agent emits that coarse avoids) minus a CONTEXT TAX (extra cache-read tokens from coarse's many transcript-re-reading turns). Net dollar tracks the observed none-coarse cost gap with corr=0.998 and the same single-peaked shape (peak at tier-2). The context tax is verifiably turn-driven (~19.5k cache-read tok/turn; corr(turns,cache_read)=+0.51). Refinement of a-0015: at the hard rung the gap does not collapse because the tax explodes (it stays ~flat, $1.64->$1.03) but because the externalization SAVING evaporates -- none's in-head output drops 172k->70k tokens, since the sparse-clue tier-3 puzzle is cheap for in-head reasoning. So 'Goldilocks' = saving rises then falls with how much in-head reasoning the unaided model would do; the tax is a roughly difficulty-flat drag.\n",
+  "conclusions": "Confirms the EXT mechanism quantitatively and corrects its emphasis: granularity's dollar benefit = externalization saving - context tax, and the Goldilocks peak is set by where the no-tools agent's in-head reasoning load (output tokens) is largest, NOT by where the tax peaks. Because the saving term is the model's own unaided reasoning volume, this yields a derived, falsifiable prediction for q-0011 (MG1'): a weaker model's in-head blow-up occurs at a LOWER search_nodes, so its peak of [out_saved*P_OUT - cr_added*P_CR] shifts to an easier rung -- the Goldilocks band is capability-relative. The estimator is computable per-trial from usage, so the planned e-0010 cross-model sweep can be scored directly. Caveat: list-price split over-predicts the absolute gap (omits cache-creation/uncached-input offsets); only the shape and the 0.998 rank are load-bearing. Single Opus-4.7 model, one puzzle per tier.\n",
+  "addresses": [
+    "q-0012",
+    "q-0011"
+  ],
+  "produces": [
+    "a-0020",
+    "a-0021"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:01:51.279Z",
+    "updated_at": "2026-06-17T04:02:42.753Z"
+  },
+  "comments": {}
+}

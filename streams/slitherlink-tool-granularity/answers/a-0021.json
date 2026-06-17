@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0021",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Derived (mechanistic) prediction for q-0011, sharpening a-0014 (H-MG): because the externalization saving = the no-tools agent's own in-head reasoning-token volume, and the Goldilocks peak sits where that volume is largest, the peak must track each model's in-head reasoning frontier. A weaker model's in-head blow-up occurs at LOWER search_nodes, so its peak of [out_saved*P_OUT - cr_added*P_CR] shifts to an easier rung. MG1' (falsifiable): peak of that per-trial usage estimator over the difficulty ladder is non-decreasing in model capability (Haiku <= Sonnet <= Opus). This is computable directly from the planned e-0010 cross-model usage records, so the test is pre-specified with a concrete estimator rather than a phenomenological cost ratio. Status inconclusive: no cross-model data exists yet (the e-0010 sweep needs a paid window); this is a prediction grounded in the verified single-model mechanism, not a result.\n",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0016"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:02:42.750Z",
+    "updated_at": "2026-06-17T04:02:42.750Z"
+  },
+  "comments": {}
+}

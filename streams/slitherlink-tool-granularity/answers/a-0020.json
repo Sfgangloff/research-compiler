@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0020",
+  "stream": "slitherlink-tool-granularity",
+  "text": "The Goldilocks cost gap is reproduced mechanistically by a two-term token model from per-trial usage: dollar benefit of coarse over none = externalization SAVING (output tokens none emits that coarse avoids, x list price) minus CONTEXT TAX (extra cache-read tokens from coarse's many transcript-re-reading turns, x list price). Net = +$0.80 / +$6.66 / +$0.27 across tier-1/2/3; the actual none-coarse cost gap = +$0.33 / +$2.16 / +$0.01; corr(net, actual)=0.998, same single-peaked shape. The tax is verifiably turn-driven: ~19.5k cache-read tokens re-read per turn, corr(turns,cache_read)=+0.51. Corrects a-0015's emphasis: the hard-rung collapse is NOT the tax exploding (it is ~flat, $1.64->$1.03) but the SAVING evaporating (none in-head output 172k->70k tok, because the sparse tier-3 puzzle is cheap for in-head reasoning). So the Goldilocks peak is located by where the no-tools agent's in-head reasoning volume peaks; the tax is a difficulty-flat drag.\n",
+  "status": "supported",
+  "answers": [
+    "q-0012"
+  ],
+  "backed_by": [
+    "e-0016"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:02:40.938Z",
+    "updated_at": "2026-06-17T04:02:40.938Z"
+  },
+  "comments": {}
+}

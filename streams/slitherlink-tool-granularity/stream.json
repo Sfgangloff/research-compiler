@@ -5,10 +5,10 @@
   "description": "Reasoning-compiler reconstruction of the claude-sudoku-experiments repo: how MCP tool-set granularity (none/fine/medium/coarse, plus a scratchpad variant) affects an LLM agent (Opus 4.7) solving Slitherlink across a formally-graded difficulty axis. Arc: n=1 pilot -> Phase-1 replication gate -> Phase-2 difficulty frontier -> scratchpad detour -> the G-CD cost model and its Goldilocks revision. Publication target: AAAI-27.",
   "root_qid": "q-0001",
   "counters": {
-    "q": 16,
-    "a": 19,
-    "h": 15,
-    "e": 15,
+    "q": 17,
+    "a": 20,
+    "h": 16,
+    "e": 16,
     "o": 10
   },
   "provenance": {
