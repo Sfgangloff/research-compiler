@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0027",
+  "stream": "mathematical-domain-topology",
+  "text": "Given that Li et al. 2026 already ran Louvain on the same graph with similar module recovery, what is the marginal contribution of this work (Leiden, the bridge filter, tactic n-grams, CN)? Is the bridge filter plus tactic analysis enough to stand as a distinct contribution? (Reviewer JAGf: contribution feels incremental.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:22.656Z",
+    "updated_at": "2026-06-17T03:52:22.656Z"
+  },
+  "comments": {}
+}

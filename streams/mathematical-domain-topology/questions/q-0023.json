@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0023",
+  "stream": "mathematical-domain-topology",
+  "text": "Can the method DISCOVER previously-unknown bridge theorems (the stated goal of the abstract), not merely recover known ones? Do any of the 34 detected bridges constitute a cross-domain connection not already documented, and can a domain expert confirm a novel one? (Reviewers EvB8 and JAGf: only recovery is shown; discovery is overclaimed.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:18.607Z",
+    "updated_at": "2026-06-17T03:52:18.607Z"
+  },
+  "comments": {}
+}

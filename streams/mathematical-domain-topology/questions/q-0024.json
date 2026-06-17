@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0024",
+  "stream": "mathematical-domain-topology",
+  "text": "Can a larger ground-truth benchmark of cross-domain connections be constructed, beyond the 8 historical examples, to evaluate bridge detection with meaningful precision and recall? (Reviewers EvB8 and JAGf: 8 examples are too few to be convincing.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:19.622Z",
+    "updated_at": "2026-06-17T03:52:19.622Z"
+  },
+  "comments": {}
+}

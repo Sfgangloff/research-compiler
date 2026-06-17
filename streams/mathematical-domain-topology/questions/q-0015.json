@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0015",
+  "stream": "mathematical-domain-topology",
+  "text": "Can the neural-complexity (CN) score be validated against an external signal - human judgment of integrativeness, proof difficulty, research/citation activity, library centrality, or theorem-proving utility - rather than asserted? (Reviewer JAGf and meta-review: CN is unvalidated and should be framed as exploratory.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:51:40.534Z",
+    "updated_at": "2026-06-17T03:51:40.534Z"
+  },
+  "comments": {}
+}

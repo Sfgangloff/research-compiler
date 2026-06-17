@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0026",
+  "stream": "mathematical-domain-topology",
+  "text": "On what principled criterion were 8 of the 34 detected bridges selected for detailed discussion? Is the selection arbitrary, and does it bias the qualitative validation? (Reviewer HJ3i.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:21.647Z",
+    "updated_at": "2026-06-17T03:52:21.647Z"
+  },
+  "comments": {}
+}

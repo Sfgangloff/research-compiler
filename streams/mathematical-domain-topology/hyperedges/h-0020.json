@@ -1,0 +1,23 @@
+{
+  "type": "hyperedge",
+  "id": "h-0020",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0002"
+    },
+    {
+      "kind": "A",
+      "id": "a-0010"
+    }
+  ],
+  "target": "q-0021",
+  "rationale": "Tests whether non-math modules contaminate the hub/cluster structure (a-0002/a-0010); reviewer + meta-review on data hygiene.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:15.638Z",
+    "updated_at": "2026-06-17T03:52:15.638Z"
+  },
+  "comments": {}
+}

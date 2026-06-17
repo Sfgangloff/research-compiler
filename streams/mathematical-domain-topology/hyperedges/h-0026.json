@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0026",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0001"
+    }
+  ],
+  "target": "q-0027",
+  "rationale": "Clarifies marginal contribution over prior Louvain work (a-0001); reviewer incrementality concern.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:22.657Z",
+    "updated_at": "2026-06-17T03:52:22.657Z"
+  },
+  "comments": {}
+}

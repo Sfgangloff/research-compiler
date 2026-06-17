@@ -1,0 +1,23 @@
+{
+  "type": "hyperedge",
+  "id": "h-0027",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0009"
+    },
+    {
+      "kind": "A",
+      "id": "a-0005"
+    }
+  ],
+  "target": "q-0028",
+  "rationale": "Seeks a non-premise detector for the conceptual-bridge class (a-0009) shown unreachable by shared-strategy signal (a-0005); reinforced by reviewers.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:23.748Z",
+    "updated_at": "2026-06-17T03:52:23.748Z"
+  },
+  "comments": {}
+}

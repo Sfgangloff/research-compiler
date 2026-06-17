@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0019",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0006"
+    }
+  ],
+  "target": "q-0020",
+  "rationale": "Probes circularity in defining bridges (a-0006) from the same clustering they interpret; reviewer concern.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:14.618Z",
+    "updated_at": "2026-06-17T03:52:14.618Z"
+  },
+  "comments": {}
+}

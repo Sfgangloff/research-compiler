@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0021",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0001"
+    }
+  ],
+  "target": "q-0022",
+  "rationale": "Questions the methodological value-add of clustering (a-0001) when module labels already exist; reviewer + meta-review.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:16.624Z",
+    "updated_at": "2026-06-17T03:52:16.624Z"
+  },
+  "comments": {}
+}

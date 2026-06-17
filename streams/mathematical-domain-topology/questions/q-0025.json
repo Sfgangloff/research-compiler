@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0025",
+  "stream": "mathematical-domain-topology",
+  "text": "Is the strict theta filter mis-calibrated for recall? It recovers only 2/8 historical bridges while the loose filter recovers 6/8 - what operating point trades precision against recall, and should the headline detector be the loose or the strict variant? (Reviewers JAGf and EvB8.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:20.626Z",
+    "updated_at": "2026-06-17T03:52:20.626Z"
+  },
+  "comments": {}
+}

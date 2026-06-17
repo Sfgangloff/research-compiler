@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0013",
+  "stream": "mathematical-domain-topology",
+  "text": "How sensitive are the clusters and the resulting bridge set to the Leiden resolution parameter? Do the bridge theorems and historical hits survive across a range of resolutions? (Reviewer JAGf open question; e-0052/e-0053 cover algorithm choice but not a resolution sweep.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:51:37.884Z",
+    "updated_at": "2026-06-17T03:51:37.884Z"
+  },
+  "comments": {}
+}

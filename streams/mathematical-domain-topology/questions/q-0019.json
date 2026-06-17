@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0019",
+  "stream": "mathematical-domain-topology",
+  "text": "Does the analysis characterize the structure of mathematical KNOWLEDGE, or only the current formalization structure of Mathlib (a function of proof choices, imports, file organization, refactoring history, and naming)? What evidence would separate library-specific artifacts from domain-invariant structure, and should the claims and title be scoped accordingly? (Meta-review plus Reviewers JAGf and HJ3i: the framing is the headline objection.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:13.550Z",
+    "updated_at": "2026-06-17T03:52:13.550Z"
+  },
+  "comments": {}
+}

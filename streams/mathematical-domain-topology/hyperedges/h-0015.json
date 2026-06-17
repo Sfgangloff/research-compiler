@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0015",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0011"
+    }
+  ],
+  "target": "q-0016",
+  "rationale": "Concrete, testable instance of the bridge-aware-proving payoff (q-0011) using the detected bridge list; reviewer open question.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:51:43.788Z",
+    "updated_at": "2026-06-17T03:51:43.788Z"
+  },
+  "comments": {}
+}

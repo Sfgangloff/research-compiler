@@ -1,0 +1,23 @@
+{
+  "type": "hyperedge",
+  "id": "h-0018",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "Q",
+      "id": "q-0001"
+    },
+    {
+      "kind": "A",
+      "id": "a-0001"
+    }
+  ],
+  "target": "q-0019",
+  "rationale": "Central reframing of the root claim (q-0001/a-0001): library structure vs mathematical structure; headline reviewer objection.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:13.551Z",
+    "updated_at": "2026-06-17T03:52:13.551Z"
+  },
+  "comments": {}
+}

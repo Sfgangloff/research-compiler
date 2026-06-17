@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0028",
+  "stream": "mathematical-domain-topology",
+  "text": "Can conceptual bridges (shared proof STRUCTURE, no shared premises) be detected by a non-dependency signal - tactic-pattern similarity, proof-tree motif matching, or embedding similarity - given that the edit-distance probe found only modest cross-domain similarity? (Reviewers note the premise method structurally cannot capture these.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:23.747Z",
+    "updated_at": "2026-06-17T03:52:23.747Z"
+  },
+  "comments": {}
+}

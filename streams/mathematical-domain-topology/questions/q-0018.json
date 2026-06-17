@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0018",
+  "stream": "mathematical-domain-topology",
+  "text": "How much would the cluster structure and bridge set change after a major Mathlib refactor (alternative proofs, re-imports, file reorganization)? Are bridges invariant to formalization choices, or do they track import and file structure? (Reviewer JAGf open question.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:51:45.833Z",
+    "updated_at": "2026-06-17T03:51:45.833Z"
+  },
+  "comments": {}
+}

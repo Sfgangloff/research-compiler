@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0017",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0001"
+    }
+  ],
+  "target": "q-0018",
+  "rationale": "Tests invariance of clusters/bridges (a-0001) to formalization/refactor choices; reviewer open question.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:51:45.833Z",
+    "updated_at": "2026-06-17T03:51:45.833Z"
+  },
+  "comments": {}
+}

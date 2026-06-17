@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0021",
+  "stream": "mathematical-domain-topology",
+  "text": "Do non-mathematical modules (Batteries, Deprecated, Init, Unknown) contaminate the clusters and the bridge diagram - for example Batteries appearing as a main hub? Does filtering them out change the clusters, hubs, or the 34 bridges, and which results are artifacts of dataset hygiene rather than mathematical structure? (Reviewer EvB8 and meta-review.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:15.636Z",
+    "updated_at": "2026-06-17T03:52:15.636Z"
+  },
+  "comments": {}
+}

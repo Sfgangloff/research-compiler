@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0016",
+  "stream": "mathematical-domain-topology",
+  "text": "Does the concrete 34-bridge list, or bridge-aware premise selection, improve any downstream theorem-proving task - cross-domain premise selection, retrieval, or curriculum - in at least one small experiment? (Reviewer JAGf; the concrete testable form of q-0011.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:51:43.787Z",
+    "updated_at": "2026-06-17T03:51:43.787Z"
+  },
+  "comments": {}
+}

@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0023",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0008"
+    }
+  ],
+  "target": "q-0024",
+  "rationale": "Asks for a larger benchmark than the 8 historical bridges (a-0008); reviewer concern on evaluation scale.",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:19.623Z",
+    "updated_at": "2026-06-17T03:52:19.623Z"
+  },
+  "comments": {}
+}

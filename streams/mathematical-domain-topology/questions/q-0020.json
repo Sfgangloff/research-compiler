@@ -1,0 +1,17 @@
+{
+  "type": "question",
+  "id": "q-0020",
+  "stream": "mathematical-domain-topology",
+  "text": "Is the bridge definition circular - bridges are theorems crossing cluster boundaries, yet the clusters are produced from the same dependency graph, so the method partly rediscovers boundaries it created? Can bridges be defined or validated independently of the clustering they interpret? (Reviewer JAGf.)",
+  "status": "open",
+  "tags": [
+    "review",
+    "icml2026"
+  ],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T03:52:14.617Z",
+    "updated_at": "2026-06-17T03:52:14.617Z"
+  },
+  "comments": {}
+}
