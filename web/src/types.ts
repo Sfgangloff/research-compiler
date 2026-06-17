@@ -50,6 +50,8 @@ export interface Answer {
   stories?: string[];
   objects?: string[];
   bibliography?: BibEntry[];
+  /** Earlier answers this one corrects/refines (a-NNNN); they are no longer current. */
+  supersedes?: string[];
 }
 
 export interface NodeRef {

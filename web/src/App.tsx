@@ -10,7 +10,7 @@ export function App() {
   const [slug, setSlug] = useState<string | null>(null);
   const [graph, setGraph] = useState<Graph | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [showExperiments, setShowExperiments] = useState(true);
+  const [detailLevel, setDetailLevel] = useState<"summary" | "standard" | "full">("summary");
   const [activeStory, setActiveStory] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [ideateSeed, setIdeateSeed] = useState<Question | null>(null);
@@ -169,10 +169,20 @@ export function App() {
               <button onClick={addExperiment}>＋ experiment</button>
               <button onClick={addObject}>＋ object</button>
             </div>
-            <label className="toggle">
-              <input type="checkbox" checked={showExperiments} onChange={(e) => setShowExperiments(e.target.checked)} />
-              show experiments
-            </label>
+            <div className="levelctl">
+              <div className="levelseg" role="group" aria-label="Detail level">
+                {(["summary", "standard", "full"] as const).map((l) => (
+                  <button key={l} className={detailLevel === l ? "on" : ""} onClick={() => setDetailLevel(l)}>{l}</button>
+                ))}
+              </div>
+              <div className="leveldesc">
+                {detailLevel === "summary"
+                  ? "questions + current headline answer (superseded & experiments hidden)"
+                  : detailLevel === "standard"
+                    ? "all answers (superseded dimmed) + objects"
+                    : "everything, incl. experiments"}
+              </div>
+            </div>
             <div className="legend">
               <div><span className="dot q" /> question (root = thick)</div>
               <div><span className="dot a" /> answer</div>
@@ -206,7 +216,7 @@ export function App() {
 
       <main className="main">
         {graph ? (
-          <ColumnView graph={graph} selectedId={selectedId} onSelect={setSelectedId} showExperiments={showExperiments} activeStory={activeStory} onToggleRead={toggleRead} />
+          <ColumnView graph={graph} selectedId={selectedId} onSelect={setSelectedId} detailLevel={detailLevel} activeStory={activeStory} onToggleRead={toggleRead} />
         ) : (
           <div className="placeholder">Select or create a research stream.</div>
         )}

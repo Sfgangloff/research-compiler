@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, type ReactNode } from "react";
 import { marked } from "marked";
 import { api } from "./api";
 import type { Answer, BibEntry, Entity, Experiment, Graph, Hyperedge, Question, RcObject } from "./types";
@@ -130,9 +130,26 @@ function ASummary({ a, graph }: { a: Answer; graph: Graph }) {
   const qText = (id: string) => graph.questions.find((x) => x.id === id)?.text ?? "";
   const exps = a.backed_by.map((id) => graph.experiments.find((e) => e.id === id)).filter(Boolean) as Experiment[];
   const bib = isBibAnswer(a, graph) ? a.bibliography ?? [] : [];
+  const aText = (id: string) => graph.answers.find((x) => x.id === id)?.text ?? "";
+  const supersedes = a.supersedes ?? [];
+  const supersededBy = graph.answers.filter((x) => x.supersedes?.includes(a.id));
   return (
     <div className="summary">
       <p className="lead">{a.text}</p>
+      {supersededBy.length > 0 && (
+        <Sec label="⚠ Superseded by">
+          {supersededBy.map((x) => (
+            <div key={x.id} className="ref"><b>{x.id}</b> <em>({x.status})</em> {x.text}</div>
+          ))}
+        </Sec>
+      )}
+      {supersedes.length > 0 && (
+        <Sec label="Corrects / refines">
+          {supersedes.map((id) => (
+            <div key={id} className="ref"><b>{id}</b> {aText(id)}</div>
+          ))}
+        </Sec>
+      )}
       {bib.length > 0 && (
         <Sec label="References">
           <ol className="biblist">

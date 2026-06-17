@@ -109,18 +109,20 @@ function sameEdges(a: EdgePath[], b: EdgePath[]): boolean {
   return true;
 }
 
+const STATUS_RANK: Record<string, number> = { supported: 3, inconclusive: 2, proposed: 1, refuted: 0 };
+
 export function ColumnView({
   graph,
   selectedId,
   onSelect,
-  showExperiments,
+  detailLevel,
   activeStory,
   onToggleRead,
 }: {
   graph: Graph;
   selectedId: string | null;
   onSelect: (id: string | null) => void;
-  showExperiments: boolean;
+  detailLevel: "summary" | "standard" | "full";
   activeStory: string | null;
   onToggleRead: (id: string, read: boolean) => void;
 }) {
@@ -130,10 +132,38 @@ export function ColumnView({
   const [edges, setEdges] = useState<EdgePath[]>([]);
   const [dims, setDims] = useState({ w: 0, h: 0 });
 
+  const isSummary = detailLevel === "summary";
+  const showExperiments = detailLevel === "full";
+
+  // An answer is superseded if some other answer lists it in `supersedes`.
+  const supersededSet = useMemo(() => {
+    const s = new Set<string>();
+    for (const a of graph.answers) for (const old of a.supersedes ?? []) s.add(old);
+    return s;
+  }, [graph.answers]);
+
+  // Summary view: per question, keep only the single current "headline" answer —
+  // highest status (supported > inconclusive > proposed > refuted), newest id,
+  // never a superseded one. Other answers / experiments / objects collapse away
+  // (still reachable via the detail pane's "Answered by" list).
+  const headlineSet = useMemo(() => {
+    if (!isSummary) return null;
+    const keep = new Set<string>();
+    for (const q of graph.questions) {
+      const cands = graph.answers
+        .filter((a) => a.answers.includes(q.id) && !supersededSet.has(a.id))
+        .sort((x, y) => (STATUS_RANK[y.status] ?? 0) - (STATUS_RANK[x.status] ?? 0) || y.id.localeCompare(x.id));
+      if (cands[0]) keep.add(cands[0].id);
+    }
+    return keep;
+  }, [isSummary, graph.questions, graph.answers, supersededSet]);
+
   const questions = [...graph.questions].sort(byId);
-  const answers = [...graph.answers].sort(byId);
+  const answers = [...graph.answers]
+    .filter((a) => (headlineSet ? headlineSet.has(a.id) : true))
+    .sort(byId);
   const experiments = showExperiments ? [...graph.experiments].sort(byId) : [];
-  const objects = [...(graph.objects ?? [])].sort(byId);
+  const objects = isSummary ? [] : [...(graph.objects ?? [])].sort(byId);
   // Objects split into columns by kind: models -> "Models", toolsets ->
   // "Toolsets", everything else (puzzles, etc.) -> "Data".
   const modelObjects = objects.filter((o) => o.kind === "model");
@@ -245,7 +275,7 @@ export function ColumnView({
     // `answers`/`experiments` are derived from graph+showExperiments (already deps);
     // including them would change identity every render and loop forever.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [graph, showExperiments, selectedId, members]);
+  }, [graph, detailLevel, selectedId, members]);
 
   useLayoutEffect(() => {
     recompute();
@@ -316,7 +346,7 @@ export function ColumnView({
           </Lane>
           <Lane title="Answers">
             {answers.map((a) => (
-              <ACard key={a.id} a={a} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} dim={!!members && !members.has(a.id)} dots={dotsFor(a.stories, storyColors)} read={readSet.has(a.id)} onToggleRead={onToggleRead} />
+              <ACard key={a.id} a={a} superseded={supersededSet.has(a.id)} sel={selectedId === a.id} onSelect={onSelect} setRef={setRef(a.id)} render={render} dim={!!members && !members.has(a.id)} dots={dotsFor(a.stories, storyColors)} read={readSet.has(a.id)} onToggleRead={onToggleRead} />
             ))}
           </Lane>
           {showExperiments && (
@@ -416,10 +446,11 @@ function QCard({ q, root, sel, onSelect, setRef, render, dim, dots, read, onTogg
   );
 }
 
-function ACard({ a, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { a: Answer; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
+function ACard({ a, superseded, sel, onSelect, setRef, render, dim, dots, read, onToggleRead }: { a: Answer; superseded: boolean; sel: boolean; onSelect: (id: string) => void; setRef: (el: HTMLDivElement | null) => void; render: Render; dim: boolean; dots: { color: string; name: string }[]; read: boolean; onToggleRead: (id: string, read: boolean) => void }) {
   return (
-    <div ref={setRef} className={"card a" + (sel ? " sel" : "") + (dim ? " dim" : "") + (read ? " read" : "")} onClick={() => onSelect(a.id)}>
+    <div ref={setRef} className={"card a" + (sel ? " sel" : "") + (dim ? " dim" : "") + (read ? " read" : "") + (superseded ? " superseded" : "")} onClick={() => onSelect(a.id)}>
       <Head id={a.id} color={A_COLOR[a.status] ?? "#f59e0b"} status={a.status} dots={dots} read={read} onToggleRead={onToggleRead} />
+      {superseded && <span className="superpill" title="A later answer corrects/refines this one">superseded</span>}
       <div className="ctext">{render(a.text)}</div>
       <div className="cmeta">answers {a.answers.join(", ")}{a.backed_by.length ? ` · ⟵ ${a.backed_by.join(", ")}` : ""}</div>
     </div>
