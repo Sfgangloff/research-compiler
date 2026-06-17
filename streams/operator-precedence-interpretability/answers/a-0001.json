@@ -14,9 +14,11 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T12:19:15.022Z",
-    "updated_at": "2026-06-11T12:19:44.401Z"
+    "updated_at": "2026-06-17T08:13:06.430Z"
   },
-  "comments": {},
+  "comments": {
+    "_self": "CAVEAT (audit): the Llama-3.1-8B-base 0/48 result does NOT support 'cannot do the task' as a capability claim. There is no engagement/format control (no check that the base model even emits a parseable answer in the prompt format), so 0/48 is consistent with a format/engagement failure rather than an inability to respect operator precedence. Read as: 'consistent with format/engagement failure; not a capability claim.'"
+  },
   "stories": [
     "circuit"
   ]

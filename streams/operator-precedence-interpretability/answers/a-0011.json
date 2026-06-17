@@ -18,9 +18,11 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T12:19:31.515Z",
-    "updated_at": "2026-06-11T12:19:55.984Z"
+    "updated_at": "2026-06-17T08:12:57.986Z"
   },
-  "comments": {},
+  "comments": {
+    "_self": "CAVEAT (audit): the load-bearing SAE feature #13802 evidence (e-0006) is fragile and this capstone drops that fragility. e-0006 itself records: the SAEs are undertrained (~9.5k/11k dead latents), the causal ablation fires on only n=9/48 expressions, and there is no confidence interval. The 'multiply is at least partly memorized lookup' claim should therefore be read as suggestive single-feature evidence, not an established result."
+  },
   "stories": [
     "rulelookup"
   ]
