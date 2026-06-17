@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0012",
+  "stream": "visualization-tools-putnam",
+  "description": "Judge-robustness audit (q-0009) from EXISTING transcripts, no new LLM calls. The planned human<->LLM-judge kappa is uncomputable: grade.py was never run (your_grade empty in all samples/*.csv). Substitute objective oracles that need no human labels and test the decision-relevant question: can the single LLM judge move a cross-study conclusion? Two families: Lean study3 (judge.json vs Lean compiler) and false-claim study5/6 (lenient vs strict grader rule).",
+  "motivation": "Defend the cross-study conclusions against the 'single LLM judge shares failure modes with the agent' attack (q-0009) without burning a paid human/LLM regrade batch.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/judge_audit/judge_robustness.py",
+    "commit": "102cb5c",
+    "run_cmd": "python experiments/judge_audit/judge_robustness.py"
+  },
+  "formal_results": "Lean: LLM judge CORRECT iff verdict in {match,close}; compiler oracle SOLVED iff 'Build completed successfully' in build.log AND zero \\\\bsorry\\\\b tokens in Solution.lean. solved* = oracle AND judge. False-claim: G1 caught iff self-report verdict=='incorrect'; G2 = G1 AND canonical-regex match on corrected answer (the analyzer rule). Cohen's kappa + confusion, poison-filter (0 tool calls, not timeout, <30s) applied throughout.",
+  "results_description": "Study3 (n=54): judge dist match48/close3/non-statement3; compiler-SOLVED=17. Judge vs oracle raw agreement 37.0%, kappa=0.053 (they target statement-fidelity vs proof-completeness, so low kappa is expected, not a defect). Decision-relevant: judge DEMOTES 0/17 compiler-solved cells and can rescue 0 non-compiling cells (solved* is a conjunction) -> judge changes the solved* count by 0. Study5/6 (72 false-variant cells): G1 vs G2 agreement 100.0%, kappa=1.000; per-condition caught visual 23/24, textual 24/24, reflection 23/24 identical under both rules; the 2 non-catches are empty-verdict MISSING cells, not graderable disagreements.",
+  "conclusions": "The single LLM judge is non-decisive for every headline. For Lean studies the solved* outcome is fixed by the deterministic compiler+sorry-count; the judge only screens statement fidelity and demoted none of the 17 genuine solves. For false-claim studies the lenient and strict grading rules are interchangeable (kappa=1.000), so modality equivalence is grader-invariant. The cross-study conclusions do not hinge on the LLM judge. Caveat: this is judge-vs-objective-oracle agreement, not human-vs-judge; a true human kappa still requires running grade.py.",
+  "addresses": [
+    "q-0009"
+  ],
+  "produces": [
+    "a-0014"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:01:57.993Z",
+    "updated_at": "2026-06-17T04:02:17.662Z"
+  },
+  "comments": {}
+}

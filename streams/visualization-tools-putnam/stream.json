@@ -5,10 +5,10 @@
   "description": "A/B and ablation study of whether graphical/plotting MCP tools (math-viz) help Claude Code solve Putnam real-analysis problems formalized in Lean 4. Reasoning reconstructed from the graphical-reasoning experiment repo.",
   "root_qid": "q-0001",
   "counters": {
-    "q": 9,
-    "a": 13,
-    "h": 8,
-    "e": 11
+    "q": 10,
+    "a": 14,
+    "h": 9,
+    "e": 12
   },
   "provenance": {
     "created_by": "claude",

@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0014",
+  "stream": "visualization-tools-putnam",
+  "text": "Outcomes are robust to the single LLM judge. From existing transcripts (no new LLM calls): for the Lean studies the LLM judge is non-decisive -- it demotes 0/17 compiler-solved cells and cannot rescue any non-compiling cell, so the solved* count is fixed entirely by the deterministic compiler + zero-sorry check (judge vs compiler-oracle kappa=0.053 only because they target statement-fidelity vs proof-completeness, not because they disagree on solves). For the false-claim studies the lenient verdict-only grader and the strict canonical-regex grader agree on all 72 false-variant cells (kappa=1.000), so the modality-equivalence headline (visual 23/24 = textual 24/24 = reflection 23/24) is grader-invariant. The cross-study conclusions do not hinge on the LLM judge. Caveat: this is judge-vs-objective-oracle, not the pre-registered human-vs-judge kappa, which still requires running grade.py (all your_grade fields are empty).",
+  "status": "supported",
+  "answers": [
+    "q-0009"
+  ],
+  "backed_by": [
+    "e-0012"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T04:02:17.660Z",
+    "updated_at": "2026-06-17T04:02:17.660Z"
+  },
+  "comments": {}
+}

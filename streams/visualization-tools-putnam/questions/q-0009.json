@@ -3,12 +3,12 @@
   "id": "q-0009",
   "stream": "visualization-tools-putnam",
   "text": "Are the study outcomes robust to the use of a single LLM judge - does the LLM judge's scoring agree with a human grader (Cohen's kappa) well enough to trust the cross-study conclusions?",
-  "status": "open",
+  "status": "answered",
   "tags": [],
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T03:07:05.703Z",
-    "updated_at": "2026-06-11T03:07:05.703Z"
+    "updated_at": "2026-06-17T04:02:51.581Z"
   },
   "comments": {}
 }
