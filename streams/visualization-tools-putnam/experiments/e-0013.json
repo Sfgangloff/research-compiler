@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0013",
+  "stream": "visualization-tools-putnam",
+  "description": "Oracle-vs-LLM-judge Cohen's kappa on the 85 pre-drawn stratified sample cells (calibration 10 + study3 25 + study5 20 + study6 30), substituting a deterministic canonical/compiler ground-truth oracle for the human grader (grade.py was never run -> your_grade empty in all samples/*.csv).",
+  "motivation": "q-0010 asks for the literal human-vs-LLM-judge kappa once grade.py is run against the pre-registered acceptance bar (kappa>=0.6 overall, >=0.5 per stratum). No human labels exist; compute whatever inter-rater/consistency signal the existing data supports.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/judge_audit/oracle_on_samples.py",
+    "commit": "8e7b627",
+    "lines": "178",
+    "run_cmd": "python3 experiments/judge_audit/oracle_on_samples.py"
+  },
+  "formal_results": "Per sample cell reconstruct (a) objective oracle label (study3: Lean compiler build_ok & 0 sorries; study5/6: canonical regex applied to agent self-report per the human rubric) and (b) LLM-judge/grader label, then Cohen's kappa(oracle,judge) per stratum and overall.",
+  "results_description": "study3 (compiler oracle vs LLM statement-fidelity judge, INDEPENDENT): n=25, agree=36.0%, kappa=0.065 -- judge near-degenerate (48/54 'match'). study5: agree=100%, kappa=1.000 (oracle==grader by construction). study6: agree=100%, kappa=n/a (degenerate). calibration: kappa=n/a (all 10 agree). OVERALL n=85: agree=81.2%, kappa=0.277. study3-only kappa=0.065. ALL below the 0.6 pre-registered bar.",
+  "conclusions": "The literal pre-registered human-vs-LLM-judge kappa is UNCOMPUTABLE from existing data: grade.py was never run, so no human labels exist. The best available proxy does NOT clear the 0.6 bar as an independent check -- because study5/6 oracle==grader by construction (self-consistent, not independent) and study3's compiler oracle and LLM fidelity judge measure different things (completeness vs statement fidelity), the judge being near-degenerate (48/54 match) so kappa collapses. The bar can only be tested by a real human grading session; documented requirement, not a result.",
+  "addresses": [
+    "q-0010"
+  ],
+  "produces": [
+    "a-0015"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:20:53.887Z",
+    "updated_at": "2026-06-17T05:21:30.822Z"
+  },
+  "comments": {}
+}

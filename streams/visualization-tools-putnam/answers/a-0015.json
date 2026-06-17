@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0015",
+  "stream": "visualization-tools-putnam",
+  "text": "The pre-registered human-vs-LLM-judge kappa is UNCOMPUTABLE: grade.py was never run, so your_grade is empty in all 85 sample cells (calibration 10 + study3 25 + study5 20 + study6 30) and no human labels exist. Substituting a deterministic ground-truth oracle for the human grader on the same cells: OVERALL kappa=0.277 (agree 81.2%, n=85); study3 (compiler oracle vs LLM fidelity judge, the only genuinely independent comparison) kappa=0.065 with the judge near-degenerate (48/54 'match'); study5 kappa=1.000 and study6 kappa=n/a because there the oracle equals the grader by construction (self-consistent, not an independent check). No proxy clears the 0.6 overall / 0.5 per-stratum bar. CONCLUSION: the acceptance bar can only be tested by a real human grading session (running grade.py); this is a documented blocker, not a passing/failing result.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0010"
+  ],
+  "backed_by": [
+    "e-0013"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:21:30.791Z",
+    "updated_at": "2026-06-17T05:21:30.791Z"
+  },
+  "comments": {}
+}
