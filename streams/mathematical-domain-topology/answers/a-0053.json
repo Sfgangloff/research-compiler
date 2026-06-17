@@ -1,0 +1,25 @@
+{
+  "type": "answer",
+  "id": "a-0053",
+  "stream": "mathematical-domain-topology",
+  "text": "CORRECTION/down-scope of a-0010 under data hygiene (e-0057). The 'SetTheory is THE most integrative-yet-specialized domain / dominant bridge hub (CN=1.037, rank 1)' headline is partly an artifact of leaving non-mathematical nodes in the graph. With non-math nodes (Init/Batteries/External/Unknown/Deprecated/Tactic) filtered out before clustering, SetTheory is NOT the top CN cluster: it drops to rank 3 (CN 1.217), behind two 'Data' clusters (CN 1.312, 1.270) -- 'Data' being Mathlib datatype/infrastructure machinery. Robust claim: SetTheory remains a TOP-3 integrative cluster under both raw and hygiene-filtered partitions and is the highest-CN cluster carrying clear mathematical content, but the unqualified 'SetTheory is the single dominant hub' overstates it -- the top of the CN ranking is hygiene- and resolution-sensitive (cf. hub_algorithm_robustness a-0010-caveat and a-0048). Kept proposed pending out-of-sample confirmation per rigor R4.",
+  "status": "proposed",
+  "answers": [
+    "q-0010"
+  ],
+  "backed_by": [
+    "e-0057"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T07:04:18.030Z",
+    "updated_at": "2026-06-17T07:04:28.966Z"
+  },
+  "comments": {
+    "supersedes": "Hygiene filtering (e-0057) drops SetTheory from CN rank 1 to rank 3 (displaced by Data clusters); the strict #1-hub claim is a non-math-contamination artifact. a-0010 down-scoped to 'top-3 integrative cluster', not 'the single dominant hub'."
+  },
+  "supersedes": [
+    "a-0010"
+  ]
+}

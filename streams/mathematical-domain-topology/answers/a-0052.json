@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0052",
+  "stream": "mathematical-domain-topology",
+  "text": "Mixed verdict (e-0057). Filtering 32,033 non-math nodes (Init/Batteries/Std/Lean-core/lake/External/Unknown/Deprecated/Tactic = 17% of the graph) BEFORE re-running the unchanged canonical pipeline shows: (1) DOMAIN RECOVERY is NOT a hygiene artifact -- clusters 138->129, pure 112->108, mixed 17->13, mean dominant fraction 0.747->0.772 (slightly cleaner); a-0001/a-0002 robust. (2) EvB8 is CORRECT that non-math modules contaminate as HUBS: the baseline has 3 clusters whose dominant module is non-mathematical -- Batteries cid21 (size 405, dom 51%), Batteries cid55, Unknown cid104 -- and the hygiene arm has ZERO; any hub/diagram showing Batteries (the cid23/e-0038 complaint) is a hygiene artifact. (3) The SetTheory CN hub (a-0010) is PARTLY hygiene-dependent: SetTheory falls from CN rank 1 (1.230) to rank 3 (1.217), displaced by low-math-content 'Data' clusters (CN 1.312/1.270); the strict #1-hub claim does not survive filtering. (4) Bridge MEMBERSHIP does not survive the hygiene re-partition (strict Jaccard 0.047, count 44->179), reinforcing a-0048/a-0051 resolution-relativity; only the EXISTENCE of a scarce depth-filtered bridge population is robust.",
+  "status": "supported",
+  "answers": [
+    "q-0021"
+  ],
+  "backed_by": [
+    "e-0057"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T07:04:01.560Z",
+    "updated_at": "2026-06-17T07:04:01.560Z"
+  },
+  "comments": {}
+}

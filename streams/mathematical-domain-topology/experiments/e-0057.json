@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0057",
+  "stream": "mathematical-domain-topology",
+  "description": "q-0021 (reviewer EvB8) data-hygiene robustness: re-run the CANONICAL pipeline (Leiden seed=42 mod 10it on deterministically-sorted LCC -> label_clusters -> raw cross-cluster-premise bridges -> in-degree depth filter elbow theta -> Tononi-Edelman-inspired CN hub ranking) TWICE, baseline (all nodes) vs hygiene (every non-math node deleted BEFORE Leiden: Init/Batteries/Std/Lean-core/lake=aesop+Qq+proofwidgets/External/Unknown/Deprecated/Tactic, 32,033 nodes = 17% of graph).",
+  "motivation": "Reviewer EvB8 + meta-review: non-mathematical modules (Batteries, Deprecated, Init, Unknown) may contaminate clusters and the bridge diagram (Batteries appears as a main hub, e.g. cid23 in e-0038). Quantify which headline results (a-0001/a-0002 clusters, a-0010 SetTheory CN hub, a-0007/a-0051 bridge set) are dataset-hygiene artifacts vs robust mathematical structure.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/hygiene_filter.py",
+    "commit": "a0b0a68"
+  },
+  "formal_results": "Baseline LCC 92,594 nodes / 138 clusters; hygiene LCC 81,141 / 129 clusters (after dropping 32,033 non-math nodes). Same Leiden(ModularityVertexPartition, seed=42, n_iterations=10) on sorted-node igraph (deterministic, e-0051 fix). PURITY = dominant top-level Mathlib module >=50%. CN = integration(entropy of strict-bridge row) x differentiation(1 - norm module entropy). Bridge sets compared by Jaccard and canonical recovery.",
+  "results_description": "CLUSTERS (a-0001/a-0002) ROBUST: 138->129 clusters, 112->108 pure, 17->13 mixed; mean dominant fraction 0.747->0.772, median 0.80->0.833 (hygiene slightly CLEANER). NON-MATH HUBS confirmed+removed: baseline has 3 clusters whose dominant module is non-mathematical -- Batteries cid21 size 405 (dom 0.514), Batteries cid55 size 12, Unknown cid104 size 5; hygiene arm has ZERO non-math-dominant clusters. SETTHEORY CN HUB (a-0010) WEAKENED: SetTheory rank 1 (CN 1.230) baseline -> rank 3 (CN 1.217) hygiene, displaced to #1/#2 by 'Data' clusters (CN 1.312/1.270); post-hygiene top-5 CN = Data, Data, SetTheory, Data, CategoryTheory. BRIDGES (a-0007/a-0051) NOT membership-robust: strict count 44->179, raw 295->1127; Jaccard strict base-vs-hygiene 0.047, raw 0.060 -- the hygiene partition is a different resolution so the bridge POPULATION turns over (consistent with a-0048 resolution-sensitivity). theta=2 (elbow) in BOTH arms.",
+  "conclusions": "Mixed verdict on EvB8. (1) Domain-recovery (a-0001/a-0002) is NOT a hygiene artifact -- cluster count/purity barely move and get marginally cleaner. (2) EvB8's specific complaint is CORRECT: non-math modules really did form dominant clusters (Batteries as a main cluster, 3 total); they vanish under filtering, so any DIAGRAM/HUB that shows Batteries is a hygiene artifact. (3) The SetTheory-is-THE-integrative-hub headline (a-0010) is PARTLY hygiene-dependent: SetTheory survives as a top-3 CN cluster but loses rank 1 to 'Data' (low-math-content datatype machinery) once non-math nodes are gone -- the strict #1 claim does not survive hygiene. (4) The specific bridge MEMBERSHIP (the 34/280 lists) does not survive a hygiene re-partition (Jaccard ~0.05), reinforcing a-0048/a-0051 that membership is resolution-relative; the EXISTENCE of a scarce depth-filtered bridge population does survive.",
+  "addresses": [
+    "q-0021"
+  ],
+  "produces": [
+    "a-0052",
+    "a-0053"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T07:03:24.731Z",
+    "updated_at": "2026-06-17T07:04:18.031Z"
+  },
+  "comments": {}
+}
