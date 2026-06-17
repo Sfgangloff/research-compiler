@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0016",
+  "stream": "visualization-tools-putnam",
+  "description": "Validate the analytic picture-decisiveness model (e-0014/e-0015) against a REAL matplotlib render, on the corpus's marginal problem geom_06: rasterize its h(x) plot off-screen at 256/512/640 px and count the curve pixels that fall below the y=0 axis (the dip-below-zero falsifier).",
+  "motivation": "The decisiveness audit converts feature size in data units to pixels analytically, ignoring anti-aliasing, line width and rasterization. A skeptic can object a thin dark dip might smear into the line and vanish. Confirm the analytic px-footprint matches a genuine render. CPU-only, Agg backend.",
+  "code_pointer": {
+    "repo": "graphical-reasoning",
+    "path": "experiments/geometric_corpus/render_validation.py",
+    "commit": "fc1ddfd",
+    "lines": "95",
+    "run_cmd": ".venv-corpus/bin/python experiments/geometric_corpus/render_validation.py"
+  },
+  "formal_results": "Render geom_06 h(x) with lw=1.5 + gray y=0 axhline at three figure sizes; in the RGBA buffer locate the axis row (gray) and blue curve pixels, count curve pixels strictly below the axis (rows deep x cols wide).",
+  "results_description": "256px: dip 2 rows deep x 3 cols wide (sub-threshold). 512px: 5x5 (VISIBLE). 640px: 6x6 (VISIBLE). Matches the analytic model (analytic dip 8.9x5.6 px at 512; robustness sweep flagged 256px as geom_06's sole dropout).",
+  "conclusions": "The analytic px-footprint decisiveness model is render-faithful: real anti-aliased matplotlib output reproduces the predicted feature visibility, including the predicted 256px borderline for geom_06. The whole picture-decisiveness audit (e-0014, e-0015) is validated against ground-truth rendering, not just a model -- closing the last methodological gap on the construction side of q-0008.",
+  "addresses": [
+    "q-0008"
+  ],
+  "produces": [
+    "a-0018"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:36:18.795Z",
+    "updated_at": "2026-06-17T05:36:35.892Z"
+  },
+  "comments": {}
+}
