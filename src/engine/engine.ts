@@ -151,7 +151,22 @@ export class Engine {
   // ---- id allocation --------------------------------------------------------
 
   private nextId(g: StreamGraph, kind: IdKind): string {
-    const n = (g.stream.counters[kind] ?? 0) + 1;
+    // Self-healing: never trust a drifted counter alone. Take the max of the
+    // stored counter and the highest existing entity id of this kind, so a
+    // stale counter (e.g. from a lost write / race) can never hand back an id
+    // that already exists and silently overwrite a live entity.
+    const collection: Map<string, { id: string }> =
+      kind === "q" ? g.questions
+      : kind === "a" ? g.answers
+      : kind === "h" ? g.hyperedges
+      : kind === "e" ? g.experiments
+      : g.objects;
+    let maxExisting = 0;
+    for (const id of collection.keys()) {
+      const num = parseInt(id.slice(2), 10);
+      if (Number.isFinite(num) && num > maxExisting) maxExisting = num;
+    }
+    const n = Math.max(g.stream.counters[kind] ?? 0, maxExisting) + 1;
     g.stream.counters[kind] = n;
     return formatId(kind, n);
   }
