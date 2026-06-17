@@ -1,0 +1,30 @@
+{
+  "type": "experiment",
+  "id": "e-0064",
+  "stream": "proof-hierarchies",
+  "description": "Structural distinct-signal gate for pi_mid: the CPU-only half of the construct-validity gate that a-0053/a-0055 (e-0055/e-0057) flagged but deferred to the paid extract. For every depth>=2 substantive carrier, measures the two named-block increments that define a genuine third granularity level -- mid-root (top-level block pi_mid names that pi_root inlines) and leaf-mid (nested block pi_leaf names that pi_mid inlines) -- and the mid-block share of the eventual fine block.",
+  "motivation": "e-0054/e-0055/e-0057 reopened q-0005's 3-level rough/mid/fine U-shape on the deep route and showed pi_mid survives on supply+power, but every answer flagged the SAME unmet gate: depth is a STRUCTURAL count; whether each named frontier carries DISTINCT signal vs both rough and fine is unmet. The format half needs the paid extract, but the on-disk separability half (does pi_mid carry a non-trivial named block at BOTH boundaries, or collapse onto an endpoint?) is CPU-answerable and never done.",
+  "code_pointer": {
+    "repo": "proof-hierarchies",
+    "path": "data/analyze_deep_pimid_distinct_signal.py",
+    "commit": "ec0d8a3f1ad41f1342e44588078b7055cc3f2fbe",
+    "lines": "312",
+    "run_cmd": "python3 -m data.analyze_deep_pimid_distinct_signal"
+  },
+  "formal_results": "substantive named = name!='_' AND type non-empty AND body non-empty (e-0026/e-0032 unit). pi_root names 0; pi_mid names top-level substantive (binder pass-through); pi_leaf names all substantive at minimal antichain. mid-root increment = top-level block; leaf-mid increment = nested block. Header chars = e-0027 overhead 13 + name + type + body. 1255 name-deduped deep decls; 427 carry substantive-named-depth>=2.",
+  "results_description": "Over 427 depth>=2 carriers: mid-root block median 117 chars / 2 haves; leaf-mid block median 77 chars / 1 have; mid-block share of fine block median 0.6 (IQR 0.4-0.7). Non-collapsing rate (both blocks non-trivial): 100% at >=20c, 72.1% (308) at >=50c, 21.3% at >=100c; at 50c, 55 collapse toward root and 79 toward leaf. Interior position (mid-block 0.2-0.8 of fine block) on 83.4% (356) of carriers.",
+  "conclusions": "The STRUCTURAL half of the distinct-signal gate that a-0053/a-0055 deferred is CLEARED: pi_mid carries a genuine named block at BOTH boundaries (median 117c top + 77c nested) and sits in the interior 0.2-0.8 of the fine block on 83% of carriers, so it is a genuine third granularity level, not an endpoint clone, for the bulk of the study set; ~72% keep both blocks non-trivial at a 50-char threshold. So q-0005's 3-level U-shape is now structurally warranted on distinct-content grounds, and the ONLY remaining open gate on the 3rd arm is the off-disk term-vs-tactic FORMAT confound (e-0036/e-0037, paid extract) plus the ~1.5x compute (a-0054). Caveat: on-disk chars/count separation only; format-vs-content distinctness still needs the extract; syntactic body classification.",
+  "addresses": [
+    "q-0005"
+  ],
+  "produces": [
+    "a-0062"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:32:35.686Z",
+    "updated_at": "2026-06-17T05:32:57.049Z"
+  },
+  "comments": {}
+}

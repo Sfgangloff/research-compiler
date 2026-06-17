@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0062",
+  "stream": "proof-hierarchies",
+  "text": "The CPU-only structural half of pi_mid's distinct-signal gate -- the one a-0053/a-0055 flagged as unmet and deferred to the paid extract -- is now CLEARED, further hardening q-0005's overturned-to-3-level verdict. Over the 427 deep carriers with substantive-named-depth>=2, pi_mid names a genuine block at BOTH boundaries: a top-level block over pi_root (median 117 chars / 2 haves) AND a nested block under pi_leaf (median 77 chars / 1 have). At a 50-char non-triviality threshold 72% of carriers keep both blocks non-trivial (mid collapses toward leaf on 79, toward root on 55), and pi_mid sits in the interior 0.2-0.8 of the eventual fine block on 83% of carriers -- so the intermediate cut is a genuine third granularity level with distinct named content, not an endpoint clone, for the bulk of the study set. CONSEQUENCE: q-0005's reopened 3-level rough/mid/fine U-shape is now warranted on supply (a-0052), eval power (a-0053), substantive-construct depth (a-0055) AND on-disk distinct-content (this gate). The single remaining open gate on adding the 3rd arm is the OFF-DISK term-vs-tactic FORMAT confound (e-0036/e-0037, paid extract) plus the ~1.5x compute of a 3rd adapter+eval arm (a-0054). Caveat: structural chars/count separation only; format-vs-content distinctness still needs the extract; syntactic body classification.",
+  "status": "supported",
+  "answers": [
+    "q-0005"
+  ],
+  "backed_by": [
+    "e-0064"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:32:57.048Z",
+    "updated_at": "2026-06-17T05:32:57.048Z"
+  },
+  "comments": {}
+}
