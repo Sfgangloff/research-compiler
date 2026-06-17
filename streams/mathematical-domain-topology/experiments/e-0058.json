@@ -1,0 +1,29 @@
+{
+  "type": "experiment",
+  "id": "e-0058",
+  "stream": "mathematical-domain-topology",
+  "description": "q-0020 (reviewer JAGf) bridge-definition circularity: validate the depth-filtered cross-cell-premise bridge detector INDEPENDENTLY of the Leiden clustering, three ways over the same LCC at theta=2. (A) replace Leiden cells with the EXTERNAL top-level Mathlib MODULE partition (library organisation, ground-truth labels not optimised over edges) and re-detect; report recall/precision of the canonical 34 Leiden strict bridges. (C) PERMUTATION NULL: random partitions matched to module-cell sizes AND to Leiden granularity (138 cells), 20 shuffles, measuring how well a partition with NO real domain structure recovers the Leiden bridge set. (B) HELD-OUT split: Leiden-cluster a random TRAIN half only, propagate cell labels to TEST nodes by train-neighbour majority, detect bridges, validate against canonical Leiden bridges in the TEST half.",
+  "motivation": "Reviewer JAGf: bridges are theorems whose premises cross CLUSTER boundaries, but the clusters come from Leiden on the SAME dependency graph, so the method may rediscover boundaries it invented. Need a clustering-INDEPENDENT validation (external labels / null / held-out) and an explicit verdict on whether the circularity is dissolved, partial, or confirmed.",
+  "code_pointer": {
+    "repo": "topology-of-mathematical-domain",
+    "path": "src/circularity_validation.py",
+    "commit": "91002b0"
+  },
+  "formal_results": "Canonical Leiden strict bridges = 34 (results/bridge_theorems_filtered.json), reproduced exactly by the in-repo detector (recall 1.0) over the deterministic LCC (92,594 nodes, 138 clusters). Detector: theorem cites a depth<=2 premise spanning >=2 distinct pure cells != its own cell. (A) module partition: 33 cells over LCC, 26 pure (size>=50, non-math excluded). (C) nulls: 20 label-shuffles each, 'pure'=cells size>=50. (B) 50/50 node split, Leiden(seed 42,10it) on train LCC, labels propagated to test by neighbour majority.",
+  "results_description": "(A) EXTERNAL MODULE PARTITION: 4,430 module bridges; recall of the 34 Leiden bridges = 0.676 (23/34) BUT precision = 0.0052 and Jaccard = 0.0052 -- the module partition flags ~4,400 theorems because it is coarse (26 huge cells), so depth<=2 premises trivially span >=2 cells. (C) PERMUTATION NULL: a RANDOM partition matched to module-cell sizes recovers 97.8% of the Leiden bridges (mean, max 1.0) producing ~24,400 'bridges'; a Leiden-granularity (138-cell) random null recovers 98.4% with ~26,200 'bridges'. So module recall / null recall = 0.69 -- the true module partition is NO BETTER (slightly worse) than random at recovering the Leiden bridge set; null Jaccard 0.0014. (B) HELD-OUT: clustering a disjoint TRAIN half and applying it to unseen TEST theorems recovers only 1/15 canonical TEST bridges (recall 0.067, Jaccard 0.029).",
+  "conclusions": "Circularity concern CONFIRMED (not dissolved, not merely partial) for the specific bridge SET. Three independent lines agree: (i) external ground-truth module labels overlap the Leiden bridges only because of coarse granularity (precision 0.005); (ii) a permutation null with NO domain structure recovers the bridges as well as -- slightly better than -- the real module partition, so recovering the Leiden bridge list requires no genuine cross-domain signal beyond 'a premise crosses some partition boundary'; (iii) a clustering trained on held-out data recovers <7% of the bridges. The bridge detector is dominated by partition GRANULARITY, and the specific 34-bridge list is a clustering artifact (all cross-method Jaccards ~0.005-0.03). This sharpens and reinforces a-0048/a-0051/a-0052. What survives clustering-independently is ONLY the weak, near-tautological fact that theorems cite premises from multiple library modules; the strong claim that the method detects a privileged, partition-invariant set of cross-domain bridge theorems is NOT supported. Historical alignment (a-0008, e.g. Gromov-Hausdorff) is in the module-recovered overlap, so individual celebrated bridges can still be flagged -- but as members of a 4,400-strong coarse set, not a sharp 34.",
+  "addresses": [
+    "q-0020"
+  ],
+  "produces": [
+    "a-0054",
+    "a-0055"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T07:09:34.444Z",
+    "updated_at": "2026-06-17T07:10:06.060Z"
+  },
+  "comments": {}
+}

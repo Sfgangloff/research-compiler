@@ -1,0 +1,25 @@
+{
+  "type": "answer",
+  "id": "a-0055",
+  "stream": "mathematical-domain-topology",
+  "text": "CORRECTION/down-scope of a-0007 under the circularity test (e-0058). The depth filter does collapse the raw set to a small list (34 at theta=2), and that list does over-represent specialized rather than utility premises. BUT the resulting 34-bridge list is NOT a clustering-independent object: (i) a permutation null with no domain structure recovers ~98% of it, (ii) an external Mathlib-module partition overlaps it only via coarse granularity (precision 0.005), (iii) a held-out clustering recovers <7% of it. So the in-degree depth filter separates specialized-premise bridges from utility-lemma bridges WITHIN a given partition, but it does NOT certify a partition-invariant set of 'genuine' cross-domain bridges -- membership is governed by the Leiden partition's granularity (cf. a-0048/a-0051/a-0054). Robust claim: the filter is a sound WITHIN-PARTITION specificity criterion; the specific 34 theorems are not a privileged cross-domain invariant.",
+  "status": "supported",
+  "answers": [
+    "q-0007"
+  ],
+  "backed_by": [
+    "e-0058"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T07:10:06.057Z",
+    "updated_at": "2026-06-17T07:10:16.091Z"
+  },
+  "comments": {
+    "supersedes": "Circularity test (e-0058): the 34-bridge list fails clustering-independent validation (null recovers ~98%, held-out recovers <7%, external module partition precision 0.005). The depth filter is a sound WITHIN-partition specificity criterion but does not certify a partition-invariant 'genuine bridge' set."
+  },
+  "supersedes": [
+    "a-0007"
+  ]
+}

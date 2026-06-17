@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0054",
+  "stream": "mathematical-domain-topology",
+  "text": "Circularity CONFIRMED for the specific bridge SET (e-0058). Validating bridges independently of Leiden three ways at theta=2: (A) the EXTERNAL Mathlib-module partition (ground-truth library labels) recovers 23/34 Leiden strict bridges (recall 0.68) but with precision 0.005 / Jaccard 0.005 -- it flags 4,430 theorems because it is coarse, so the overlap is a granularity effect, not agreement on a sharp object. (C) a PERMUTATION NULL with no domain structure (random partition matched to module-cell sizes, and to Leiden's 138-cell granularity) recovers 97.8-98.4% of the Leiden bridges; module-recall / null-recall = 0.69, i.e. the real module partition is no better than random -- recovering the Leiden bridge list requires only 'a premise crosses some partition boundary', not genuine cross-domain signal. (B) a clustering trained on a held-out half recovers <7% (1/15) of the canonical test-half bridges. The detector is dominated by partition GRANULARITY; the 34-bridge list is a clustering artifact (cross-method Jaccard ~0.005-0.03). What survives clustering-independently is only the near-tautological fact that theorems cite premises from multiple library modules. Celebrated bridges (e.g. Gromov-Hausdorff) still appear, but as members of a ~4,400-strong coarse set, not a privileged sharp 34. The claim that the method detects a partition-invariant set of cross-domain bridges is NOT supported.",
+  "status": "supported",
+  "answers": [
+    "q-0020"
+  ],
+  "backed_by": [
+    "e-0058"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T07:09:50.787Z",
+    "updated_at": "2026-06-17T07:09:50.787Z"
+  },
+  "comments": {}
+}

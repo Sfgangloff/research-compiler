@@ -1,0 +1,14 @@
+{
+  "type": "question",
+  "id": "q-0030",
+  "stream": "mathematical-domain-topology",
+  "text": "Is there a clustering-INDEPENDENT operational definition of a cross-domain bridge -- one whose detected set is stable across partitions and beats a permutation null -- or must bridge detection be abandoned in favour of the proof-structure (conceptual) bridges of q-0009?",
+  "status": "open",
+  "tags": [],
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T07:10:26.388Z",
+    "updated_at": "2026-06-17T07:10:26.388Z"
+  },
+  "comments": {}
+}

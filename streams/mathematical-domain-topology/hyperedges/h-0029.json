@@ -1,0 +1,19 @@
+{
+  "type": "hyperedge",
+  "id": "h-0029",
+  "stream": "mathematical-domain-topology",
+  "sources": [
+    {
+      "kind": "A",
+      "id": "a-0054"
+    }
+  ],
+  "target": "q-0030",
+  "rationale": "If the depth-filtered bridge SET is a partition-granularity artifact (null recovers 98%, held-out 7%), the project needs a bridge criterion that is partition-INVARIANT or that does not require a clustering at all (e.g. premise-pair surprise vs a degree-preserving null at the node level, or proof-structure conceptual bridges a-0009).",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T07:10:26.389Z",
+    "updated_at": "2026-06-17T07:10:26.389Z"
+  },
+  "comments": {}
+}

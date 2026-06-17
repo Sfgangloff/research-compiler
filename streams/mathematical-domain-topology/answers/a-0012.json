@@ -17,11 +17,12 @@
   "provenance": {
     "created_by": "claude",
     "created_at": "2026-06-11T04:13:20.853Z",
-    "updated_at": "2026-06-17T07:04:49.734Z"
+    "updated_at": "2026-06-17T07:10:17.601Z"
   },
   "comments": {
     "placeholders": "The paper's 'compressibility' framing leans on a placeholder reference (compression2024, bibliographic details = TODO); authors/affiliations are also placeholders. Reasoning content is unaffected.",
-    "caveat": "CAVEAT (e-0057/q-0021): the 'identifies SetTheory as the integrative hub (a-0010)' clause is down-scoped -- a-0010 is superseded by a-0053. Under data hygiene (non-math nodes removed) SetTheory falls to CN rank 3 behind 'Data' infrastructure clusters; it remains a top-3 integrative cluster but is not the single dominant hub. The capstone's core (a-0001 unsupervised domain recovery + a-0007 depth-filtered operational bridges) is unaffected; bridge MEMBERSHIP remains resolution-relative (a-0048/a-0051/a-0052)."
+    "caveat": "CAVEAT (e-0057/q-0021): the 'identifies SetTheory as the integrative hub (a-0010)' clause is down-scoped -- a-0010 is superseded by a-0053. Under data hygiene (non-math nodes removed) SetTheory falls to CN rank 3 behind 'Data' infrastructure clusters; it remains a top-3 integrative cluster but is not the single dominant hub. The capstone's core (a-0001 unsupervised domain recovery + a-0007 depth-filtered operational bridges) is unaffected; bridge MEMBERSHIP remains resolution-relative (a-0048/a-0051/a-0052).",
+    "caveat2": "CAVEAT (e-0058/q-0020): the operational-bridge clause (a-0007) is down-scoped by a-0055 -- the depth-filtered 34-bridge set is NOT a clustering-independent object (permutation null recovers ~98%, held-out clustering <7%, external module partition precision 0.005). The detector certifies WITHIN-partition premise specificity, not a partition-invariant set of cross-domain bridges. Unsupervised domain RECOVERY (a-0001) is unaffected."
   },
   "stories": [
     "bridges"

@@ -5,10 +5,10 @@
   "description": "Unsupervised recovery of mathematics' domain structure and cross-domain bridges from the Lean4/Mathlib theorem dependency graph (Leiden clustering + bridge detection + historical validation). Reasoning reconstructed from the topology-of-mathematical-domain repo.",
   "root_qid": "q-0001",
   "counters": {
-    "q": 29,
-    "a": 53,
-    "h": 28,
-    "e": 57
+    "q": 30,
+    "a": 55,
+    "h": 29,
+    "e": 58
   },
   "provenance": {
     "created_by": "claude",
