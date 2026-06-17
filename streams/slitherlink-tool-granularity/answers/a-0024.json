@@ -1,0 +1,20 @@
+{
+  "type": "answer",
+  "id": "a-0024",
+  "stream": "slitherlink-tool-granularity",
+  "text": "Sharpens a-0021/MG1' using out-of-sample data, but cannot resolve q-0011 (still needs the paid cross-model sweep). e-0018 shows the externalization-saving term — the no-tools agent's realized in-head output, which a-0020 identifies as what LOCATES the Goldilocks peak — is NOT a clean function of formal difficulty: two tier-3 puzzles of near-equal grade (3789 vs 4547 search_nodes) differ 3.66x in none-output (255k vs 70k tok). Therefore MG1' should be restated: the peak of [OUT_saved*P_OUT - CR_added*P_CR] is non-decreasing in model capability when indexed by each model's REALIZED in-head output volume, not by search_nodes. Practical consequence for the e-0010 design: the cross-model peak must be plotted against realized none-output (an observable), and several puzzles per formal tier are needed because grade alone is a 3-4x-noisy proxy for in-head load. Status inconclusive: no cross-model data exists; this is a design-level refinement of the prediction, not its test.",
+  "status": "inconclusive",
+  "answers": [
+    "q-0011"
+  ],
+  "backed_by": [
+    "e-0018"
+  ],
+  "edge_comments": {},
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:33:28.015Z",
+    "updated_at": "2026-06-17T05:33:28.015Z"
+  },
+  "comments": {}
+}

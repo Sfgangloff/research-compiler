@@ -1,0 +1,32 @@
+{
+  "type": "experiment",
+  "id": "e-0018",
+  "stream": "slitherlink-tool-granularity",
+  "description": "Out-of-sample 4th-rung test of the two-term G-CD estimator on gen_7x7_s3_00, a SECOND tier-3 puzzle (search_nodes=3789) that the e-0016/e-0017 cost model was never built on. No new compute. Tests (O1) whether the externalization-saving term is a clean function of formal difficulty, and (O2) whether the discount-scaled two-term net predicts the none-vs-coarse cost gap out of sample, including a sign flip.",
+  "motivation": "e-0016/e-0017 built the two-term model on 3 puzzles (one per tier); a-0021/MG1' states the Goldilocks peak in terms governed by formal difficulty. gen_7x7_s3_00 is graded near-identically to the tier-3 rung used (3789 vs 4547 nodes), giving a true out-of-sample point and a direct test of whether 'saving' tracks search_nodes.",
+  "code_pointer": {
+    "repo": "claude-sudoku-experiments",
+    "path": "harness/analyze_oos_fourth_rung.py",
+    "commit": "47b8c3e",
+    "lines": "130",
+    "run_cmd": "python -m harness.analyze_oos_fourth_rung"
+  },
+  "formal_results": "4-puzzle ladder (puzzle_001 96 / puzzle_002 501 / gen_7x7_s3_00 3789 OOS / gen_7x7_s1_00 4547). O1: mean none output_tokens (in-head saving proxy) per rung. O2: none-vs-coarse cost gap vs two-term net = OUT_saved*P_OUT - CR_added*P_CR (list), then scaled by the e-0017 toolset/rung-invariant billed/list discount 0.335. n: tier-1 none/coarse 4/3, tier-2 3/3, tier-3a 1/1 (point estimate), tier-3b 3/3.",
+  "results_description": "O1: none in-head output by rung = 35.2k / 171.8k / 255.1k / 69.7k. The two near-equal-grade tier-3 puzzles differ 3.66x in none-output (255.1k @3789 nodes vs 69.7k @4547 nodes): the saving term is NOT pinned by search_nodes; one formal tier spans ~3-4x realized in-head reasoning. O2: discount-scaled net (net*0.335) vs actual billed gap = tier-1 +0.27 vs +0.33; tier-2 +2.23 vs +2.16; tier-3a (OOS) -7.85 vs -10.85; tier-3b +0.09 vs +0.01. The model tracks sign AND rough magnitude on all 4 rungs, including the OOS sign flip where coarse LOSES by ~ (driven by coarse cache_read exploding to 15.4M tok).",
+  "conclusions": "The two-term estimator generalizes out of sample, and combined with the e-0017 global 0.335 discount it becomes quantitatively predictive of the actual billed none-vs-coarse gap (sign + magnitude) across 4 rungs spanning +$2.2 to -$10.9 — including the regime where coarse tools actively HURT. Two refinements: (1) the Goldilocks benefit is not single-signed in tier-3; a second tier-3 puzzle flips it strongly negative because coarse's context tax (cache_read) explodes while the saving, though large, cannot keep up. (2) a-0021/MG1' must be restated in REALIZED in-head output, not search_nodes: at fixed formal grade the saving varies 3.66x, so the cross-model peak prediction is about where each model's realized in-head reasoning volume peaks, which formal difficulty only loosely predicts. Caveat: tier-3a is n=1 per cell (point estimate, not CI); single Opus-4.7 model.",
+  "addresses": [
+    "q-0012",
+    "q-0011"
+  ],
+  "produces": [
+    "a-0023",
+    "a-0024"
+  ],
+  "status": "done",
+  "provenance": {
+    "created_by": "claude",
+    "created_at": "2026-06-17T05:32:58.102Z",
+    "updated_at": "2026-06-17T05:33:28.017Z"
+  },
+  "comments": {}
+}
